@@ -13,7 +13,7 @@
 <body>
     <!--NAVIGATION BAR-->
     <nav>
-        <div class="wrapper">
+        <div class="nav-wrapper">
             <div class="navbar">
                 <div class="inner-navbar">
                     <ul>
@@ -37,31 +37,52 @@
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">CALENDAR</h2>
+                        <!-- CARD BODY -- CALENDAR -->
                         <div class="card-body"></div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">STATISTICS</h2>
+                        <!-- CARD BODY -- STATISTICS -->
                         <div class="card-body"></div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">WORK SESSION</h2>
-                        <a href="#" class="button">ADD TASK</a>
-                        <div class="card-body"></div>
+                        <!-- CARD BODY -- WORK SESSION -->
+                        <div class="card-body">
+                            <div id="timer-container">
+                                <p id="hour-label" class="label">Hours</p>
+                                <p id="min-label" class="label">Minutes</p>
+                                <p id="sec-label" class="label">Seconds</p>
+                                <input id="hour" type="number" max="99" min="0" value="0" class="time" />
+                                <p id="p1" class="semicolon">:</p>
+                                <input id="minute" type="number" max="60" min="0" value="0" class="time" />
+                                <p id="p2" class="semicolon">:</p>
+                                <input id="sec" type="number" max="60" min="0" value="0" class="time" />
+                                <button id="start" class="btn">Start</button>
+                                <button id="finish" class="btn">Finish</button>
+                            </div>
+                            <!-- ADD TASK AREA -->
+                            <div id="task-container">
+                                <button id="add-task" class="btn">Add Task</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">PRODUCTIVITY</h2>
+                        <!-- CARD BODY -- PRODUCTIVITY -->
                         <div class="card-body"></div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">REMINDERS</h2>
+                        <!-- CARD BODY -- REMINDERS -->
                         <div class="card-body"></div>
                     </div>
                 </div>
@@ -77,6 +98,7 @@
 
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    <script src="/HomePage/home_page.js"></script>
 </body>
 
 </html>
