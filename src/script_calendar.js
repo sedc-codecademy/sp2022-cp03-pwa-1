@@ -47,3 +47,5 @@ function createCalendar(elem, year, month) {
   }
 
   createCalendar(calendarMain, 2012, 9);
+
+  let blabla = "bla"; 
