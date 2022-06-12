@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="stylesheet" href="Statistics/Activity-Summary/ActivitySummary.css" type="text/css" />
     <link rel="stylesheet" href="Statistics/Focus-Hours/FocusHours.css" type="text/css" />
@@ -45,7 +46,33 @@
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">STATISTICS</h2>
-                        <div class="card-body"></div>
+                        <div class="card-body">
+
+                            <h3>Activity Summary</h3>
+                            <div id="activitySummaryContainer">
+                                <div class="activityCard">
+                                    <div class="acitivityCard_header">
+                                        <i style="font-size:24px" class="fa">&#xf017;</i>
+                                        <p id="dynamicFocusHours">4</p>
+                                    </div>
+                                    <p>hours focused</p>
+                                </div>
+                                <div class="activityCard">
+                                    <div class="acitivityCard_header">
+                                        <i class="fa fa-calendar"></i>
+                                        <p id="dynamicAccessedDays">4</p>
+                                    </div>
+                                    <p>days accessed</p>
+                                </div>
+                                <div class="activityCard">
+                                    <div class="acitivityCard_header">
+                                        <i class="fa fa-diamond"></i>
+                                        <p id="dynamicStreakDays">4</p>
+                                    </div>
+                                    <p>days streak</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -58,8 +85,22 @@
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">HOW TO BE PRODUCTIVE</h2>
-                        <div class="card-body">A whole industry has grown around workplace productivity, spawning everything from productivity tech and professional coaching, to team retreats and workplace philosophies. But hacks and apps can only get us so far—and a lot of them are complete nonsense. To truly become more productive, we need to understand the individual way we work and learn, and identify how to work smarter. This process can largely be boiled down to making calculated behavioral changes, which is where tried-and-tested productivity techniques can help. Productivity techniques are strategies designed to help you tap into productive flow states—to cut to quality with little effort. Most productivity techniques are grounded on some form of behavioral science, aimed to take advantage of the way your brain works. While structured, they are usually flexible and easy to adapt. There are dozens of productivity systems out there, but some are more effective than others, and many just rebrand established approaches. To help you cut through the noise, we’ve selected ten of the smartest productivity techniques you should know about. They may not all work for you, but it's worth conducting your own mini productivity experiment to see if they could improve the way you approach and think about your work.</div>
-                        <a href="https://timelyapp.com/blog/productivity-techniques">Click for more info</a> 
+                        <div class="card-body">A whole industry has grown around workplace productivity, spawning
+                            everything from productivity tech and professional coaching, to team retreats and workplace
+                            philosophies. But hacks and apps can only get us so far—and a lot of them are complete
+                            nonsense. To truly become more productive, we need to understand the individual way we work
+                            and learn, and identify how to work smarter. This process can largely be boiled down to
+                            making calculated behavioral changes, which is where tried-and-tested productivity
+                            techniques can help. Productivity techniques are strategies designed to help you tap into
+                            productive flow states—to cut to quality with little effort. Most productivity techniques
+                            are grounded on some form of behavioral science, aimed to take advantage of the way your
+                            brain works. While structured, they are usually flexible and easy to adapt. There are dozens
+                            of productivity systems out there, but some are more effective than others, and many just
+                            rebrand established approaches. To help you cut through the noise, we’ve selected ten of the
+                            smartest productivity techniques you should know about. They may not all work for you, but
+                            it's worth conducting your own mini productivity experiment to see if they could improve the
+                            way you approach and think about your work.</div>
+                        <a href="https://timelyapp.com/blog/productivity-techniques">Click for more info</a>
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -76,6 +117,7 @@
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>
+
     </main>
 
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>

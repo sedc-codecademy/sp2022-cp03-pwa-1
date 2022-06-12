@@ -1,0 +1,37 @@
+#activitySummaryContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.activityCard {
+    border: 1px solid rgb(12, 106, 143);
+    border-radius: 6%;
+    width: 20%;
+    height: fit-content;
+    font-size: 14px;
+    padding: 1%;
+    text-align: center;
+    background: rgb(191,206,226);
+    background: linear-gradient(50deg, rgba(191,206,226,1) 71%, rgba(233,241,241,1) 99%);
+}
+
+
+.acitivityCard_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 24px;
+    margin: 0;
+}
+
+.acitivityCard_header i,
+.acitivityCard_header p {
+    margin: 2%;
+}
+
+.activityCard p {
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
