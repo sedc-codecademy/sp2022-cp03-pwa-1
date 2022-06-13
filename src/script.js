@@ -37,6 +37,12 @@ const swiper = new Swiper('.swiper', {
 
 });
 
+// navbar
+
+
+
+
+
 // Timer
 
 let start = document.getElementById('start');
