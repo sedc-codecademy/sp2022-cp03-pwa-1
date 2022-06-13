@@ -9,25 +9,25 @@ let nextMonthBtn = document.getElementById('nextMonthBtn');
 prevYearBtn.addEventListener('click', function () {
   year -= 1;
   renderYear(year);
-  renderCalendar(elem, year, month, getDaysInMonth);
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
 });
 
-// nextYearBtn.addEventListener('click', function () {
-//   year += 1;
-//   renderYear(year);
-//   renderCalendar(elem, year, month, daysInMonthCallback);
-// })
+nextYearBtn.addEventListener('click', function () {
+  year += 1;
+  renderYear(year);
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
+})
 
 // prevMonthBtn.addEventListener('click', function () {
 //   month -= 1;
 //   renderMonth(monthsNames, month, renderedMonth);
-//   renderCalendar(elem, year, month, daysInMonthCallback);
+//   renderCalendar(calendarMain, year, month, getDaysInMonth);
 // })
 
 // nextMonthBtn.addEventListener('click', function () {
 //   month += 1;
 //   renderMonth(monthsNames, month, renderedMonth);
-//   renderCalendar(elem, year, month, daysInMonthCallback);
+//   renderCalendar(calendarMain, year, month, getDaysInMonth);
 // })
 
 //-----------getting current year-----------
@@ -53,12 +53,10 @@ getMonth();
 let getDaysInMonth = 0;
 
 function getDaysInMonthFunc(year, month) {
-   getDaysInMonth += new Date(year, month, 0).getDate();
+   getDaysInMonth = new Date(year, month, 0).getDate();
 }
 
 getDaysInMonthFunc(year, month);
-
-console.log(getDaysInMonth)
 
 // let getDaysInMonth = function (year, month) {
 //   return new Date(year, month, 0).getDate();
