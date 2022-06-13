@@ -3,32 +3,36 @@ let renderedYear = document.getElementById('year');
 let renderedMonth = document.getElementById('monthName');
 let prevYearBtn = document.getElementById('prevYearBtn');
 let nextYearBtn = document.getElementById('nextYearBtn');
-let prevMonthBtn = document.getElementById('prevMonthBtn');
-let nextMonthBtn = document.getElementById('nextMonthBtn');
+let prevMonthBtn = document.getElementById('prevMonthbtn');
+let nextMonthBtn = document.getElementById('nextMonthbtn');
 
 prevYearBtn.addEventListener('click', function () {
   year -= 1;
   renderYear(year);
+  getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
 });
 
 nextYearBtn.addEventListener('click', function () {
   year += 1;
   renderYear(year);
+  getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
 })
 
-// prevMonthBtn.addEventListener('click', function () {
-//   month -= 1;
-//   renderMonth(monthsNames, month, renderedMonth);
-//   renderCalendar(calendarMain, year, month, getDaysInMonth);
-// })
+prevMonthBtn.addEventListener('click', function () {
+  month -= 1;
+  renderMonth(monthsNames, month, renderedMonth);
+  getDaysInMonthFunc(year, month)
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
+})
 
-// nextMonthBtn.addEventListener('click', function () {
-//   month += 1;
-//   renderMonth(monthsNames, month, renderedMonth);
-//   renderCalendar(calendarMain, year, month, getDaysInMonth);
-// })
+nextMonthBtn.addEventListener('click', function () {
+  month += 1;
+  renderMonth(monthsNames, month, renderedMonth);
+  getDaysInMonthFunc(year, month)
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
+})
 
 //-----------getting current year-----------
 let year;
@@ -70,13 +74,23 @@ renderYear(year);
 
 //-----------adding month name between buttons-----------
 const monthsNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+let currentMonth;
+
 function renderMonth(monthsArray, monthNum, elem) {
   let currentMonth = monthsArray[monthNum - 1]
+  
+  if(monthNum === 12) {
+    month = 0;
+  }
+  if(monthNum === 1) {
+    month = 13;
+  }
   elem.innerText = (currentMonth);
 }
 renderMonth(monthsNames, month, renderedMonth);
 
-let elem;
+// let elem;
 
 // --------rendering the calendar-----------
 function renderCalendar(elem, year, month, daysInMonthCallback) {
