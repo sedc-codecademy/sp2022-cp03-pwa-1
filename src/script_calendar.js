@@ -9,7 +9,7 @@ let nextMonthBtn = document.getElementById('nextMonthBtn');
 prevYearBtn.addEventListener('click', function () {
   year -= 1;
   renderYear(year);
-  renderCalendar(elem, year, month, daysInMonthCallback);
+  renderCalendar(elem, year, month, getDaysInMonth);
 });
 
 // nextYearBtn.addEventListener('click', function () {
@@ -31,15 +31,38 @@ prevYearBtn.addEventListener('click', function () {
 // })
 
 //-----------getting current year-----------
-let year = new Date().getFullYear();
+let year;
+
+function getYear() {
+  year = new Date().getFullYear();
+}
+
+getYear();
 
 //-----------getting current month-----------
-let month = new Date().getMonth() + 1;
+let month;
+
+function getMonth() {
+  month = new Date().getMonth() + 1;
+}
+
+getMonth();
 
 //-----------getting days in month-----------
-let getDaysInMonth = function (year, month) {
-  return new Date(year, month, 0).getDate();
+
+let getDaysInMonth = 0;
+
+function getDaysInMonthFunc(year, month) {
+   getDaysInMonth += new Date(year, month, 0).getDate();
 }
+
+getDaysInMonthFunc(year, month);
+
+console.log(getDaysInMonth)
+
+// let getDaysInMonth = function (year, month) {
+//   return new Date(year, month, 0).getDate();
+// }
 
 //-----------adding year between buttons-----------
 function renderYear(year) {
@@ -54,6 +77,8 @@ function renderMonth(monthsArray, monthNum, elem) {
   elem.innerText = (currentMonth);
 }
 renderMonth(monthsNames, month, renderedMonth);
+
+let elem;
 
 // --------rendering the calendar-----------
 function renderCalendar(elem, year, month, daysInMonthCallback) {
@@ -96,7 +121,7 @@ function renderCalendar(elem, year, month, daysInMonthCallback) {
 //   elem.appendChild(table);
 // }
 }
-renderCalendar(calendarMain, year, month, getDaysInMonth(year, month));
+renderCalendar(calendarMain, year, month, getDaysInMonth);
 
 // function createCalendar(elem, year, month) {
 
