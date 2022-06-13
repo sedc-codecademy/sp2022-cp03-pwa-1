@@ -1,0 +1,9 @@
+#chartContainer {
+    display: block;
+    height:185px;
+    width:607px;    
+}
+#dynamicChart {
+    height:100%;
+    width:100%;    
+}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="stylesheet" href="Statistics/Activity-Summary/ActivitySummary.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="Statistics/Focus-Hours/FocusHours.css" type="text/css" />
     <title>Productivity Web App</title>
 </head>
@@ -71,6 +72,10 @@
                                     </div>
                                     <p>days streak</p>
                                 </div>
+                            </div>
+                            <h3>Focus Hours</h3>
+                            <div id="chartContainer">
+                                <canvas id="dynamicChart"></canvas>
                             </div>
                         </div>
                     </div>
