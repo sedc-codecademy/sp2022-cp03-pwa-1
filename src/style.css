@@ -157,3 +157,42 @@ li {
     transform: scale(1.05);
 }
 
+#calendarMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+}
+
+.dateInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        flex-direction: column;
+        gap: 11px;
+        margin-bottom: 10px;
+        gap: 30px;
+}
+
+.calendarMonth {
+    display: flex;
+    gap: 30px;
+}
+
+.calendarYear {
+    display: flex;
+    gap: 30px;
+}
+
+.callendarButton {
+    background-color: transparent;
+    font-size: 15px;
+    border-radius: 20%;
+    text-align: center;
+    border: transparent;
+}
+
+.callendarButton:hover {
+    background-color: black;
+    color: white;
+  }
