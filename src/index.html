@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="workingSessionStyle.css" type="text/css" />
     <title>Productivity Web App</title>
 </head>
 
@@ -47,10 +48,30 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="card-content">
+                    <div class="card-content" id="sessionMain">
                         <h2 class="card-title">WORK SESSION</h2>
-                        <a href="#" class="button">ADD TASK</a>
-                        <div class="card-body"></div>
+                        <!-- <a href="#" class="button">ADD TASK</a> -->
+                        <div class="card-body" id="sessionCardBody">
+                            <div id="sessionCardButtonsDiv">
+                                <button class="sessionButtons" id="sessionSettings">Settings</button>
+                                <button class="sessionButtons" id="shortBreak">Short break</button>
+                                <button class="sessionButtons" id="longBreak">Long break</button>
+                            </div>
+                            <div class ="sessionPopUpModals hidden">
+                                <button class = "closeSessionModal">&times;</button>
+                                <h1>SessionPopUpModals</h1>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
+                                
+                            </div>
+                            <div class="sessionOverlayDiv hidden"></div>
+                            <div id="timerDiv">
+                                00 : 00
+                            </div>
+                            <div id="startButtonDiv">
+                                <button id = "startSessionBtn">Start</button>
+                                </div>
+                            <div id="openSessionDiv"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -79,6 +100,7 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="script_calendar.js"></script>
+    <script src="working_session.js"></script>
 </body>
 
 </html>
