@@ -21,21 +21,22 @@ nextYearBtn.addEventListener('click', function () {
 })
 
 prevMonthBtn.addEventListener('click', function () {
+if(month > 1) {
   month -= 1;
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
   console.log(month);
-
-})
+}})
 
 nextMonthBtn.addEventListener('click', function () {
-  month += 1;
-  renderMonth(monthsNames, month, renderedMonth);
-  getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
-  console.log(month);
-})
+  if(month <= 11) {
+    month += 1;
+    renderMonth(monthsNames, month, renderedMonth);
+    getDaysInMonthFunc(year, month)
+    renderCalendar(calendarMain, year, month, getDaysInMonth);
+    console.log(month);
+  }})
 
 //-----------getting current year-----------
 let year;
@@ -83,11 +84,11 @@ let currentMonth;
 function renderMonth(monthsArray, monthNum, elem) {
   let currentMonth = monthsArray[monthNum - 1]
   
-  if(monthNum === 12) {
+  if(monthNum === 13) {
     month = 0;
   }
   if(monthNum === 0) {
-    month = 13;
+    month = 12;
   }
   elem.innerText = (currentMonth);
 }
