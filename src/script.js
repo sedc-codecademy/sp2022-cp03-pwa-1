@@ -23,11 +23,12 @@ const swiper = new Swiper('.swiper', {
     // Pagination a.k.a "the navigation-bar"
     pagination: {
         el: '.swiper-pagination',
-        transparent: true,
+        transparent: false,
         clickable: true,
         renderBullet: function(index, className) {
             return '<span class="' + className + '">' + (menu[index]) + '</span>';
         },
+
 
 
     },
