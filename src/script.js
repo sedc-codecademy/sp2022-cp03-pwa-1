@@ -1,6 +1,6 @@
 // Swiper
 
-
+const menu = ['CALENDAR', 'STATISTICS', 'HOME', 'PRODUCTIVITY', 'REMINDERS']
 const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
@@ -11,6 +11,7 @@ const swiper = new Swiper('.swiper', {
     initialSlide: 2,
 
 
+
     coverflowEffect: {
         rotate: 30,
         stretch: 0,
@@ -19,10 +20,14 @@ const swiper = new Swiper('.swiper', {
         slideShadows: true,
     },
 
-    // Pagination
+    // Pagination a.k.a "the navigation-bar"
     pagination: {
         el: '.swiper-pagination',
         transparent: true,
+        clickable: true,
+        renderBullet: function(index, className) {
+            return '<span class="' + className + '">' + (menu[index]) + '</span>';
+        },
 
 
     },
