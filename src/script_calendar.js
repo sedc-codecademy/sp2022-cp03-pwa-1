@@ -26,7 +26,6 @@ if(month > 1) {
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
-  console.log(month);
 }})
 
 nextMonthBtn.addEventListener('click', function () {
@@ -35,7 +34,6 @@ nextMonthBtn.addEventListener('click', function () {
     renderMonth(monthsNames, month, renderedMonth);
     getDaysInMonthFunc(year, month)
     renderCalendar(calendarMain, year, month, getDaysInMonth);
-    console.log(month);
   }})
 
 //-----------getting current year-----------
