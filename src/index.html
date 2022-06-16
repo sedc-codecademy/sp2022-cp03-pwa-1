@@ -53,9 +53,9 @@
                         <!-- <a href="#" class="button">ADD TASK</a> -->
                         <div class="card-body" id="sessionCardBody">
                             <div id="sessionCardButtonsDiv">
-                                <button class="sessionButtons" id="sessionSettings">Settings</button>
-                                <button class="sessionButtons" id="shortBreak">Short break</button>
-                                <button class="sessionButtons" id="longBreak">Long break</button>
+                                <button class="sessionButtonSetting" id="sessionSettings">Settings</button>
+                                <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
+                                <button class="sessionButtonLongBreak" id="longBreak">Long break</button>
                             </div>
                             <div class ="sessionPopUpModals hidden">
                                 <button class = "closeSessionModal">&times;</button>
@@ -69,9 +69,46 @@
                             </div>
                             <div id="startButtonDiv">
                                 <button id = "startSessionBtn">Start</button>
+                                <button id="stopSessionBtn">Stop</button>
                                 </div>
                             <div id="openSessionDiv"></div>
                         </div>
+                        <div class="taskContainer">
+                            <h2 id="tasksHeader">TASKS</h2>                            
+                            <button id = "clearTasksBtn">Clear tasks</button>
+                        </div>
+                        <hr>
+                        <div class = "tasksListButtonDiv">
+                            
+                            <div class="taskFormDiv hidden ">
+                                <input id="inputForTaskTitle" type="text" placeholder="What are you up to?">
+                                <p><b>Est Productivity APP SEDC'22</b></p>
+                                <input id="inputForTimeOfTask" type="number" min="0" step = "1" value="1">
+                                <button id="arrowUp" class="upAndDown">▲</button>
+                                <button id="arrowDown" class="upAndDown">▼</button>
+                                <br>
+                                <textarea name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
+                                <br>
+                                <button id="noteForTaskBtn">+ Add note</button>
+                                <div id="finalizeTaskDiv">
+                                    <button id ="cancelTaskButton">Cancel</button>
+                                    <button id="saveTaskButton">Save</button>
+                                </div>
+                            </div>
+                            
+                            <button id="addTaskBtn">Add task</button>  
+                        </div>    
+                        <!-- <hr> -->
+                        
+                        <div class = "listOfTasksDiv">
+                            <ol>
+                                <!-- <li>a</li>
+                                <li>b</li>
+                                <li>c</li>
+                                <li>d</li>
+                                <li>e</li> -->
+                            </ol>
+                        </div>                  
                     </div>
                 </div>
                 <div class="swiper-slide">
