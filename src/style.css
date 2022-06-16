@@ -8,6 +8,7 @@
     --clr-neutral-400: hsl(156, 85%, 66%);
     --clr-neutral-100: rgb(255, 255, 255);
     --clr-neutral-200: rgba(182, 182, 182, 0.655);
+    --clr-neutral-500: rgba(241, 51, 51, 0.803);
 }
 
 
@@ -24,96 +25,24 @@ body {
 }
 
 
-/* HEADER NAVBAR */
-
-.btn1 {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    width: 100%;
-    height: 80px;
-    max-width: 250px;
-    margin: 1rem auto;
-    text-transform: uppercase;
-    color: var(--clr-neutral-700);
-    background-color: var(--clr-neutral-100);
-    line-height: 80px;
-    text-align: center;
-    transition: ease 0.5s;
-    font-family: "Barlow", sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    text-decoration: none;
-}
-
-.btn1:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -50px;
-    bottom: 0;
-    left: 0;
-    border-right: 50px solid transparent;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-    transition: cubic-bezier(1, -0.02, 0.26, 0.38) 0.5s;
-    z-index: -1;
-}
-
-.btn1:hover {
-    color: var(--clr-neutral-300);
-}
-
-.btn1:hover:before {
-    transform: translateX(0);
-}
-
-ul {
-    margin-top: 50px;
-    display: block;
-    text-align: center;
-}
-
-ul li {
-    display: inline-block;
-}
-
-li {
-    list-style: none;
-    width: 200px;
-    margin-left: 2px;
-}
-
-#radius-mod-1 {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-#radius-mod-2 {
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-
-/* MAIN SLIDER, CARDS */
+/* CARDS */
 
 .swiper {
     width: 100%;
-    height: 64vh;
-    padding-top: 50px;
-    padding-bottom: 100px;
+    height: 83vh;
+    padding-top: 100px;
+    padding-bottom: 20px;
 }
 
 .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 100vh;
-    height: 70vh;
-    background-color: white;
+    width: 140vh;
+    height: 83vh;
+    background-color: var(--clr-neutral-100);
     padding: 2rem 2 2 2;
     background-size: cover;
-    border-radius: 2rem;
+    border-radius: 1rem;
     overflow: hidden;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -139,21 +68,90 @@ li {
     background: var(--clr-neutral-700);
 }
 
-.button {
-    cursor: pointer;
-    display: inline-block;
-    text-decoration: none;
+
+/* BUTTONS FOR SLIDER NAVIGATION "LEFT & RIGHT" */
+
+.swiper-button-next,
+.swiper-button-prev {
     color: var(--clr-neutral-700);
-    background-color: var(--clr-neutral-100);
-    padding: 1em 1.25em;
-    border: 1px var(--clr-neutral-700) solid;
-    border-radius: 0.25rem;
-    transform: transform 500ms ease;
 }
 
-.button:hover,
-.button:focus {
-    background-color: var(--clr-neutral-200);
-    transform: scale(1.05);
+
+/* NAVIGATION BAR */
+
+.swiper-pagination {
+    position: absolute;
+    top: 25px;
+    right: auto;
+    width: 80%;
+    left: auto;
+    margin: 0;
+    font-weight: 900;
+    max-height: 40px;
 }
 
+.swiper-pagination-bullet {
+    padding: 5px 10px;
+    border-radius: 1rem;
+    width: 30vh;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 21px;
+    color: var(--clr-neutral-700);
+    opacity: 1;
+    background: var(--clr-neutral-100);
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.swiper-pagination-bullet:hover {
+    transform: scale(1.01);
+}
+
+.swiper-pagination-bullet-active {
+    color: var(--clr-neutral-100);
+    background: var(--clr-neutral-300);
+}
+
+
+/* CALENDAR */
+
+#calendarMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+}
+
+.dateInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 10px;
+    gap: 30px;
+}
+
+.calendarMonth {
+    display: flex;
+    gap: 30px;
+}
+
+.calendarYear {
+    display: flex;
+    gap: 30px;
+}
+
+.callendarButton {
+    background-color: transparent;
+    font-size: 15px;
+    border-radius: 20%;
+    text-align: center;
+    border: transparent;
+}
+
+.callendarButton:hover {
+    background-color: black;
+    color: white;
+}
