@@ -87,6 +87,7 @@ body {
     left: auto;
     margin: 0;
     font-weight: 900;
+    max-height: 40px;
 }
 
 .swiper-pagination-bullet {
@@ -153,4 +154,9 @@ body {
 .callendarButton:hover {
     background-color: black;
     color: white;
+}
+
+.createdReminder {
+    color: brown;
+    display: flex;
 }
