@@ -89,6 +89,10 @@ const startTimer = function () {
     timer = setInterval(tickTock, timeDelay);
 
     return timer;
+// console.log(sessionModals);
+// console.log(sessionCardButtons.length);
+for (let i = 0; i < sessionCardButtons.length; i++) {
+    sessionCardButtons[i].addEventListener("click", openModalFunction);
 };
 
 
@@ -184,4 +188,4 @@ if (textAreaOfTask.style.display = "none") {
 
 
 
-
+}
