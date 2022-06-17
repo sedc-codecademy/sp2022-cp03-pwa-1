@@ -1,51 +1,186 @@
-let calendarMain = document.getElementById('calendarMain')
-// calendarMain.innerHTML = '<h1>Hello world!</h1>';
+let calendarMain = document.getElementById('calendarMain');
+let renderedYear = document.getElementById('year');
+let renderedMonth = document.getElementById('monthName');
+let prevYearBtn = document.getElementById('prevYearBtn');
+let nextYearBtn = document.getElementById('nextYearBtn');
+let prevMonthBtn = document.getElementById('prevMonthbtn');
+let nextMonthBtn = document.getElementById('nextMonthbtn');
 
-function createCalendar(elem, year, month) {
+prevYearBtn.addEventListener('click', function () {
+  year -= 1;
+  renderYear(year);
+  getDaysInMonthFunc(year, month)
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
+});
 
-    let mon = month - 1; // months in JS are 0..11, not 1..12
-    let d = new Date(year, mon);
+nextYearBtn.addEventListener('click', function () {
+  year += 1;
+  renderYear(year);
+  getDaysInMonthFunc(year, month)
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
+})
 
-    let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+prevMonthBtn.addEventListener('click', function () {
+  month -= 1;
+  renderMonth(monthsNames, month, renderedMonth);
+  getDaysInMonthFunc(year, month)
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
+  console.log(month);
 
-    // spaces for the first row
-    // from Monday till the first day of the month
-    // * * * 1  2  3  4
-    for (let i = 0; i < getDay(d); i++) {
-      table += '<td></td>';
-    }
+})
 
-    // <td> with actual dates
-    while (d.getMonth() == mon) {
-      table += '<td>' + d.getDate() + '</td>';
+nextMonthBtn.addEventListener('click', function () {
+  month += 1;
+  renderMonth(monthsNames, month, renderedMonth);
+  getDaysInMonthFunc(year, month)
+  renderCalendar(calendarMain, year, month, getDaysInMonth);
+  console.log(month);
+})
 
-      if (getDay(d) % 7 == 6) { // sunday, last day of week - newline
-        table += '</tr><tr>';
-      }
+//-----------getting current year-----------
+let year;
 
-      d.setDate(d.getDate() + 1);
-    }
+function getYear() {
+  year = new Date().getFullYear();
+}
 
-    // add spaces after last days of month for the last row
-    // 29 30 31 * * * *
-    if (getDay(d) != 0) {
-      for (let i = getDay(d); i < 7; i++) {
-        table += '<td></td>';
-      }
-    }
+getYear();
 
-    // close the table
-    table += '</tr></table>';
+//-----------getting current month-----------
+let month;
 
-    elem.innerHTML = table;
+function getMonth() {
+  month = new Date().getMonth() + 1;
+}
+
+getMonth();
+
+//-----------getting days in month-----------
+
+let getDaysInMonth = 0;
+
+function getDaysInMonthFunc(year, month) {
+   getDaysInMonth = new Date(year, month, 0).getDate();
+}
+
+getDaysInMonthFunc(year, month);
+
+// let getDaysInMonth = function (year, month) {
+//   return new Date(year, month, 0).getDate();
+// }
+
+//-----------adding year between buttons-----------
+function renderYear(year) {
+  renderedYear.innerText = (year);
+}
+renderYear(year);
+
+//-----------adding month name between buttons-----------
+const monthsNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+let currentMonth;
+
+function renderMonth(monthsArray, monthNum, elem) {
+  let currentMonth = monthsArray[monthNum - 1]
+  
+  if(monthNum === 12) {
+    month = 0;
   }
-
-  function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
-    let day = date.getDay();
-    if (day == 0) day = 7; // make Sunday (0) the last day
-    return day - 1;
+  if(monthNum === 0) {
+    month = 13;
   }
+  elem.innerText = (currentMonth);
+}
+renderMonth(monthsNames, month, renderedMonth);
 
-  createCalendar(calendarMain, 2012, 9);
+// let elem;
 
-  let blabla = "bla"; 
+// --------rendering the calendar-----------
+function renderCalendar(elem, year, month, daysInMonthCallback) {
+
+  let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr>';
+  let daysInMonth = daysInMonthCallback;
+
+  for (let j = 0; j < daysInMonth; j++) {
+
+    if ((j) % 7 === 0 || j === 0) {
+      table += `<tr><td>${j + 1}</td>`
+    } else if ((j) % 7 === 6) {
+      table += `<td>${j + 1}</td></tr>`
+    } else {
+      table += `<td>${j + 1}</td>`
+    }
+  }
+  table += `</table>`
+
+  elem.innerHTML = table
+
+  // let theDate = new Date(`${year}-${month}-01`).toString().split(" ")[0];
+  // let currentRow;
+
+//   for (let i = 0; i < daysField; i++) {
+//     if ( (i + 1) % 7  === 0 || i === 0) {
+//       if(currentRow) {
+//         table.appendChild(currentRow);
+//       }
+//       currentRow = document.createElement('tr');
+//       let td = document.createElement('td');
+//       td.innerText = i + 1;
+//       currentRow.appendChild(td);
+//     } else {
+//       let td = document.createElement('td');
+//       td.innerText = i + 1;
+//       currentRow.appendChild(td);
+//     }
+//   }
+//   elem.appendChild(table);
+// }
+}
+renderCalendar(calendarMain, year, month, getDaysInMonth);
+
+// function createCalendar(elem, year, month) {
+
+//   let mon = month - 1; // months in JS are 0..11, not 1..12
+//   let d = new Date(year, mon);
+
+//   let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+
+//   // spaces for the first row
+//   // from Monday till the first day of the month
+//   // * * * 1  2  3  4
+//   for (let i = 0; i < getDay(d); i++) {
+//     table += '<td></td>';
+//   }
+
+//   // <td> with actual dates
+//   while (d.getMonth() == mon) {
+//     table += '<td>' + d.getDate() + '</td>';
+
+//     if (getDay(d) % 7 == 6) { // sunday, last day of week - newline
+//       table += '</tr><tr>';
+//     }
+
+//     d.setDate(d.getDate() + 1);
+//   }
+
+//   // add spaces after last days of month for the last row
+//   // 29 30 31 * * * *
+//   if (getDay(d) != 0) {
+//     for (let i = getDay(d); i < 7; i++) {
+//       table += '<td></td>';
+//     }
+//   }
+
+//   // close the table
+//   table += '</tr></table>';
+
+//   elem.innerHTML = table;
+// }
+
+// function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
+//   let day = date.getDay();
+//   if (day == 0) day = 7; // make Sunday (0) the last day
+//   return day - 1;
+// }
+
+// createCalendar(calendarMain, year, month);
