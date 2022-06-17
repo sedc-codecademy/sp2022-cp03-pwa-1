@@ -6,7 +6,6 @@ const overlayDiv = document.querySelector(".sessionOverlayDiv");
 const startButton = document.querySelector("#startSessionBtn");
 const cardContainer = document.querySelector("#sessionMain");
 
-
 //buttons variables
 const sessionCardButtonSetting = document.querySelector(".sessionButtonSetting");
 const sessionCardButtonShortBreak = document.querySelector(".sessionButtonShortBreak");
