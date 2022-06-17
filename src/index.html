@@ -7,26 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="workingSessionStyle.css" type="text/css" />
     <title>Productivity Web App</title>
 </head>
 
 <body>
-    <!--NAVIGATION BAR-->
-    <nav>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="inner-navbar">
-                    <ul>
-                        <li><a id="radius-mod-1" class="btn1" href="#">HOME</a></li>
-                        <li><a class="btn1" href="#">STATISTICS</a></li>
-                        <li><a class="btn1" href="#">CALENDAR</a></li>
-                        <li><a class="btn1" href="#">PRODUCTIVITY</a></li>
-                        <li><a id="radius-mod-2" class="btn1" href="#">REMINDERS</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
     <!--MAIN-->
     <main>
         <!-- Slider main container -->
@@ -37,7 +22,19 @@
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">CALENDAR</h2>
-                        <div class="card-body" id="calendarMain"></div>
+                        <div class="card-body">
+                            <div class="dateInfo">
+                                <div class="calendarYear">
+                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span id="year"></span>
+                                    <button class="callendarButton" id="nextYearBtn">→</button>
+                                </div>
+                                <div class="calendarMonth">
+                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span id="monthName"></span>
+                                    <button class="callendarButton" id="nextMonthbtn">→</button>
+                                </div>
+                                <div id="calendarMain"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -47,38 +44,72 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="card-content">
+                    <div class="card-content" id="sessionMain">
                         <h2 class="card-title">WORK SESSION</h2>
-                        <a href="#" class="button">ADD TASK</a>
-                        <div class="card-body"></div>
+
+                        <!-- <a href="#" class="button">ADD TASK</a> -->
+                        <div class="card-body" id="sessionCardBody">
+                            <div id="sessionCardButtonsDiv">
+                                <button class="sessionButtons" id="sessionSettings">
+                    Settings
+                  </button>
+                                <button class="sessionButtons" id="shortBreak">
+                    Short break
+                  </button>
+                                <button class="sessionButtons" id="longBreak">
+                    Long break
+                  </button>
+                            </div>
+                            <div class="sessionPopUpModals hidden">
+                                <button class="closeSessionModal">&times;</button>
+                                <h1>SessionPopUpModals</h1>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?
+                                </p>
+                            </div>
+                            <div class="sessionOverlayDiv hidden"></div>
+                            <div id="timerDiv">00 : 00</div>
+                            <div id="startButtonDiv">
+                                <button id="startSessionBtn">Start</button>
+                            </div>
+                            <div id="openSessionDiv"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">HOW TO BE PRODUCTIVE</h2>
-                        <div class="card-body">A whole industry has grown around workplace productivity, spawning everything from productivity tech and professional coaching, to team retreats and workplace philosophies. But hacks and apps can only get us so far—and a lot of them are complete nonsense. To truly become more productive, we need to understand the individual way we work and learn, and identify how to work smarter. This process can largely be boiled down to making calculated behavioral changes, which is where tried-and-tested productivity techniques can help. Productivity techniques are strategies designed to help you tap into productive flow states—to cut to quality with little effort. Most productivity techniques are grounded on some form of behavioral science, aimed to take advantage of the way your brain works. While structured, they are usually flexible and easy to adapt. There are dozens of productivity systems out there, but some are more effective than others, and many just rebrand established approaches. To help you cut through the noise, we’ve selected ten of the smartest productivity techniques you should know about. They may not all work for you, but it's worth conducting your own mini productivity experiment to see if they could improve the way you approach and think about your work.</div>
-                        <a href="https://timelyapp.com/blog/productivity-techniques">Click for more info</a> 
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card-content">
-                        <h2 class="card-title">REMINDERS</h2>
-                        <div class="card-body"></div>
-                    </div>
-                </div>
+                        <div class="card-body">
+                            A whole industry has grown around workplace productivity, spawning everything from productivity tech and professional coaching, to team retreats and workplace philosophies. But hacks and apps can only get us so far—and a lot of them are complete nonsense.
+                            To truly become more productive, we need to understand the individual way we work and learn, and identify how to work smarter. This process can largely be boiled down to making calculated behavioral changes, which is where
+                            tried-and-tested productivity techniques can help. Productivity techniques are strategies designed to help you tap into productive flow states—to cut to quality with little effort. Most productivity techniques are grounded
+                            on some form of behavioral science, aimed to take advantage of the way your brain works. While structured, they are usually flexible and easy to adapt. There are dozens of productivity systems out there, but some are more effective
+                            than others, and many just rebrand established approaches. To help you cut through the noise, we’ve selected ten of the smartest productivity techniques you should know about. They may not all work for you, but it's worth conducting
+                            your own mini productivity experiment to see if they could improve the way you approach and think about your work.
+                        </div>
+                        <a href="https://timelyapp.com/blog/productivity-techniques">Click for more info</a
+              >
             </div>
-            <!-- Pagination -->
-            <div class="swiper-pagination"></div>
-
-            <!-- Navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card-content">
+              <h2 class="card-title">REMINDERS</h2>
+              <div class="card-body"></div>
+            </div>
+          </div>
+          <!-- Pagination A.K.A. The navigation-bar-->
+          <!-- <div class="swiper-pagination"></div> -->
         </div>
+
+        <!-- Navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </main>
 
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="script_calendar.js"></script>
-</body>
-
+    <script src="working_session.js"></script>
+  </body>
 </html>
