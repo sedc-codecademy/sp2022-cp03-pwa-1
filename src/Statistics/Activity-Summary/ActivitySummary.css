@@ -1,20 +1,39 @@
-#activitySummaryContainer {
+#card-content-statistics,
+#card-body-statistics {
+    height: 90%;
+}
+#card-body-statistics {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
 }
 
-.activityCard {
-    border: 1px solid rgb(12, 106, 143);
-    border-radius: 6%;
+#activitySummaryContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     width: 20%;
-    height: fit-content;
+    height: 90%;
+}
+
+/* .card-content,
+.card-body{
+    height: 100%
+} */
+
+.activityCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(165,178,233,1);
+    border-radius: 3%;
+    width: 80%;
+    height: 18%;
     font-size: 14px;
     padding: 1%;
     text-align: center;
-    background: rgb(191,206,226);
-    background: linear-gradient(50deg, rgba(191,206,226,1) 71%, rgba(233,241,241,1) 99%);
+    background: rgb(193,202,240);
+    background: linear-gradient(50deg, rgba(193,202,240,1) 16%, rgba(165,178,233,1) 60%);
+    color: white;
 }
 
 

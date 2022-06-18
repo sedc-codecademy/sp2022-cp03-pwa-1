@@ -18,7 +18,7 @@
 <body>
     <!--MAIN-->
     <main>
-         <!-- Modal -->          
+        <!-- Modal -->
         <div class="modal open" id="modal-sign-in">
             <div class="modal-bg modal-exit"></div>
             <div class="modal-container">
@@ -32,11 +32,11 @@
                     <input type="password" placeholder="Enter your password">
                 </div>
                 <button class="modal-exit" id="modal-exit">Log in</button>
-                <br/>
-                <a  class="modal-exit" id="modal-exit">Sign in as a guest</a>
-                <br/>
-                <br/>
-                <a  class="modal-exit" id="sign-up">Sign up</a>
+                <br />
+                <a class="modal-exit" id="modal-exit">Sign in as a guest</a>
+                <br />
+                <br />
+                <a class="modal-exit" id="sign-up">Sign up</a>
             </div>
         </div>
 
@@ -66,11 +66,13 @@
                         <div class="card-body">
                             <div class="dateInfo">
                                 <div class="calendarYear">
-                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span id="year"></span>
+                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span
+                                        id="year"></span>
                                     <button class="callendarButton" id="nextYearBtn">→</button>
                                 </div>
                                 <div class="calendarMonth">
-                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span id="monthName"></span>
+                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span
+                                        id="monthName"></span>
                                     <button class="callendarButton" id="nextMonthbtn">→</button>
                                 </div>
                                 <div id="calendarMain"></div>
@@ -79,12 +81,13 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="card-content">
+                    <div class="card-content" id="card-content-statistics">
                         <h2 class="card-title">STATISTICS</h2>
-                        <div class="card-body">
+                        <div class="card-body" id="card-body-statistics">
 
-                            <h3>Activity Summary</h3>
+
                             <div id="activitySummaryContainer">
+                                <h2>Activity Summary</h2>
                                 <div class="activityCard">
                                     <div class="acitivityCard_header">
                                         <i style="font-size:24px" class="fa">&#xf017;</i>
@@ -107,12 +110,27 @@
                                     <p>days streak</p>
                                 </div>
                             </div>
-                            <h3>Focus Hours</h3>
+
+
+                            <div id="focusHoursContainer">
+                                <!-- <h3>Focus Hours</h3>
                             <div id="chartContainer">
                                 <canvas id="dynamicChart"></canvas>
+                            </div>   -->
+                                <div class="chartMenu">
+                                </div>
+                                <div class="chartCard">
+                                    <div class="chartBox">
+                                        <canvas id="myChart"></canvas>
+                                        <input onchange="filterDate()" type="date" id="startDate" value="2022-06-13">
+                                        <input onchange="filterDate()" type="date" id="endDate" value="2022-06-19">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content" id="sessionMain">
@@ -121,56 +139,59 @@
                         <!-- <a href="#" class="button">ADD TASK</a> -->
                         <div class="card-body" id="sessionCardBody">
                             <div id="sessionCardButtonsDiv">
-                                
+
                                 <button class="sessionButtonSetting" id="sessionSettings">Settings</button>
                                 <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
-                                <button class="sessionButtonLongBreak" id="longBreak">Long break</button> 
+                                <button class="sessionButtonLongBreak" id="longBreak">Long break</button>
                             </div>
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
                                 <h1>SessionPopUpModals</h1>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>                                
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi
+                                    illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
                             </div>
                             <div class="settingsDiv hidden">
                                 <label for="starting timer"><b>Insert session duration (minutes):</b></label>
-                                <input id="startingTimerValueInput" type="number" min="0" max="300" step="1" value="10" placeholder="Session duration (minutes)">
+                                <input id="startingTimerValueInput" type="number" min="0" max="300" step="1" value="10"
+                                    placeholder="Session duration (minutes)">
                                 <button id="startingTimerValueButton">Confirm</button>
                             </div>
                             <div class="sessionOverlayDiv hidden"></div>
                             <div id="timerDiv">00 : 00</div>
                             <div id="startButtonDiv">
-                                <button id = "startSessionBtn">&#x23f5;</button>
-                                <button id = "stopSessionBtn">&#x23f8;</button>
+                                <button id="startSessionBtn">&#x23f5;</button>
+                                <button id="stopSessionBtn">&#x23f8;</button>
                             </div>
                             <div id="openSessionDiv"></div>
                         </div>
                         <div class="taskContainer">
-                            <h2 id="tasksHeader">TASKS</h2>                            
-                            <button id = "clearTasksBtn">Clear tasks</button>
+                            <h2 id="tasksHeader">TASKS</h2>
+                            <button id="clearTasksBtn">Clear tasks</button>
                         </div>
                         <hr>
-                        <div class = "tasksListButtonDiv">                            
+                        <div class="tasksListButtonDiv">
                             <div class="taskFormDiv hidden ">
                                 <input id="inputForTaskTitle" type="text" placeholder="What are you up to?">
                                 <p><b>Est Productivity APP SEDC'22</b></p>
-                                <input id="inputForTimeOfTask" type="number" min="0" step = "1" value="1">
+                                <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
                                 <button id="arrowUp" class="upAndDown">▲</button>
                                 <button id="arrowDown" class="upAndDown">▼</button>
                                 <br>
-                                <textarea name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
+                                <textarea name="Task description" id="taskText" cols="30" rows="3"
+                                    placeholder="Text description here please"></textarea>
                                 <br>
                                 <button id="noteForTaskBtn">+ Add note</button>
                                 <div id="finalizeTaskDiv">
-                                    <button id ="cancelTaskButton">Cancel</button>
-                                    <button id ="saveTaskButton">Save</button>
+                                    <button id="cancelTaskButton">Cancel</button>
+                                    <button id="saveTaskButton">Save</button>
                                 </div>
                             </div>
-                            
-                            <button id="addTaskBtn">Add task</button>  
-                        </div>    
+
+                            <button id="addTaskBtn">Add task</button>
+                        </div>
                         <!-- <hr> -->
-                        
-                        <div class = "listOfTasksDiv">
+
+                        <div class="listOfTasksDiv">
                             <ol>
                                 <!-- <li>a</li>
                                 <li>b</li>
@@ -178,47 +199,57 @@
                                 <li>d</li>
                                 <li>e</li> -->
                             </ol>
-                        </div>                  
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content">
                         <h2 class="card-title">HOW TO BE PRODUCTIVE</h2>
                         <div class="card-body">
-                            A whole industry has grown around workplace productivity, spawning everything from productivity tech and professional coaching, to team retreats and workplace philosophies. But hacks and apps can only get us so far—and a lot of them are complete nonsense.
-                            To truly become more productive, we need to understand the individual way we work and learn, and identify how to work smarter. This process can largely be boiled down to making calculated behavioral changes, which is where
-                            tried-and-tested productivity techniques can help. Productivity techniques are strategies designed to help you tap into productive flow states—to cut to quality with little effort. Most productivity techniques are grounded
-                            on some form of behavioral science, aimed to take advantage of the way your brain works. While structured, they are usually flexible and easy to adapt. There are dozens of productivity systems out there, but some are more effective
-                            than others, and many just rebrand established approaches. To help you cut through the noise, we’ve selected ten of the smartest productivity techniques you should know about. They may not all work for you, but it's worth conducting
-                            your own mini productivity experiment to see if they could improve the way you approach and think about your work.
+                            A whole industry has grown around workplace productivity, spawning everything from
+                            productivity tech and professional coaching, to team retreats and workplace philosophies.
+                            But hacks and apps can only get us so far—and a lot of them are complete nonsense.
+                            To truly become more productive, we need to understand the individual way we work and learn,
+                            and identify how to work smarter. This process can largely be boiled down to making
+                            calculated behavioral changes, which is where
+                            tried-and-tested productivity techniques can help. Productivity techniques are strategies
+                            designed to help you tap into productive flow states—to cut to quality with little effort.
+                            Most productivity techniques are grounded
+                            on some form of behavioral science, aimed to take advantage of the way your brain works.
+                            While structured, they are usually flexible and easy to adapt. There are dozens of
+                            productivity systems out there, but some are more effective
+                            than others, and many just rebrand established approaches. To help you cut through the
+                            noise, we’ve selected ten of the smartest productivity techniques you should know about.
+                            They may not all work for you, but it's worth conducting
+                            your own mini productivity experiment to see if they could improve the way you approach and
+                            think about your work.
                         </div>
-                        <a href="https://timelyapp.com/blog/productivity-techniques">Click for more info</a
-              >
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card-content">
-              <h2 class="card-title">REMINDERS</h2>
-              <div class="card-body">
-                <div class="js-clock">
-                    <h1>00:00:00</h1>
-                    <button id="reminderBtn">Create New Reminder</button>
+                        <a href="https://timelyapp.com/blog/productivity-techniques">Click for more info</a>
+                    </div>
                 </div>
-              </div>
+                <div class="swiper-slide">
+                    <div class="card-content">
+                        <h2 class="card-title">REMINDERS</h2>
+                        <div class="card-body">
+                            <div class="js-clock">
+                                <h1>00:00:00</h1>
+                                <button id="reminderBtn">Create New Reminder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <!-- Pagination A.K.A. The navigation-bar-->
-        <div class="nav-container">
-          <div id="navbar" class="swiper-pagination"></div>
-        </div>
+            <!-- Pagination A.K.A. The navigation-bar-->
+            <div class="nav-container">
+                <div id="navbar" class="swiper-pagination"></div>
+            </div>
 
-        <!-- Navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
+            <!-- Navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="script_calendar.js"></script>
@@ -231,4 +262,3 @@
 </body>
 
 </html>
-
