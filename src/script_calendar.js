@@ -21,21 +21,20 @@ nextYearBtn.addEventListener('click', function () {
 })
 
 prevMonthBtn.addEventListener('click', function () {
+if(month > 1) {
   month -= 1;
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
-  console.log(month);
-
-})
+}})
 
 nextMonthBtn.addEventListener('click', function () {
-  month += 1;
-  renderMonth(monthsNames, month, renderedMonth);
-  getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
-  console.log(month);
-})
+  if(month <= 11) {
+    month += 1;
+    renderMonth(monthsNames, month, renderedMonth);
+    getDaysInMonthFunc(year, month)
+    renderCalendar(calendarMain, year, month, getDaysInMonth);
+  }})
 
 //-----------getting current year-----------
 let year;
@@ -83,59 +82,59 @@ let currentMonth;
 function renderMonth(monthsArray, monthNum, elem) {
   let currentMonth = monthsArray[monthNum - 1]
   
-  if(monthNum === 12) {
+  if(monthNum === 13) {
     month = 0;
   }
   if(monthNum === 0) {
-    month = 13;
+    month = 12;
   }
   elem.innerText = (currentMonth);
 }
 renderMonth(monthsNames, month, renderedMonth);
 
-// let elem;
+// --------Helper Function for getting day as number-----------
+
+function getDay(date) { 
+  let day = date.getDay();
+  if (day == 0) day = 7; 
+  return day - 1;
+}
 
 // --------rendering the calendar-----------
 function renderCalendar(elem, year, month, daysInMonthCallback) {
 
-  let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr>';
+  let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
   let daysInMonth = daysInMonthCallback;
+  let d = new Date();
+  console.log(d);
+
+console.log(getDay(d));
+
+for (let i = 0; i < getDay(d); i++) {
+      table += '<td></td>';
+    }
 
   for (let j = 0; j < daysInMonth; j++) {
 
     if ((j) % 7 === 0 || j === 0) {
-      table += `<tr><td>${j + 1}</td>`
+      table += `<td>${j + 1}</td>`
     } else if ((j) % 7 === 6) {
       table += `<td>${j + 1}</td></tr>`
     } else {
       table += `<td>${j + 1}</td>`
     }
+
+    if (getDay(d) % 6 === 7) { 
+            table += '</tr><tr>';
+    }
   }
   table += `</table>`
 
   elem.innerHTML = table
-
-  // let theDate = new Date(`${year}-${month}-01`).toString().split(" ")[0];
-  // let currentRow;
-
-//   for (let i = 0; i < daysField; i++) {
-//     if ( (i + 1) % 7  === 0 || i === 0) {
-//       if(currentRow) {
-//         table.appendChild(currentRow);
-//       }
-//       currentRow = document.createElement('tr');
-//       let td = document.createElement('td');
-//       td.innerText = i + 1;
-//       currentRow.appendChild(td);
-//     } else {
-//       let td = document.createElement('td');
-//       td.innerText = i + 1;
-//       currentRow.appendChild(td);
-//     }
-//   }
-//   elem.appendChild(table);
-// }
 }
+
+
+
 renderCalendar(calendarMain, year, month, getDaysInMonth);
 
 // function createCalendar(elem, year, month) {
@@ -177,10 +176,15 @@ renderCalendar(calendarMain, year, month, getDaysInMonth);
 //   elem.innerHTML = table;
 // }
 
-// function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
+// let d = new Date();
+// console.log(d);
+
+// function getDay(date) { 
 //   let day = date.getDay();
-//   if (day == 0) day = 7; // make Sunday (0) the last day
+//   if (day == 0) day = 7; 
 //   return day - 1;
 // }
+
+// console.log(getDay(d));
 
 // createCalendar(calendarMain, year, month);

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="Statistics/Activity-Summary/ActivitySummary.css" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="Statistics/Focus-Hours/FocusHours.css" type="text/css" />
-    <link rel="stylesheet" href="workingSessionStyle.css" type="text/css" />
+    <link rel="stylesheet" href="WorkingSession/workingSessionStyle.css" type="text/css" />
     <title>Productivity Web App</title>
 </head>
 
@@ -84,30 +84,64 @@
                         <!-- <a href="#" class="button">ADD TASK</a> -->
                         <div class="card-body" id="sessionCardBody">
                             <div id="sessionCardButtonsDiv">
-                                <button class="sessionButtons" id="sessionSettings">
-                    Settings
-                  </button>
-                                <button class="sessionButtons" id="shortBreak">
-                    Short break
-                  </button>
-                                <button class="sessionButtons" id="longBreak">
-                    Long break
-                  </button>
+                                
+                                <button class="sessionButtonSetting" id="sessionSettings">Settings</button>
+                                <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
+                                <button class="sessionButtonLongBreak" id="longBreak">Long break</button> 
                             </div>
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
                                 <h1>SessionPopUpModals</h1>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?
-                                </p>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>                                
+                            </div>
+                            <div class="settingsDiv hidden">
+                                <label for="starting timer"><b>Insert session duration (minutes):</b></label>
+                                <input id="startingTimerValueInput" type="number" min="0" max="300" step="1" value="10" placeholder="Session duration (minutes)">
+                                <button id="startingTimerValueButton">Confirm</button>
                             </div>
                             <div class="sessionOverlayDiv hidden"></div>
                             <div id="timerDiv">00 : 00</div>
                             <div id="startButtonDiv">
-                                <button id="startSessionBtn">Start</button>
+                                <button id = "startSessionBtn">&#x23f5;</button>
+                                <button id = "stopSessionBtn">&#x23f8;</button>
                             </div>
                             <div id="openSessionDiv"></div>
                         </div>
+                        <div class="taskContainer">
+                            <h2 id="tasksHeader">TASKS</h2>                            
+                            <button id = "clearTasksBtn">Clear tasks</button>
+                        </div>
+                        <hr>
+                        <div class = "tasksListButtonDiv">                            
+                            <div class="taskFormDiv hidden ">
+                                <input id="inputForTaskTitle" type="text" placeholder="What are you up to?">
+                                <p><b>Est Productivity APP SEDC'22</b></p>
+                                <input id="inputForTimeOfTask" type="number" min="0" step = "1" value="1">
+                                <button id="arrowUp" class="upAndDown">▲</button>
+                                <button id="arrowDown" class="upAndDown">▼</button>
+                                <br>
+                                <textarea name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
+                                <br>
+                                <button id="noteForTaskBtn">+ Add note</button>
+                                <div id="finalizeTaskDiv">
+                                    <button id ="cancelTaskButton">Cancel</button>
+                                    <button id ="saveTaskButton">Save</button>
+                                </div>
+                            </div>
+                            
+                            <button id="addTaskBtn">Add task</button>  
+                        </div>    
+                        <!-- <hr> -->
+                        
+                        <div class = "listOfTasksDiv">
+                            <ol>
+                                <!-- <li>a</li>
+                                <li>b</li>
+                                <li>c</li>
+                                <li>d</li>
+                                <li>e</li> -->
+                            </ol>
+                        </div>                  
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -128,7 +162,12 @@
           <div class="swiper-slide">
             <div class="card-content">
               <h2 class="card-title">REMINDERS</h2>
-              <div class="card-body"></div>
+              <div class="card-body">
+                <div class="js-clock">
+                    <h1>00:00:00</h1>
+                    <button id="reminderBtn">Create New Reminder</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -148,8 +187,10 @@
     <script src="script_calendar.js"></script>
     <script src="Statistics/Activity-Summary/ActivitySummary.js"></script>
     <script src="Statistics/Focus-Hours/FocusHours.js"></script>
-</body>
 
     <script src="working_session.js"></script>
-  </body>
+    <script src="WorkingSession/working_session.js"></script>
+</body>
+
 </html>
+

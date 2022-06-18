@@ -155,3 +155,8 @@ body {
     background-color: black;
     color: white;
 }
+
+.createdReminder {
+    color: brown;
+    display: flex;
+}
