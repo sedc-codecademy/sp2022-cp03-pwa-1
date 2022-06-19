@@ -7,38 +7,38 @@ let prevMonthBtn = document.getElementById('prevMonthbtn');
 let nextMonthBtn = document.getElementById('nextMonthbtn');
 
 prevYearBtn.addEventListener('click', function () {
-  year -= 1;
+  year --;
   firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
+  renderCalendar(calendarMain, getDaysInMonth);
 });
 
 nextYearBtn.addEventListener('click', function () {
-  year += 1;
+  year ++;
   firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
+  renderCalendar(calendarMain, getDaysInMonth);
 })
 
 prevMonthBtn.addEventListener('click', function () {
 if(month > 1) {
-  month -= 1;
+  month --;
   firstDay = new Date(year, month - 1, 1)
 
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
+  renderCalendar(calendarMain, getDaysInMonth);
 }})
 
 nextMonthBtn.addEventListener('click', function () {
   if(month <= 11) {
-    month += 1;
+    month ++;
     firstDay = new Date(year, month - 1, 1)
     renderMonth(monthsNames, month, renderedMonth);
     getDaysInMonthFunc(year, month)
-    renderCalendar(calendarMain, year, month, getDaysInMonth);
+    renderCalendar(calendarMain, getDaysInMonth);
   }})
 
 //-----------getting current year-----------
@@ -104,7 +104,7 @@ function getDay(date) {
 }
 
 // --------rendering the calendar-----------
-function renderCalendar(elem, year, month, daysInMonthCallback) {
+function renderCalendar(elem, daysInMonthCallback) {
 
   let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
   let daysInMonth = daysInMonthCallback;
@@ -125,12 +125,12 @@ for (let i = 0; i < getDay(firstDay); i++) {
       }
     }
     
-  table += `'</tr></table>`
+  table += `</tr></table>`
 
   elem.innerHTML = table
 }
 
-renderCalendar(calendarMain, year, month, getDaysInMonth);
+renderCalendar(calendarMain, getDaysInMonth);
 
 // 2nd kind of implementation for render calendar func
 // --------rendering the calendar-----------
