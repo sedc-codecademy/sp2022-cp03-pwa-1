@@ -5,6 +5,7 @@ const closeButton = document.querySelector(".closeSessionModal");
 const overlayDiv = document.querySelector(".sessionOverlayDiv");
 const startButton = document.querySelector("#startSessionBtn");
 const cardContainer = document.querySelector("#sessionMain");
+const sessionCardBodyDiv = document.querySelector("#sessionCardBody");
 
 //buttons variables
 const sessionCardButtonSetting = document.querySelector(".sessionButtonSetting");
@@ -28,8 +29,7 @@ const taskDuration = document.querySelector("#inputForTimeOfTask");
 const confirmSessionDurationButton = document.querySelector("#startingTimerValueButton");
 const sessionDurationInput = document.querySelector("#startingTimerValueInput");
 
-
-
+const shortBreakDiv = document.querySelector("#shortBreakDiv");
 
 // Modals functionality
 
@@ -52,6 +52,7 @@ const openModalFunction = () => {
     overlayDiv.classList.remove("hidden");
     taskForm.classList.remove("hidden");
     settingsDiv.classList.remove("hidden");
+
     //sessionCardButtonSetting.classList.remove("hidden");
 }
 
@@ -76,14 +77,14 @@ const openModalFunction = () => {
 let timer;
 //let timeDelay = 1000;
 let timerIsPaused = false;
-//let time;
+let time;
 
 const startTimer = () => {
-    let time;
+    //let time;
     const tickTock = () => {
         //Functionality if the timer is paused or not
-        if (timerIsPaused === true) {
-            let remainingSecs = parseInt(timerElement.textContent.slice(-2)) + parseInt(timerElement.textContent.slice(2) * 60);
+        if (timerIsPaused === true) {       // 09 : 57 == 57 + 09*60 = 597
+            let remainingSecs = parseInt(timerElement.textContent.slice(-2)) + parseInt(timerElement.textContent.slice(2, 0) * 60);
             let time = remainingSecs;
 
             const min = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -181,11 +182,12 @@ const stop = () => timerIsPaused = true;
 //     }
 // }
 
-// if ((timerElement.innerText.slice(2, 0) === 00) && (timerElement.innerText.slice(-2) === 00)) {
-//     console.log("wtf");
-// } else {
-startButton.addEventListener("click", startTimer);
-//}
+// if ((timerElement.innerText.slice(2, 0) === "00") && (timerElement.innerText.slice(-2) === "00")) {
+if (isNaN(timerElement.innerText)) {
+    console.log("user unfriendly");
+} else {
+    startButton.addEventListener("click", startTimer);
+}
 
 
 stopButton.addEventListener("click", function () {
@@ -207,6 +209,7 @@ closeButton.addEventListener("click", closeModalFunction);
 overlayDiv.addEventListener("click", closeModalFunction);
 addTaskButton.addEventListener("click", closeModalFunction);
 settingsButton.addEventListener("click", closeModalFunction);
+shortBreakDiv.addEventListener("click", closeModalFunction);
 
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
@@ -228,8 +231,11 @@ sessionCardButtonSetting.addEventListener("click", () => {
 });
 
 sessionCardButtonShortBreak.addEventListener("click", () => {
-    sessionModals.classList.remove("hidden");
-    overlayDiv.classList.remove("hidden");
+    sessionModals.classList.add("hidden");
+    overlayDiv.classList.add("hidden");
+    shortBreakDiv.classList.remove("hidden");
+    //timerElement.classList.add("hidden");
+
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #20bf55 0%, #01baef 74%)";
     // body.style.backgroundImage =
@@ -275,36 +281,47 @@ if (textAreaOfTask.style.display = "none") {
 
 //Start session confirm button, po vnesuvanje na vremetraenje na sesija
 // confirmSessionDurationButton.addEventListener("click", () => {
-// time = sessionDurationInput.value;
-// timerElement.innerText = `${time.padStart(2, 0)} : 00`;
-// time = time * 60;
-// settingsDiv.classList.add("hidden");
-// closeModalFunction();
-// startButton.addEventListener("click", startTimer);
+//     time = sessionDurationInput.value;
+//     console.log(time, typeof time);
+//     timerElement.innerText = `${time.padStart(2, 0)} : 00`;
+//     console.log(timerElement.innerText, typeof timerElement.innerText);
+//     time = time * 60;
+//     console.log(time, typeof time);
+//     settingsDiv.classList.add("hidden");
+//     closeModalFunction();
+//     startButton.addEventListener("click", startTimer);
 // });
 // confirmSessionDurationButton.addEventListener("click", () =>)
 
 userDurationInput(confirmSessionDurationButton, sessionDurationInput, timerElement);
-
-function userDurationInput(buttonEvent, inputValue, htmlElement) {
-    buttonEvent.addEventListener("click", () => {
-        let time = inputValue.value;
-        //where = 0;
-        //where = inputValue.value;
+// buttonEvent, inputValue, htmlElement
+function userDurationInput(button, inputValue, htmlElement) {
+    button.addEventListener("click", () => {
+        time = inputValue.value;
+        console.log(time, typeof time);
         htmlElement.innerText = `${time.padStart(2, 0)} : 00`;
+        console.log(htmlElement.innerText, typeof htmlElement.innerText);
         time = time * 60;
+        console.log(time, typeof time);
         settingsDiv.classList.add("hidden");
-        if (htmlElement.innerText === "Your time is up!" || htmlElement.innerText === "00 : 00") {
-            buttonEvent.removeEventListener("click", startTimer);
-        }
         closeModalFunction();
-    }
-    )
+        startButton.addEventListener("click", startTimer);
+    });
+    // buttonEvent.addEventListener("click", () => {
+    //     let time = inputValue.value;
+    //     //where = 0;
+    //     //where = inputValue.value;
+    //     htmlElement.innerText = `${time.padStart(2, 0)} : 00`;
+    //     time = time * 60;
+    //     settingsDiv.classList.add("hidden");
+    //     //if (htmlElement.innerText === "Your time is up!" || htmlElement.innerText.slice(2, 0) === 00 && htmlElement.innerText.slice(-2) === "00") {
+    //     //buttonEvent.removeEventListener("click", startTimer);
+    //     //}
+    //     closeModalFunction();
+    //     startButton.addEventListener("click", startTimer);
+    // }
+    // )
 };
-
-
-
-
 
 const saveTaskButton = document.querySelector("#saveTaskButton");
 const listOfTasks = document.querySelector(".orderedListOfTasks");
@@ -334,18 +351,27 @@ saveTaskButton.addEventListener("click", () => {
     }
 });
 
-
-
-
-
-
-
-
 // for (let i = 0; i < sessionCardButtons.length; i++) {
 //     sessionCardButtons[i].addEventListener("click", openModalFunction);
 // };
 
+// SHORT AND LONG BREAK BUTTONS LOGIC
+// sessionCardButtonShortBreak
+// sessionCardButtonLongBreak
 
+const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
+const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
+
+// sessionCardButtonShortBreak.addEventListener("click", () => {
+//     timerElement.classList.add("hidden");
+//     const header = document.createElement("h1");
+//     header.innerText = "adssadsada";
+//     sessionCardBodyDiv.appendChild(header);
+//     header.setAtrribute("class", "blabla headerShortBreak hidden");
+
+
+
+// });
 
 
 
