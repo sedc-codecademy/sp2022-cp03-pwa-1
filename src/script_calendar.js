@@ -8,6 +8,7 @@ let nextMonthBtn = document.getElementById('nextMonthbtn');
 
 prevYearBtn.addEventListener('click', function () {
   year -= 1;
+  firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
@@ -15,6 +16,7 @@ prevYearBtn.addEventListener('click', function () {
 
 nextYearBtn.addEventListener('click', function () {
   year += 1;
+  firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
@@ -23,6 +25,8 @@ nextYearBtn.addEventListener('click', function () {
 prevMonthBtn.addEventListener('click', function () {
 if(month > 1) {
   month -= 1;
+  firstDay = new Date(year, month - 1, 1)
+
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, year, month, getDaysInMonth);
@@ -31,6 +35,7 @@ if(month > 1) {
 nextMonthBtn.addEventListener('click', function () {
   if(month <= 11) {
     month += 1;
+    firstDay = new Date(year, month - 1, 1)
     renderMonth(monthsNames, month, renderedMonth);
     getDaysInMonthFunc(year, month)
     renderCalendar(calendarMain, year, month, getDaysInMonth);
@@ -55,7 +60,6 @@ function getMonth() {
 getMonth();
 
 //-----------getting days in month-----------
-
 let getDaysInMonth = 0;
 
 function getDaysInMonthFunc(year, month) {
@@ -64,9 +68,9 @@ function getDaysInMonthFunc(year, month) {
 
 getDaysInMonthFunc(year, month);
 
-// let getDaysInMonth = function (year, month) {
-//   return new Date(year, month, 0).getDate();
-// }
+//-----------Getting first day in month-----------
+let date = new Date();
+let firstDay = new Date(date.getFullYear(), date.getMonth(), 1)
 
 //-----------adding year between buttons-----------
 function renderYear(year) {
@@ -93,10 +97,9 @@ function renderMonth(monthsArray, monthNum, elem) {
 renderMonth(monthsNames, month, renderedMonth);
 
 // --------Helper Function for getting day as number-----------
-
 function getDay(date) { 
   let day = date.getDay();
-  if (day == 0) day = 7; 
+  if (day === 0) day = 7; 
   return day - 1;
 }
 
@@ -105,86 +108,64 @@ function renderCalendar(elem, year, month, daysInMonthCallback) {
 
   let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
   let daysInMonth = daysInMonthCallback;
-  let d = new Date();
-  console.log(d);
+  let EmptySpacesNum = getDay(firstDay);
+  let totalTds = daysInMonth + EmptySpacesNum
+  console.log(totalTds);
 
-console.log(getDay(d));
-
-for (let i = 0; i < getDay(d); i++) {
+for (let i = 0; i < getDay(firstDay); i++) {
       table += '<td></td>';
     }
-
-  for (let j = 0; j < daysInMonth; j++) {
-
-    if ((j) % 7 === 0 || j === 0) {
-      table += `<td>${j + 1}</td>`
-    } else if ((j) % 7 === 6) {
-      table += `<td>${j + 1}</td></tr>`
-    } else {
-      table += `<td>${j + 1}</td>`
+    
+    for (let i = 0; i <= totalTds - (EmptySpacesNum + 1); i++) {
+       if ((i + EmptySpacesNum) % 7 === 0 ) {
+        table += '</tr><tr>'
+        table += `<td>${i + 1}</td>`
+      } else {
+        table += `<td>${i + 1}</td>`
+      }
     }
-
-    if (getDay(d) % 6 === 7) { 
-            table += '</tr><tr>';
-    }
-  }
-  table += `</table>`
+    
+  table += `'</tr></table>`
 
   elem.innerHTML = table
 }
 
-
-
 renderCalendar(calendarMain, year, month, getDaysInMonth);
 
-// function createCalendar(elem, year, month) {
+// 2nd kind of implementation for render calendar func
+// --------rendering the calendar-----------
+// function renderCalendar(elem, daysInMonthCallback) {
+//   elem.innerHTML = '';
+//   let table = document.createElement('table');
+//   table.innerHTML += '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
 
-//   let mon = month - 1; // months in JS are 0..11, not 1..12
-//   let d = new Date(year, mon);
+//   const daysInWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+//   const firstDayInMonth = firstDay.toString().split(' ')[0];
+//   const emptySpaces = daysInWeek.indexOf(firstDayInMonth);
+//   let emptySpacesCount = emptySpaces;
+//   let daysInMonth = daysInMonthCallback + emptySpaces;
+//   let newRow = document.createElement('tr');
 
-//   let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+//   for (let i = 0; i < daysInMonth; i++) {
 
-//   // spaces for the first row
-//   // from Monday till the first day of the month
-//   // * * * 1  2  3  4
-//   for (let i = 0; i < getDay(d); i++) {
-//     table += '<td></td>';
-//   }
+//     if (i % 7 === 0 && i !== 0) {
+//       table.appendChild(newRow);
+//       newRow = document.createElement('tr');
+//     } 
 
-//   // <td> with actual dates
-//   while (d.getMonth() == mon) {
-//     table += '<td>' + d.getDate() + '</td>';
-
-//     if (getDay(d) % 7 == 6) { // sunday, last day of week - newline
-//       table += '</tr><tr>';
+//     if (!emptySpacesCount) {
+//       newRow.innerHTML += `<td>${(i + 1) - emptySpaces}</td>`
+//     } else {
+//       newRow.innerHTML += `<td></td>`
+//       emptySpacesCount--;
 //     }
 
-//     d.setDate(d.getDate() + 1);
+//     if (i === daysInMonth - 1) {
+//       table.appendChild(newRow);
+//     } 
 //   }
 
-//   // add spaces after last days of month for the last row
-//   // 29 30 31 * * * *
-//   if (getDay(d) != 0) {
-//     for (let i = getDay(d); i < 7; i++) {
-//       table += '<td></td>';
-//     }
-//   }
-
-//   // close the table
-//   table += '</tr></table>';
-
-//   elem.innerHTML = table;
+//   elem.appendChild(table);
 // }
 
-// let d = new Date();
-// console.log(d);
-
-// function getDay(date) { 
-//   let day = date.getDay();
-//   if (day == 0) day = 7; 
-//   return day - 1;
-// }
-
-// console.log(getDay(d));
-
-// createCalendar(calendarMain, year, month);
+// renderCalendar(calendarMain, getDaysInMonth);
