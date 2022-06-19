@@ -24,6 +24,7 @@ const timerDownButton = document.querySelector("#arrowDown");
 const addNoteButton = document.querySelector("#noteForTaskBtn");
 const textAreaOfTask = document.querySelector("#taskText");
 const taskTitle = document.querySelector("#inputForTaskTitle");
+const taskDuration = document.querySelector("#inputForTimeOfTask");
 const confirmSessionDurationButton = document.querySelector("#startingTimerValueButton");
 const sessionDurationInput = document.querySelector("#startingTimerValueInput");
 
@@ -75,10 +76,10 @@ const openModalFunction = () => {
 let timer;
 //let timeDelay = 1000;
 let timerIsPaused = false;
-let time;
+//let time;
 
 const startTimer = () => {
-
+    let time;
     const tickTock = () => {
         //Functionality if the timer is paused or not
         if (timerIsPaused === true) {
@@ -180,13 +181,23 @@ const stop = () => timerIsPaused = true;
 //     }
 // }
 
+// if ((timerElement.innerText.slice(2, 0) === 00) && (timerElement.innerText.slice(-2) === 00)) {
+//     console.log("wtf");
+// } else {
 startButton.addEventListener("click", startTimer);
+//}
+
+
 stopButton.addEventListener("click", function () {
     if (!timerIsPaused) clearInterval(timer);
+
     //   pause_game();
     // hide stop , show start button
     startButton.style.zIndex = "1";
     stopButton.style.zIndex = "-1";
+    if (timerElement.innerText === "Your time is up!") {
+        startButton.removeEventListener("click", startTimer);
+    }
 
     // two problems  show and hide button, pausing the timer
 });
@@ -263,12 +274,64 @@ if (textAreaOfTask.style.display = "none") {
 }; //ne e funkcionalno kopcheto koga vekje e otvorena textarea za pishuvanje na note, t.e. raboti samo koga ne e otvorena textArea
 
 //Start session confirm button, po vnesuvanje na vremetraenje na sesija
-confirmSessionDurationButton.addEventListener("click", () => {
-    time = sessionDurationInput.value;
-    timerElement.innerText = `${time.padStart(2, 0)} : 00`;
-    time = time * 60;
-    settingsDiv.classList.add("hidden");
-    closeModalFunction();
+// confirmSessionDurationButton.addEventListener("click", () => {
+// time = sessionDurationInput.value;
+// timerElement.innerText = `${time.padStart(2, 0)} : 00`;
+// time = time * 60;
+// settingsDiv.classList.add("hidden");
+// closeModalFunction();
+// startButton.addEventListener("click", startTimer);
+// });
+// confirmSessionDurationButton.addEventListener("click", () =>)
+
+userDurationInput(confirmSessionDurationButton, sessionDurationInput, timerElement);
+
+function userDurationInput(buttonEvent, inputValue, htmlElement) {
+    buttonEvent.addEventListener("click", () => {
+        let time = inputValue.value;
+        //where = 0;
+        //where = inputValue.value;
+        htmlElement.innerText = `${time.padStart(2, 0)} : 00`;
+        time = time * 60;
+        settingsDiv.classList.add("hidden");
+        if (htmlElement.innerText === "Your time is up!" || htmlElement.innerText === "00 : 00") {
+            buttonEvent.removeEventListener("click", startTimer);
+        }
+        closeModalFunction();
+    }
+    )
+};
+
+
+
+
+
+const saveTaskButton = document.querySelector("#saveTaskButton");
+const listOfTasks = document.querySelector(".orderedListOfTasks");
+
+saveTaskButton.addEventListener("click", () => {
+    //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically
+    //close the AddTasks form upon clicking Save and return all values to empty
+    //Each task in the list should have the added note visible as well as the assigned duration for the task
+    //Include also the priority and pace, once they are added to the Add Task form
+    //Add validation that makes sure priority, name, time and pace have values assigned by the user
+
+    const taskInputs = [taskTitle.value, taskDuration.value];
+
+    if (taskTitle.value && taskDuration.value) {
+        let li = document.createElement("li");
+        li.setAttribute("class", "liOfTasks");
+        let liContent = li.appendChild(document.createElement("div"));
+        liContent.setAttribute("class", "divInLi");
+        liContent.innerHTML += `<p>Title: ${taskTitle.value}</p> </br> <p>Duration: ${taskDuration.value}</p>`
+
+        // liContent.style = "background-color: white";
+
+        // let liDiv = document.createElement("div");
+        // liDiv.innerHTML = `<p>${taskTitle.value}</p></br><p>${taskDuration.value}</p>`
+
+        listOfTasks.appendChild(li);
+    }
 });
 
 

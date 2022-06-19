@@ -9,6 +9,7 @@ const swiper = new Swiper('.swiper', {
     centeredSlides: true,
     slidesPerView: 'auto',
     initialSlide: 2,
+    allowTouchMove: false,
 
 
 
@@ -25,7 +26,7 @@ const swiper = new Swiper('.swiper', {
         el: '.swiper-pagination',
         transparent: false,
         clickable: true,
-        renderBullet: function(index, className) {
+        renderBullet: function (index, className) {
             return '<span class="' + className + '">' + (menu[index]) + '</span>';
         },
 
