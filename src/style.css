@@ -33,7 +33,6 @@ body {
     padding-top: 100px;
     padding-bottom: 20px;
 }
-
 .swiper-slide {
     background-position: center;
     background-size: cover;
@@ -159,4 +158,92 @@ body {
 .createdReminder {
     color: brown;
     display: flex;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container a {
+    padding: 30px;
+    background: var(--clr-neutral-300);;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.open {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+.modal-bg {
+    position: absolute;
+    background: var(--clr-neutral-300);;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-container {
+    overflow: auto;
+    text-align: center;
+    height: 55%;
+    width: 30%;
+    border-radius: 10px;
+    background: #fff;
+    position: relative;
+    padding: 30px;
+}
+
+.modal input{
+    height: 25px;
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px;
+    border: gray 1px solid;
+}
+
+
+.modal-container div{
+    text-align: left;
+}
+.modal-container button{
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    width: 40%;
+    border: var(--clr-neutral-200) 2px solid;
+    background: var(--clr-neutral-300);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.modal-container a{
+    color: var(--clr-neutral-300);
+    cursor: pointer;
+}
+
+.z-index{
+    z-index: -1;
 }
