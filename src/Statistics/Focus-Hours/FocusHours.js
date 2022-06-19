@@ -63,8 +63,28 @@
 //       }
 //     });
 
-const dates = ['2022-03-13', '2022-03-14', '2022-06-15', '2022-06-16', '2022-06-17', '2022-06-18', '2022-06-19'];
-const datepoints = [1, 2, 3, 4, 5, 6, 7];
+
+function startingArrayOfChartDates(){
+    let arrayOfDates = [];
+    let currentDate = new Date().toLocaleDateString();
+    for (let i = 6; i > 0; i--) {
+    let daysBefore = new Date(new Date().getTime()-60*60*24*1000*i).toLocaleDateString(); 
+    arrayOfDates.push(daysBefore);
+ }
+    arrayOfDates.push(currentDate);
+    return arrayOfDates;
+ }
+
+function numberOfDailyHours(){ //temporary solution
+    let arrayOfHoursPerDay =[];
+    for (let i=1; i<32; i++){
+        let randomNumber = Math.floor(Math.random() * 16);
+        arrayOfHoursPerDay.push(randomNumber)
+    }
+    return arrayOfHoursPerDay;
+} 
+const dates = startingArrayOfChartDates();
+const datepoints = numberOfDailyHours();
 const data = {
     labels: dates,
     datasets: [{
@@ -119,7 +139,6 @@ function filterDate() {
     }
 
     myChart.config.data.labels = dynamicDates;
-    myChart.update();
-
+    numberOfDates > 31 ? alert("For better visibility of your chart, we highly recommend you to choose a time period that does not exceed 31 days! Please try again!") : myChart.update();
 }
 
