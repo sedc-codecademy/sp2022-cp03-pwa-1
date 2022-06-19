@@ -14,8 +14,45 @@
 <body>
     <!--MAIN-->
     <main>
+         <!-- Modal -->          
+        <div class="modal open" id="modal-sign-in">
+            <div class="modal-bg modal-exit"></div>
+            <div class="modal-container">
+                <h1>Log in</h1>
+                <div>
+                    <h2>Email</h2>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div>
+                    <h2>Password</h2>
+                    <input type="password" placeholder="Enter your password">
+                </div>
+                <button class="modal-exit" id="modal-exit">Log in</button>
+                <br/>
+                <a  class="modal-exit" id="modal-exit">Sign in as a guest</a>
+                <br/>
+                <br/>
+                <a  class="modal-exit" id="sign-up">Sign up</a>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-sign-up">
+            <div class="modal-bg modal-exit"></div>
+            <div class="modal-container">
+                <h1>Sign up</h1>
+                <div>
+                    <h2>Email</h2>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div>
+                    <h2>Password</h2>
+                    <input type="password" placeholder="Enter your password">
+                </div>
+                <button class="modal-exit" id="modal-exit">Sign up</button>
+            </div>
+        </div>
         <!-- Slider main container -->
-        <div class="swiper">
+        <div class="swiper z-index" id="swiper">
             <!-- Additional wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -152,6 +189,7 @@
     <script src="script.js"></script>
     <script src="script_calendar.js"></script>
     <script src="WorkingSession/working_session.js"></script>
+    <script src="modal.js"></script>
 </body>
 
 </html>
