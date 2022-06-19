@@ -104,7 +104,7 @@ function filterDate() {
     const newStartDate = new Date(startDate.value); // 2022-06-08
     const newEndeDate = new Date(endDate.value);
 
-    const numberOfDates = 4;
+    const numberOfDates = (newEndeDate.getTime()-newStartDate.getTime())/(1000 * 3600 * 24); //4
     let dateToBeFormated = newStartDate;
 
     for (let i = 0; i <= numberOfDates; i++) {
