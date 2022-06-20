@@ -173,7 +173,9 @@
               <div class="card-body">
                 <div class="js-clock">
                     <h1>00:00:00</h1>
-                    <button id="reminderBtn">Create New Reminder</button>
+                    <button class="modal-exit" id="reminderBtn">Create New Reminder</button>
+                    <button id="deleteReminder" class="modal-exit">Clear Reminders</button>
+                    <div id="remindersWrapper"></div>
                 </div>
               </div>
             </div>
@@ -195,6 +197,7 @@
     <script src="script_calendar.js"></script>
     <script src="WorkingSession/working_session.js"></script>
     <script src="modal.js"></script>
+    <script src="clock.js"></script>
 </body>
 
 </html>

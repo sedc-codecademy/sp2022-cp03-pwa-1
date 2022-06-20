@@ -1,6 +1,8 @@
 const clockContainer = document.querySelector(".js-clock");
 const clockTitle = clockContainer.querySelector("h1");
 const reminderBtn = document.querySelector("#reminderBtn");
+const clearBtn = document.querySelector('#deleteReminder');
+const reminderWrapper = document.querySelector('#remindersWrapper')
 
 function getTime() {
     const date = new Date();
@@ -35,15 +37,25 @@ init();
 function CreateNewReminder(){
     let reminderInput = prompt("Insert reminder");
     const newReminder = document.createElement('div');
+
     newReminder.className = "createdReminder"
     newReminder.innerHTML = reminderInput;
-    clockContainer.appendChild(newReminder);
+    reminderWrapper.appendChild(newReminder);
     let timeInput = prompt("Insert time");
     const newTime = document.createElement('div');
     newTime.className = "createdReminderTime"
     newTime.innerHTML = timeInput;
-    clockContainer.appendChild(newTime);
+    reminderWrapper.appendChild(newTime);
 
 }
 
+function ClearReminders(){
+    while (reminderWrapper.firstChild){
+        reminderWrapper.removeChild(reminderWrapper.firstChild);
+    }
+}
+
+
+
 reminderBtn.addEventListener("click", CreateNewReminder);
+clearBtn.addEventListener("click", ClearReminders);
