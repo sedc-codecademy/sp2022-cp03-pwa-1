@@ -134,13 +134,15 @@ for (let i=0; i < 7; i++){
 accessDays.innerHTML = count;
 
 let count2=0;
+let arrStreakDays = [];
 for (let i=0; i < 7; i++){ 
     count2++;
     if(datepoints[i] == 0){
     count2=0;   
         }
+        arrStreakDays.push(count2);
     }
-streakDays.innerHTML = count2;
+streakDays.innerHTML = Math.max(...arrStreakDays);
 
 let sum=0;
 for (let i=0; i<7; i++){
@@ -186,6 +188,7 @@ function updateSummary(){
     let sum = 0;
     let count = 0;
     let count2 = 0;
+    let arrStreakDays =[];
 
     for (let i=0; i < numberOfDates2+1; i++){
     if(datepoints[i] != 0){
@@ -198,8 +201,9 @@ function updateSummary(){
     if(datepoints[i] == 0){
     count2=0;   
     }
+    arrStreakDays.push(count2);
     }
-    streakDays.innerHTML = count2;
+    streakDays.innerHTML = Math.max(...arrStreakDays);
     for (let i=0; i<numberOfDates2; i++){
     sum+=datepoints[i];
     }
