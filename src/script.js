@@ -5,7 +5,7 @@ const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
     effect: 'coverflow',
-    grabCursor: true,
+    grabCursor: false,
     centeredSlides: true,
     slidesPerView: 'auto',
     initialSlide: 2,

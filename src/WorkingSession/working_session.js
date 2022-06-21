@@ -11,11 +11,13 @@ const sessionCardBodyDiv = document.querySelector("#sessionCardBody");
 const sessionCardButtonSetting = document.querySelector(".sessionButtonSetting");
 const sessionCardButtonShortBreak = document.querySelector(".sessionButtonShortBreak");
 const sessionCardButtonsLongBreak = document.querySelector(".sessionButtonLongBreak");
+const sessionCardButtonTimer = document.querySelector(".sessionButtonTimer");
 const stopButton = document.querySelector("#stopSessionBtn");
 const body = document.querySelector("body");
 const settingsButton = document.querySelector("#sessionSettings");
 const settingsDiv = document.querySelector(".settingsDiv")
 const timerElement = document.querySelector("#timerDiv");
+
 
 const timerInput = document.querySelector("#inputForTimeOfTask");
 const addTaskButton = document.querySelector("#addTaskBtn");
@@ -28,8 +30,13 @@ const taskTitle = document.querySelector("#inputForTaskTitle");
 const taskDuration = document.querySelector("#inputForTimeOfTask");
 const confirmSessionDurationButton = document.querySelector("#startingTimerValueButton");
 const sessionDurationInput = document.querySelector("#startingTimerValueInput");
+const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
+const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
 
 const shortBreakDiv = document.querySelector("#shortBreakDiv");
+const longBreakDiv = document.querySelector("#longBreakDiv");
+
+
 
 // Modals functionality
 
@@ -79,11 +86,12 @@ let timer;
 let timerIsPaused = false;
 let time;
 
+
 const startTimer = () => {
     //let time;
     const tickTock = () => {
         //Functionality if the timer is paused or not
-        if (timerIsPaused === true) {       // 09 : 57 == 57 + 09*60 = 597
+            if (timerIsPaused === true) {       // 09 : 57 == 57 + 09*60 = 597
             let remainingSecs = parseInt(timerElement.textContent.slice(-2)) + parseInt(timerElement.textContent.slice(2, 0) * 60);
             let time = remainingSecs;
 
@@ -121,6 +129,7 @@ const startTimer = () => {
             // Decrease 1s
             time--;
         }
+    
     };
 
     tickTock();
@@ -129,6 +138,8 @@ const startTimer = () => {
     timer = setInterval(tickTock, 1000);
     return timer;
 };
+
+
 
 const stopTimer = () => {
     stop();
@@ -140,54 +151,31 @@ const stopTimer = () => {
 const play = () => timerIsPaused = false;
 const stop = () => timerIsPaused = true;
 
-//Zakomentiran Kod or prvichna verzija na timer
-// const startTimer = () => {
 
-//     const tickTock = () => {
 
-//         const min = String(Math.trunc(time / 60)).padStart(2, 0);
-//         const sec = String(time % 60).padStart(2, 0);
-
-//         // In each call, print the remaining time to UI
-//         timerElement.textContent = `${min}:${sec}`;
-
-//         // When 0 seconds, stop timer and print message
-//         if (time === 0) {
-//             clearInterval(timer);
-//             timerElement.style.fontSize = "35px";
-//             timerElement.textContent = "Your time is up!";
-//         }
-
-//         // hide start , show stop button
-//         startButton.style.zIndex = "-1";
-//         stopButton.style.zIndex = "1";
-//         // Decrease 1s
-//         time--;
-
-//     };
-//     // Set time to 2 minutes
-//     let time = 555;
-//     // Call the timer every second
-//     tickTock();
-//     play();
-
-//     timer = setInterval(tickTock, 1000);
-
-//     return timer;
-// };
-
-// const stopTimer = () => {
-//     if (!timer === null) {
-
-//     }
-// }
 
 // if ((timerElement.innerText.slice(2, 0) === "00") && (timerElement.innerText.slice(-2) === "00")) {
-if (isNaN(timerElement.innerText)) {
-    console.log("user unfriendly");
-} else {
-    startButton.addEventListener("click", startTimer);
-}
+// if (isNaN(timerElement.innerText)) {
+//     console.log("user unfriendly");
+// } else {
+//     startButton.addEventListener("click", startTimer);
+// }
+
+// if (isNaN(timerElement.innerText)) {
+//     console.log("user unfriendly");
+// } else {
+//     startButton.addEventListener("click", () => {
+//         const divArray = [timerElement, shortBreakDiv, longBreakDiv];
+//         let currentDiv;
+//         for(let i=0; i < divArray.length; i++) {
+//             if(i.style.display === "flex") {
+//                 currentDiv = i;
+//             }
+//         }
+
+        
+//     });
+// }
 
 
 stopButton.addEventListener("click", function () {
@@ -211,6 +199,7 @@ addTaskButton.addEventListener("click", closeModalFunction);
 settingsButton.addEventListener("click", closeModalFunction);
 shortBreakDiv.addEventListener("click", closeModalFunction);
 
+
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
     document.addEventListener("keydown", function (e) {
@@ -224,32 +213,85 @@ if (!sessionModals.classList.contains("hidden")) {
 sessionCardButtonSetting.addEventListener("click", () => {
     sessionModals.classList.remove("hidden");
     overlayDiv.classList.remove("hidden");
+    sessionCardButtonSetting.style.backgroundColor = "white";
+    cardContainer.style.backgroundColor = "white";
+    sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+    sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+    sessionCardButtonTimer.style.backgroundColor ="transparent";
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #537895 0%, #09203f 74%)";
     // body.style.backgroundImage =
     //     "linear-gradient(315deg, #537895 0%, #09203f 74%)";
 });
+
+shortBreakDiv.style.display = "none";
 
 sessionCardButtonShortBreak.addEventListener("click", () => {
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     shortBreakDiv.classList.remove("hidden");
-    //timerElement.classList.add("hidden");
+    timerDiv.style.display ="none";
+    longBreakDiv.style.display = "none";
+    shortBreakDiv.style.display = "flex";
+    cardContainer.style.backgroundColor = "rgb(89, 143, 148)";
+    sessionCardButtonShortBreak.style.backgroundColor = "white";
+    sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+    sessionCardButtonTimer.style.backgroundColor ="transparent";
+    sessionCardButtonSetting.style.backgroundColor = "transparent";
+    // if(stopButton.style.zIndex = "1") {
+    //     startButton.style.zIndex = "1";
+    //     stopButton.style.zIndex = "-1";
+    // }
+    
+    
+
+    
+    
 
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #20bf55 0%, #01baef 74%)";
     // body.style.backgroundImage =
     //     "linear-gradient(315deg, #20bf55 0%, #01baef 74%)";
 });
+
+longBreakDiv.style.display = "none";
 
 sessionCardButtonsLongBreak.addEventListener("click", () => {
-    sessionModals.classList.remove("hidden");
-    overlayDiv.classList.remove("hidden");
+    sessionModals.classList.add("hidden");
+    overlayDiv.classList.add("hidden");
+    longBreakDiv.classList.remove("hidden");
+    timerDiv.style.display ="none";
+    shortBreakDiv.style.display = "none";
+    longBreakDiv.style.display ="flex";
+    cardContainer.style.backgroundColor = "rgb(80, 121, 161)";
+    sessionCardButtonsLongBreak.style.backgroundColor = "white";
+    sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+    sessionCardButtonTimer.style.backgroundColor ="transparent";
+    sessionCardButtonSetting.style.backgroundColor = "transparent";
+
+    // if(stopButton.style.zIndex = "1") {
+    //     startButton.style.zIndex = "1";
+    //     stopButton.style.zIndex = "-1";
+    // }
+    
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)";
     // body.style.backgroundImage =
     //     "linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)";
 });
+
+sessionCardButtonTimer.addEventListener("click", () =>{
+    sessionModals.classList.add("hidden");
+    overlayDiv.classList.add("hidden");
+    timerDiv.style.display ="flex";
+    cardContainer.style.backgroundColor = "rgb(136, 186, 136";
+    shortBreakDiv.style.display = "none";
+    longBreakDiv.style.display = "none";
+    sessionCardButtonTimer.style.backgroundColor ="white";
+    sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+    sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+    sessionCardButtonSetting.style.backgroundColor = "transparent";
+})
 
 settingsButton.addEventListener("click", () => {
     settingsDiv.classList.remove("hidden");
@@ -293,16 +335,18 @@ if (textAreaOfTask.style.display = "none") {
 // });
 // confirmSessionDurationButton.addEventListener("click", () =>)
 
+
+userDurationInput(confirmSessionDurationButton, shortBreakDurationInput, shortBreakDiv);
+userDurationInput(confirmSessionDurationButton, longBreakDurationInput, longBreakDiv);
 userDurationInput(confirmSessionDurationButton, sessionDurationInput, timerElement);
+
+
 // buttonEvent, inputValue, htmlElement
 function userDurationInput(button, inputValue, htmlElement) {
     button.addEventListener("click", () => {
         time = inputValue.value;
-        console.log(time, typeof time);
         htmlElement.innerText = `${time.padStart(2, 0)} : 00`;
-        console.log(htmlElement.innerText, typeof htmlElement.innerText);
         time = time * 60;
-        console.log(time, typeof time);
         settingsDiv.classList.add("hidden");
         closeModalFunction();
         startButton.addEventListener("click", startTimer);
@@ -359,8 +403,7 @@ saveTaskButton.addEventListener("click", () => {
 // sessionCardButtonShortBreak
 // sessionCardButtonLongBreak
 
-const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
-const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
+
 
 // sessionCardButtonShortBreak.addEventListener("click", () => {
 //     timerElement.classList.add("hidden");
