@@ -63,12 +63,16 @@
 //       }
 //     });
 
+let startingDate = document.getElementById("startDate");
+let endingDate = document.getElementById("endDate");
+startingDate.value=new Date(new Date().getTime()-60*60*24*1000*6).toISOString().slice(0, 10);
+endingDate.value = new Date().toISOString().slice(0, 10);
 
 function startingArrayOfChartDates(){
     let arrayOfDates = [];
-    let currentDate = new Date().toLocaleDateString();
+    let currentDate = new Date().toISOString().slice(0, 10);
     for (let i = 6; i > 0; i--) {
-    let daysBefore = new Date(new Date().getTime()-60*60*24*1000*i).toLocaleDateString(); 
+    let daysBefore = new Date(new Date().getTime()-60*60*24*1000*i).toISOString().slice(0, 10); 
     arrayOfDates.push(daysBefore);
  }
     arrayOfDates.push(currentDate);
@@ -83,6 +87,7 @@ function numberOfDailyHours(){ //temporary solution
     }
     return arrayOfHoursPerDay;
 } 
+
 const dates = startingArrayOfChartDates();
 const datepoints = numberOfDailyHours();
 const data = {
@@ -116,6 +121,33 @@ const myChart = new Chart(
     config
 );
 
+let accessDays = document.getElementById("dynamicAccessedDays");
+let focusHours = document.getElementById("dynamicFocusHours");
+let streakDays = document.getElementById("dynamicStreakDays");
+
+let count=0;
+for (let i=0; i < 7; i++){
+    if(datepoints[i] != 0){
+    count++
+    };
+    }
+accessDays.innerHTML = count;
+
+let count2=0;
+for (let i=0; i < 7; i++){ 
+    count2++;
+    if(datepoints[i] == 0){
+    count2=0;   
+        }
+    }
+streakDays.innerHTML = count2;
+
+let sum=0;
+for (let i=0; i<7; i++){
+    sum+=datepoints[i];
+};
+focusHours.innerHTML = sum;
+
 function filterDate() {
     const dynamicDates = [];
     const startDate = document.getElementById('startDate');
@@ -139,6 +171,48 @@ function filterDate() {
     }
 
     myChart.config.data.labels = dynamicDates;
-    numberOfDates > 31 ? alert("For better visibility of your chart, we highly recommend you to choose a time period that does not exceed 31 days! Please try again!") : myChart.update();
+    if (numberOfDates > 31) {
+        alert("For better visibility of your chart, we highly recommend you to choose a time period that does not exceed 31 days! Please try again!");
+     }
+    else{myChart.update()};
 }
+
+function updateSummary(){
+    const startDate2 = document.getElementById('startDate');
+    const endDate2 = document.getElementById('endDate');
+    const newStartDate2 = new Date(startDate2.value); // 2022-06-08
+    const newEndeDate2 = new Date(endDate2.value);
+    const numberOfDates2 = (newEndeDate2.getTime()-newStartDate2.getTime())/(1000 * 3600 * 24);
+    let sum = 0;
+    let count = 0;
+    let count2 = 0;
+
+    for (let i=0; i < numberOfDates2+1; i++){
+    if(datepoints[i] != 0){
+    count++
+    };
+    }
+    accessDays.innerHTML = count;
+    for (let i=0; i < numberOfDates2+1; i++){ 
+    count2++;
+    if(datepoints[i] == 0){
+    count2=0;   
+    }
+    }
+    streakDays.innerHTML = count2;
+    for (let i=0; i<numberOfDates2; i++){
+    sum+=datepoints[i];
+    }
+    focusHours.innerHTML = sum;
+    if (numberOfDates2 > 31) {
+        focusHours.innerHTML=null;
+        streakDays.innerHTML=null;
+        accessDays.innerHTML=null;
+    };
+};
+
+document.getElementById("startDate").addEventListener("change", updateSummary);
+document.getElementById("endDate").addEventListener("change", updateSummary);
+
+
 
