@@ -67,7 +67,7 @@
     cursor: pointer;
 }
 
-.sessionButtons, #startSessionBtn {
+.sessionButtons, #startSessionBtn, #startShortBreakSessionBtn, #startLongBreakSessionBtn {
     cursor: pointer;
     
 
@@ -77,14 +77,14 @@
 
 /* Start button  */
 
-#startButtonDiv{
+#startButtonDiv {
     padding: 0px;
     max-width: fit-content;
     margin: 0 auto;
     display: grid;
 }
 
-#startSessionBtn {
+#startSessionBtn,  #startShortBreakSessionBtn, #startLongBreakSessionBtn {
     font-size: 3rem;
     font-weight: 600;
     padding: 0.5rem 1.5rem;
@@ -98,7 +98,7 @@
     grid-row: 1;
 }
 
-#stopSessionBtn {
+#stopSessionBtn, #stopShortBreakSessionBtn, #stopLongBreakSessionBtn {
     font-size: 3rem;
     font-weight: 600;
     padding: 0.5rem 1.5rem;
