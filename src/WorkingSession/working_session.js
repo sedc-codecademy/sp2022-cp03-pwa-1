@@ -11,11 +11,13 @@ const sessionCardBodyDiv = document.querySelector("#sessionCardBody");
 const sessionCardButtonSetting = document.querySelector(".sessionButtonSetting");
 const sessionCardButtonShortBreak = document.querySelector(".sessionButtonShortBreak");
 const sessionCardButtonsLongBreak = document.querySelector(".sessionButtonLongBreak");
+const sessionCardButtonTimer = document.querySelector(".sessionButtonTimer");
 const stopButton = document.querySelector("#stopSessionBtn");
 const body = document.querySelector("body");
 const settingsButton = document.querySelector("#sessionSettings");
 const settingsDiv = document.querySelector(".settingsDiv")
 const timerElement = document.querySelector("#timerDiv");
+
 
 const timerInput = document.querySelector("#inputForTimeOfTask");
 const addTaskButton = document.querySelector("#addTaskBtn");
@@ -28,8 +30,16 @@ const taskTitle = document.querySelector("#inputForTaskTitle");
 const taskDuration = document.querySelector("#inputForTimeOfTask");
 const confirmSessionDurationButton = document.querySelector("#startingTimerValueButton");
 const sessionDurationInput = document.querySelector("#startingTimerValueInput");
+const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
+const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
 
 const shortBreakDiv = document.querySelector("#shortBreakDiv");
+const longBreakDiv = document.querySelector("#longBreakDiv");
+const startShortBreakButton = document.querySelector("#startShortBreakSessionBtn");
+const stopShortBreakButton = document.querySelector("#stopShortBreakSessionBtn");
+const startLongBreakButton = document.querySelector("#startLongBreakSessionBtn");
+const stopLongBreakButton = document.querySelector("#stopLongBreakSessionBtn");
+
 
 // Modals functionality
 
@@ -79,11 +89,12 @@ let timer;
 let timerIsPaused = false;
 let time;
 
+
 const startTimer = () => {
     //let time;
     const tickTock = () => {
         //Functionality if the timer is paused or not
-        if (timerIsPaused === true) {       // 09 : 57 == 57 + 09*60 = 597
+            if (timerIsPaused === true) {       // 09 : 57 == 57 + 09*60 = 597
             let remainingSecs = parseInt(timerElement.textContent.slice(-2)) + parseInt(timerElement.textContent.slice(2, 0) * 60);
             let time = remainingSecs;
 
@@ -121,6 +132,7 @@ const startTimer = () => {
             // Decrease 1s
             time--;
         }
+    
     };
 
     tickTock();
@@ -129,6 +141,8 @@ const startTimer = () => {
     timer = setInterval(tickTock, 1000);
     return timer;
 };
+
+
 
 const stopTimer = () => {
     stop();
@@ -140,55 +154,179 @@ const stopTimer = () => {
 const play = () => timerIsPaused = false;
 const stop = () => timerIsPaused = true;
 
-//Zakomentiran Kod or prvichna verzija na timer
-// const startTimer = () => {
+// SHORT BREAK TIMER
 
-//     const tickTock = () => {
+let shortBreakTimer;
+let shortBreakTimerIsPaused = false;
+let shortBreakTime;
 
-//         const min = String(Math.trunc(time / 60)).padStart(2, 0);
-//         const sec = String(time % 60).padStart(2, 0);
 
-//         // In each call, print the remaining time to UI
-//         timerElement.textContent = `${min}:${sec}`;
+const startShortBreakTimer = () => {
+    //let time;
+    const tickTock = () => {
+        //Functionality if the timer is paused or not
+        if (shortBreakTimerIsPaused === true) {       // 09 : 57 == 57 + 09*60 = 597
+            let remainingSecs = parseInt(shortBreakDiv.textContent.slice(-2)) + parseInt(shortBreakDiv.textContent.slice(2, 0) * 60);
+            let shortBreakTime = remainingSecs;
 
-//         // When 0 seconds, stop timer and print message
-//         if (time === 0) {
-//             clearInterval(timer);
-//             timerElement.style.fontSize = "35px";
-//             timerElement.textContent = "Your time is up!";
-//         }
+            const min = String(Math.trunc(shortBreakTime / 60)).padStart(2, 0);
+            const sec = String(shortBreakTime % 60).padStart(2, 0);
 
-//         // hide start , show stop button
-//         startButton.style.zIndex = "-1";
-//         stopButton.style.zIndex = "1";
-//         // Decrease 1s
-//         time--;
+            shortBreakDiv.textContent = `${min} : ${sec}`;
 
-//     };
-//     // Set time to 2 minutes
-//     let time = 555;
-//     // Call the timer every second
-//     tickTock();
-//     play();
+            if (shortBreakTime === 0) {
+                clearInterval(shortBreakTimer);
+                shortBreakDiv.style.fontSize = "35px";
+                shortBreakDiv.textContent = "Your time is up!";
+            }
+            startShortBreakButton.style.zIndex = "-1";
+            stopShortBreakButton.style.zIndex = "1";
+            shortBreakTime--;
 
-//     timer = setInterval(tickTock, 1000);
+        } else {
+            const min = String(Math.trunc(shortBreakTime / 60)).padStart(2, 0);
+            const sec = String(shortBreakTime % 60).padStart(2, 0);
 
-//     return timer;
-// };
+            // In each call, print the remaining time to UI
+            shortBreakDiv.textContent = `${min}:${sec}`;
 
-// const stopTimer = () => {
-//     if (!timer === null) {
+            // When 0 seconds, stop timer and print message
+            if (shortBreakTime === 0) {
+                clearInterval(shortBreakTimer);
+                shortBreakDiv.style.fontSize = "35px";
+                shortBreakDiv.textContent = "Your time is up!";
+            }
 
-//     }
-// }
+            // hide start , show stop button
+            startShortBreakButton.style.zIndex = "-1";
+            stopShortBreakButton.style.zIndex = "1";
+            // Decrease 1s
+            shortBreakTime--;
+        }
+    };
+
+    tickTock();
+    playShortBreak();
+    // Call the timer every second
+    shortBreakTimer = setInterval(tickTock, 1000);
+    return shortBreakTimer;
+};
+
+const stopShortBreakTimer = () => {
+    stopShortBreak();
+    clearInterval(shortBreakTimer);
+    startShortBreakButton.style.zIndex = "1";
+    stopShortBreakButton.style.zIndex = "-1";
+}
+
+const playShortBreak = () => shortBreakTimerIsPaused = false;
+const stopShortBreak = () => shortBreakTimerIsPaused = true;
+
+// LONG BREAK TIMER
+
+let longBreakTimer;
+let longBreakTimerIsPaused = false;
+let longBreakTime;
+
+
+const startLongBreakTimer = () => {
+    //let time;
+    const tickTock = () => {
+        //Functionality if the timer is paused or not
+        if (longBreakTimerIsPaused === true) {       // 09 : 57 == 57 + 09*60 = 597
+            let remainingSecs = parseInt(longBreakDiv.textContent.slice(-2)) + parseInt(longBreakDiv.textContent.slice(2, 0) * 60);
+            let longBreakTime = remainingSecs;
+
+            const min = String(Math.trunc(longBreakTime / 60)).padStart(2, 0);
+            const sec = String(longBreakTime % 60).padStart(2, 0);
+
+            longBreakDiv.textContent = `${min} : ${sec}`;
+
+            if (longBreakTime === 0) {
+                clearInterval(longBreakTimer);
+                longBreakDiv.style.fontSize = "35px";
+                longBreakDiv.textContent = "Your time is up!";
+            }
+            startLongBreakButton.style.zIndex = "-1";
+            stopLongBreakButton.style.zIndex = "1";
+            longBreakTime--;
+
+        } else {
+            const min = String(Math.trunc(longBreakTime / 60)).padStart(2, 0);
+            const sec = String(longBreakTime % 60).padStart(2, 0);
+
+            // In each call, print the remaining time to UI
+            longBreakDiv.textContent = `${min}:${sec}`;
+
+            // When 0 seconds, stop timer and print message
+            if (longBreakTime === 0) {
+                clearInterval(longBreakTimer);
+                longBreakDiv.style.fontSize = "35px";
+                longBreakDiv.textContent = "Your time is up!";
+            }
+
+            // hide start , show stop button
+            startLongBreakButton.style.zIndex = "-1";
+            stopLongBreakButton.style.zIndex = "1";
+            // Decrease 1s
+            longBreakTime--;
+        }
+    };
+
+    tickTock();
+    playLongBreak();
+    // Call the timer every second
+    longBreakTimer = setInterval(tickTock, 1000);
+    return longBreakTimer;
+};
+
+const stopLongBreakTimer = () => {
+    stopLongBreak();
+    clearInterval(longBreakTimer);
+    startLongBreakButton.style.zIndex = "1";
+    stopLongBreakButton.style.zIndex = "-1";
+}
+
+const playLongBreak = () => longBreakTimerIsPaused = false;
+const stopLongBreak = () => longBreakTimerIsPaused = true;
+
 
 // if ((timerElement.innerText.slice(2, 0) === "00") && (timerElement.innerText.slice(-2) === "00")) {
+
 if (isNaN(timerElement.innerText)) {
     console.log("user unfriendly");
 } else {
     startButton.addEventListener("click", startTimer);
 }
 
+if (isNaN(shortBreakDiv.innerText)) {
+    console.log("user unfriendly");
+} else {
+    startShortBreakButton.addEventListener("click", startShortBreakTimer);
+}
+
+if (isNaN(longBreakDiv.innerText)) {
+    console.log("user unfriendly");
+} else {
+    startLongBreakButton.addEventListener("click", startLongBreakTimer);
+}
+// if (isNaN(timerElement.innerText)) {
+//     console.log("user unfriendly");
+// } else {
+//     startButton.addEventListener("click", () => {
+//         const divArray = [timerElement, shortBreakDiv, longBreakDiv];
+//         let currentDiv;
+//         for(let i=0; i < divArray.length; i++) {
+//             if(i.style.display === "flex") {
+//                 currentDiv = i;
+//             }
+//         }
+
+        
+//     });
+// }
+
+// STOP FOR SESSION TIMER
 
 stopButton.addEventListener("click", function () {
     if (!timerIsPaused) clearInterval(timer);
@@ -200,8 +338,30 @@ stopButton.addEventListener("click", function () {
     if (timerElement.innerText === "Your time is up!") {
         startButton.removeEventListener("click", startTimer);
     }
+});
+
+// STOP FOR SHORT BREAK TIMER
+
+stopShortBreakButton.addEventListener("click", function () {
+    if (!shortBreakTimerIsPaused) clearInterval(shortBreakTimer);
+        startShortBreakButton.style.zIndex = "1";
+        stopShortBreakButton.style.zIndex = "-1";
+    if (shortBreakDiv.innerText === "Your time is up!") {
+        startShortBreakButton.removeEventListener("click", startShortBreakTimer);
+    }
 
     // two problems  show and hide button, pausing the timer
+});
+
+// STOP FOR LONG BREAK TIMER
+
+stopLongBreakButton.addEventListener("click", function () {
+    if (!longBreakTimerIsPaused) clearInterval(longBreakTimer);
+        startLongBreakButton.style.zIndex = "1";
+        stopLongBreakButton.style.zIndex = "-1";
+    if (longBreakDiv.innerText === "Your time is up!") {
+        startLongBreakButton.removeEventListener("click", startLongBreakTimer);
+    }
 });
 
 //EVENT LISTENERS FOR BUTTONS
@@ -210,6 +370,7 @@ overlayDiv.addEventListener("click", closeModalFunction);
 addTaskButton.addEventListener("click", closeModalFunction);
 settingsButton.addEventListener("click", closeModalFunction);
 shortBreakDiv.addEventListener("click", closeModalFunction);
+
 
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
@@ -221,35 +382,104 @@ if (!sessionModals.classList.contains("hidden")) {
     });
 }
 
+
+
 sessionCardButtonSetting.addEventListener("click", () => {
     sessionModals.classList.remove("hidden");
     overlayDiv.classList.remove("hidden");
+    sessionCardButtonSetting.style.backgroundColor = "white";
+    cardContainer.style.backgroundColor = "white";
+    sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+    sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+    sessionCardButtonTimer.style.backgroundColor ="transparent";
+    startButton.style.display = "flex";
+    stopButton.style.display = "flex";
+    
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #537895 0%, #09203f 74%)";
     // body.style.backgroundImage =
     //     "linear-gradient(315deg, #537895 0%, #09203f 74%)";
 });
+
+shortBreakDiv.style.display = "none";
 
 sessionCardButtonShortBreak.addEventListener("click", () => {
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     shortBreakDiv.classList.remove("hidden");
-    //timerElement.classList.add("hidden");
-
+    timerDiv.style.display ="none";
+    longBreakDiv.style.display = "none";
+    shortBreakDiv.style.display = "flex";
+    cardContainer.style.backgroundColor = "rgb(89, 143, 148)";
+    sessionCardButtonShortBreak.style.backgroundColor = "white";
+    sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+    sessionCardButtonTimer.style.backgroundColor ="transparent";
+    sessionCardButtonSetting.style.backgroundColor = "transparent";
+    startButton.style.display = "none";
+    stopButton.style.display = "none";
+    startLongBreakButton.style.display = "none";
+    stopLongBreakButton.style.display = "none";
+    startShortBreakButton.style.display = "flex";
+    stopShortBreakButton.style.display = "flex";
+    // if(stopButton.style.zIndex = "1") {
+    //     startButton.style.zIndex = "1";
+    //     stopButton.style.zIndex = "-1";
+    // }
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #20bf55 0%, #01baef 74%)";
     // body.style.backgroundImage =
     //     "linear-gradient(315deg, #20bf55 0%, #01baef 74%)";
 });
+
+longBreakDiv.style.display = "none";
 
 sessionCardButtonsLongBreak.addEventListener("click", () => {
-    sessionModals.classList.remove("hidden");
-    overlayDiv.classList.remove("hidden");
+    sessionModals.classList.add("hidden");
+    overlayDiv.classList.add("hidden");
+    longBreakDiv.classList.remove("hidden");
+    timerDiv.style.display ="none";
+    shortBreakDiv.style.display = "none";
+    longBreakDiv.style.display ="flex";
+    cardContainer.style.backgroundColor = "rgb(80, 121, 161)";
+    sessionCardButtonsLongBreak.style.backgroundColor = "white";
+    sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+    sessionCardButtonTimer.style.backgroundColor ="transparent";
+    sessionCardButtonSetting.style.backgroundColor = "transparent";
+    startButton.style.display = "none";
+    stopButton.style.display = "none";
+    startShortBreakButton.style.display = "none";
+    stopShortBreakButton.style.display = "none";
+    startLongBreakButton.style.display = "flex";
+    stopLongBreakButton.style.display = "flex";
+
+    // if(stopButton.style.zIndex = "1") {
+    //     startButton.style.zIndex = "1";
+    //     stopButton.style.zIndex = "-1";
+    // }
+    
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)";
     // body.style.backgroundImage =
     //     "linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)";
 });
+
+sessionCardButtonTimer.addEventListener("click", () =>{
+    sessionModals.classList.add("hidden");
+    overlayDiv.classList.add("hidden");
+    timerDiv.style.display ="flex";
+    shortBreakDiv.style.display = "none";
+    longBreakDiv.style.display = "none";
+    sessionCardButtonTimer.style.backgroundColor ="white";
+    sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+    sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+    sessionCardButtonSetting.style.backgroundColor = "transparent";
+    startButton.style.display = "flex";
+    stopButton.style.display = "flex";
+    startShortBreakButton.style.display = "none";
+    stopShortBreakButton.style.display = "none";
+    startLongBreakButton.style.display = "none";
+    stopLongBreakButton.style.display = "none";
+})
 
 settingsButton.addEventListener("click", () => {
     settingsDiv.classList.remove("hidden");
@@ -293,35 +523,48 @@ if (textAreaOfTask.style.display = "none") {
 // });
 // confirmSessionDurationButton.addEventListener("click", () =>)
 
-userDurationInput(confirmSessionDurationButton, sessionDurationInput, timerElement);
+
+
+// userDurationInput(confirmSessionDurationButton, longBreakDurationInput, longBreakDiv);
+// userDurationInput(confirmSessionDurationButton, shortBreakDurationInput, shortBreakDiv, startShortBreakTimer);
+// userDurationInput(confirmSessionDurationButton, sessionDurationInput, timerElement, startTimer);
+
+
+
 // buttonEvent, inputValue, htmlElement
-function userDurationInput(button, inputValue, htmlElement) {
-    button.addEventListener("click", () => {
-        time = inputValue.value;
-        console.log(time, typeof time);
-        htmlElement.innerText = `${time.padStart(2, 0)} : 00`;
-        console.log(htmlElement.innerText, typeof htmlElement.innerText);
-        time = time * 60;
-        console.log(time, typeof time);
-        settingsDiv.classList.add("hidden");
-        closeModalFunction();
-        startButton.addEventListener("click", startTimer);
-    });
-    // buttonEvent.addEventListener("click", () => {
-    //     let time = inputValue.value;
-    //     //where = 0;
-    //     //where = inputValue.value;
-    //     htmlElement.innerText = `${time.padStart(2, 0)} : 00`;
-    //     time = time * 60;
-    //     settingsDiv.classList.add("hidden");
-    //     //if (htmlElement.innerText === "Your time is up!" || htmlElement.innerText.slice(2, 0) === 00 && htmlElement.innerText.slice(-2) === "00") {
-    //     //buttonEvent.removeEventListener("click", startTimer);
-    //     //}
-    //     closeModalFunction();
-    //     startButton.addEventListener("click", startTimer);
-    // }
-    // )
-};
+
+
+
+// TIMER VALUES
+// FOR SESSION TIMER
+confirmSessionDurationButton.addEventListener("click", () => {
+    time = sessionDurationInput.value;
+    timerElement.innerText = `${time.padStart(2, 0)} : 00`;
+    time = time * 60;
+    settingsDiv.classList.add("hidden");
+    closeModalFunction();
+    startButton.addEventListener("click", startTimer);
+});
+// FOR SHORT BREAK SESSION
+confirmSessionDurationButton.addEventListener("click", () => {
+    shortBreakTime = shortBreakDurationInput.value;
+    shortBreakDiv.innerText = `${shortBreakTime.padStart(2, 0)} : 00`;
+    shortBreakTime = shortBreakTime * 60;
+    settingsDiv.classList.add("hidden");
+    closeModalFunction();
+    startShortBreakButton.addEventListener("click", startShortBreakTimer);
+});
+// FOR LONG BREAK SESSION
+confirmSessionDurationButton.addEventListener("click", () => {
+    longBreakTime = longBreakDurationInput.value;
+    longBreakDiv.innerText = `${longBreakTime.padStart(2, 0)} : 00`;
+    longBreakTime = longBreakTime * 60;
+    settingsDiv.classList.add("hidden");
+    closeModalFunction();
+    startLongBreakButton.addEventListener("click", startLongBreakTimer);
+});
+
+
 
 const saveTaskButton = document.querySelector("#saveTaskButton");
 const listOfTasks = document.querySelector(".orderedListOfTasks");
@@ -359,8 +602,7 @@ saveTaskButton.addEventListener("click", () => {
 // sessionCardButtonShortBreak
 // sessionCardButtonLongBreak
 
-const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
-const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
+
 
 // sessionCardButtonShortBreak.addEventListener("click", () => {
 //     timerElement.classList.add("hidden");

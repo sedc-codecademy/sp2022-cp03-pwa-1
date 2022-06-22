@@ -8,6 +8,26 @@
     /* border: 1px solid; */
 }
 
+.card-body {
+    
+    min-width: 80%;
+    max-height: 22vh;
+    
+}
+
+.sessionButtonTimer {
+    /* margin: 15px 20px; */
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: #444;
+    border-radius: 10rem;
+    cursor: pointer;
+}
+
 .sessionButtonSetting {
     /* margin: 15px 20px; */
     font-size: 1.2rem;
@@ -15,7 +35,7 @@
     padding: 0 10px;
     margin: 0 5px;
     border: none;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0);
     color: #444;
     border-radius: 10rem;
     cursor: pointer;
@@ -28,7 +48,7 @@
     padding: 0 10px;
     margin: 0 5px;
     border: none;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0);
     color: #444;
     border-radius: 10rem;
     cursor: pointer;
@@ -41,27 +61,30 @@
     padding: 0 10px;
     margin: 0 5px;
     border: none;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0);
     color: #444;
     border-radius: 10rem;
     cursor: pointer;
 }
 
-.sessionButtons, #startSessionBtn {
+.sessionButtons, #startSessionBtn, #startShortBreakSessionBtn, #startLongBreakSessionBtn {
     cursor: pointer;
+    
 
 }
 
+
+
 /* Start button  */
 
-#startButtonDiv{
+#startButtonDiv {
     padding: 0px;
     max-width: fit-content;
     margin: 0 auto;
     display: grid;
 }
 
-#startSessionBtn {
+#startSessionBtn,  #startShortBreakSessionBtn, #startLongBreakSessionBtn {
     font-size: 3rem;
     font-weight: 600;
     padding: 0.5rem 1.5rem;
@@ -75,7 +98,7 @@
     grid-row: 1;
 }
 
-#stopSessionBtn {
+#stopSessionBtn, #stopShortBreakSessionBtn, #stopLongBreakSessionBtn {
     font-size: 3rem;
     font-weight: 600;
     padding: 0.5rem 1.5rem;
@@ -105,10 +128,46 @@
     margin-bottom: 30px;
     /* border: 1px solid; */
     border-radius: 2%;
+    
 }
 
+#shortBreakDiv {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0);
+    max-width:50%;
+    padding: 30px 50px 10px 50px;
+    height: 50px;
+    max-height: fit-content;
+    font-size: 4rem;
+    color: black;
+    margin-bottom: 30px;
+    /* border: 1px solid; */
+    border-radius: 2%;
+}
+
+#longBreakDiv {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0);
+    max-width:50%;
+    padding: 30px 50px 10px 50px;
+    height: 50px;
+    max-height: fit-content;
+    font-size: 4rem;
+    color: black;
+    margin-bottom: 30px;
+    /* border: 1px solid; */
+    border-radius: 2%;
+}
+
+
 #sessionCardBody {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0);
     height: fit-content;
     /* margin-top: 30px; */
     margin: auto;
@@ -324,19 +383,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
-
+    width: 40%;
     background-color: white;
     padding: 3rem;
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;
-    height: 30%;
+    height: 50%;
 }
 
-#startingTimerValueInput, #startingShortBreakvalueInput, #startingLongtBreakvalueInput {
+#startingTimerValueInput, #startingShortBreakValueInput, #startingLongBreakValueInput {
     font-size: 24px;
     width: 10%;
+    padding: 0.3rem;
 }
 
 #startingTimerValueButton {

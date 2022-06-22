@@ -88,6 +88,7 @@
                         <div class="card-body" id="sessionCardBody">
                             <div id="sessionCardButtonsDiv">                                
                                 <button class="sessionButtonSetting" id="sessionSettings">Settings</button>
+                                <button class="sessionButtonTimer" id="timer">Session</button>
                                 <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
                                 <button class="sessionButtonLongBreak" id="longBreak">Long break</button> 
                             </div>
@@ -97,13 +98,21 @@
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>                                
                             </div>
                             <div class="settingsDiv hidden">
-                                <label for = "starting timer"><b>Insert session duration (minutes):</b></label>
-                                <input id = "startingTimerValueInput" type="number" min="0" max="300" step="1" value="10" placeholder="Session duration (minutes)">
-                                <label for = "starting shortBreak"><b> Insert short break duration(minutes): </b><label>
-                                <input id = "startingShortBreakValueInput" type="number" min="0" max="120" step="1" value="10">
-                                <label for = "starting longBreak"><b> Insert long break duration(minutes): </b><label>
-                                <input id = "startingLongtBreakValueInput" type="number" min="0" max="60" step="1" value="30">
-                                <button id = "startingTimerValueButton">Confirm</button>
+                                
+                                    <label for = "starting timer"><b>Insert session duration (minutes):</b></label>
+                                    <input id = "startingTimerValueInput" type="number" min="0" max="300" step="1" value="40" placeholder="Session duration (minutes)">
+                                </br>
+                            </br>
+                                    <label for = "starting shortBreak"><b> Insert short break duration (minutes): </b><label>
+                                    <input id = "startingShortBreakValueInput" type="number" min="0" max="120" step="1" value="10">
+                                </br>
+                            </br>
+                                    <label for = "starting longBreak"><b> Insert long break duration (minutes): </b><label>
+                                    <input id = "startingLongBreakValueInput" type="number" min="0" max="60" step="1" value="20">
+                                </br>
+                            </br>
+                                    <button id = "startingTimerValueButton">Confirm</button>
+                                
                             </div>
                             <div class = "sessionOverlayDiv hidden"></div>
                             <div class = "hidden" id="timerDiv">00 : 00</div>
@@ -112,6 +121,12 @@
                             <div id="startButtonDiv">
                                 <button id = "startSessionBtn">&#x23f5;</button>
                                 <button id = "stopSessionBtn">&#x23f8;</button>
+
+                                <button id = "startShortBreakSessionBtn">&#x23f5;</button>
+                                <button id = "stopShortBreakSessionBtn">&#x23f8;</button>
+
+                                <button id = "startLongBreakSessionBtn">&#x23f5;</button>
+                                <button id = "stopLongBreakSessionBtn">&#x23f8;</button>
                             </div>
                             <div id="openSessionDiv"></div>
                         </div>
