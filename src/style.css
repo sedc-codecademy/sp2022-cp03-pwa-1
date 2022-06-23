@@ -9,6 +9,7 @@
     --clr-neutral-100: rgb(255, 255, 255);
     --clr-neutral-200: rgba(182, 182, 182, 0.655);
     --clr-neutral-500: rgba(241, 51, 51, 0.803);
+    --clr-neutral-1000: rgba(0, 0, 0, 0.332);
 }
 
 
@@ -32,6 +33,7 @@ body {
     height: 83vh;
     padding-top: 100px;
     padding-bottom: 20px;
+    
 }
 .swiper-slide {
     background-position: center;
@@ -110,7 +112,7 @@ body {
 
 .swiper-pagination-bullet-active {
     color: var(--clr-neutral-100);
-    background: var(--clr-neutral-300);
+    background: var(--clr-neutral-31000);
 }
 
 
