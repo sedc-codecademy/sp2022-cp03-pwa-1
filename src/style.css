@@ -250,3 +250,25 @@ body {
 .z-index{
     z-index: -1;
 }
+
+.card-body img {
+    padding: 3px;
+    border-radius: 25px;
+
+}
+
+.card-body img:hover {
+  cursor: pointer;
+}
+
+.go-back-button {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+    border: var(--clr-neutral-200) 2px solid;
+    background: var(--clr-neutral-300);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
