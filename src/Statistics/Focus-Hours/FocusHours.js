@@ -121,28 +121,28 @@ const myChart = new Chart(
     config
 );
 
-let accessDays = document.getElementById("dynamicAccessedDays");
+// let accessDays = document.getElementById("dynamicAccessedDays");
 let focusHours = document.getElementById("dynamicFocusHours");
-let streakDays = document.getElementById("dynamicStreakDays");
+// let streakDays = document.getElementById("dynamicStreakDays");
 
-let count=0;
-for (let i=0; i < 7; i++){
-    if(datepoints[i] != 0){
-    count++
-    };
-    }
-accessDays.innerHTML = count;
+// let count=0;
+// for (let i=0; i < 7; i++){
+//     if(datepoints[i] != 0){
+//     count++
+//     };
+//     }
+// accessDays.innerHTML = count;
 
-let count2=0;
-let arrStreakDays = [];
-for (let i=0; i < 7; i++){ 
-    count2++;
-    if(datepoints[i] == 0){
-    count2=0;   
-        }
-        arrStreakDays.push(count2);
-    }
-streakDays.innerHTML = Math.max(...arrStreakDays);
+// let count2=0;
+// let arrStreakDays = [];
+// for (let i=0; i < 7; i++){ 
+//     count2++;
+//     if(datepoints[i] == 0){
+//     count2=0;   
+//         }
+//         arrStreakDays.push(count2);
+//     }
+// streakDays.innerHTML = Math.max(...arrStreakDays);
 
 let sum=0;
 for (let i=0; i<7; i++){
