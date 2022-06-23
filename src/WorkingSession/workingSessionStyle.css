@@ -98,6 +98,37 @@
     grid-row: 1;
 }
 
+#goToBreak {
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    /* margin: 5rem 2rem; */
+    border: none;
+    background-color: #fff;
+    color: #444;
+    border-radius: 3rem;
+    cursor: pointer;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#backToSession {
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    /* margin: 5rem 2rem; */
+    border: none;
+    background-color: #fff;
+    color: #444;
+    border-radius: 3rem;
+    cursor: pointer;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+
+
 #stopSessionBtn, #stopShortBreakSessionBtn, #stopLongBreakSessionBtn {
     font-size: 3rem;
     font-weight: 600;
@@ -111,7 +142,10 @@
     grid-column: 1;
     grid-row: 1;
     z-index: -1;
+    
 }
+
+
 
 #timerDiv {
     display:flex;
@@ -177,7 +211,7 @@
 /* optional color : linear-gradient(to top left, #28b487, #7dd56f) */
 #sessionMain {
     height: 100%;
-    background-color:rgb(255, 154, 117);
+    
 }
 
 #sessionMain .card-title {
