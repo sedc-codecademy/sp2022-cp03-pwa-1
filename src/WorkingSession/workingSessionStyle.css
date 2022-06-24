@@ -126,7 +126,13 @@
     grid-row: 1;
 }
 
-
+#favDialog {
+    border-radius: 1rem;
+    border: none;
+    background-color: var(--clr-neutral-300);
+    color: var(--clr-neutral-100);
+    font-size: 1rem;
+}
 
 
 #stopSessionBtn, #stopShortBreakSessionBtn, #stopLongBreakSessionBtn {
