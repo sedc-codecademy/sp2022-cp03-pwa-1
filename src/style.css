@@ -33,8 +33,8 @@ body {
     height: 83vh;
     padding-top: 100px;
     padding-bottom: 20px;
-    
 }
+
 .swiper-slide {
     background-position: center;
     background-size: cover;
@@ -50,7 +50,6 @@ body {
 
 .card-content {
     padding: 1.5em;
-    
 }
 
 .card-title {
@@ -104,10 +103,11 @@ body {
     opacity: 1;
     background: var(--clr-neutral-100);
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: transform .2s
 }
 
 .swiper-pagination-bullet:hover {
-    transform: scale(1.01);
+    transform: scale(1.03);
 }
 
 .swiper-pagination-bullet-active {
@@ -172,7 +172,8 @@ body {
 
 .container a {
     padding: 30px;
-    background: var(--clr-neutral-300);;
+    background: var(--clr-neutral-300);
+    ;
     color: #fff;
     font-weight: bold;
     font-size: 24px;
@@ -203,7 +204,8 @@ body {
 
 .modal-bg {
     position: absolute;
-    background: var(--clr-neutral-300);;
+    background: var(--clr-neutral-300);
+    ;
     width: 100%;
     height: 100%;
 }
@@ -219,7 +221,7 @@ body {
     padding: 30px;
 }
 
-.modal input{
+.modal input {
     height: 25px;
     width: 95%;
     padding: 10px;
@@ -227,11 +229,11 @@ body {
     border: gray 1px solid;
 }
 
-
-.modal-container div{
+.modal-container div {
     text-align: left;
 }
-.modal-container button{
+
+.modal-container button {
     padding: 10px;
     margin: 20px;
     border-radius: 5px;
@@ -242,23 +244,23 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
-.modal-container a{
+
+.modal-container a {
     color: var(--clr-neutral-300);
     cursor: pointer;
 }
 
-.z-index{
+.z-index {
     z-index: -1;
 }
 
 .card-body img {
     padding: 3px;
     border-radius: 25px;
-
 }
 
 .card-body img:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .go-back-button {
