@@ -66,13 +66,11 @@
                         <div class="card-body">
                             <div class="dateInfo">
                                 <div class="calendarYear">
-                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span
-                                        id="year"></span>
+                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span id="year"></span>
                                     <button class="callendarButton" id="nextYearBtn">→</button>
                                 </div>
                                 <div class="calendarMonth">
-                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span
-                                        id="monthName"></span>
+                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span id="monthName"></span>
                                     <button class="callendarButton" id="nextMonthbtn">→</button>
                                 </div>
                                 <div id="calendarMain"></div>
@@ -148,25 +146,23 @@
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
                                 <h1>SessionPopUpModals</h1>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi
-                                    illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
                             </div>
                             <div class="settingsDiv hidden">
 
                                 <label for="starting timer"><b>Insert session duration (minutes):</b></label>
-                                <input id="startingTimerValueInput" type="number" min="1" max="300" step="1" value="40"
-                                    >
+                                <input id="startingTimerValueInput" type="number" min="1" max="300" step="1" value="0">
                                 </br>
                                 </br>
                                 <label for="starting shortBreak"><b> Insert short break duration (minutes): </b><label>
                                         <input id="startingShortBreakValueInput" type="number" min="1" max="120"
-                                            step="1" value="10">
+                                            step="1" value="0">
                                         </br>
                                         </br>
                                         <label for="starting longBreak"><b> Insert long break duration (minutes):
                                             </b><label>
                                                 <input id="startingLongBreakValueInput" type="number" min="1" max="60"
-                                                    step="1" value="20">
+                                                    step="1" value="0">
                                                 </br>
                                                 </br>
                                                 <button id="startingTimerValueButton">Confirm</button>
@@ -278,22 +274,22 @@
         <!--Dialog options Long & Short Break-->
         <dialog id="favDialog">
             <form method="dialog">
-              <p><label>Ship to?:
+              <p><label>Skip to?:
                 <select>
                   <option value="default">Choose...</option>
                   <option>Short Break</option>
                   <option>Long Break</option>
                   </select>
               </label></p>
-              <div>
-                <button value="cancel">Cancel</button>
-                <button id="confirmBtn" value="default">Confirm</button>
-              </div>
-            </form>
-        </dialog>
-      </div>
-    </div>
-</div>
+                                <div>
+                                    <button id="cancelBtn" value="cancel">Cancel</button>
+                                    <button id="confirmBtn" value="default">Confirm</button>
+                                </div>
+                                </form>
+                                </dialog>
+                            </div>
+                        </div>
+                    </div>
 
     </main>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
