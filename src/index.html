@@ -123,8 +123,6 @@
                                 <button id = "stopSessionBtn">&#x23f8;</button>
                                 <button id = "goToBreak">⏯︎</button>
                                 
-                                
-
                                 <button id = "startShortBreakSessionBtn">&#x23f5;</button>
                                 <button id = "stopShortBreakSessionBtn">⏹︎</button>
                                 <button id = "backToSession">⏮︎</button>
@@ -206,6 +204,23 @@
         <!-- Navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
+
+        <!--Dialog options Long & Short Break-->
+        <dialog id="favDialog">
+            <form method="dialog">
+              <p><label>Ship to?:
+                <select>
+                  <option value="default">Choose...</option>
+                  <option>Short Break</option>
+                  <option>Long Break</option>
+                  </select>
+              </label></p>
+              <div>
+                <button value="cancel">Cancel</button>
+                <button id="confirmBtn" value="default">Confirm</button>
+              </div>
+            </form>
+          </dialog>
       </div>
     </main>
 

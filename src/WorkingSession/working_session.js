@@ -42,7 +42,12 @@ const stopLongBreakButton = document.querySelector("#stopLongBreakSessionBtn");
 const goToBreak = document.querySelector("#goToBreak");
 const backToSession = document.querySelector("#backToSession");
 
+// Dialog for Short & Long Break options
 
+const favDialog = document.getElementById('favDialog');
+const outputBox = document.querySelector('output');
+const selectEl = favDialog.querySelector('select');
+const confirmBtn = favDialog.querySelector('#confirmBtn');
 
 // Modals functionality
 
@@ -396,17 +401,37 @@ stopLongBreakButton.addEventListener("click", function () {
     }
 });
 
-
+// Dialog 
+// If Browser does not support Dialog
+if ( typeof favDialog.showModal !== 'function' ) {
+    favDialog.hidden = true;
+    /* a fallback script to allow this dialog/form to function
+       for legacy browsers that do not support <dialog>
+       could be provided here.
+    */
+}
 
 // SKIP TO BREAK 
 goToBreak.style.display = "none";
 
-goToBreak.addEventListener("click", function () {
+goToBreak.addEventListener('click', function onOpen() {
+    if (typeof favDialog.showModal === "function") {
+      favDialog.showModal();
+    } else {
+      outputBox.value = "Sorry, the <dialog> API is not supported by this browser.";
+    }
+});
+
+selectEl.addEventListener('change', function onSelect(e) {
+    confirmBtn.value = selectEl.value;
+    
+});
+
+favDialog.addEventListener('close', function onClose() {
     timerElement.style.display = "none";
     goToBreak.style.display = "none";
-    let decision = prompt("Press s for short break or l for long.");
-    switch(decision) {
-        case "s":
+    switch(favDialog.returnValue) {
+        case "Short Break":
             shortBreakDiv.style.display = "flex";
             sessionCardButtonShortBreak.style.color = "white";
             sessionCardButtonShortBreak.style.backgroundColor = "rgb(89, 143, 148)";
@@ -420,7 +445,7 @@ goToBreak.addEventListener("click", function () {
             startShortBreakButton.style.display = "flex";
             stopShortBreakButton.style.display = "flex";
         break;
-        case "l":
+        case "Long Break":
             longBreakDiv.style.display = "flex";
             timerElement.style.display ="none";
             shortBreakDiv.style.display = "none";
@@ -472,10 +497,8 @@ goToBreak.addEventListener("click", function () {
     if (timerElement.innerText === "Your time is up!") {
         startButton.removeEventListener("click", startTimer);
     }
-    
+});
 
-
-})
 
 // BACK TO SESSION 
 
@@ -555,7 +578,7 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     shortBreakDiv.classList.remove("hidden");
-    timerDiv.style.display ="none";
+    timerElement.style.display ="none";
     longBreakDiv.style.display = "none";
     shortBreakDiv.style.display = "flex";
     body.style.backgroundColor = "rgb(89, 143, 148)";
@@ -571,10 +594,16 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
     stopButton.style.display = "none";
     startLongBreakButton.style.display = "none";
     stopLongBreakButton.style.display = "none";
-    startShortBreakButton.style.display = "flex";
-    stopShortBreakButton.style.display = "flex";
+   
     goToBreak.style.display = "none";
     backToSession.style.display = "flex";
+    if(shortBreakDiv.textContent === "Short Break is over!"){
+        stopShortBreakButton.style.display = "none";
+    } else {
+        startShortBreakButton.style.display = "flex";
+        stopShortBreakButton.style.display = "flex";
+        
+    }
     
    
     // if(stopButton.style.zIndex = "1") {
@@ -610,10 +639,14 @@ sessionCardButtonsLongBreak.addEventListener("click", () => {
     stopButton.style.display = "none";
     startShortBreakButton.style.display = "none";
     stopShortBreakButton.style.display = "none";
-    startLongBreakButton.style.display = "flex";
-    stopLongBreakButton.style.display = "flex";
-    stopShortBreakButton.style.display = "none";
     goToBreak.style.display = "none";
+    if(longBreakDiv.textContent === "Long Break is over!") {
+        stopShortBreakButton.style.display = "none";
+        
+    } else {
+        startLongBreakButton.style.display = "flex";
+        stopLongBreakButton.style.display = "flex";
+    }
     
 
     // if(stopButton.style.zIndex = "1") {
@@ -644,13 +677,21 @@ sessionCardButtonTimer.addEventListener("click", () =>{
     sessionCardButtonShortBreak.style.color = "#444";
     sessionCardButtonsLongBreak.style.color = "#444";
     sessionCardButtonSetting.style.color = "#444";
-    startButton.style.display = "flex";
-    stopButton.style.display = "flex";
-    goToBreak.style.display = "flex";
     startShortBreakButton.style.display = "none";
     stopShortBreakButton.style.display = "none";
     startLongBreakButton.style.display = "none";
     stopLongBreakButton.style.display = "none";
+    backToSession.style.display = "none";
+    if(timerElement.innerContent == "Your time is up!") {
+        startButton.style.display = "none";
+        stopButton.style.display = "none";
+        goToBreak.style.display = "none";
+    } else {
+        startButton.style.display = "flex";
+        stopButton.style.display = "flex";
+        goToBreak.style.display = "flex";
+    }
+
     
     
 })
