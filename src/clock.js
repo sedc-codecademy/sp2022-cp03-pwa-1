@@ -35,17 +35,37 @@ function init() {
 init();
 
 function CreateNewReminder(){
-    let reminderInput = prompt("Insert reminder");
-    const newReminder = document.createElement('div');
+    // let reminderInput = prompt("Insert reminder");
+    // const newReminder = document.createElement('div');
 
-    newReminder.className = "createdReminder"
-    newReminder.innerHTML = reminderInput;
-    reminderWrapper.appendChild(newReminder);
-    let timeInput = prompt("Insert time");
-    const newTime = document.createElement('div');
-    newTime.className = "createdReminderTime"
-    newTime.innerHTML = timeInput;
-    reminderWrapper.appendChild(newTime);
+    // newReminder.className = "createdReminder"
+    // newReminder.innerHTML = reminderInput;
+    // reminderWrapper.appendChild(newReminder);
+    // let timeInput = prompt("Insert time");
+    // const newTime = document.createElement('div');
+    // newTime.className = "createdReminderTime"
+    // newTime.innerHTML = timeInput;
+    // reminderWrapper.appendChild(newTime);
+
+    // <div class = "tasksListButtonDiv">                            
+    // <div class="taskFormDiv hidden ">
+    //     <input id="inputForTaskTitle" type="text" placeholder="What are you up to?">
+    //     <p><b>Est Productivity APP SEDC'22</b></p>
+    //     <input id="inputForTimeOfTask" type="number" min="0" step = "1" value="1">
+    //     <button id="arrowUp" class="upAndDown">▲</button>
+    //     <button id="arrowDown" class="upAndDown">▼</button>
+    //     <br>
+    //     <textarea name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
+    //     <br>
+    //     <button id="noteForTaskBtn">+ Add note</button>
+    //     <div id="finalizeTaskDiv">
+    //         <button id ="cancelTaskButton">Cancel</button>
+    //         <button id ="saveTaskButton">Save</button>
+    //     </div>
+    // </div>
+    
+//     <button id="addTaskBtn">Add task</button>  
+// </div> 
 
 }
 
