@@ -66,11 +66,13 @@
                         <div class="card-body">
                             <div class="dateInfo">
                                 <div class="calendarYear">
-                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span id="year"></span>
+                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span
+                                        id="year"></span>
                                     <button class="callendarButton" id="nextYearBtn">→</button>
                                 </div>
                                 <div class="calendarMonth">
-                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span id="monthName"></span>
+                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span
+                                        id="monthName"></span>
                                     <button class="callendarButton" id="nextMonthbtn">→</button>
                                 </div>
                                 <div id="calendarMain"></div>
@@ -146,7 +148,8 @@
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
                                 <h1>SessionPopUpModals</h1>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi
+                                    illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
                             </div>
                             <div class="settingsDiv hidden">
 
@@ -174,13 +177,13 @@
                             <div class="hidden" id="longBreakDiv">00:00</div>
                             <div id="startButtonDiv">
 
-                                <button id = "startSessionBtn">&#x23f5;</button>
-                                <button id = "stopSessionBtn">&#x23f8;</button>
-                                <button id = "goToBreak">⏯︎</button>
-                                
-                                <button id = "startShortBreakSessionBtn">&#x23f5;</button>
-                                <button id = "stopShortBreakSessionBtn">⏹︎</button>
-                                <button id = "backToSession">⏮︎</button>
+                                <button id="startSessionBtn">&#x23f5;</button>
+                                <button id="stopSessionBtn">&#x23f8;</button>
+                                <button id="goToBreak">⏯︎</button>
+
+                                <button id="startShortBreakSessionBtn">&#x23f5;</button>
+                                <button id="stopShortBreakSessionBtn">⏹︎</button>
+                                <button id="backToSession">⏮︎</button>
 
                                 <button id="startLongBreakSessionBtn">&#x23f5;</button>
                                 <button id="stopLongBreakSessionBtn">⏹︎</button>
@@ -261,35 +264,35 @@
                     </div>
                 </div>
             </div>
-                <!-- Pagination A.K.A. The navigation-bar-->
+            <!-- Pagination A.K.A. The navigation-bar-->
             <div class="nav-container">
                 <div id="navbar" class="swiper-pagination"></div>
+            </div>
+
+
+            <!-- Navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!--Dialog options Long & Short Break-->
+            <dialog id="favDialog">
+                <form method="dialog">
+                    <p><label>Skip to?:
+                            <select>
+                                <option value="default">Choose...</option>
+                                <option>Short Break</option>
+                                <option>Long Break</option>
+                            </select>
+                        </label></p>
+                    <div>
+                        <button id="cancelBtn" value="cancel">Cancel</button>
+                        <button id="confirmBtn" value="default">Confirm</button>
                     </div>
-
-
-        <!-- Navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-
-        <!--Dialog options Long & Short Break-->
-        <dialog id="favDialog">
-            <form method="dialog">
-              <p><label>Skip to?:
-                <select>
-                  <option value="default">Choose...</option>
-                  <option>Short Break</option>
-                  <option>Long Break</option>
-                  </select>
-              </label></p>
-                                <div>
-                                    <button id="cancelBtn" value="cancel">Cancel</button>
-                                    <button id="confirmBtn" value="default">Confirm</button>
-                                </div>
-                                </form>
-                                </dialog>
-                            </div>
-                        </div>
-                    </div>
+                </form>
+            </dialog>
+        </div>
+        </div>
+        </div>
 
     </main>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
