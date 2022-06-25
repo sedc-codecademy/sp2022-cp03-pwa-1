@@ -452,7 +452,7 @@ confirmSessionDurationButton.addEventListener("click", () => {
 
 // STOP FOR SESSION TIMER
 
-stopButton.addEventListener("click", function() {
+stopButton.addEventListener("click", function () {
     if (!timerIsPaused) clearInterval(timer);
 
     //   pause_game();
@@ -466,7 +466,7 @@ stopButton.addEventListener("click", function() {
 
 // STOP FOR SHORT BREAK TIMER
 
-stopShortBreakButton.addEventListener("click", function() {
+stopShortBreakButton.addEventListener("click", function () {
     if (!shortBreakTimerIsPaused) {
         shortBreakTime = 0;
         // clearInterval(shortBreakTime);
@@ -484,7 +484,7 @@ stopShortBreakButton.addEventListener("click", function() {
 
 // STOP FOR LONG BREAK TIMER
 
-stopLongBreakButton.addEventListener("click", function() {
+stopLongBreakButton.addEventListener("click", function () {
     if (!longBreakTimerIsPaused) {
         longBreakTime = 0;
         // clearInterval(longBreakTimer);
@@ -599,7 +599,7 @@ favDialog.addEventListener("close", function onClose() {
 
 backToSession.style.display = "none";
 
-backToSession.addEventListener("click", function() {
+backToSession.addEventListener("click", function () {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
@@ -624,7 +624,7 @@ shortBreakDiv.addEventListener("click", closeModalFunction);
 
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
-    document.addEventListener("keydown", function(e) {
+    document.addEventListener("keydown", function (e) {
         console.log(e.key);
         if (e.key === "Escape" && !sessionModals.classList.contains("hidden")) {
             closeModalFunction();
@@ -817,7 +817,7 @@ timerDownButton.addEventListener("click", () => {
 
 //Add note in task form button
 if ((textAreaOfTask.style.display = "none")) {
-    addNoteButton.addEventListener("click", function() {
+    addNoteButton.addEventListener("click", function () {
         textAreaOfTask.style.display = "block";
     });
 } //ne e funkcionalno kopcheto koga vekje e otvorena textarea za pishuvanje na note, t.e. raboti samo koga ne e otvorena textArea
@@ -846,12 +846,110 @@ if ((textAreaOfTask.style.display = "none")) {
 
 ///ADD TASK FUNCTIONALITY
 
-function resetInputs() {
-    titleElem.value = "";
-    priorityElem.value = "";
-    colorElem.value = "";
-    description.value = "";
-    pace.value = "";
+
+
+{
+    /* <label for="priority">Priority:</label>
+      <select id="priority">
+          <option value="">---Nothing Selected---</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+      </select> */
+}
+const saveTaskButton = document.querySelector("#saveTaskButton");
+const listOfTasks = document.querySelector(".orderedListOfTasks");
+const taskPriority = document.querySelector("#priority");
+const taskPace = document.querySelector("#pace");
+const cancelTaskButton = document.querySelector("#cancelTaskButton");
+
+cancelTaskButton.addEventListener("click", function () {
+    resetTaskInputs();
+    taskForm.classList.add("hidden");
+    overlayDiv.classList.add("hidden");
+})
+
+let arrayOfTasks = [];
+
+saveTaskButton.addEventListener("click", () => {
+    //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
+    //close the AddTasks form upon clicking Save and return all values to empty - done
+    //Each task in the list should have the added note visible as well as the assigned duration for the task - wtf?
+    //Include also the priority and pace, once they are added to the Add Task form - done
+    //Add validation that makes sure priority, name, time and pace have values assigned by the user - done
+    if (arrayOfTasks.length < 5) {
+        const taskInputs = [taskTitle.value, taskDuration.value, taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value];
+
+        if (taskTitle.value && taskDuration.value && taskPriority.options[taskPriority.selectedIndex].value && taskPace.options[taskPace.selectedIndex].value) {
+            let li = document.createElement("li");
+            li.setAttribute("class", "liOfTasks");
+
+            // let liContent = li.appendChild(document.createElement("div"));
+            // liContent.setAttribute("class", "divInLi");
+            li.innerHTML += `<b>Title</b>: ${taskTitle.value}; <b>Duration</b>: ${taskDuration.value}; <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}; <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value}`;
+
+            // liContent.setAttribute("class", "divInLi");
+            // liContent.innerHTML += `<b>Title</b>: ${taskTitle.value}; <b>Duration</b>: ${taskDuration.value}; <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}; <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value}`;
+            // liContent.innerHTML += `<p class="${getPriority()}"><b>Title</b>: ${taskTitle.value}; <b>Duration</b>: ${taskDuration.value}; <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}; <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value}</p>`;
+
+            listOfTasks.appendChild(li);
+            console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
+            setColor(li);
+            getPriority2(li);
+            arrayOfTasks.push(li);
+            resetTaskInputs();
+        }
+
+        console.log(arrayOfTasks);
+
+    }
+    else alert("You can't have more than 5 tasks at a time!");
+});
+
+
+function getPriority2(element) {
+    switch (taskPriority.options[taskPriority.selectedIndex].value) {
+        case "Low":
+            element.style.backgroundColor = "yellow";
+            break;
+        case "Medium":
+            element.style.backgroundColor = "orange";
+            break;
+        case "High":
+            element.style.background = "linear-gradient(180deg, rgba(225, 250, 137, 0.3029586834733894) 0%, rgba(2, 0, 36, 1) 0%, rgba(215, 248, 145, 1) 0%, rgba(98, 233, 225, 1) 88%)";
+            break;
+    }
+}
+
+// function getPriority() {
+//     switch (taskPriority.options[taskPriority.selectedIndex].value) {
+//         case "Low": return "yellow";
+//         case "Medium": return "orange";
+//         case "High": return "red";
+//     }
+// }
+
+function setColor(element) {
+    if (element.classList.contains("red")) element.style.backgroundColor = "red";
+    if (element.classList.contains("yellow")) element.style.backgroundColor = "yellow";
+    if (element.classList.contains("orange")) element.style.backgroundColor = "orange";
+}
+
+function Priority(title, priority, color, description, pace) {
+    this.title = title;
+    this.priority = priority;
+    this.color = color;
+    this.description = description;
+    this.pace = pace;
+}
+
+function resetTaskInputs() {
+    taskTitle.value = "";
+    taskPriority.selectedIndex = 0;
+    taskDuration.value = 1;
+    //colorElem.value = "";
+    //description.value = "";
+    taskPace.selectedIndex = 0;
 }
 
 function validateInputs() {
@@ -874,64 +972,42 @@ function validateInputs() {
     return true;
 }
 
-function Priority(title, priority, color, description, pace) {
-    this.title = title;
-    this.priority = priority;
-    this.color = color;
-    this.description = description;
-    this.pace = pace;
-}
 
-{
-    /* <label for="priority">Priority:</label>
-      <select id="priority">
-          <option value="">---Nothing Selected---</option>
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
-      </select> */
-}
-const saveTaskButton = document.querySelector("#saveTaskButton");
-const listOfTasks = document.querySelector(".orderedListOfTasks");
-
-saveTaskButton.addEventListener("click", () => {
-    //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically
-    //close the AddTasks form upon clicking Save and return all values to empty
-    //Each task in the list should have the added note visible as well as the assigned duration for the task
-    //Include also the priority and pace, once they are added to the Add Task form
-    //Add validation that makes sure priority, name, time and pace have values assigned by the user
-
-    const taskInputs = [taskTitle.value, taskDuration.value];
-
-    if (taskTitle.value && taskDuration.value) {
-        let li = document.createElement("li");
-        li.setAttribute("class", "liOfTasks");
-        let liContent = li.appendChild(document.createElement("div"));
-        liContent.setAttribute("class", "divInLi");
-        liContent.innerHTML += `<p>Title: ${taskTitle.value}</p> </br> <p>Duration: ${taskDuration.value}</p>`;
-
-        // liContent.style = "background-color: white";
-
-        // let liDiv = document.createElement("div");
-        // liDiv.innerHTML = `<p>${taskTitle.value}</p></br><p>${taskDuration.value}</p>`
-
-        listOfTasks.appendChild(li);
-    }
-});
-
+// if (!validateInputs()) {
+//     alert("You must enter all values in the inputs");
+//     return;
+// }
 // for (let i = 0; i < sessionCardButtons.length; i++) {
 //     sessionCardButtons[i].addEventListener("click", openModalFunction);
 // };
 
-// SHORT AND LONG BREAK BUTTONS LOGIC
-// sessionCardButtonShortBreak
-// sessionCardButtonLongBreak
+// addTaskButtona
+// sessionDurationInputds
+// d
+// d
+// d
+// d
+// d
+// d
+// d
+// d
+// d
+// d
+// d
 
-// sessionCardButtonShortBreak.addEventListener("click", () => {
-//     timerElement.classList.add("hidden");
-//     const header = document.createElement("h1");
-//     header.innerText = "adssadsada";
-//     sessionCardBodyDiv.appendChild(header);
-//     header.setAtrribute("class", "blabla headerShortBreak hidden");
+// decodeURI
+// d
+// d
+let hrBorder = document.querySelector("#hr");
+if (startButton.style.display == "flex" ||
+    stopButton.style.display == "flex" ||
+    goToBreak.style.display == "flex") {
+    hrBorder.style.marginTop = "-10vh";
+}
 
-// });
+
+// !startShortBreakButton.style.display == "none" ||
+//     !stopShortBreakButton.style.display == "none" ||
+//     !startLongBreakButton.style.display == "none" ||
+//     !stopLongBreakButton.style.display == "none" ||
+//     !backToSession.style.display == "none") {
