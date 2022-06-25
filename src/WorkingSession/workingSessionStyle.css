@@ -265,8 +265,8 @@
     margin: auto;
     width: 50%;
     padding: 60px;
+    /* bottom: 0; */
 }
-
 
 /* optional color : linear-gradient(to top left, #28b487, #7dd56f) */
 
@@ -338,36 +338,47 @@ select:hover {
 .taskContainer {
     display: flex;
     /* flex-direction: row; */
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center; 
     justify-content: space-between;
-    margin: auto;
-    width: 50%;
-    padding: 20px;
+    margin: 0;
+    /* width: 100%; */
+    padding: 0px;
+    left: 50%;
+    right: 50%;
+    transform: translate (-50%, -50%);
+}
+
+#taskButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;        
+    height: fit-content;
+
 }
 
 #addTaskBtn {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 500;
     padding: 1rem 1rem;
-    margin: auto;
+    /* margin: auto; */
     border: none;
-    background-color: #fff;
+    background-color: rgb(202, 88, 88);
     color: #444;
     border-radius: 10rem;
     cursor: pointer;
 }
 
-.tasksListButtonDiv {
+/* .tasksListButtonDiv {
     display: grid;
     justify-content: center;
     align-items: center;
     height: 100 vh;
-    /* margin-top: 30px; */
+    margin-top: 30px;
     margin: auto;
     width: 50%;
     padding: 10px;
-}
+} */
 
 #tasksHeader {
     font-size: 1.2rem;
@@ -381,7 +392,7 @@ select:hover {
     cursor: pointer;
 }
 
-#clearTasksBtn {
+#clearTasksBtn, #tasksButton {
     font-size: 1.2rem;
     font-weight: 600;
     padding: 0 10px;
@@ -393,29 +404,59 @@ select:hover {
     cursor: pointer;
 }
 
-.listOfTasksDiv {
+ol {
     display: flex;
-    /* justify-content: center; */
-    justify-content: space-between;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.1);
-    /* height: 14vh; */
-    /* margin-top: 30px; */
-    margin: auto;
-    width: 50%;
-    padding: 60px;
-    color: black;
-    height: 250px;
-    border: 1px solid black;
-    padding-top: 10px;
+    flex-wrap: wrap;
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.listOfTasksDiv {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .listOfTasksDiv li {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 20px;
-    width: 100%;
+    max-width: 13vh;
+    list-style-type: none;
+    flex-basis: 14%;
+    padding: 20px;
+    /* margin-left: -2vh; */
+    text-align: center;
+    min-height: 15rem;
+    justify-content: space-evenly;
+    border-radius: 4px;
+    /* margin-left: 0.5vh;
+    margin-right: 0.5vh; */
+    color: black;
+    
+    
 }
 
+/* #orderedListOfTasks > li {
+    cursor: pointer;
+        font-size: 2rem;
+        border: 1px, solid #ffffff;
+        outline: none;
+        background-color: rbga(255, 255, 255, 0.75);
+        display: inline-block;
+} */
+
+/* #orderedListOfTasks {
+    display: grid;
+        justify-content: center;
+        align-content: center;
+        min-height: 100vh;
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+} */
 
 /* TASK FORM */
 
@@ -430,7 +471,7 @@ select:hover {
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;
-    height: 30%;
+    height: 50%;
 }
 
 #inputForTaskTitle {
@@ -456,7 +497,7 @@ select:hover {
 }
 
 .upAndDown {
-    height: 13%;
+    height: 3vh;
     width: 6%;
 }
 
@@ -523,13 +564,33 @@ input {
 
 .liOfTasks {
     max-width: 100%;
-    height: 18%;
-    margin: 0 auto;
+    height: fit-content;
+    margin: 10px auto;
     padding: 0 auto;
     background-color: white;
+    display: inline-block;
+        height: fit-content;
 }
 
-
-/* .divInLi {
-    
+/* 
+.divInLi {
+    display: inline-block;
+    height: fit-content;
 } */
+
+div.red {
+    background: rgb(225, 250, 137);
+    background: linear-gradient(180deg, rgba(225, 250, 137, 0.3029586834733894) 0%, rgba(2, 0, 36, 1) 0%, rgba(215, 248, 145, 1) 0%, rgba(98, 233, 225, 1) 88%);
+}
+
+div.orange {
+    background-color: orange;
+}
+
+div.yellow {
+    background-color: yellow;
+}
+
+#hr {
+    margin-top: 10vh;
+}

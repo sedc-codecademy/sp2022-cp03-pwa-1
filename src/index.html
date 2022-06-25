@@ -139,7 +139,6 @@
                         <!-- <a href="#" class="button">ADD TASK</a> -->
                         <div class="card-body" id="sessionCardBody">
                             <div id="sessionCardButtonsDiv">
-
                                 <button class="sessionButtonSetting" id="sessionSettings">Settings</button>
                                 <button class="sessionButtonTimer" id="timer">Session</button>
                                 <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
@@ -189,43 +188,61 @@
                                 <button id="stopLongBreakSessionBtn">⏹︎</button>
                             </div>
                             <div id="openSessionDiv"></div>
-                        </div>
-                        <div class="taskContainer">
-                            <h2 id="tasksHeader">TASKS</h2>
-                            <button id="clearTasksBtn">Clear tasks</button>
-                        </div>
-                        <hr>
-                        <div class="tasksListButtonDiv">
-                            <div class="taskFormDiv hidden ">
-                                <input id="inputForTaskTitle" type="text" placeholder="What are you up to?">
-                                <p><b>Est Productivity APP SEDC'22</b></p>
-                                <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
-                                <button id="arrowUp" class="upAndDown">▲</button>
-                                <button id="arrowDown" class="upAndDown">▼</button>
-                                <br>
-                                <textarea name="Task description" id="taskText" cols="30" rows="3"
-                                    placeholder="Text description here please"></textarea>
-                                <br>
-                                <button id="noteForTaskBtn">+ Add note</button>
-                                <div id="finalizeTaskDiv">
-                                    <button id="cancelTaskButton">Cancel</button>
-                                    <button id="saveTaskButton">Save</button>
-                                </div>
+                            <hr id="hr">
+                            <div id="taskButtons">
+                                <!-- <h3 id="tasksHeader">Tasks</h3> -->
+                                <button id="addTaskBtn">Add task</button>
+                                <button id="clearTasksBtn">Clear tasks</button>
                             </div>
-
-                            <button id="addTaskBtn">Add task</button>
+                            <hr>
+                            <div class="taskContainer">
+                                
+                                <!-- <div class="tasksListButtonDiv"> -->
+                                    <div class="taskFormDiv hidden">
+                                        <input id="inputForTaskTitle" type="text" placeholder="What are you up to?">
+                                        <p><b>Est Productivity APP SEDC'22</b></p>
+                                        <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
+                                        <button id="arrowUp" class="upAndDown">▲</button>
+                                        <button id="arrowDown" class="upAndDown">▼</button>
+                                        <label for="priority">Priority:</label>
+                                        <select id="priority">
+                                            <option value="">---Nothing Selected---</option>
+                                            <option value="High">High</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Low">Low</option>
+                                        </select>
+                                        <label for="Pace">Pace:</label>
+                                        <select id="pace">
+                                            <option value="">---Nothing Selected---</option>
+                                            <option value="High">High</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Low">Low</option>
+                                        </select>
+                                        <br>
+                                        <textarea name="Task description" id="taskText" cols="30" rows="3"
+                                            placeholder="Text description here please"></textarea>
+                                        <br>
+                                        <button id="noteForTaskBtn">+ Add note</button>
+                                        <div id="finalizeTaskDiv">
+                                            <button id="cancelTaskButton">Cancel</button>
+                                            <button id="saveTaskButton">Save</button>
+                                        </div>
+                                    </div>
+                                <div class="listOfTasksDiv">
+                                    <ol class="orderedListOfTasks">
+                                     </ol>
+                                </div>
+                                    
+                                <!-- </div> -->
+                                
+                            </div>
+                            
+                            
+                            <!-- <hr> -->
+                            
+                            
                         </div>
-                        <!-- <hr> -->
-
-                        <div class="listOfTasksDiv">
-                            <ol class="orderedListOfTasks">
-                                <!-- <li>a</li>
-                                <li>b</li>
-                                <li>c</li>
-                                <li>d</li>
-                                <li>e</li> -->
-                            </ol>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="swiper-slide">
