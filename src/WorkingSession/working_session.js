@@ -410,13 +410,29 @@ confirmSessionDurationButton.addEventListener("click", () => {
     body.style.backgroundColor = "rgb(165, 178, 233)";
     sessionCardButtonTimer.style.backgroundColor = "rgb(165, 178, 233)";
     sessionCardButtonTimer.style.color = "white";
-    startButton.style.display = "flex";
-    stopButton.style.display = "flex";
-    goToBreak.style.display = "flex";
     sessionCardButtonSetting.style.color = "#444";
     sessionCardButtonSetting.style.backgroundColor = "transparent";
-    shortBreakDiv.style.display = "none";
-    longBreakDiv.style.display = "none";
+
+    if (!time || timerElement.innerContent == "Your time is up!") {
+        startButton.style.display = "none";
+        stopButton.style.display = "none";
+        startLongBreakButton.style.display = "none";
+        stopLongBreakButton.style.display = "none";
+        startShortBreakButton.style.display = "none";
+        stopShortBreakButton.style.display = "none";
+        goToBreak.style.display = "none";
+        backToSession.style.display = "none";
+    } else {
+        startButton.style.display = "flex";
+        stopButton.style.display = "flex";
+        if (shortBreakTime < 1 || longBreakTime < 1) {
+            goToBreak.style.display = "none";
+        } else {
+            goToBreak.style.display = "flex"
+        }
+
+    }
+
     startLongBreakButton.addEventListener("click", startLongBreakTimer);
 });
 // if (isNaN(timerElement.innerText)) {
@@ -628,15 +644,21 @@ sessionCardButtonSetting.addEventListener("click", () => {
     sessionCardButtonTimer.style.color = "#444";
     sessionCardButtonsLongBreak.style.color = "#444";
     sessionCardButtonShortBreak.style.color = "#444";
-    startButton.style.display = "none";
-    stopButton.style.display = "none";
-    startLongBreakButton.style.display = "none";
-    stopLongBreakButton.style.display = "none";
-    startShortBreakButton.style.display = "none";
-    stopShortBreakButton.style.display = "none";
-    goToBreak.style.display = "none";
-    backToSession.style.display = "none";
+    body.style.backgroundColor = "rgb(165, 178, 233)";
+    if (!time || timerElement.innerContent == "Your time is up!") {
+        startButton.style.display = "none";
+        stopButton.style.display = "none";
+        startLongBreakButton.style.display = "none";
+        stopLongBreakButton.style.display = "none";
+        startShortBreakButton.style.display = "none";
+        stopShortBreakButton.style.display = "none";
+        goToBreak.style.display = "none";
+        backToSession.style.display = "none";
+    } else {
+        startButton.style.display = "flex";
+        stopButton.style.display = "flex";
 
+    }
     // cardContainer.style.backgroundImage =
     //     "linear-gradient(315deg, #537895 0%, #09203f 74%)";
     // body.style.backgroundImage =
@@ -761,16 +783,19 @@ sessionCardButtonTimer.addEventListener("click", () => {
     } else {
         startButton.style.display = "flex";
         stopButton.style.display = "flex";
+        if (shortBreakTime < 1 || longBreakTime < 1) {
+            goToBreak.style.display = "none";
+        } else {
+            goToBreak.style.display = "flex"
+        }
 
     }
-    if (shortBreakTime > 0 || longBreakTime > 0) {
-        goToBreak.style.display = "flex";
-    }
+
 });
 
 settingsButton.addEventListener("click", () => {
     settingsDiv.classList.remove("hidden");
-    overlayDiv.classList.remove("hidden");
+    overlayDiv.classList.add("hidden");
     sessionModals.classList.add("hidden");
     resetInputValuesForTimer();
 });
