@@ -205,7 +205,7 @@ function updateSummary(){
     // arrStreakDays.push(count2);
     // }
     // streakDays.innerHTML = Math.max(...arrStreakDays);
-    for (let i=0; i<numberOfDates2; i++){
+    for (let i=0; i<=numberOfDates2; i++){
     sum+=datepoints[i];
     }
     focusHours.innerHTML = sum;
