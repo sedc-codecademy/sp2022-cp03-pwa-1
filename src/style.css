@@ -274,3 +274,52 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+.reminderBtnsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    height: fit-content;
+}
+
+.reminderBtns {
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0 10px;
+      margin: 0 5px;
+      border: none;
+      color: #444;
+      border-radius: 10rem;
+      cursor: pointer;
+      box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      transition: transform .2s
+}
+
+.AddReminderPopUp {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+    height: fit-content;
+
+}
+
+.js-clock {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    color: black;
+    max-height: fit-content;
+    border-radius: 2%;
+    text-shadow: 2px 2px 5px rgb(146, 144, 144);
+}
+
+.reminderInput {
+border: 1px solid black;
+}
+   
+#savedReminders {
+    padding-top: 15px;
+    font-size: 2rem;
+}
