@@ -58,6 +58,7 @@ const startLongBreakButton = document.querySelector(
 const stopLongBreakButton = document.querySelector("#stopLongBreakSessionBtn");
 const goToBreak = document.querySelector("#goToBreak");
 const backToSession = document.querySelector("#backToSession");
+const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
 
 // Dialog for Short & Long Break options
 
@@ -366,6 +367,13 @@ if (isNaN(longBreakDiv.innerText)) {
 } else {
     startLongBreakButton.addEventListener("click", startLongBreakTimer);
 }
+// Exit from dev of timers set 
+
+cancelTimeInput.addEventListener("click", function() {
+    settingsDiv.classList.add("hidden");
+    closeModalFunction();
+})
+
 
 // TIMER VALUES
 // FOR SESSION TIMER
@@ -452,7 +460,7 @@ confirmSessionDurationButton.addEventListener("click", () => {
 
 // STOP FOR SESSION TIMER
 
-stopButton.addEventListener("click", function () {
+stopButton.addEventListener("click", function() {
     if (!timerIsPaused) clearInterval(timer);
 
     //   pause_game();
@@ -466,7 +474,7 @@ stopButton.addEventListener("click", function () {
 
 // STOP FOR SHORT BREAK TIMER
 
-stopShortBreakButton.addEventListener("click", function () {
+stopShortBreakButton.addEventListener("click", function() {
     if (!shortBreakTimerIsPaused) {
         shortBreakTime = 0;
         // clearInterval(shortBreakTime);
@@ -484,7 +492,7 @@ stopShortBreakButton.addEventListener("click", function () {
 
 // STOP FOR LONG BREAK TIMER
 
-stopLongBreakButton.addEventListener("click", function () {
+stopLongBreakButton.addEventListener("click", function() {
     if (!longBreakTimerIsPaused) {
         longBreakTime = 0;
         // clearInterval(longBreakTimer);
@@ -599,7 +607,7 @@ favDialog.addEventListener("close", function onClose() {
 
 backToSession.style.display = "none";
 
-backToSession.addEventListener("click", function () {
+backToSession.addEventListener("click", function() {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
@@ -624,7 +632,7 @@ shortBreakDiv.addEventListener("click", closeModalFunction);
 
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
-    document.addEventListener("keydown", function (e) {
+    document.addEventListener("keydown", function(e) {
         console.log(e.key);
         if (e.key === "Escape" && !sessionModals.classList.contains("hidden")) {
             closeModalFunction();
@@ -806,6 +814,7 @@ settingsButton.addEventListener("click", () => {
 addTaskButton.addEventListener("click", () => {
     taskForm.classList.remove("hidden");
     overlayDiv.classList.remove("hidden");
+    addNoteButton.style.display = "flex";
 });
 
 //Arrows up and down
@@ -819,8 +828,9 @@ timerDownButton.addEventListener("click", () => {
 
 //Add note in task form button
 if ((textAreaOfTask.style.display = "none")) {
-    addNoteButton.addEventListener("click", function () {
+    addNoteButton.addEventListener("click", function() {
         textAreaOfTask.style.display = "block";
+        addNoteButton.style.display = "none";
     });
 } //ne e funkcionalno kopcheto koga vekje e otvorena textarea za pishuvanje na note, t.e. raboti samo koga ne e otvorena textArea
 
@@ -865,7 +875,7 @@ const taskPriority = document.querySelector("#priority");
 const taskPace = document.querySelector("#pace");
 const cancelTaskButton = document.querySelector("#cancelTaskButton");
 
-cancelTaskButton.addEventListener("click", function () {
+cancelTaskButton.addEventListener("click", function() {
     resetTaskInputs();
     taskForm.classList.add("hidden");
     overlayDiv.classList.add("hidden");
@@ -899,7 +909,7 @@ saveTaskButton.addEventListener("click", () => {
                 showNoteButton.setAttribute("class", "showNoteButton");
                 showNoteButton.innerText = "See Note";
                 li.appendChild(showNoteButton);
-                showNoteButton.addEventListener("click", function () {
+                showNoteButton.addEventListener("click", function() {
                     newDiv.style.display = "flex";
                 });
 
@@ -912,16 +922,14 @@ saveTaskButton.addEventListener("click", () => {
             arrayOfTasks.push(li);
 
 
-        }
-        else {
+        } else {
             alert("You need to specify a title, priority and pace for the task before addint it to the tasks list.")
         }
 
         console.log(arrayOfTasks);
         resetTaskInputs();
 
-    }
-    else alert("You can't have more than 5 tasks at a time!");
+    } else alert("You can't have more than 5 tasks at a time!");
 });
 
 // Setting each note window color based on priority
@@ -947,6 +955,7 @@ function resetTaskInputs() {
     textAreaOfTask.value = "";
     textAreaOfTask.style.display = "none";
 }
+
 function setColor(element) {
     if (element.classList.contains("red")) element.style.backgroundColor = "red";
     if (element.classList.contains("yellow")) element.style.backgroundColor = "yellow";
@@ -987,6 +996,3 @@ function Priority(title, priority, color, description, pace) {
 //     !backToSession.style.display == "none") {
 //     hrBorder.style.marginTop = "0vh";
 // }
-
-
-
