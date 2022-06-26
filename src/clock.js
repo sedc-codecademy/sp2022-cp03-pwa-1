@@ -2,7 +2,31 @@ const clockContainer = document.querySelector(".js-clock");
 const clockTitle = clockContainer.querySelector("h1");
 const reminderBtn = document.querySelector("#reminderBtn");
 const clearBtn = document.querySelector('#deleteReminder');
-const reminderWrapper = document.querySelector('#remindersWrapper')
+const reminderWrapper = document.querySelector('#remindersWrapper');
+const RemindersTable = document.querySelector(`#remindersTableId`);
+
+reminderBtn.addEventListener("click", function() {
+    gettingReminderText()
+});
+clearBtn.addEventListener("click", ClearReminders);
+
+//function for getting the name of reminder
+function gettingReminderText(elem) {
+    console.log(elem.value)
+return elem.value;
+}
+
+getting
+
+//function for getting date of reminder
+
+
+
+function CreateNewReminder(elem) {
+    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Duration</th><th>Priority</th><tr>';
+}
+
+
 
 function getTime() {
     const date = new Date();
@@ -24,8 +48,6 @@ function getTime() {
     }
     */
 }
-
-
 
 function init() {
     getTime();
@@ -66,7 +88,6 @@ function CreateNewReminder(){
     
 //     <button id="addTaskBtn">Add task</button>  
 // </div> 
-
 }
 
 function ClearReminders(){
@@ -74,8 +95,3 @@ function ClearReminders(){
         reminderWrapper.removeChild(reminderWrapper.firstChild);
     }
 }
-
-
-
-reminderBtn.addEventListener("click", CreateNewReminder);
-clearBtn.addEventListener("click", ClearReminders);
