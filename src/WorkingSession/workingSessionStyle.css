@@ -636,18 +636,6 @@ input {
     height: fit-content;
 } */
 
-div.red {
-    background: rgb(225, 250, 137);
-    background: linear-gradient(180deg, rgba(225, 250, 137, 0.3029586834733894) 0%, rgba(2, 0, 36, 1) 0%, rgba(215, 248, 145, 1) 0%, rgba(98, 233, 225, 1) 88%);
-}
-
-div.orange {
-    background-color: orange;
-}
-
-div.yellow {
-    background-color: yellow;
-}
 
 /* #hr {
     margin-top: 10vh;
@@ -678,4 +666,18 @@ div.yellow {
     position: absolute;
     bottom: 1vh;
     
+}
+
+.removeTaskButton{
+    position: absolute;
+    top: 0.3vh;
+    right: 0.3vh;
+    border: 0;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 10rem;
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+.removeTaskButton:hover {
+    transform: scale(1.1);
 }
