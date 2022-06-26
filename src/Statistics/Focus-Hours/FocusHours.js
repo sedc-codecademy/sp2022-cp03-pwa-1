@@ -121,8 +121,8 @@ const myChart = new Chart(
     config
 );
 
-// let accessDays = document.getElementById("dynamicAccessedDays");
 let focusHours = document.getElementById("dynamicFocusHours");
+// let accessDays = document.getElementById("dynamicAccessedDays");
 // let streakDays = document.getElementById("dynamicStreakDays");
 
 // let count=0;
@@ -176,7 +176,8 @@ function filterDate() {
     if (numberOfDates > 31) {
         alert("For better visibility of your chart, we highly recommend you to choose a time period that does not exceed 31 days! Please try again!");
      }
-    else{myChart.update()};
+    else{myChart.update()
+    };
 }
 
 function updateSummary(){
@@ -186,32 +187,32 @@ function updateSummary(){
     const newEndeDate2 = new Date(endDate2.value);
     const numberOfDates2 = (newEndeDate2.getTime()-newStartDate2.getTime())/(1000 * 3600 * 24);
     let sum = 0;
-    let count = 0;
-    let count2 = 0;
-    let arrStreakDays =[];
+    // let count = 0;
+    // let count2 = 0;
+    // let arrStreakDays =[];
 
-    for (let i=0; i < numberOfDates2+1; i++){
-    if(datepoints[i] != 0){
-    count++
-    };
-    }
-    accessDays.innerHTML = count;
-    for (let i=0; i < numberOfDates2+1; i++){ 
-    count2++;
-    if(datepoints[i] == 0){
-    count2=0;   
-    }
-    arrStreakDays.push(count2);
-    }
-    streakDays.innerHTML = Math.max(...arrStreakDays);
-    for (let i=0; i<numberOfDates2; i++){
+    // for (let i=0; i < numberOfDates2+1; i++){
+    // if(datepoints[i] != 0){
+    // count++
+    // };
+    // }
+    // accessDays.innerHTML = count;
+    // for (let i=0; i < numberOfDates2+1; i++){ 
+    // count2++;
+    // if(datepoints[i] == 0){
+    // count2=0;   
+    // }
+    // arrStreakDays.push(count2);
+    // }
+    // streakDays.innerHTML = Math.max(...arrStreakDays);
+    for (let i=0; i<=numberOfDates2; i++){
     sum+=datepoints[i];
     }
     focusHours.innerHTML = sum;
     if (numberOfDates2 > 31) {
         focusHours.innerHTML=null;
-        streakDays.innerHTML=null;
-        accessDays.innerHTML=null;
+        // streakDays.innerHTML=null;
+        // accessDays.innerHTML=null;
     };
 };
 
