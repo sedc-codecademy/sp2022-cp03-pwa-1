@@ -369,7 +369,7 @@ if (isNaN(longBreakDiv.innerText)) {
 }
 // Exit from dev of timers set 
 
-cancelTimeInput.addEventListener("click", function() {
+cancelTimeInput.addEventListener("click", function () {
     settingsDiv.classList.add("hidden");
     closeModalFunction();
 })
@@ -460,7 +460,7 @@ confirmSessionDurationButton.addEventListener("click", () => {
 
 // STOP FOR SESSION TIMER
 
-stopButton.addEventListener("click", function() {
+stopButton.addEventListener("click", function () {
     if (!timerIsPaused) clearInterval(timer);
 
     //   pause_game();
@@ -474,7 +474,7 @@ stopButton.addEventListener("click", function() {
 
 // STOP FOR SHORT BREAK TIMER
 
-stopShortBreakButton.addEventListener("click", function() {
+stopShortBreakButton.addEventListener("click", function () {
     if (!shortBreakTimerIsPaused) {
         shortBreakTime = 0;
         // clearInterval(shortBreakTime);
@@ -492,7 +492,7 @@ stopShortBreakButton.addEventListener("click", function() {
 
 // STOP FOR LONG BREAK TIMER
 
-stopLongBreakButton.addEventListener("click", function() {
+stopLongBreakButton.addEventListener("click", function () {
     if (!longBreakTimerIsPaused) {
         longBreakTime = 0;
         // clearInterval(longBreakTimer);
@@ -607,7 +607,7 @@ favDialog.addEventListener("close", function onClose() {
 
 backToSession.style.display = "none";
 
-backToSession.addEventListener("click", function() {
+backToSession.addEventListener("click", function () {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
@@ -632,7 +632,7 @@ shortBreakDiv.addEventListener("click", closeModalFunction);
 
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
-    document.addEventListener("keydown", function(e) {
+    document.addEventListener("keydown", function (e) {
         console.log(e.key);
         if (e.key === "Escape" && !sessionModals.classList.contains("hidden")) {
             closeModalFunction();
@@ -828,7 +828,7 @@ timerDownButton.addEventListener("click", () => {
 
 //Add note in task form button
 if ((textAreaOfTask.style.display = "none")) {
-    addNoteButton.addEventListener("click", function() {
+    addNoteButton.addEventListener("click", function () {
         textAreaOfTask.style.display = "block";
         addNoteButton.style.display = "none";
     });
@@ -875,13 +875,51 @@ const taskPriority = document.querySelector("#priority");
 const taskPace = document.querySelector("#pace");
 const cancelTaskButton = document.querySelector("#cancelTaskButton");
 
-cancelTaskButton.addEventListener("click", function() {
+cancelTaskButton.addEventListener("click", function () {
     resetTaskInputs();
     taskForm.classList.add("hidden");
     overlayDiv.classList.add("hidden");
 })
 
 let arrayOfTasks = [];
+let arrayOfDurationInputValues = [];
+let suma;
+// let arrayOfDurationTimes = [];
+// const sumValues = arrayOfDurationTimes.reduce((partialSum, a) => partialSum + a, 0);
+// console.log(sumValues);
+
+
+
+
+
+
+// const durationInputValues = {
+//     times: [1, "hi", 3, true, 5]
+// };
+
+// const test = [...durationInputValues.times];
+// console.log(test);
+
+// let test = {
+//     element: li,
+//     time: parseInt(taskDuration.value),
+//     id: arrayOfTasks.length + 1
+// }
+
+// const data = [
+//     { type: "foo", id: "123" },
+//     { type: "bar", id: "124" },
+// ]
+// const update = (data, value) => {
+//     console.log('Updating/Inserting', value);
+//     const existingItem = data.find(item => item.id === value.id);
+//     if (existingItem === undefined) {
+//         data.push(value);
+//     } else {
+//         existingItem.type = value.type;
+//     }
+// }
+
 
 saveTaskButton.addEventListener("click", () => {
     //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
@@ -894,10 +932,20 @@ saveTaskButton.addEventListener("click", () => {
         //validateInputs();
 
         if (taskTitle.value && taskDuration.value && taskPriority.options[taskPriority.selectedIndex].value && taskPace.options[taskPace.selectedIndex].value) {
+            let number = Math.floor(Math.random() * 100);
+            //console.log(number);
+
             let li = document.createElement("li");
             li.setAttribute("class", "liOfTasks");
 
             li.innerHTML += `<b>Title</b>: ${taskTitle.value} <br> <b>Duration</b>: ${taskDuration.value} min<br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value} <br>`;
+            let paragraphId = document.createElement("p");
+            paragraphId.setAttribute("class", "idOfCard");
+            paragraphId.innerText = `${number}`;
+            //console.log("hello");
+            paragraphId.style.display = "none";
+            li.appendChild(paragraphId);
+
             if (!textAreaOfTask.value == "") {
                 console.log("hello");
                 let newDiv = document.createElement("div");
@@ -908,12 +956,36 @@ saveTaskButton.addEventListener("click", () => {
                 let showNoteButton = document.createElement("button");
                 showNoteButton.setAttribute("class", "showNoteButton");
                 showNoteButton.innerText = "See Note";
+
                 li.appendChild(showNoteButton);
-                showNoteButton.addEventListener("click", function() {
+                showNoteButton.addEventListener("click", function () {
                     newDiv.style.display = "flex";
                 });
-
             }
+
+            // arrayOfDurationInputValues.push(taskDuration.value);
+            // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
+            //     let helper = `${arrayOfDurationInputValues[i].time}`;
+            //     sum2 += helper;
+            // }
+            // console.log(sum2);
+            // for (const value of arrayOfDurationInputValues) {
+            //     sum1 += +value;
+            // }
+
+
+
+            // const sumWithInitial = arrayOfDurationTimes.reduce(
+            //     (previousValue, currentValue) =>
+            //         previousValue + currentValue, 0
+            // );
+            // console.log(sumWithInitial);
+
+
+
+            //     let helper = `${arrayOfDurationInputValues[i].time}`;
+            //     sum2 += helper;
+
             let removeTaskButton = document.createElement("button");
             removeTaskButton.setAttribute("class", "removeTaskButton");
             removeTaskButton.innerText = "x";
@@ -924,22 +996,59 @@ saveTaskButton.addEventListener("click", () => {
                 confirmAction = confirm("Are you sure you want to remove this task?");
                 if (confirmAction) {
                     this.parentElement.remove();
+                    for (let i = 0; i < arrayOfTasks.length; i++) {
+                        if (arrayOfTasks[i].id == paragraphId.innerText) {
+                            arrayOfTasks.splice(i, 1);
+                        };
+                    }
+
                 }
             })
 
             listOfTasks.appendChild(li);
-            console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
+            //console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
             setColor(li);
             getPriority(li);
-            arrayOfTasks.push(li);
+            counter = 0;
+
+            let test = {
+                element: li,
+                time: [],
+                id: number
+            }
+            // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
+            arrayOfTasks.push(test);
+
+            test.time.push(parseInt(taskDuration.value));
+            suma = arrayOfTasks.flatMap(parameter => parameter.time).reduce((sum, current) => sum + current, 0);
+            console.log(suma);
 
 
         } else {
             alert("You need to specify a title, priority and pace for the task before addint it to the tasks list.")
         }
 
-        console.log(arrayOfTasks);
+        // for (i = 0; i < arrayOfTasks.length; i++) {
+
+        // }
+
+        //let sum2 = 0;
+        // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
+        //     let helper = `${arrayOfDurationInputValues[i].time}`;
+        //     sum2 += arrayOfDurationInputValues[i];
+        // }
+        // console.log(sum2);
+
+        // const sum3 = arrayOfDurationInputValues.reduce((partialSum, a) => partialSum + a, 0);
+        // console.log(sum3);
+        time = String(suma);
+        timerElement.innerText = `${time.padStart(2, 0)} : 00`;
+        time = time * 60;
+        startButton.addEventListener("click", startTimer);
+
+        //console.log(arrayOfTasks);
         resetTaskInputs();
+
 
     } else alert("You can't have more than 5 tasks at a time!");
 });
@@ -990,7 +1099,6 @@ let clearHelper = clearTaskButton.addEventListener("click", function () {
     let confirmAction;
     if (!listOfTasks.innerHTML.trim() == "") {
         confirmAction = confirm("Are you sure you want to clear the tasks list?");
-        console.log("wrong");
         if (confirmAction) {
             listOfTasks.innerHTML = "";
             console.log("List successfully deleted");
@@ -999,6 +1107,7 @@ let clearHelper = clearTaskButton.addEventListener("click", function () {
     }
     else console.log("The list is already empty.");
 })
+
 
 
 // function validateInputs() {

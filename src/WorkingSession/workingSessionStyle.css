@@ -293,15 +293,12 @@
     /* bottom: 0; */
 }
 
-
 /* optional color : linear-gradient(to top left, #28b487, #7dd56f) */
 
 #sessionMain {
     height: 100%;
-}
-
-#sessionMain {
     color: (var)--clr-neutral-200;
+    
 }
 
 select {
@@ -423,6 +420,8 @@ ol {
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
+    width: fit-content;
+    block-size: fit-content;
 }
 
 .listOfTasksDiv {
@@ -690,6 +689,7 @@ input {
 .showNoteButton {
     position: absolute;
     bottom: 1vh;
+    cursor: pointer;
 }
 
 
@@ -700,11 +700,13 @@ input {
     border: 0;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 10rem;
-    background-color: rgba(255, 255, 255, 0.5)
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
 }
 
 .removeTaskButton:hover {
     transform: scale(1.1);
+}
 
 input {
     border: 1px solid grey;
