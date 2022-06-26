@@ -636,6 +636,8 @@ if (!sessionModals.classList.contains("hidden")) {
 sessionCardButtonSetting.addEventListener("click", () => {
     sessionModals.classList.remove("hidden");
     overlayDiv.classList.remove("hidden");
+    shortBreakDiv.style.display = "none";
+    longBreakDiv.style.display = "none";
     sessionCardButtonSetting.style.backgroundColor = "rgba(0, 0, 0, 0.193)";
     cardContainer.style.backgroundColor = "white";
     sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
@@ -795,7 +797,7 @@ sessionCardButtonTimer.addEventListener("click", () => {
 
 settingsButton.addEventListener("click", () => {
     settingsDiv.classList.remove("hidden");
-    overlayDiv.classList.add("hidden");
+    overlayDiv.classList.remove("hidden");
     sessionModals.classList.add("hidden");
     resetInputValuesForTimer();
 });
@@ -879,56 +881,72 @@ saveTaskButton.addEventListener("click", () => {
     //Add validation that makes sure priority, name, time and pace have values assigned by the user - done
     if (arrayOfTasks.length < 5) {
         const taskInputs = [taskTitle.value, taskDuration.value, taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value];
+        //validateInputs();
 
         if (taskTitle.value && taskDuration.value && taskPriority.options[taskPriority.selectedIndex].value && taskPace.options[taskPace.selectedIndex].value) {
             let li = document.createElement("li");
             li.setAttribute("class", "liOfTasks");
 
-            // let liContent = li.appendChild(document.createElement("div"));
-            // liContent.setAttribute("class", "divInLi");
-            li.innerHTML += `<b>Title</b>: ${taskTitle.value}; <b>Duration</b>: ${taskDuration.value}; <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}; <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value}`;
+            li.innerHTML += `<b>Title</b>: ${taskTitle.value} <br> <b>Duration</b>: ${taskDuration.value} min<br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value} <br>`;
+            if (!textAreaOfTask.value == "") {
+                console.log("hello");
+                let newDiv = document.createElement("div");
+                li.appendChild(newDiv);
+                newDiv.setAttribute("class", "showNoteDiv");
+                newDiv.style.display = "none";
+                newDiv.innerText = `${textAreaOfTask.value}`;
+                let showNoteButton = document.createElement("button");
+                showNoteButton.setAttribute("class", "showNoteButton");
+                showNoteButton.innerText = "See Note";
+                li.appendChild(showNoteButton);
+                showNoteButton.addEventListener("click", function () {
+                    newDiv.style.display = "flex";
+                });
 
-            // liContent.setAttribute("class", "divInLi");
-            // liContent.innerHTML += `<b>Title</b>: ${taskTitle.value}; <b>Duration</b>: ${taskDuration.value}; <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}; <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value}`;
-            // liContent.innerHTML += `<p class="${getPriority()}"><b>Title</b>: ${taskTitle.value}; <b>Duration</b>: ${taskDuration.value}; <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}; <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value}</p>`;
+            }
 
             listOfTasks.appendChild(li);
             console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
             setColor(li);
-            getPriority2(li);
+            getPriority(li);
             arrayOfTasks.push(li);
-            resetTaskInputs();
+
+
+        }
+        else {
+            alert("You need to specify a title, priority and pace for the task before addint it to the tasks list.")
         }
 
         console.log(arrayOfTasks);
+        resetTaskInputs();
 
     }
     else alert("You can't have more than 5 tasks at a time!");
 });
 
-
-function getPriority2(element) {
+// Setting each note window color based on priority
+function getPriority(element) {
     switch (taskPriority.options[taskPriority.selectedIndex].value) {
         case "Low":
-            element.style.backgroundColor = "yellow";
+            element.style.background = "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,208,48,1) 100%)";
             break;
         case "Medium":
-            element.style.backgroundColor = "orange";
+            element.style.background = "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,105,48,1) 100%)";
             break;
         case "High":
-            element.style.background = "linear-gradient(180deg, rgba(225, 250, 137, 0.3029586834733894) 0%, rgba(2, 0, 36, 1) 0%, rgba(215, 248, 145, 1) 0%, rgba(98, 233, 225, 1) 88%)";
+            element.style.background = "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,48,48,1) 100%)";
             break;
     }
 }
 
-// function getPriority() {
-//     switch (taskPriority.options[taskPriority.selectedIndex].value) {
-//         case "Low": return "yellow";
-//         case "Medium": return "orange";
-//         case "High": return "red";
-//     }
-// }
-
+function resetTaskInputs() {
+    taskTitle.value = "";
+    taskPriority.selectedIndex = 0;
+    taskDuration.value = 1;
+    taskPace.selectedIndex = 0;
+    textAreaOfTask.value = "";
+    textAreaOfTask.style.display = "none";
+}
 function setColor(element) {
     if (element.classList.contains("red")) element.style.backgroundColor = "red";
     if (element.classList.contains("yellow")) element.style.backgroundColor = "yellow";
@@ -943,71 +961,32 @@ function Priority(title, priority, color, description, pace) {
     this.pace = pace;
 }
 
-function resetTaskInputs() {
-    taskTitle.value = "";
-    taskPriority.selectedIndex = 0;
-    taskDuration.value = 1;
-    //colorElem.value = "";
-    //description.value = "";
-    taskPace.selectedIndex = 0;
-}
-
-function validateInputs() {
-    if (!titleElem.value) {
-        return false;
-    }
-    if (!priorityElem.value) {
-        return false;
-    }
-    if (!colorElem.value) {
-        return false;
-    }
-    if (!description.value) {
-        return false;
-    }
-    if (!pace.value) {
-        return false;
-    }
-
-    return true;
-}
 
 
-// if (!validateInputs()) {
-//     alert("You must enter all values in the inputs");
-//     return;
+// function validateInputs() {
+//     if (!taskTitle.value) {
+//         return alert("Please enter a task title!");
+//     }
+//     if (taskPriority.selectedIndex == 0) {
+//         return alert("Please choose a task priority!");
+//     }
+//     if (taskPace.selectedIndex == 0) {
+//         return alert("Please choose a pace for the task!");
+//     }
+//     return true;
 // }
-// for (let i = 0; i < sessionCardButtons.length; i++) {
-//     sessionCardButtons[i].addEventListener("click", openModalFunction);
-// };
 
-// addTaskButtona
-// sessionDurationInputds
-// d
-// d
-// d
-// d
-// d
-// d
-// d
-// d
-// d
-// d
-// d
-
-// decodeURI
-// d
-// d
-let hrBorder = document.querySelector("#hr");
-if (startButton.style.display == "flex" ||
-    stopButton.style.display == "flex" ||
-    goToBreak.style.display == "flex") {
-    hrBorder.style.marginTop = "-10vh";
-}
-
-
-// !startShortBreakButton.style.display == "none" ||
+// let hrBorder = document.getElementById("hr");
+// if (!startButton.style.display == "none" ||
+//     !stopButton.style.display == "none" ||
+//     !goToBreak.style.display == "none" ||
+//     !startShortBreakButton.style.display == "none" ||
 //     !stopShortBreakButton.style.display == "none" ||
 //     !startLongBreakButton.style.display == "none" ||
 //     !stopLongBreakButton.style.display == "none" ||
 //     !backToSession.style.display == "none") {
+//     hrBorder.style.marginTop = "0vh";
+// }
+
+
+

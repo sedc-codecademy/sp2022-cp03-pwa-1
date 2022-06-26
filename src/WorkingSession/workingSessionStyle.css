@@ -97,15 +97,33 @@
     cursor: pointer;
 }
 
-#startingTimerValueButton {
-    border-radius: 1rem;
-    cursor: pointer;
-    display: inline-block;
-    margin-left: 35%;
-    margin-top: 25%;
-    border: none;
+#startingTimerValueButton,
+#cancelTimerValueButton {
+    margin: 10px 8px;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: transform .2s
+    border-radius: 1rem;
+    border: none;
+    font-weight: 100;
+    cursor: pointer;
+    transition: transform 0.2;
+    width: 10vh;
+    font-size: 12px;
+    font-weight: 700;
+    color: grey;
+}
+
+#finalizeTimerDiv {
+    display: flex;
+    background-color: lightgrey;
+    justify-content: right;
+    margin-top: 5vh;
+    position: absolute;
+    bottom: 10px;
+    box-sizing: border-box;
+    width: 97%;
+    height: 4rem;
+    border-radius: 1rem;
+    left: 10px;
 }
 
 #startingTimerValueButton:hover {
@@ -316,7 +334,7 @@ select:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgb(165, 178, 233);
     backdrop-filter: blur(3px);
     z-index: 5;
 }
@@ -357,29 +375,6 @@ select:hover {
 
 }
 
-#addTaskBtn {
-    font-size: 2rem;
-    font-weight: 500;
-    padding: 1rem 1rem;
-    /* margin: auto; */
-    border: none;
-    background-color: rgb(202, 88, 88);
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-}
-
-/* .tasksListButtonDiv {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 100 vh;
-    margin-top: 30px;
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-} */
-
 #tasksHeader {
     font-size: 1.2rem;
     font-weight: 600;
@@ -392,16 +387,23 @@ select:hover {
     cursor: pointer;
 }
 
-#clearTasksBtn, #tasksButton {
+#clearTasksBtn, #addTaskBtn {
+    /* margin: 15px 20px; */
     font-size: 1.2rem;
     font-weight: 600;
     padding: 0 10px;
     margin: 0 5px;
     border: none;
-    background-color: #fff;
+    /* background-color: rgba(255, 255, 255, 0); */
     color: #444;
     border-radius: 10rem;
     cursor: pointer;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: transform .2s
+}
+
+#clearTasksBtn:hover , #addTaskBtn:hover{
+    transform: scale(1.03);
 }
 
 ol {
@@ -418,6 +420,7 @@ ol {
 .listOfTasksDiv {
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 
 .listOfTasksDiv li {
@@ -429,15 +432,15 @@ ol {
     flex-basis: 14%;
     padding: 20px;
     /* margin-left: -2vh; */
-    text-align: center;
+    text-align: left;
     min-height: 15rem;
     justify-content: space-evenly;
     border-radius: 4px;
     /* margin-left: 0.5vh;
     margin-right: 0.5vh; */
     color: black;
-    
-    
+    width: 20%;   
+    font-size: 1.2em;
 }
 
 /* #orderedListOfTasks > li {
@@ -457,7 +460,9 @@ ol {
         grid-template-columns: repeat(4, 100px);
         grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 } */
-
+.orderedListOfTasks {
+    width: 100%;
+}
 /* TASK FORM */
 
 .taskFormDiv {
@@ -468,17 +473,32 @@ ol {
     width: 50%;
     background-color: white;
     padding: 3rem;
-    border-radius: 5px;
-    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     z-index: 10;
     height: 50%;
+    border: 2px solid grey;
+}
+
+#taskHeader {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    justify-content: center;
+    
 }
 
 #inputForTaskTitle {
-    border: 0;
+    margin-top: 3rem;
+    position: relative;
+    border: 1px solid gray;
     color: grey;
-    font-size: 24px;
+    font-size: 1.2rem;
     outline: none;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #inputForTimeOfTask {
@@ -492,17 +512,43 @@ ol {
 }
 
 #noteForTaskBtn {
-    margin-top: 10px;
-    height: 15%;
+    margin: 30px 8px;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2;
+    width: 10vh;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: gray;
+    height: 3rem;
 }
-
+#noteForTaskBtn:hover{
+    transform: scale(1.03);
+}
 .upAndDown {
-    height: 3vh;
-    width: 6%;
+    margin: 10px 8px;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2;
+    width: 3vh;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: gray;
 }
 
-#taskText {
+.upAndDown:hover {
+    transform: scale(1.03);
+}
+
+#taskText {    
     display: none;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 1rem;
+    border: none;
 }
 
 
@@ -514,19 +560,32 @@ ol {
     justify-content: right;
     margin-top: 5vh;
     position: absolute;
-    bottom: 0px;
-    /* width: inherit; */
+    bottom: 10px;
+    width: inherit;
     box-sizing: border-box;
-    width: 100%;
+    width: 97%;
     height: 4rem;
-    /* treba da se pozicionira levo-desno kako shto treba, ova so -49px nema da funkcionira isto sekade - staveno e samo provizorno */
-    margin-left: -48px;
-    border-radius: inherit;
+    border-radius: 1rem;
+    left: 10px;
 }
 
 #saveTaskButton,
 #cancelTaskButton {
-    margin: 10px 20px;
+    margin: 10px 8px;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2;
+    width: 10vh;
+    font-size: 12px;
+    font-weight: 700;
+    color: gray;
+}
+
+#saveTaskButton:hover,
+#cancelTaskButton:hover {
+    transform: scale(1.03);
 }
 
 .settingsDiv {
@@ -534,14 +593,14 @@ ol {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
-    background-color: var(--clr-neutral-300);
+    width: 50%;
+    background-color: white;
     padding: 3rem;
-    border-radius: 5px;
+    border-radius: 1rem;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     z-index: 10;
     height: 50%;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    color: white;
+    border: 2px solid grey;
 }
 
 input {
@@ -558,9 +617,7 @@ input {
     padding: 0.3rem;
 }
 
-#startingTimerValueButton {
-    font-size: 32px;
-}
+
 
 .liOfTasks {
     max-width: 100%;
@@ -569,7 +626,8 @@ input {
     padding: 0 auto;
     background-color: white;
     display: inline-block;
-        height: fit-content;
+    height: fit-content;
+    position: relative;
 }
 
 /* 
@@ -591,6 +649,33 @@ div.yellow {
     background-color: yellow;
 }
 
-#hr {
+/* #hr {
     margin-top: 10vh;
+} */
+
+.showNoteDiv {    
+    position: absolute;
+    border: 1px solid black;
+    bottom: 4vh;
+    word-wrap: break-word;
+    background-color: yellow;
+    font-size: 0.9em;
+    margin-right: 1em;
+    /* font-size: 1.2rem; */
+    font-weight: 300;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    background-color: rgba(165, 178, 233);
+    color: rgb(37, 30, 30);
+    border-radius: 10rem;
+    cursor: pointer;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    max-width: 50%;
+}
+
+.showNoteButton{
+    position: absolute;
+    bottom: 1vh;
+    
 }

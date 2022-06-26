@@ -153,21 +153,24 @@
                             <div class="settingsDiv hidden">
 
                                 <label for="starting timer"><b>Insert session duration (minutes):</b></label>
-                                <input id="startingTimerValueInput" type="number" min="1" max="300" step="1" value="0">
+                                <input id="startingTimerValueInput" placeholder="00" type="number" min="1" max="300" step="1" value="0">
                                 </br>
                                 </br>
                                 <label for="starting shortBreak"><b> Insert short break duration (minutes): </b><label>
-                                        <input id="startingShortBreakValueInput" type="number" min="1" max="120"
+                                        <input id="startingShortBreakValueInput" placeholder="00" type="number" min="1" max="120"
                                             step="1" value="0">
                                         </br>
                                         </br>
                                         <label for="starting longBreak"><b> Insert long break duration (minutes):
                                             </b><label>
-                                                <input id="startingLongBreakValueInput" type="number" min="1" max="60"
+                                                <input id="startingLongBreakValueInput" placeholder="00" type="number" min="1" max="60"
                                                     step="1" value="0">
                                                 </br>
                                                 </br>
-                                                <button id="startingTimerValueButton">Confirm</button>
+                                                <div id="finalizeTimerDiv">
+                                                    <button id="cancelTimerValueButton">Cancel</button>
+                                                    <button id="startingTimerValueButton">Confirm</button>
+                                                </div>
 
                             </div>
                             <div class="sessionOverlayDiv hidden"></div>
@@ -199,11 +202,14 @@
                                 
                                 <!-- <div class="tasksListButtonDiv"> -->
                                     <div class="taskFormDiv hidden">
-                                        <input id="inputForTaskTitle" type="text" placeholder="What are you up to?">
+                                        <h3 id = "taskHeader">Add task title:</h3>
+                                        <input id="inputForTaskTitle" maxlength="20" type="text" placeholder="Enter task title...">
                                         <p><b>Est Productivity APP SEDC'22</b></p>
                                         <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
                                         <button id="arrowUp" class="upAndDown">▲</button>
                                         <button id="arrowDown" class="upAndDown">▼</button>
+                                        <br>
+                                        <br>
                                         <label for="priority">Priority:</label>
                                         <select id="priority">
                                             <option value="">---Nothing Selected---</option>
@@ -211,6 +217,9 @@
                                             <option value="Medium">Medium</option>
                                             <option value="Low">Low</option>
                                         </select>
+                                        <br>
+                                        <br>
+                                        <br>
                                         <label for="Pace">Pace:</label>
                                         <select id="pace">
                                             <option value="">---Nothing Selected---</option>
@@ -219,10 +228,11 @@
                                             <option value="Low">Low</option>
                                         </select>
                                         <br>
-                                        <textarea name="Task description" id="taskText" cols="30" rows="3"
+                                        <button id="noteForTaskBtn">+ Add note</button>
+                                        <br>
+                                        <textarea maxlength = "50" name="Task description" id="taskText" cols="30" rows="3"
                                             placeholder="Text description here please"></textarea>
                                         <br>
-                                        <button id="noteForTaskBtn">+ Add note</button>
                                         <div id="finalizeTaskDiv">
                                             <button id="cancelTaskButton">Cancel</button>
                                             <button id="saveTaskButton">Save</button>
