@@ -914,6 +914,18 @@ saveTaskButton.addEventListener("click", () => {
                 });
 
             }
+            let removeTaskButton = document.createElement("button");
+            removeTaskButton.setAttribute("class", "removeTaskButton");
+            removeTaskButton.innerText = "x";
+            li.appendChild(removeTaskButton);
+
+            removeTaskButton.addEventListener("click", function () {
+                let confirmAction;
+                confirmAction = confirm("Are you sure you want to remove this task?");
+                if (confirmAction) {
+                    this.parentElement.remove();
+                }
+            })
 
             listOfTasks.appendChild(li);
             console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
@@ -970,6 +982,23 @@ function Priority(title, priority, color, description, pace) {
     this.pace = pace;
 }
 
+// =================================================================== CLEAR TASKS BUTTON
+
+const clearTaskButton = document.querySelector("#clearTasksBtn");
+
+let clearHelper = clearTaskButton.addEventListener("click", function () {
+    let confirmAction;
+    if (!listOfTasks.innerHTML.trim() == "") {
+        confirmAction = confirm("Are you sure you want to clear the tasks list?");
+        console.log("wrong");
+        if (confirmAction) {
+            listOfTasks.innerHTML = "";
+            console.log("List successfully deleted");
+            console.log(arrayOfTasks);
+        }
+    }
+    else console.log("The list is already empty.");
+})
 
 
 // function validateInputs() {
