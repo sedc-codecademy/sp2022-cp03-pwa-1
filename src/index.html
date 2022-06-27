@@ -290,13 +290,14 @@
                             <button id="deleteReminder" class="reminderBtns">Clear Reminders</button>
                         </div>
                         <div class="AddReminderPopUp ">
+                            <label for="inputForCreatingReminder">Write reminder:</label>
                             <input class="reminderInput" id="inputForCreatingReminder" type="text"
                                 placeholder="Add User Reminder">
-                            <label for="birthdaytime">Enter date:</label>
+                            <label for="inputForSettingDateForTask">Enter date:</label>
                             <input class="reminderInput" id="inputForSettingDateForTask" type="date">
-                            <input class="reminderInput" id="inputForSettingTimeForTask / min" type="number" min="0" step="1" 
-                            value="Add Task Duration">
-                            <br>
+                            <label for="inputForTimeOfReminder">Set time:</label>
+                            <input type="time" id="inputForTimeOfReminder" name="inputForTimeOfReminder"
+                                   min="00:00" max="23:59" required>
                             <label for="priorityRem">Choose priority:</label>
                             <select name="priorityRem" id="priorityRem">
                                 <option value="High">High</option>

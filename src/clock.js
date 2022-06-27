@@ -1,29 +1,58 @@
-const clockContainer = document.querySelector(".js-clock");
-const clockTitle = clockContainer.querySelector("h1");
-const reminderBtn = document.querySelector("#reminderBtn");
-const clearBtn = document.querySelector('#deleteReminder');
-const reminderWrapper = document.querySelector('#remindersWrapper');
-const RemindersTable = document.querySelector(`#remindersTableId`);
+let clockContainer = document.querySelector(".js-clock");
+let clockTitle = clockContainer.querySelector("h1");
+let reminderBtn = document.querySelector("#reminderBtn");
+let clearBtn = document.querySelector('#deleteReminder');
+let reminderWrapper = document.querySelector('#remindersWrapper');
+let remindersTable = document.querySelector(`#remindersTableId`);
+let reminderName = document.querySelector(`#inputForCreatingReminder`);
+let reminderDate = document.querySelector('#inputForSettingDateForTask');
+let reminderTime = document.querySelector('#inputForTimeOfReminder');
+let reminderPriority = document.querySelector('#priorityRem');
+
+let inputReminderName = 0;
+let inputReminderDate = 0;
+let inputReminderTime = 0;
+let inputReminderPriority = 0;
 
 reminderBtn.addEventListener("click", function() {
-    gettingReminderText()
+    gettingAllReminders();
+    renderTable(remindersTable);
 });
+
 clearBtn.addEventListener("click", ClearReminders);
 
-//function for getting the name of reminder
-function gettingReminderText(elem) {
+//function for getting inputs for reminder
+function gettingReminderInput(elem) {
     console.log(elem.value)
 return elem.value;
 }
 
-getting
+//function for getting all inputs for reminder
+function gettingAllReminders() {
+    inputReminderName = gettingReminderInput(reminderName);
+    inputReminderDate = gettingReminderInput(reminderDate);
+    inputReminderTime = gettingReminderInput(reminderTime);
+    inputReminderPriority = gettingReminderInput(reminderPriority);
+}
 
-//function for getting date of reminder
+//function for deleting all reminders
+function ClearAllReminders(elem) {
+    elem.innerHTML = "";
+}
 
 
+//function for rendering the table of reminders
+function renderTable(elem) {
+    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Duration</th><th>Priority</th></tr><tr>';
+    table += '<td>1</td>'
+    table += `<td>${inputReminderName}</td>`
+    table += `<td>${inputReminderDate}</td>`
+    table += `<td>${inputReminderTime}</td>`
+    table += `<td>${inputReminderPriority}</td>`
 
-function CreateNewReminder(elem) {
-    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Duration</th><th>Priority</th><tr>';
+    table += `</tr></table>`
+
+    elem.innerHTML = table
 }
 
 

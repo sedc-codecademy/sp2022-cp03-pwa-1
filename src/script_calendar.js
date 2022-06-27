@@ -110,7 +110,6 @@ function renderCalendar(elem, daysInMonthCallback) {
   let daysInMonth = daysInMonthCallback;
   let EmptySpacesNum = getDay(firstDay);
   let totalTds = daysInMonth + EmptySpacesNum
-  console.log(totalTds);
 
 for (let i = 0; i < getDay(firstDay); i++) {
       table += '<td></td>';
