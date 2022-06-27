@@ -378,15 +378,15 @@ cancelTimeInput.addEventListener("click", function() {
 
 // TIMER VALUES
 // FOR SESSION TIMER
-confirmSessionDurationButton.addEventListener("click", () => {
-    time = sessionDurationInput.value;
-    timerElement.innerText = `${time.padStart(2, 0)} : 00`;
-    time = time * 60;
-    settingsDiv.classList.add("hidden");
+// confirmSessionDurationButton.addEventListener("click", () => {
+//     time = sessionDurationInput.value;
+//     timerElement.innerText = `${time.padStart(2, 0)} : 00`;
+//     time = time * 60;
+//     settingsDiv.classList.add("hidden");
 
-    closeModalFunction();
-    startButton.addEventListener("click", startTimer);
-});
+//     closeModalFunction();
+//     startButton.addEventListener("click", startTimer);
+// });
 // FOR SHORT BREAK SESSION
 confirmSessionDurationButton.addEventListener("click", () => {
     shortBreakTime = shortBreakDurationInput.value;
@@ -403,9 +403,9 @@ confirmSessionDurationButton.addEventListener("click", () => {
     longBreakDiv.innerText = `${longBreakTime.padStart(2, 0)} : 00`;
     longBreakTime = longBreakTime * 60;
     settingsDiv.classList.add("hidden");
-    if (sessionDurationInput.value < 1) {
-        stopTimer();
-    }
+    // if (sessionDurationInput.value < 1) {
+    //     stopTimer();
+    // }
     if (shortBreakDurationInput.value < 1) {
         stopTimer();
     }
