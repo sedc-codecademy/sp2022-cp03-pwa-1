@@ -59,6 +59,7 @@ const stopLongBreakButton = document.querySelector("#stopLongBreakSessionBtn");
 const goToBreak = document.querySelector("#goToBreak");
 const backToSession = document.querySelector("#backToSession");
 const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
+const taskButtonsDiv = document.querySelector("#taskButtons");
 
 // Dialog for Short & Long Break options
 
@@ -646,8 +647,8 @@ sessionCardButtonSetting.addEventListener("click", () => {
     overlayDiv.classList.remove("hidden");
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
-    sessionCardButtonSetting.style.backgroundColor = "rgba(0, 0, 0, 0.193)";
-    cardContainer.style.backgroundColor = "white";
+    timerElement.style.display = "flex";
+    // cardContainer.style.backgroundColor = "white";
     sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
     sessionCardButtonShortBreak.style.backgroundColor = "transparent";
     sessionCardButtonTimer.style.backgroundColor = "transparent";
@@ -655,6 +656,8 @@ sessionCardButtonSetting.addEventListener("click", () => {
     sessionCardButtonsLongBreak.style.color = "#444";
     sessionCardButtonShortBreak.style.color = "#444";
     body.style.backgroundColor = "rgb(165, 178, 233)";
+    taskForm.style.background = "linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(165,178,233,1) 0%, rgba(234,236,237,1) 100%)";
     if (!time || timerElement.innerContent == "Your time is up!") {
         startButton.style.display = "none";
         stopButton.style.display = "none";
@@ -679,6 +682,8 @@ sessionCardButtonSetting.addEventListener("click", () => {
 shortBreakDiv.style.display = "none";
 
 sessionCardButtonShortBreak.addEventListener("click", () => {
+    taskForm.style.background = "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(89,143,148,1) 100%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(89,143,148,1) 0%, rgba(234,236,237,1) 100%)";
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     shortBreakDiv.classList.remove("hidden");
@@ -723,6 +728,8 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
 longBreakDiv.style.display = "none";
 
 sessionCardButtonsLongBreak.addEventListener("click", () => {
+    taskForm.style.background = "linear-gradient(180deg, rgba(236,238,241,1) 0%, rgba(80,121,161,1) 75%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(80,121,161,1) 0%, rgba(234,236,237,1) 100%)";
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     longBreakDiv.classList.remove("hidden");
@@ -774,6 +781,8 @@ sessionCardButtonTimer.addEventListener("click", () => {
     longBreakDiv.style.display = "none";
     body.style.backgroundColor = "rgb(165, 178, 233)";
     sessionCardButtonTimer.style.backgroundColor = "rgb(165, 178, 233)";
+    taskForm.style.background = "linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(165,178,233,1) 0%, rgba(234,236,237,1) 100%)";
     sessionCardButtonTimer.style.color = "white";
     sessionCardButtonShortBreak.style.backgroundColor = "transparent";
     sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
@@ -793,6 +802,7 @@ sessionCardButtonTimer.addEventListener("click", () => {
     } else {
         startButton.style.display = "flex";
         stopButton.style.display = "flex";
+
         if (shortBreakTime < 1 || longBreakTime < 1) {
             goToBreak.style.display = "none";
         } else {
@@ -815,6 +825,7 @@ addTaskButton.addEventListener("click", () => {
     taskForm.classList.remove("hidden");
     overlayDiv.classList.remove("hidden");
     addNoteButton.style.display = "flex";
+
 });
 
 //Arrows up and down
@@ -922,6 +933,9 @@ let suma;
 
 
 saveTaskButton.addEventListener("click", () => {
+    startButton.style.display = "flex";
+    stopButton.style.display = "flex";
+    goToBreak.style.display = "flex";
 
     //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
     //close the AddTasks form upon clicking Save and return all values to empty - done
@@ -951,12 +965,15 @@ saveTaskButton.addEventListener("click", () => {
                 console.log("hello");
                 let newDiv = document.createElement("div");
                 li.appendChild(newDiv);
+
                 newDiv.setAttribute("class", "showNoteDiv");
                 newDiv.style.display = "none";
                 newDiv.innerText = `${textAreaOfTask.value}`;
                 let showNoteButton = document.createElement("button");
                 showNoteButton.setAttribute("class", "showNoteButton");
                 showNoteButton.innerText = "Show note";
+
+
 
 
 

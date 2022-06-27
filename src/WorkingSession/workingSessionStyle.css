@@ -99,20 +99,26 @@
 
 #startingTimerValueButton,
 #cancelTimerValueButton {
-    margin: 10px 8px;
+    /* margin: 10px 8px; */
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 1rem;
     border: none;
-    font-weight: 100;
     cursor: pointer;
     transition: transform 0.2;
     width: 10vh;
+    height: 4vh;
     font-size: 12px;
     font-weight: 700;
-    color: grey;
+    color: gray;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    margin: 40px;
+    margin-bottom: -50px;
 }
 
-#finalizeTimerDiv {
+
+/* #finalizeTimerDiv {
     display: flex;
     background-color: lightgrey;
     justify-content: right;
@@ -131,9 +137,10 @@
     border-left: 2px solid grey;
     border-right: 2px solid grey;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
+} */
 
-#startingTimerValueButton:hover {
+#startingTimerValueButton:hover,
+#cancelTimerValueButton:hover {
     transform: scale(1.03)
 }
 
@@ -145,6 +152,12 @@
     transition: transform .2s;
     cursor: pointer;
     display: inline-block;
+    width: 5rem;
+    height: 2rem;
+    width: 100px;
+    margin-left: 10px;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 #cancelBtn:hover,
@@ -209,10 +222,14 @@
 #favDialog {
     border-radius: 1rem;
     border: none;
-    background-color: var(--clr-neutral-300);
+    /* background: rgb(148, 160, 209); */
+    background: radial-gradient(circle, rgba(234, 236, 237, 1) 0%, rgba(148, 160, 209, 1) 100%);
     color: var(--clr-neutral-100);
     font-size: 1rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-top: 19rem;
+    height: 8.2rem;
+    width: 15rem;
 }
 
 #stopSessionBtn,
@@ -307,6 +324,7 @@ select {
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     transition: transform .2s;
     cursor: pointer;
+    height: 25px;
 }
 
 select:hover {
@@ -339,7 +357,7 @@ select:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(165, 178, 233);
+    /* background-color: rgb(165, 178, 233); */
     backdrop-filter: blur(3px);
     z-index: 5;
 }
@@ -377,10 +395,13 @@ select:hover {
     justify-content: space-between;
     align-items: center;
     height: fit-content;
-    border: 1px solid rgba(113, 113, 113, 0.62);
+    /* border: 0.5px solid rgba(113, 113, 113, 0.62); */
     padding: 5px;
     border-radius: 2rem;
+    height: 2rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background: rgb(165, 178, 233);
+    background: radial-gradient(circle, rgba(165, 178, 233, 1) 0%, rgba(234, 236, 237, 1) 100%);
 }
 
 #tasksHeader {
@@ -488,22 +509,25 @@ ol {
     left: 50%;
     transform: translate(-50%, -50%);
     /* width: 50%; */
-    background-color: white;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%);
     padding: 3rem;
     border-radius: 1rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     z-index: 10;
     height: 70%;
-    border: 2px solid grey;
+    /* border: 2px solid grey; */
     width: fit-content;
     block-size: fit-content;
+    color: rgb(51, 51, 51);
+    ;
 }
 
 #taskHeader {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    color: black;
+    color: rgb(51, 51, 51);
     justify-content: center;
     margin-top: -1rem;
 }
@@ -521,13 +545,18 @@ ol {
 }
 
 #inputForTimeOfTask {
-    background-color: lightgrey;
+    /* margin: 15px 20px; */
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 5px;
     border: none;
-    outline: none;
-    width: 20%;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px 0px;
+    /* background-color: rgba(255, 255, 255, 0); */
+    color: #444;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    transition: transform .2s
 }
 
 #inputForTimeOfTask::-webkit-outer-spin-button,
@@ -553,6 +582,8 @@ ol {
     font-weight: 700;
     color: gray;
     height: 1.5rem;
+    /* left: 50%;
+    transform: translateX(-50%); */
 }
 
 #noteForTaskBtn:hover {
@@ -560,36 +591,55 @@ ol {
 }
 
 .upAndDown {
-    margin: 5px 3px;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2;
-    width: 5vh;
-    height: 4vh;
+    /* margin: 15px 20px; */
     font-size: 1.2rem;
-    font-weight: 700;
-    color: gray;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    /* background-color: rgba(255, 255, 255, 0); */
+    color: #444;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    transition: transform .2s;
 }
 
 .upAndDown:hover {
     transform: scale(1.03);
 }
 
+#timerValueContainer {
+    border: 1px solid lightgrey;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 0.5rem;
+    padding: 10px;
+    position: relative;
+    height: 2rem;
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    /* padding-top: 15px;
+    margin-top: -50px; */
+}
+
 #taskText {
     display: none;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 1rem;
-    border: none;
+    border-radius: 0.5rem;
+    max-width: 50vh;
+    max-height: 20vh;
+    padding: 20px;
 }
 
 
 /* Bottom div with buttons for final actions of creating task */
 
-#finalizeTaskDiv {
+
+/* #finalizeTaskDiv {
     display: flex;
-    background-color: lightgrey;
+    background-color: rgb(165, 178, 233);
     justify-content: right;
     margin-top: 5vh;
     position: absolute;
@@ -606,7 +656,7 @@ ol {
     border-left: 2px solid grey;
     border-right: 2px solid grey;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
+} */
 
 #saveTaskButton,
 #cancelTaskButton {
@@ -617,9 +667,12 @@ ol {
     cursor: pointer;
     transition: transform 0.2;
     width: 10vh;
+    height: 4vh;
     font-size: 12px;
     font-weight: 700;
     color: gray;
+    margin-left: 20px;
+    margin-bottom: -20px;
 }
 
 #saveTaskButton:hover,
@@ -633,14 +686,15 @@ ol {
     left: 50%;
     transform: translate(-50%, -50%);
     /* width: 50%; */
-    background-color: white;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%);
     padding: 3rem;
     border-radius: 1rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     z-index: 10;
     height: 40%;
-    border: 2px solid grey;
     width: fit-content;
+    height: fit-content;
     /* block-size: fit-content; */
 }
 
