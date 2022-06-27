@@ -12,7 +12,7 @@ let reminderPriority = document.querySelector('#priorityRem');
 let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
-let inputReminderPriority = 0;
+let inputReminderPriority = 0; 
 
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
