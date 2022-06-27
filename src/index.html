@@ -165,10 +165,10 @@
                                                     min="1" max="60" step="1" value="0">
                                                 </br>
                                                 </br>
-                                                <div id="finalizeTimerDiv">
+                                                <!-- <div id="finalizeTimerDiv"> -->
                                                     <button id="cancelTimerValueButton">Cancel</button>
                                                     <button id="startingTimerValueButton">Confirm</button>
-                                                </div>
+                                                <!-- </div> -->
 
                             </div>
                             <div class="sessionOverlayDiv hidden"></div>
@@ -203,10 +203,12 @@
                                     <h3 id="taskHeader">Add task title:</h3>
                                     <input id="inputForTaskTitle" maxlength="20" type="text"
                                         placeholder="Enter task title...">
-                                    <p><b>Est time of task duration:</b></p>
+                                    <p><b>Est time of task duration (minutes):</b></p>
+                                    <div id="timerValueContainer">
                                     <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
                                     <button id="arrowUp" class="upAndDown">▲</button>
                                     <button id="arrowDown" class="upAndDown">▼</button>
+                                    </div>
                                     <br>
                                     <br>
                                     <label for="priority">Priority:</label>
@@ -231,10 +233,10 @@
                                 <br>
                                 <textarea maxlength="300" name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
                                 <br>
-                                <div id="finalizeTaskDiv">
-                                    <button id="cancelTaskButton">Cancel</button>
-                                    <button id="saveTaskButton">Save</button>
-                                </div>
+                                <!-- <div id="finalizeTaskDiv"> -->
+                                <button id="cancelTaskButton">Cancel</button>
+                                <button id="saveTaskButton">Save</button>
+                                <!-- </div> -->
                             </div>
                             <div class="listOfTasksDiv">
                                 <ol class="orderedListOfTasks">
