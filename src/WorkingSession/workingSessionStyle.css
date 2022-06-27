@@ -293,12 +293,12 @@
     /* bottom: 0; */
 }
 
+
 /* optional color : linear-gradient(to top left, #28b487, #7dd56f) */
 
 #sessionMain {
     height: 100%;
     color: (var)--clr-neutral-200;
-    
 }
 
 select {
@@ -377,6 +377,10 @@ select:hover {
     justify-content: space-between;
     align-items: center;
     height: fit-content;
+    border: 1px solid rgba(113, 113, 113, 0.62);
+    padding: 5px;
+    border-radius: 2rem;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 #tasksHeader {
@@ -432,6 +436,7 @@ ol {
 
 .listOfTasksDiv li {
     /* border: 1px solid black; */
+    position: relative;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 20px;
     max-width: 13vh;
@@ -525,10 +530,21 @@ ol {
     margin: 10px 0px;
 }
 
+#inputForTimeOfTask::-webkit-outer-spin-button,
+#inputForTimeOfTask::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#inputForTimeOfTask[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
 #noteForTaskBtn {
     margin: 30px 8px;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border: none;
     cursor: pointer;
     transition: transform 0.2;
@@ -544,13 +560,14 @@ ol {
 }
 
 .upAndDown {
-    margin: 10px 8px;
+    margin: 5px 3px;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border: none;
     cursor: pointer;
     transition: transform 0.2;
     width: 5vh;
+    height: 4vh;
     font-size: 1.2rem;
     font-weight: 700;
     color: gray;
@@ -579,7 +596,7 @@ ol {
     bottom: 10px;
     width: inherit;
     box-sizing: border-box;
-    width: 100.5%;
+    width: 100.7%;
     height: 4rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -660,40 +677,74 @@ input {
 } */
 
 
-
 /* #hr {
     margin-top: 10vh;
 } */
 
 .showNoteDiv {
     position: absolute;
-    border: 1px solid black;
-    bottom: 4vh;
-    word-wrap: break-word;
-    background-color: yellow;
+    /* border: 3px solid rgb(255, 0, 0); */
+    bottom: -0.3vh;
+    /* background-color: yellow; */
     font-size: 0.9em;
-    margin-right: 1em;
+    margin-left: -1.3rem;
     /* font-size: 1.2rem; */
     font-weight: 300;
     padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    background-color: rgba(165, 178, 233);
+    /* margin: 0 5px; */
+    /* border: none; */
+    background-image: linear-gradient( 0deg, hsl(0deg 3% 70%) 0%, hsl(0deg 3% 73%) 30%, hsl(0deg 3% 76%) 40%, hsl(0deg 3% 79%) 46%, hsl(0deg 3% 82%) 50%, hsl(0deg 3% 85%) 54%, hsl(0deg 3% 88%) 58%, hsl(0deg 3% 91%) 62%, hsl(0deg 3% 94%) 67%, hsl(0deg 3% 97%) 74%, hsl(0deg 0% 100%) 99%);
     color: rgb(37, 30, 30);
-    border-radius: 10rem;
-    cursor: pointer;
+    border-radius: 0.2rem;
+    /* cursor: pointer; */
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    max-width: 50%;
+    min-width: 89%;
+    height: 17.8rem;
+    z-index: 2;
+    word-wrap: break-word;
 }
 
 .showNoteButton {
     position: absolute;
     bottom: 1vh;
     cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
+    display: inline-block;
+    /* box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    transition: transform 0.2;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
+.showNoteButton:hover {
+    transform: scale(1.03);
+}
 
-.removeTaskButton{
+.hideNoteButton {
+    position: absolute;
+    bottom: 1vh;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
+    display: inline-block;
+    /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    transition: transform 0.2;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.hideNoteButton:hover {
+    transform: scale(1.03);
+}
+
+.removeTaskButton {
     position: absolute;
     top: 0.3vh;
     right: 0.3vh;
@@ -711,5 +762,4 @@ input {
 input {
     border: 1px solid grey;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
 }

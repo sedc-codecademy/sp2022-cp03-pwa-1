@@ -73,7 +73,7 @@ const confirmBtn = favDialog.querySelector("#confirmBtn");
 
 //  ResetInputValues
 function resetInputValuesForTimer() {
-    sessionDurationInput.value = "";
+    // sessionDurationInput.value = "";
     shortBreakDurationInput.value = "";
     longBreakDurationInput.value = "";
 }
@@ -369,7 +369,7 @@ if (isNaN(longBreakDiv.innerText)) {
 }
 // Exit from dev of timers set 
 
-cancelTimeInput.addEventListener("click", function () {
+cancelTimeInput.addEventListener("click", function() {
     settingsDiv.classList.add("hidden");
     closeModalFunction();
 })
@@ -460,7 +460,7 @@ confirmSessionDurationButton.addEventListener("click", () => {
 
 // STOP FOR SESSION TIMER
 
-stopButton.addEventListener("click", function () {
+stopButton.addEventListener("click", function() {
     if (!timerIsPaused) clearInterval(timer);
 
     //   pause_game();
@@ -474,7 +474,7 @@ stopButton.addEventListener("click", function () {
 
 // STOP FOR SHORT BREAK TIMER
 
-stopShortBreakButton.addEventListener("click", function () {
+stopShortBreakButton.addEventListener("click", function() {
     if (!shortBreakTimerIsPaused) {
         shortBreakTime = 0;
         // clearInterval(shortBreakTime);
@@ -492,7 +492,7 @@ stopShortBreakButton.addEventListener("click", function () {
 
 // STOP FOR LONG BREAK TIMER
 
-stopLongBreakButton.addEventListener("click", function () {
+stopLongBreakButton.addEventListener("click", function() {
     if (!longBreakTimerIsPaused) {
         longBreakTime = 0;
         // clearInterval(longBreakTimer);
@@ -607,7 +607,7 @@ favDialog.addEventListener("close", function onClose() {
 
 backToSession.style.display = "none";
 
-backToSession.addEventListener("click", function () {
+backToSession.addEventListener("click", function() {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
@@ -632,7 +632,7 @@ shortBreakDiv.addEventListener("click", closeModalFunction);
 
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
-    document.addEventListener("keydown", function (e) {
+    document.addEventListener("keydown", function(e) {
         console.log(e.key);
         if (e.key === "Escape" && !sessionModals.classList.contains("hidden")) {
             closeModalFunction();
@@ -828,9 +828,9 @@ timerDownButton.addEventListener("click", () => {
 
 //Add note in task form button
 if ((textAreaOfTask.style.display = "none")) {
-    addNoteButton.addEventListener("click", function () {
+    addNoteButton.addEventListener("click", function() {
         textAreaOfTask.style.display = "block";
-        addNoteButton.style.display = "none";
+        // addNoteButton.style.display = "none";
     });
 } //ne e funkcionalno kopcheto koga vekje e otvorena textarea za pishuvanje na note, t.e. raboti samo koga ne e otvorena textArea
 
@@ -875,7 +875,7 @@ const taskPriority = document.querySelector("#priority");
 const taskPace = document.querySelector("#pace");
 const cancelTaskButton = document.querySelector("#cancelTaskButton");
 
-cancelTaskButton.addEventListener("click", function () {
+cancelTaskButton.addEventListener("click", function() {
     resetTaskInputs();
     taskForm.classList.add("hidden");
     overlayDiv.classList.add("hidden");
@@ -922,6 +922,7 @@ let suma;
 
 
 saveTaskButton.addEventListener("click", () => {
+
     //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
     //close the AddTasks form upon clicking Save and return all values to empty - done
     //Each task in the list should have the added note visible as well as the assigned duration for the task - wtf?
@@ -955,12 +956,26 @@ saveTaskButton.addEventListener("click", () => {
                 newDiv.innerText = `${textAreaOfTask.value}`;
                 let showNoteButton = document.createElement("button");
                 showNoteButton.setAttribute("class", "showNoteButton");
-                showNoteButton.innerText = "See Note";
+                showNoteButton.innerText = "Show note";
+
+
 
                 li.appendChild(showNoteButton);
-                showNoteButton.addEventListener("click", function () {
+                showNoteButton.addEventListener("click", function() {
                     newDiv.style.display = "flex";
+
+
+                    let hideNoteButton = document.createElement("button");
+                    hideNoteButton.setAttribute("class", "hideNoteButton");
+                    hideNoteButton.innerText = "Hide note";
+                    newDiv.appendChild(hideNoteButton);
+
+                    hideNoteButton.addEventListener("click", function() {
+                        newDiv.style.display = "none";
+                    })
                 });
+
+
             }
 
             // arrayOfDurationInputValues.push(taskDuration.value);
@@ -991,7 +1006,7 @@ saveTaskButton.addEventListener("click", () => {
             removeTaskButton.innerText = "x";
             li.appendChild(removeTaskButton);
 
-            removeTaskButton.addEventListener("click", function () {
+            removeTaskButton.addEventListener("click", function() {
                 let confirmAction;
                 confirmAction = confirm("Are you sure you want to remove this task?");
                 if (confirmAction) {
@@ -1012,11 +1027,11 @@ saveTaskButton.addEventListener("click", () => {
             counter = 0;
 
             let test = {
-                element: li,
-                time: [],
-                id: number
-            }
-            // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
+                    element: li,
+                    time: [],
+                    id: number
+                }
+                // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
             arrayOfTasks.push(test);
 
             test.time.push(parseInt(taskDuration.value));
@@ -1095,7 +1110,7 @@ function Priority(title, priority, color, description, pace) {
 
 const clearTaskButton = document.querySelector("#clearTasksBtn");
 
-let clearHelper = clearTaskButton.addEventListener("click", function () {
+let clearHelper = clearTaskButton.addEventListener("click", function() {
     let confirmAction;
     if (!listOfTasks.innerHTML.trim() == "") {
         confirmAction = confirm("Are you sure you want to clear the tasks list?");
@@ -1104,8 +1119,7 @@ let clearHelper = clearTaskButton.addEventListener("click", function () {
             console.log("List successfully deleted");
             console.log(arrayOfTasks);
         }
-    }
-    else console.log("The list is already empty.");
+    } else console.log("The list is already empty.");
 })
 
 
