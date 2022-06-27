@@ -66,13 +66,11 @@
                         <div class="card-body">
                             <div class="dateInfo">
                                 <div class="calendarYear">
-                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span
-                                        id="year"></span>
+                                    <button class="callendarButton" id="prevYearBtn">←</button> Year: <span id="year"></span>
                                     <button class="callendarButton" id="nextYearBtn">→</button>
                                 </div>
                                 <div class="calendarMonth">
-                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span
-                                        id="monthName"></span>
+                                    <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span id="monthName"></span>
                                     <button class="callendarButton" id="nextMonthbtn">→</button>
                                 </div>
                                 <div id="calendarMain"></div>
@@ -147,14 +145,13 @@
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
                                 <h1>SessionPopUpModals</h1>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi
-                                    illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
                             </div>
                             <div class="settingsDiv hidden">
 
-                                <label for="starting timer"><b>Insert session duration (minutes):</b></label>
+                                <!-- <label for="starting timer"><b>Insert session duration (minutes):</b></label>
                                 <input id="startingTimerValueInput" placeholder="00" type="number" min="1" max="300"
-                                    step="1" value="0">
+                                    step="1" value="0"> -->
                                 </br>
                                 </br>
                                 <label for="starting shortBreak"><b> Insert short break duration (minutes): </b><label>
@@ -192,13 +189,13 @@
                                 <button id="stopLongBreakSessionBtn">⏹︎</button>
                             </div>
                             <div id="openSessionDiv"></div>
-                            <hr id="hr">
+                            <!-- <hr id="hr"> -->
                             <div id="taskButtons">
                                 <!-- <h3 id="tasksHeader">Tasks</h3> -->
                                 <button id="addTaskBtn">Add task</button>
                                 <button id="clearTasksBtn">Clear tasks</button>
                             </div>
-                            <hr>
+                            <!-- <hr> -->
                             <div class="taskContainer">
 
                                 <!-- <div class="tasksListButtonDiv"> -->
@@ -206,110 +203,106 @@
                                     <h3 id="taskHeader">Add task title:</h3>
                                     <input id="inputForTaskTitle" maxlength="20" type="text"
                                         placeholder="Enter task title...">
-                                    <p><b>Est Productivity APP SEDC'22</b></p>
+                                    <p><b>Est time of task duration:</b></p>
                                     <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
                                     <button id="arrowUp" class="upAndDown">▲</button>
                                     <button id="arrowDown" class="upAndDown">▼</button>
                                     <br>
                                     <br>
                                     <label for="priority">Priority:</label>
-                                    <select id="priority">
+                                <select id="priority">
                                         <option value="">---Nothing Selected---</option>
                                         <option value="High">High</option>
                                         <option value="Medium">Medium</option>
                                         <option value="Low">Low</option>
                                     </select>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <label for="Pace">Pace:</label>
-                                    <select id="pace">
+                                <br>
+                                <br>
+                                <br>
+                                <label for="Pace">Pace:</label>
+                                <select id="pace">
                                         <option value="">---Nothing Selected---</option>
                                         <option value="High">High</option>
                                         <option value="Medium">Medium</option>
                                         <option value="Low">Low</option>
                                     </select>
-                                    <br>
-                                    <button id="noteForTaskBtn">+ Add note</button>
-                                    <br>
-                                    <textarea maxlength="50" name="Task description" id="taskText" cols="30" rows="3"
-                                        placeholder="Text description here please"></textarea>
-                                    <br>
-                                    <div id="finalizeTaskDiv">
-                                        <button id="cancelTaskButton">Cancel</button>
-                                        <button id="saveTaskButton">Save</button>
-                                    </div>
+                                <br>
+                                <button id="noteForTaskBtn">+ Add note</button>
+                                <br>
+                                <textarea maxlength="300" name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
+                                <br>
+                                <div id="finalizeTaskDiv">
+                                    <button id="cancelTaskButton">Cancel</button>
+                                    <button id="saveTaskButton">Save</button>
                                 </div>
-                                <div class="listOfTasksDiv">
-                                    <ol class="orderedListOfTasks">
-                                    </ol>
-                                </div>
-
-                                <!-- </div> -->
-
+                            </div>
+                            <div class="listOfTasksDiv">
+                                <ol class="orderedListOfTasks">
+                                </ol>
                             </div>
 
-
-                            <!-- <hr> -->
-
+                            <!-- </div> -->
 
                         </div>
 
+
+                        <!-- <hr> -->
+
+
                     </div>
+
                 </div>
-                <div class="swiper-slide">
-                    <div class="card-content">
-                        <h2 class="card-title">HOW TO BE PRODUCTIVE</h2>
-                        <div class="card-body">
-                            <div id="productivity">
-                                <img width="230px" height="150px" src="Pics/rule-of-three.png" alt="ruleOfThree">
-                                <img width="230px" height="150px" src="Pics/deep work.png" alt="deepWork">
-                                <img width="230px" height="150px" src="Pics/time blocking.png" alt="timeBlocking">
-                                <img width="230px" height="150px" src="Pics/two minute rule.png" alt="twoMinuteRule">
-                                <img width="230px" height="150px" src="Pics/single tasking.png" alt="singTaksing">
-                                <img width="230px" height="150px" src="Pics/pareto principal.png" alt="paretoPrinciple">
-                                <img width="230px" height="150px" src="Pics/eat the frog.png" alt="eisenhowerPrinciple">
-                                <img width="230px" height="150px" src="Pics/task batching.png" alt="taskBatching">
-                                <img width="230px" height="150px" src="Pics/dry principle.png" alt="repeatYourself">
-                                <img width="230px" height="150px" src="Pics/productivity journaling.png"
-                                    alt="productivityJournaling">
-                            </div>
-                            <div id="informations"></div>
-                            <button class="go-back-button" id="go-back">Go back</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <h2 class="card-title">REMINDERS</h2>
+            </div>
+            <div class="swiper-slide">
+                <div class="card-content">
+                    <h2 class="card-title">HOW TO BE PRODUCTIVE</h2>
                     <div class="card-body">
-                        <div class="js-clock">
-                            <h1>00:00:00</h1>
+                        <div id="productivity">
+                            <img width="230px" height="150px" src="Pics/rule-of-three.png" alt="ruleOfThree">
+                            <img width="230px" height="150px" src="Pics/deep work.png" alt="deepWork">
+                            <img width="230px" height="150px" src="Pics/time blocking.png" alt="timeBlocking">
+                            <img width="230px" height="150px" src="Pics/two minute rule.png" alt="twoMinuteRule">
+                            <img width="230px" height="150px" src="Pics/single tasking.png" alt="singTaksing">
+                            <img width="230px" height="150px" src="Pics/pareto principal.png" alt="paretoPrinciple">
+                            <img width="230px" height="150px" src="Pics/eat the frog.png" alt="eisenhowerPrinciple">
+                            <img width="230px" height="150px" src="Pics/task batching.png" alt="taskBatching">
+                            <img width="230px" height="150px" src="Pics/dry principle.png" alt="repeatYourself">
+                            <img width="230px" height="150px" src="Pics/productivity journaling.png" alt="productivityJournaling">
                         </div>
-                        <div class="reminderBtnsDiv">
-                            <button class="reminderBtns" id="reminderBtn">Create New Reminder</button>
-                            <button id="deleteReminder" class="reminderBtns">Clear Reminders</button>
-                        </div>
-                        <div class="AddReminderPopUp ">
-                            <label for="inputForCreatingReminder">Write reminder:</label>
-                            <input class="reminderInput" id="inputForCreatingReminder" type="text"
-                                placeholder="Add User Reminder">
-                            <label for="inputForSettingDateForTask">Enter date:</label>
-                            <input class="reminderInput" id="inputForSettingDateForTask" type="date">
-                            <label for="inputForTimeOfReminder">Set time:</label>
-                            <input type="time" id="inputForTimeOfReminder" name="inputForTimeOfReminder"
-                                   min="00:00" max="23:59" required>
-                            <label for="priorityRem">Choose priority:</label>
-                            <select name="priorityRem" id="priorityRem">
+                        <div id="informations"></div>
+                        <button class="go-back-button" id="go-back">Go back</button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <h2 class="card-title">REMINDERS</h2>
+                <div class="card-body">
+                    <div class="js-clock">
+                        <h1>00:00:00</h1>
+                    </div>
+                    <div class="reminderBtnsDiv">
+                        <button class="reminderBtns" id="reminderBtn">Create New Reminder</button>
+                        <button id="deleteReminder" class="reminderBtns">Clear Reminders</button>
+                    </div>
+                    <div class="AddReminderPopUp ">
+                        <label for="inputForCreatingReminder">Write reminder:</label>
+                        <input class="reminderInput" id="inputForCreatingReminder" type="text" placeholder="Add User Reminder">
+                        <label for="inputForSettingDateForTask">Enter date:</label>
+                        <input class="reminderInput" id="inputForSettingDateForTask" type="date">
+                        <label for="inputForTimeOfReminder">Set time:</label>
+                        <input type="time" id="inputForTimeOfReminder" name="inputForTimeOfReminder" min="00:00" max="23:59" required>
+                        <label for="priorityRem">Choose priority:</label>
+                        <select name="priorityRem" id="priorityRem">
                                 <option value="High">High</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Low">Low</option>
                             </select>
-                        </div>
-                        <div class="js-clock" id="savedReminders">Saved Reminders:</div>
-                        <div class="remindersTable" id="remindersTableId"></div>
                     </div>
+                    <div class="js-clock" id="savedReminders">Saved Reminders:</div>
+                    <div class="remindersTable" id="remindersTableId"></div>
                 </div>
             </div>
+        </div>
         </div>
         </div>
         <!-- Pagination A.K.A. The navigation-bar-->
