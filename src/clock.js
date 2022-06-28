@@ -12,7 +12,7 @@ let reminderPriority = document.querySelector('#priorityRem');
 let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
-let inputReminderPriority = 0;
+let inputReminderPriority = 0; 
 
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
@@ -43,7 +43,7 @@ function ClearAllReminders(elem) {
 
 //function for rendering the table of reminders
 function renderTable(elem) {
-    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Duration</th><th>Priority</th></tr><tr>';
+    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Time</th><th>Priority</th></tr><tr>';
     table += '<td>1</td>'
     table += `<td>${inputReminderName}</td>`
     table += `<td>${inputReminderDate}</td>`

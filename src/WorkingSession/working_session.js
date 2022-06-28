@@ -58,6 +58,8 @@ const startLongBreakButton = document.querySelector(
 const stopLongBreakButton = document.querySelector("#stopLongBreakSessionBtn");
 const goToBreak = document.querySelector("#goToBreak");
 const backToSession = document.querySelector("#backToSession");
+const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
+const taskButtonsDiv = document.querySelector("#taskButtons");
 
 // Dialog for Short & Long Break options
 
@@ -72,7 +74,7 @@ const confirmBtn = favDialog.querySelector("#confirmBtn");
 
 //  ResetInputValues
 function resetInputValuesForTimer() {
-    sessionDurationInput.value = "";
+    // sessionDurationInput.value = "";
     shortBreakDurationInput.value = "";
     longBreakDurationInput.value = "";
 }
@@ -366,18 +368,25 @@ if (isNaN(longBreakDiv.innerText)) {
 } else {
     startLongBreakButton.addEventListener("click", startLongBreakTimer);
 }
+// Exit from dev of timers set 
+
+cancelTimeInput.addEventListener("click", function() {
+    settingsDiv.classList.add("hidden");
+    closeModalFunction();
+})
+
 
 // TIMER VALUES
 // FOR SESSION TIMER
-confirmSessionDurationButton.addEventListener("click", () => {
-    time = sessionDurationInput.value;
-    timerElement.innerText = `${time.padStart(2, 0)} : 00`;
-    time = time * 60;
-    settingsDiv.classList.add("hidden");
+// confirmSessionDurationButton.addEventListener("click", () => {
+//     time = sessionDurationInput.value;
+//     timerElement.innerText = `${time.padStart(2, 0)} : 00`;
+//     time = time * 60;
+//     settingsDiv.classList.add("hidden");
 
-    closeModalFunction();
-    startButton.addEventListener("click", startTimer);
-});
+//     closeModalFunction();
+//     startButton.addEventListener("click", startTimer);
+// });
 // FOR SHORT BREAK SESSION
 confirmSessionDurationButton.addEventListener("click", () => {
     shortBreakTime = shortBreakDurationInput.value;
@@ -394,9 +403,9 @@ confirmSessionDurationButton.addEventListener("click", () => {
     longBreakDiv.innerText = `${longBreakTime.padStart(2, 0)} : 00`;
     longBreakTime = longBreakTime * 60;
     settingsDiv.classList.add("hidden");
-    if (sessionDurationInput.value < 1) {
-        stopTimer();
-    }
+    // if (sessionDurationInput.value < 1) {
+    //     stopTimer();
+    // }
     if (shortBreakDurationInput.value < 1) {
         stopTimer();
     }
@@ -452,7 +461,7 @@ confirmSessionDurationButton.addEventListener("click", () => {
 
 // STOP FOR SESSION TIMER
 
-stopButton.addEventListener("click", function () {
+stopButton.addEventListener("click", function() {
     if (!timerIsPaused) clearInterval(timer);
 
     //   pause_game();
@@ -466,7 +475,7 @@ stopButton.addEventListener("click", function () {
 
 // STOP FOR SHORT BREAK TIMER
 
-stopShortBreakButton.addEventListener("click", function () {
+stopShortBreakButton.addEventListener("click", function() {
     if (!shortBreakTimerIsPaused) {
         shortBreakTime = 0;
         // clearInterval(shortBreakTime);
@@ -484,7 +493,7 @@ stopShortBreakButton.addEventListener("click", function () {
 
 // STOP FOR LONG BREAK TIMER
 
-stopLongBreakButton.addEventListener("click", function () {
+stopLongBreakButton.addEventListener("click", function() {
     if (!longBreakTimerIsPaused) {
         longBreakTime = 0;
         // clearInterval(longBreakTimer);
@@ -599,7 +608,7 @@ favDialog.addEventListener("close", function onClose() {
 
 backToSession.style.display = "none";
 
-backToSession.addEventListener("click", function () {
+backToSession.addEventListener("click", function() {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
@@ -624,7 +633,7 @@ shortBreakDiv.addEventListener("click", closeModalFunction);
 
 //dodaden uslov za funkcionalnost samo koga modalite se open
 if (!sessionModals.classList.contains("hidden")) {
-    document.addEventListener("keydown", function (e) {
+    document.addEventListener("keydown", function(e) {
         console.log(e.key);
         if (e.key === "Escape" && !sessionModals.classList.contains("hidden")) {
             closeModalFunction();
@@ -638,8 +647,8 @@ sessionCardButtonSetting.addEventListener("click", () => {
     overlayDiv.classList.remove("hidden");
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
-    sessionCardButtonSetting.style.backgroundColor = "rgba(0, 0, 0, 0.193)";
-    cardContainer.style.backgroundColor = "white";
+    timerElement.style.display = "flex";
+    // cardContainer.style.backgroundColor = "white";
     sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
     sessionCardButtonShortBreak.style.backgroundColor = "transparent";
     sessionCardButtonTimer.style.backgroundColor = "transparent";
@@ -647,6 +656,8 @@ sessionCardButtonSetting.addEventListener("click", () => {
     sessionCardButtonsLongBreak.style.color = "#444";
     sessionCardButtonShortBreak.style.color = "#444";
     body.style.backgroundColor = "rgb(165, 178, 233)";
+    taskForm.style.background = "linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(165,178,233,1) 0%, rgba(234,236,237,1) 100%)";
     if (!time || timerElement.innerContent == "Your time is up!") {
         startButton.style.display = "none";
         stopButton.style.display = "none";
@@ -671,6 +682,8 @@ sessionCardButtonSetting.addEventListener("click", () => {
 shortBreakDiv.style.display = "none";
 
 sessionCardButtonShortBreak.addEventListener("click", () => {
+    taskForm.style.background = "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(89,143,148,1) 100%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(89,143,148,1) 0%, rgba(234,236,237,1) 100%)";
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     shortBreakDiv.classList.remove("hidden");
@@ -715,6 +728,8 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
 longBreakDiv.style.display = "none";
 
 sessionCardButtonsLongBreak.addEventListener("click", () => {
+    taskForm.style.background = "linear-gradient(180deg, rgba(236,238,241,1) 0%, rgba(80,121,161,1) 75%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(80,121,161,1) 0%, rgba(234,236,237,1) 100%)";
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     longBreakDiv.classList.remove("hidden");
@@ -766,6 +781,8 @@ sessionCardButtonTimer.addEventListener("click", () => {
     longBreakDiv.style.display = "none";
     body.style.backgroundColor = "rgb(165, 178, 233)";
     sessionCardButtonTimer.style.backgroundColor = "rgb(165, 178, 233)";
+    taskForm.style.background = "linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%)";
+    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(165,178,233,1) 0%, rgba(234,236,237,1) 100%)";
     sessionCardButtonTimer.style.color = "white";
     sessionCardButtonShortBreak.style.backgroundColor = "transparent";
     sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
@@ -785,6 +802,7 @@ sessionCardButtonTimer.addEventListener("click", () => {
     } else {
         startButton.style.display = "flex";
         stopButton.style.display = "flex";
+
         if (shortBreakTime < 1 || longBreakTime < 1) {
             goToBreak.style.display = "none";
         } else {
@@ -806,6 +824,8 @@ settingsButton.addEventListener("click", () => {
 addTaskButton.addEventListener("click", () => {
     taskForm.classList.remove("hidden");
     overlayDiv.classList.remove("hidden");
+    addNoteButton.style.display = "flex";
+
 });
 
 //Arrows up and down
@@ -819,8 +839,9 @@ timerDownButton.addEventListener("click", () => {
 
 //Add note in task form button
 if ((textAreaOfTask.style.display = "none")) {
-    addNoteButton.addEventListener("click", function () {
+    addNoteButton.addEventListener("click", function() {
         textAreaOfTask.style.display = "block";
+        // addNoteButton.style.display = "none";
     });
 } //ne e funkcionalno kopcheto koga vekje e otvorena textarea za pishuvanje na note, t.e. raboti samo koga ne e otvorena textArea
 
@@ -865,15 +886,57 @@ const taskPriority = document.querySelector("#priority");
 const taskPace = document.querySelector("#pace");
 const cancelTaskButton = document.querySelector("#cancelTaskButton");
 
-cancelTaskButton.addEventListener("click", function () {
+cancelTaskButton.addEventListener("click", function() {
     resetTaskInputs();
     taskForm.classList.add("hidden");
     overlayDiv.classList.add("hidden");
 })
 
 let arrayOfTasks = [];
+let arrayOfDurationInputValues = [];
+let suma;
+// let arrayOfDurationTimes = [];
+// const sumValues = arrayOfDurationTimes.reduce((partialSum, a) => partialSum + a, 0);
+// console.log(sumValues);
+
+
+
+
+
+
+// const durationInputValues = {
+//     times: [1, "hi", 3, true, 5]
+// };
+
+// const test = [...durationInputValues.times];
+// console.log(test);
+
+// let test = {
+//     element: li,
+//     time: parseInt(taskDuration.value),
+//     id: arrayOfTasks.length + 1
+// }
+
+// const data = [
+//     { type: "foo", id: "123" },
+//     { type: "bar", id: "124" },
+// ]
+// const update = (data, value) => {
+//     console.log('Updating/Inserting', value);
+//     const existingItem = data.find(item => item.id === value.id);
+//     if (existingItem === undefined) {
+//         data.push(value);
+//     } else {
+//         existingItem.type = value.type;
+//     }
+// }
+
 
 saveTaskButton.addEventListener("click", () => {
+    startButton.style.display = "flex";
+    stopButton.style.display = "flex";
+    goToBreak.style.display = "flex";
+
     //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
     //close the AddTasks form upon clicking Save and return all values to empty - done
     //Each task in the list should have the added note visible as well as the assigned duration for the task - wtf?
@@ -884,44 +947,142 @@ saveTaskButton.addEventListener("click", () => {
         //validateInputs();
 
         if (taskTitle.value && taskDuration.value && taskPriority.options[taskPriority.selectedIndex].value && taskPace.options[taskPace.selectedIndex].value) {
+            let number = Math.floor(Math.random() * 100);
+            //console.log(number);
+
             let li = document.createElement("li");
             li.setAttribute("class", "liOfTasks");
 
             li.innerHTML += `<b>Title</b>: ${taskTitle.value} <br> <b>Duration</b>: ${taskDuration.value} min<br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value}<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value} <br>`;
+            let paragraphId = document.createElement("p");
+            paragraphId.setAttribute("class", "idOfCard");
+            paragraphId.innerText = `${number}`;
+            //console.log("hello");
+            paragraphId.style.display = "none";
+            li.appendChild(paragraphId);
+
             if (!textAreaOfTask.value == "") {
                 console.log("hello");
                 let newDiv = document.createElement("div");
                 li.appendChild(newDiv);
+
                 newDiv.setAttribute("class", "showNoteDiv");
                 newDiv.style.display = "none";
                 newDiv.innerText = `${textAreaOfTask.value}`;
                 let showNoteButton = document.createElement("button");
                 showNoteButton.setAttribute("class", "showNoteButton");
-                showNoteButton.innerText = "See Note";
+                showNoteButton.innerText = "Show note";
+
+
+
+
+
                 li.appendChild(showNoteButton);
-                showNoteButton.addEventListener("click", function () {
+                showNoteButton.addEventListener("click", function() {
                     newDiv.style.display = "flex";
+
+
+                    let hideNoteButton = document.createElement("button");
+                    hideNoteButton.setAttribute("class", "hideNoteButton");
+                    hideNoteButton.innerText = "Hide note";
+                    newDiv.appendChild(hideNoteButton);
+
+                    hideNoteButton.addEventListener("click", function() {
+                        newDiv.style.display = "none";
+                    })
                 });
+
 
             }
 
+            // arrayOfDurationInputValues.push(taskDuration.value);
+            // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
+            //     let helper = `${arrayOfDurationInputValues[i].time}`;
+            //     sum2 += helper;
+            // }
+            // console.log(sum2);
+            // for (const value of arrayOfDurationInputValues) {
+            //     sum1 += +value;
+            // }
+
+
+
+            // const sumWithInitial = arrayOfDurationTimes.reduce(
+            //     (previousValue, currentValue) =>
+            //         previousValue + currentValue, 0
+            // );
+            // console.log(sumWithInitial);
+
+
+
+            //     let helper = `${arrayOfDurationInputValues[i].time}`;
+            //     sum2 += helper;
+
+            let removeTaskButton = document.createElement("button");
+            removeTaskButton.setAttribute("class", "removeTaskButton");
+            removeTaskButton.innerText = "x";
+            li.appendChild(removeTaskButton);
+
+            removeTaskButton.addEventListener("click", function() {
+                let confirmAction;
+                confirmAction = confirm("Are you sure you want to remove this task?");
+                if (confirmAction) {
+                    this.parentElement.remove();
+                    for (let i = 0; i < arrayOfTasks.length; i++) {
+                        if (arrayOfTasks[i].id == paragraphId.innerText) {
+                            arrayOfTasks.splice(i, 1);
+                        };
+                    }
+
+                }
+            })
+
             listOfTasks.appendChild(li);
-            console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
+            //console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
             setColor(li);
             getPriority(li);
-            arrayOfTasks.push(li);
+            counter = 0;
+
+            let test = {
+                    element: li,
+                    time: [],
+                    id: number
+                }
+                // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
+            arrayOfTasks.push(test);
+
+            test.time.push(parseInt(taskDuration.value));
+            suma = arrayOfTasks.flatMap(parameter => parameter.time).reduce((sum, current) => sum + current, 0);
+            console.log(suma);
 
 
-        }
-        else {
+        } else {
             alert("You need to specify a title, priority and pace for the task before addint it to the tasks list.")
         }
 
-        console.log(arrayOfTasks);
+        // for (i = 0; i < arrayOfTasks.length; i++) {
+
+        // }
+
+        //let sum2 = 0;
+        // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
+        //     let helper = `${arrayOfDurationInputValues[i].time}`;
+        //     sum2 += arrayOfDurationInputValues[i];
+        // }
+        // console.log(sum2);
+
+        // const sum3 = arrayOfDurationInputValues.reduce((partialSum, a) => partialSum + a, 0);
+        // console.log(sum3);
+        time = String(suma);
+        timerElement.innerText = `${time.padStart(2, 0)} : 00`;
+        time = time * 60;
+        startButton.addEventListener("click", startTimer);
+
+        //console.log(arrayOfTasks);
         resetTaskInputs();
 
-    }
-    else alert("You can't have more than 5 tasks at a time!");
+
+    } else alert("You can't have more than 5 tasks at a time!");
 });
 
 // Setting each note window color based on priority
@@ -947,6 +1108,7 @@ function resetTaskInputs() {
     textAreaOfTask.value = "";
     textAreaOfTask.style.display = "none";
 }
+
 function setColor(element) {
     if (element.classList.contains("red")) element.style.backgroundColor = "red";
     if (element.classList.contains("yellow")) element.style.backgroundColor = "yellow";
@@ -960,6 +1122,22 @@ function Priority(title, priority, color, description, pace) {
     this.description = description;
     this.pace = pace;
 }
+
+// =================================================================== CLEAR TASKS BUTTON
+
+const clearTaskButton = document.querySelector("#clearTasksBtn");
+
+let clearHelper = clearTaskButton.addEventListener("click", function() {
+    let confirmAction;
+    if (!listOfTasks.innerHTML.trim() == "") {
+        confirmAction = confirm("Are you sure you want to clear the tasks list?");
+        if (confirmAction) {
+            listOfTasks.innerHTML = "";
+            console.log("List successfully deleted");
+            console.log(arrayOfTasks);
+        }
+    } else console.log("The list is already empty.");
+})
 
 
 
@@ -987,6 +1165,3 @@ function Priority(title, priority, color, description, pace) {
 //     !backToSession.style.display == "none") {
 //     hrBorder.style.marginTop = "0vh";
 // }
-
-
-
