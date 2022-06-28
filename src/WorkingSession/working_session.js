@@ -416,8 +416,8 @@ confirmSessionDurationButton.addEventListener("click", () => {
     closeModalFunction();
 
     timerElement.style.display = "flex";
-    body.style.backgroundColor = "rgb(165, 178, 233)";
-    sessionCardButtonTimer.style.backgroundColor = "rgb(165, 178, 233)";
+    body.style.background = "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%);";
+    sessionCardButtonTimer.style.backgroundColor = "#2980b9";
     sessionCardButtonTimer.style.color = "white";
     sessionCardButtonSetting.style.color = "#444";
     sessionCardButtonSetting.style.backgroundColor = "transparent";
@@ -577,7 +577,7 @@ favDialog.addEventListener("close", function onClose() {
             timerElement.style.display = "flex";
             shortBreakDiv.style.display = "none";
             longBreakDiv.style.display = "none";
-            body.style.backgroundColor = "rgb(165, 178, 233)";
+            body.style.background = "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
             sessionCardButtonTimer.style.backgroundColor = "rgb(165, 178, 233)";
             sessionCardButtonTimer.style.color = "white";
             sessionCardButtonShortBreak.style.backgroundColor = "transparent";
@@ -612,7 +612,7 @@ backToSession.addEventListener("click", function() {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
-    body.style.backgroundColor = "rgb(165, 178, 233)";
+    body.style.background = "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
     sessionCardButtonTimer.style.backgroundColor = "rgb(165, 178, 233)";
     sessionCardButtonTimer.style.color = "white";
     sessionCardButtonShortBreak.style.color = "#444";
@@ -655,9 +655,10 @@ sessionCardButtonSetting.addEventListener("click", () => {
     sessionCardButtonTimer.style.color = "#444";
     sessionCardButtonsLongBreak.style.color = "#444";
     sessionCardButtonShortBreak.style.color = "#444";
-    body.style.backgroundColor = "rgb(165, 178, 233)";
-    taskForm.style.background = "linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%)";
-    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(165,178,233,1) 0%, rgba(234,236,237,1) 100%)";
+    body.style.background = "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
+    taskForm.style.background = "#2980b9";
+    taskButtonsDiv.style.background = "#2980b9";
+    settingsDiv.style.backgroundImage = "#2980b9";
     if (!time || timerElement.innerContent == "Your time is up!") {
         startButton.style.display = "none";
         stopButton.style.display = "none";
@@ -682,16 +683,16 @@ sessionCardButtonSetting.addEventListener("click", () => {
 shortBreakDiv.style.display = "none";
 
 sessionCardButtonShortBreak.addEventListener("click", () => {
-    taskForm.style.background = "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(89,143,148,1) 100%)";
-    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(89,143,148,1) 0%, rgba(234,236,237,1) 100%)";
+    taskForm.style.background = "#598f94";
+    taskButtonsDiv.style.background = "#598f94";
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     shortBreakDiv.classList.remove("hidden");
     timerElement.style.display = "none";
     longBreakDiv.style.display = "none";
     shortBreakDiv.style.display = "flex";
-    body.style.backgroundColor = "rgb(89, 143, 148)";
-    sessionCardButtonShortBreak.style.backgroundColor = "rgb(89, 143, 148)";
+    body.style.background = " linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
+    sessionCardButtonShortBreak.style.backgroundColor = "#598f94";
     sessionCardButtonShortBreak.style.color = "white";
     sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
     sessionCardButtonTimer.style.backgroundColor = "transparent";
@@ -728,15 +729,15 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
 longBreakDiv.style.display = "none";
 
 sessionCardButtonsLongBreak.addEventListener("click", () => {
-    taskForm.style.background = "linear-gradient(180deg, rgba(236,238,241,1) 0%, rgba(80,121,161,1) 75%)";
-    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(80,121,161,1) 0%, rgba(234,236,237,1) 100%)";
+    taskForm.style.background = "#5079a1";
+    taskButtonsDiv.style.background = "#5079a1";
     sessionModals.classList.add("hidden");
     overlayDiv.classList.add("hidden");
     longBreakDiv.classList.remove("hidden");
     timerElement.style.display = "none";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "flex";
-    body.style.backgroundColor = "rgb(80, 121, 161)";
+    body.style.background = "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)";
     sessionCardButtonsLongBreak.style.backgroundColor = "rgb(80, 121, 161)";
     sessionCardButtonsLongBreak.style.color = "white";
     sessionCardButtonShortBreak.style.backgroundColor = "transparent";
@@ -779,10 +780,10 @@ sessionCardButtonTimer.addEventListener("click", () => {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
-    body.style.backgroundColor = "rgb(165, 178, 233)";
-    sessionCardButtonTimer.style.backgroundColor = "rgb(165, 178, 233)";
-    taskForm.style.background = "linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%)";
-    taskButtonsDiv.style.background = "radial-gradient(circle, rgba(165,178,233,1) 0%, rgba(234,236,237,1) 100%)";
+    body.style.background = "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
+    sessionCardButtonTimer.style.backgroundColor = "#2980b9";
+    taskForm.style.background = "#2980b9";
+    taskButtonsDiv.style.background = "#2980b9";
     sessionCardButtonTimer.style.color = "white";
     sessionCardButtonShortBreak.style.backgroundColor = "transparent";
     sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
