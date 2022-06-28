@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+* {
+    font-family: "Poppins", sans-serif;
+}
+
 #sessionCardButtonsDiv,
 #startButtonDiv {
     display: flex;
@@ -100,45 +105,25 @@
 
 #startingTimerValueButton,
 #cancelTimerValueButton {
-    /* margin: 10px 8px; */
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 5px;
     border: none;
+    color: #444;
+    border-radius: 10rem;
     cursor: pointer;
-    transition: transform 0.2;
-    width: 10vh;
-    height: 4vh;
-    font-size: 12px;
-    font-weight: 700;
-    color: gray;
-    display: inline-block;
-    left: 0;
-    right: 0;
-    margin: 40px;
-    margin-bottom: -50px;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all 300ms ease-in-out;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-
-/* #finalizeTimerDiv {
-    display: flex;
-    background-color: lightgrey;
-    justify-content: right;
-    margin-top: 5vh;
-    position: absolute;
-    bottom: 10px;
-    width: inherit;
-    box-sizing: border-box;
-    width: 100.5%;
-    height: 4rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    left: -1px;
-    margin-bottom: -30px;
-    border-bottom: 2px solid grey;
-    border-left: 2px solid grey;
-    border-right: 2px solid grey;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-} */
+.button_field_2 {
+    position: relative;
+    margin-top: 90px;
+    padding-bottom: 15px;
+}
 
 #startingTimerValueButton:hover,
 #cancelTimerValueButton:hover {
@@ -319,19 +304,6 @@
     color: (var)--clr-neutral-200;
 }
 
-select {
-    border-radius: 0.5rem;
-    border: none;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
-    cursor: pointer;
-    height: 25px;
-}
-
-select:hover {
-    transform: scale(1.03);
-}
-
 
 /* Classes to make popups work HIDDEN */
 
@@ -401,8 +373,7 @@ select:hover {
     border-radius: 2rem;
     height: 2rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    background: rgb(165, 178, 233);
-    background: radial-gradient(circle, rgba(165, 178, 233, 1) 0%, rgba(234, 236, 237, 1) 100%);
+    background: #2980b9;
 }
 
 #tasksHeader {
@@ -510,42 +481,191 @@ ol {
     left: 50%;
     transform: translate(-50%, -50%);
     /* width: 50%; */
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%);
-    padding: 3rem;
+    background: #2980b9;
     border-radius: 1rem;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
     z-index: 10;
     height: 70%;
     /* border: 2px solid grey; */
     width: fit-content;
     block-size: fit-content;
     color: rgb(51, 51, 51);
-    ;
 }
 
-#taskHeader {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgb(51, 51, 51);
-    justify-content: center;
-    margin-top: -1rem;
+.taskFormDiv h3 {
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid white;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
 }
 
-#inputForTaskTitle {
-    margin-top: 1rem;
+.form {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.txt_field {
     position: relative;
-    border: 1px solid gray;
-    color: grey;
-    font-size: 1.2rem;
-    outline: none;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    left: 50%;
-    transform: translateX(-50%);
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
 }
 
-#inputForTimeOfTask {
+.txt_field input {
+    width: 100%;
+    padding: 0 5px;
+    height: 30px;
+    font-size: 14px;
+    border: none;
+    background: none;
+    color: rgb(203, 203, 203);
+    outline: none;
+}
+
+.txt_field label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.txt_field span::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: .5s;
+}
+
+.txt_field input:focus~label,
+.txt_field input:valid~label {
+    top: -5px;
+    color: white;
+}
+
+.txt_field input:focus~span::before,
+.txt_field input:valid~span::before {
+    width: 100%;
+}
+
+.timer_field {
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 30px 0;
+}
+
+.timer_field input {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    color: #444;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* transition: all 300ms ease-in-out; */
+    width: 70px;
+}
+
+.timer_field label {
+    position: absolute;
+    top: -120%;
+    left: 5px;
+    color: #adadad;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.selection_field {
+    position: relative;
+    margin: 30px 0;
+}
+
+.selection_field select {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    color: #444;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* transition: all 300ms ease-in-out; */
+}
+
+.selection_field label {
+    position: absolute;
+    top: -100%;
+    left: 5px;
+    color: #adadad;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.timer_field input::-webkit-outer-spin-button,
+.timer_field input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.timer_field input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+.upAndDown {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    color: #444;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.upAndDown:hover {
+    transform: scale(1.03);
+}
+
+.timer_break_field {
+    position: relative;
+    margin: 30px 0;
+}
+
+.timer_break_field label {
+    position: absolute;
+    top: -60%;
+    left: 5px;
+    color: #adadad;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.timer_break_field input {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 10px;
+    margin: 0 5px;
+    border: none;
+    color: #444;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* transition: all 300ms ease-in-out; */
+    width: 70px;
+}
+
+#saveTaskButton,
+#cancelTaskButton {
     /* margin: 15px 20px; */
     font-size: 1.2rem;
     font-weight: 600;
@@ -554,21 +674,23 @@ ol {
     border: none;
     /* background-color: rgba(255, 255, 255, 0); */
     color: #444;
-    border-radius: 0.5rem;
+    border-radius: 10rem;
     cursor: pointer;
-    /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     transition: all 300ms ease-in-out;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-#inputForTimeOfTask::-webkit-outer-spin-button,
-#inputForTimeOfTask::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.button_field {
+    position: relative;
+    margin-top: 50px;
+    padding-bottom: 15px;
 }
 
-#inputForTimeOfTask[type=number] {
-    -moz-appearance: textfield;
-    /* Firefox */
+#saveTaskButton:hover,
+#cancelTaskButton:hover {
+    transform: scale(1.03);
 }
 
 #noteForTaskBtn {
@@ -591,26 +713,8 @@ ol {
     transform: scale(1.03);
 }
 
-.upAndDown {
-    /* margin: 15px 20px; */
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
-    color: #444;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
-    transition: all 300ms ease-in-out;
-}
 
-.upAndDown:hover {
-    transform: scale(1.03);
-}
-
-#timerValueContainer {
+/* #timerValueContainer {
     border: 1px solid lightgrey;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 0.5rem;
@@ -621,9 +725,9 @@ ol {
     display: flex;
     justify-content: space-between;
     align-items: space-between;
-    /* padding-top: 15px;
-    margin-top: -50px; */
-}
+    padding-top: 15px;
+    margin-top: -50px;
+} */
 
 #taskText {
     display: none;
@@ -637,73 +741,29 @@ ol {
 
 /* Bottom div with buttons for final actions of creating task */
 
-
-/* #finalizeTaskDiv {
-    display: flex;
-    background-color: rgb(165, 178, 233);
-    justify-content: right;
-    margin-top: 5vh;
-    position: absolute;
-    bottom: 10px;
-    width: inherit;
-    box-sizing: border-box;
-    width: 100.7%;
-    height: 4rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    left: -1px;
-    margin-bottom: -30px;
-    border-bottom: 2px solid grey;
-    border-left: 2px solid grey;
-    border-right: 2px solid grey;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-} */
-
-#saveTaskButton,
-#cancelTaskButton {
-    margin: 10px 8px;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    width: 10vh;
-    height: 4vh;
-    font-size: 12px;
-    font-weight: 700;
-    color: gray;
-    margin-left: 20px;
-    margin-bottom: -20px;
-}
-
-#saveTaskButton:hover,
-#cancelTaskButton:hover {
-    transform: scale(1.03);
-}
-
 .settingsDiv {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* width: 50%; */
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(165, 178, 233, 1) 100%);
+    background: #2980b9;
     padding: 3rem;
     border-radius: 1rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     z-index: 10;
     height: 40%;
-    width: fit-content;
-    height: fit-content;
+    /* width: fit-content; */
+    /* height: fit-content; */
     /* block-size: fit-content; */
 }
 
-input {
+
+/* input {
     border-radius: 0.5rem;
     border: none;
     min-width: 60px;
-}
+} */
 
 #startingTimerValueInput,
 #startingShortBreakValueInput,
@@ -817,7 +877,8 @@ input {
     transform: scale(1.1);
 }
 
-input {
+
+/* input {
     border: 1px solid grey;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
+} */
