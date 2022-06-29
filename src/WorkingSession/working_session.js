@@ -29,6 +29,10 @@ const addTaskButton = document.querySelector("#addTaskBtn");
 const taskForm = document.querySelector(".taskFormDiv");
 const timerUpButton = document.querySelector("#arrowUp");
 const timerDownButton = document.querySelector("#arrowDown");
+const shortBreakUpButton = document.querySelector("#arrowUpShortBreak");
+const shortBreakDownButton = document.querySelector("#arrowDownShortBreak");
+const longBreakUpButton = document.querySelector("#arrowUpLongBreak");
+const longBreakDownButton = document.querySelector("#arrowDownLongBreak");
 const addNoteButton = document.querySelector("#noteForTaskBtn");
 const textAreaOfTask = document.querySelector("#taskText");
 const taskTitle = document.querySelector("#inputForTaskTitle");
@@ -60,6 +64,7 @@ const goToBreak = document.querySelector("#goToBreak");
 const backToSession = document.querySelector("#backToSession");
 const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
 const taskButtonsDiv = document.querySelector("#taskButtons");
+
 
 // Dialog for Short & Long Break options
 
@@ -838,6 +843,24 @@ timerDownButton.addEventListener("click", () => {
     timerInput.value > 0 ? timerInput.value-- : (timerInput.value = 0);
 });
 
+shortBreakUpButton.addEventListener("click", () => {
+    shortBreakDurationInput.value++;
+});
+
+shortBreakDownButton.addEventListener("click", () => {
+    shortBreakDurationInput.value > 0 ? shortBreakDurationInput.value-- : (shortBreakDurationInput.value = 0);
+});
+
+longBreakUpButton.addEventListener("click", () => {
+    longBreakDurationInput.value++;
+});
+
+longBreakDownButton.addEventListener("click", () => {
+    longBreakDurationInput.value > 0 ? longBreakDurationInput.value-- : (longBreakDurationInput.value = 0);
+});
+
+
+
 //Add note in task form button
 if ((textAreaOfTask.style.display = "none")) {
     addNoteButton.addEventListener("click", function() {
@@ -974,10 +997,6 @@ saveTaskButton.addEventListener("click", () => {
                 showNoteButton.setAttribute("class", "showNoteButton");
                 showNoteButton.innerText = "Show note";
 
-
-
-
-
                 li.appendChild(showNoteButton);
                 showNoteButton.addEventListener("click", function() {
                     newDiv.style.display = "flex";
@@ -992,6 +1011,22 @@ saveTaskButton.addEventListener("click", () => {
                         newDiv.style.display = "none";
                     })
                 });
+
+
+                // If div note is active change inherit color from active UI
+                sessionCardButtonsLongBreak.addEventListener("click", () => {
+                    newDiv.style.backgroundColor = "#5079a1";
+                });
+                sessionCardButtonShortBreak.addEventListener("click", () => {
+                    newDiv.style.backgroundColor = "#598f94";
+                });
+                sessionCardButtonSetting.addEventListener("click", () => {
+                    newDiv.style.backgroundColor = "#2980b9";
+                });
+                sessionCardButtonTimer.addEventListener("click", () => {
+                    newDiv.style.backgroundColor = "#2980b9";
+                });
+
 
 
             }
