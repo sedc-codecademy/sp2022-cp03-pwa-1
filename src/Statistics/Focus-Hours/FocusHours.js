@@ -96,10 +96,10 @@ const data = {
         label: 'Daily Activity',
         data: datepoints,
         backgroundColor: [
-            'rgba(193,202,240,0.6)',
+            'rgba(41, 128, 185, 0.6)',
         ],
         borderColor: [
-            'rgba(165,178,233,1)'
+            'rgba(69, 68, 173, 1)'
         ],
         borderWidth: 1
     }]
