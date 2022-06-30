@@ -1,903 +1,863 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap");
 * {
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-#sessionCardButtonsDiv,
-#startButtonDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 15px;
-    margin-top: -50px;
-    height: fit-content;
-    /* border: 1px solid; */
-    transition: all 300ms ease-in-out;
+#sessionCardButtonsDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  margin-top: -50px;
+  height: fit-content;
+  /* border: 1px solid; */
+  transition: all 300ms ease-in-out;
 }
 
 .card-body {
-    min-width: 80%;
-    max-height: 22vh;
+  min-width: 80%;
+  max-height: 22vh;
 }
 
 .sessionButtonTimer {
-    /* margin: 15px 20px; */
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
+  /* margin: 15px 20px; */
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
 }
 
 .sessionButtonTimer:hover {
-    transform: scale(1.03)
+  transform: scale(1.03);
 }
 
 .sessionButtonSetting {
-    /* margin: 15px 20px; */
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
+  /* margin: 15px 20px; */
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
 }
 
 .sessionButtonSetting:hover {
-    transform: scale(1.03)
+  transform: scale(1.03);
 }
 
 .sessionButtonShortBreak {
-    /* margin: 15px 20px; */
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
+  /* margin: 15px 20px; */
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
 }
 
 .sessionButtonShortBreak:hover {
-    transform: scale(1.03)
+  transform: scale(1.03);
 }
 
 .sessionButtonLongBreak {
-    /* margin: 15px 20px; */
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
+  /* margin: 15px 20px; */
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
 }
 
 .sessionButtonLongBreak:hover {
-    transform: scale(1.03)
+  transform: scale(1.03);
 }
 
 .sessionButtons,
 #startSessionBtn,
 #startShortBreakSessionBtn,
 #startLongBreakSessionBtn {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #startingTimerValueButton {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
-    margin-left: 50px;
-    margin-right: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 #startingTimerValueButton:hover,
 #cancelTimerValueButton:hover {
-    transform: scale(1.03)
+  transform: scale(1.03);
 }
 
 #cancelTimerValueButton {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
-    margin-left: 50px;
-    margin-right: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 #cancelBtn,
 #confirmBtn {
-    border-radius: 0.9rem;
-    border: none;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
-    cursor: pointer;
-    display: inline-block;
-    width: 5rem;
-    height: 2rem;
-    width: 100px;
-    margin-left: 10px;
-    justify-content: center;
-    margin-top: 30px;
+  border-radius: 0.9rem;
+  border: none;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  display: inline-block;
+  width: 5rem;
+  height: 2rem;
+  width: 100px;
+  margin-left: 10px;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 #cancelBtn:hover,
 #confirmBtn:hover {
-    transform: scale(1.03)
+  transform: scale(1.03);
 }
-
 
 /* Start button  */
 
 #startButtonDiv {
-    padding: 0px;
-    max-width: fit-content;
-    margin: 0 auto;
-    display: grid;
+  padding: 3px;
+  max-width: fit-content;
+  margin: 0 auto;
+  display: grid;
+  margin-bottom: 2rem;
 }
 
 #startSessionBtn,
 #startShortBreakSessionBtn,
 #startLongBreakSessionBtn {
-    font-size: 3rem;
-    font-weight: 600;
-    padding: 0.5rem 1.5rem;
-    /* margin: 5rem 2rem; */
-    border: none;
-    background-color: #fff;
-    color: #444;
-    border-radius: 3rem;
-    cursor: pointer;
-    grid-column: 1;
-    grid-row: 1;
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  /* margin: 5rem 2rem; */
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 3rem;
+  cursor: pointer;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 #goToBreak {
-    font-size: 3rem;
-    font-weight: 600;
-    padding: 0.5rem 1.5rem;
-    /* margin: 5rem 2rem; */
-    border: none;
-    background-color: #fff;
-    color: #444;
-    border-radius: 3rem;
-    cursor: pointer;
-    grid-column: 2;
-    grid-row: 1;
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  /* margin: 5rem 2rem; */
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 3rem;
+  cursor: pointer;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 #backToSession {
-    font-size: 3rem;
-    font-weight: 600;
-    padding: 0.5rem 1.5rem;
-    /* margin: 5rem 2rem; */
-    border: none;
-    background-color: #fff;
-    color: #444;
-    border-radius: 3rem;
-    cursor: pointer;
-    grid-column: 2;
-    grid-row: 1;
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  /* margin: 5rem 2rem; */
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 3rem;
+  cursor: pointer;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 #favDialog {
-    border-radius: 1rem;
-    border: none;
-    /* background: rgb(148, 160, 209); */
-    background: radial-gradient(circle, rgba(234, 236, 237, 1) 0%, rgba(148, 160, 209, 1) 100%);
-    color: var(--clr-neutral-100);
-    font-size: 1rem;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    margin-top: 19rem;
-    height: 8.2rem;
-    width: 15rem;
+  border-radius: 1rem;
+  border: none;
+  /* background: rgb(148, 160, 209); */
+  background: radial-gradient(
+    circle,
+    rgba(234, 236, 237, 1) 0%,
+    rgba(148, 160, 209, 1) 100%
+  );
+  color: var(--clr-neutral-100);
+  font-size: 1rem;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-top: 19rem;
+  height: 8.2rem;
+  width: 15rem;
 }
 
 #stopSessionBtn,
 #stopShortBreakSessionBtn,
 #stopLongBreakSessionBtn {
-    font-size: 3rem;
-    font-weight: 600;
-    padding: 0.5rem 1.5rem;
-    /* margin: 5rem 2rem; */
-    border: none;
-    background-color: #fff;
-    color: #444;
-    border-radius: 3rem;
-    cursor: pointer;
-    grid-column: 1;
-    grid-row: 1;
-    z-index: -1;
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  /* margin: 5rem 2rem; */
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 3rem;
+  cursor: pointer;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: -1;
 }
 
 #timerDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0);
-    max-width: 50%;
-    padding: 30px 50px 10px 50px;
-    height: 50px;
-    max-height: fit-content;
-    font-size: 4rem;
-    color: black;
-    margin-bottom: 30px;
-    /* border: 1px solid; */
-    border-radius: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0);
+  max-width: 50%;
+  padding: 10px 50px 10px 50px;
+  height: 50px;
+  max-height: fit-content;
+  font-size: 4rem;
+  color: black;
+  margin-bottom: 1rem;
+  /* border: 1px solid; */
+  border-radius: 2%;
 }
 
 #shortBreakDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0);
-    max-width: 50%;
-    padding: 30px 50px 10px 50px;
-    height: 50px;
-    max-height: fit-content;
-    font-size: 4rem;
-    color: black;
-    margin-bottom: 30px;
-    /* border: 1px solid; */
-    border-radius: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0);
+  max-width: 50%;
+  padding: 10px 50px 10px 50px;
+  height: 50px;
+  max-height: fit-content;
+  font-size: 4rem;
+  color: black;
+  margin-bottom: 1rem;
+  /* border: 1px solid; */
+  border-radius: 2%;
 }
 
 #longBreakDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0);
-    max-width: 50%;
-    padding: 30px 50px 10px 50px;
-    height: 50px;
-    max-height: fit-content;
-    font-size: 4rem;
-    color: black;
-    margin-bottom: 30px;
-    /* border: 1px solid; */
-    border-radius: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0);
+  max-width: 50%;
+  padding: 10px 50px 10px 50px;
+  height: 50px;
+  max-height: fit-content;
+  font-size: 4rem;
+  color: black;
+  margin-bottom: 1rem;
+  /* border: 1px solid; */
+  border-radius: 2%;
 }
 
 #sessionCardBody {
-    background-color: rgba(255, 255, 255, 0);
-    height: fit-content;
-    /* margin-top: 30px; */
-    margin: auto;
-    width: 50%;
-    padding: 60px;
-    /* bottom: 0; */
+  background-color: rgba(255, 255, 255, 0);
+  height: fit-content;
+  /* margin-top: 30px; */
+  margin: auto;
+  width: 50%;
+  padding: 60px;
+  /* bottom: 0; */
 }
-
 
 /* optional color : linear-gradient(to top left, #28b487, #7dd56f) */
 
 #sessionMain {
-    height: 100%;
-    color: (var)--clr-neutral-200;
+  position: relative;
+  height: 100%;
+  color: (var) --clr-neutral-200;
 }
-
 
 /* Classes to make popups work HIDDEN */
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .sessionPopUpModals {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    background-color: white;
-    padding: 6rem;
-    border-radius: 5px;
-    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-    z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
 }
 
 .sessionOverlayDiv {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgb(165, 178, 233); */
-    backdrop-filter: blur(3px);
-    z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgb(165, 178, 233); */
+  backdrop-filter: blur(3px);
+  z-index: 5;
 }
 
 .closeSessionModals {
-    position: absolute;
-    top: 1.2rem;
-    right: 2rem;
-    font-size: 5rem;
-    color: #333;
-    cursor: pointer;
-    border: none;
-    background: none;
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
-
 
 /* Tasks div */
 
 .taskContainer {
-    display: flex;
-    /* flex-direction: row; */
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-    /* width: 100%; */
-    padding: 0px;
-    left: 50%;
-    right: 50%;
-    transform: translate (-50%, -50%);
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  /* width: 100%; */
+  padding: 0px;
+  left: 50%;
+  right: 50%;
+  transform: translate (-50%, -50%);
 }
 
 #taskButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-    /* border: 0.5px solid rgba(113, 113, 113, 0.62); */
-    padding: 5px;
-    border-radius: 2rem;
-    height: 2rem;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    background: #2980b9;
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  /* border: 0.5px solid rgba(113, 113, 113, 0.62); */
+  padding: 5px;
+  border-radius: 2rem;
+  height: 2rem;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background: #2980b9;
+  width: 89%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #tasksHeader {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    background-color: #fff;
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
 }
 
 #clearTasksBtn,
 #addTaskBtn {
-    /* margin: 15px 20px; */
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
+  /* margin: 15px 20px; */
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
 }
 
 #clearTasksBtn:hover,
 #addTaskBtn:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
+/* TASK CARDS*/
+
 ol {
-    display: flex;
-    flex-wrap: wrap;
-    /* margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 0;
     padding: 0; */
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    block-size: fit-content;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  block-size: fit-content;
 }
 
 .listOfTasksDiv {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+  position: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120%;
+  margin-left: -10vh;
+  margin-right: -10vh;
 }
 
 .listOfTasksDiv li {
-    /* border: 1px solid black; */
-    position: relative;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    margin-top: 20px;
-    max-width: 13vh;
-    list-style-type: none;
-    /* flex-basis: 14%; */
-    padding: 20px;
-    /* margin-left: -2vh; */
-    text-align: left;
-    min-height: 15rem;
-    justify-content: space-evenly;
-    border-radius: 1rem;
-    /* margin-left: 0.5vh;
+  /* border: 1px solid black; */
+  position: relative;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-top: 20px;
+  max-width: 13vh;
+  list-style-type: none;
+  /* flex-basis: 14%; */
+  padding: 20px;
+  /* margin-left: -2vh; */
+  text-align: left;
+  min-height: 15rem;
+  justify-content: space-evenly;
+  border-radius: 1rem;
+  /* margin-left: 0.5vh;
     margin-right: 0.5vh; */
-    color: black;
-    width: 20%;
-    font-size: 1.2em;
+  color: black;
+  min-width: 12%;
+  font-size: 1.2em;
 }
-
-
-/* #orderedListOfTasks > li {
-    cursor: pointer;
-        font-size: 2rem;
-        border: 1px, solid #ffffff;
-        outline: none;
-        background-color: rbga(255, 255, 255, 0.75);
-        display: inline-block;
-} */
-
-
-/* #orderedListOfTasks {
-    display: grid;
-        justify-content: center;
-        align-content: center;
-        min-height: 100vh;
-        grid-template-columns: repeat(4, 100px);
-        grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-} */
 
 .orderedListOfTasks {
-    width: 100%;
-}
-
-
-/* TASK FORM */
-
-.taskFormDiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* width: 50%; */
-    background: #2980b9;
-    border-radius: 1rem;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
-    z-index: 10;
-    height: 70%;
-    /* border: 2px solid grey; */
-    width: fit-content;
-    block-size: fit-content;
-    color: rgb(51, 51, 51);
-}
-
-.taskFormDiv h3 {
-    text-align: center;
-    padding: 0 0 20px 0;
-    border-bottom: 1px solid white;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
-}
-
-.form {
-    padding: 0 40px;
-    box-sizing: border-box;
-}
-
-.txt_field {
-    position: relative;
-    border-bottom: 2px solid #adadad;
-    margin: 30px 0;
-}
-
-.txt_field input {
-    width: 100%;
-    padding: 0 5px;
-    height: 30px;
-    font-size: 14px;
-    border: none;
-    background: none;
-    color: rgb(203, 203, 203);
-    outline: none;
-}
-
-.txt_field label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.txt_field span::before {
-    content: '';
-    position: absolute;
-    top: 30px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: white;
-    transition: .5s;
-}
-
-.txt_field input:focus~label,
-.txt_field input:valid~label {
-    top: -5px;
-    color: white;
-}
-
-.txt_field input:focus~span::before,
-.txt_field input:valid~span::before {
-    width: 100%;
-}
-
-.timer_field {
-    position: relative;
-    margin-top: 50px;
-    margin-bottom: 30px 0;
-}
-
-.timer_field input {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    color: #444;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    /* transition: all 300ms ease-in-out; */
-    width: 70px;
-}
-
-.timer_field label {
-    position: absolute;
-    top: -120%;
-    left: 5px;
-    color: #adadad;
-    font-size: 16px;
-    pointer-events: none;
-}
-
-.selection_field {
-    position: relative;
-    margin: 30px 0;
-}
-
-.selection_field select {
-    font-size: 1rem;
-    font-weight: 400;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    color: #444;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    /* transition: all 300ms ease-in-out; */
-}
-
-.selection_field label {
-    position: absolute;
-    top: -100%;
-    left: 5px;
-    color: #adadad;
-    font-size: 16px;
-    pointer-events: none;
-}
-
-.timer_field input::-webkit-outer-spin-button,
-.timer_field input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.timer_field input[type=number] {
-    -moz-appearance: textfield;
-    /* Firefox */
-}
-
-.upAndDown {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    color: #444;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-}
-
-.upAndDown:hover {
-    transform: scale(1.03);
-}
-
-.timer_break_field {
-    position: relative;
-    margin-top: 10px;
-    margin-bottom: 40px;
-}
-
-.timer_break_field label {
-    position: absolute;
-    top: -80%;
-    left: 5px;
-    color: #adadad;
-    font-size: 16px;
-    pointer-events: none;
-}
-
-.timer_break_field input {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    color: #444;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    width: 100%;
-    height: 20px;
-}
-
-.timer_break_field input::-webkit-outer-spin-button,
-.timer_break_field input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.timer_break_field input[type=number] {
-    -moz-appearance: textfield;
-    /* Firefox */
-}
-
-.button_field_2 {
-    position: absolute;
-    padding-top: 15px;
-    margin-right: 3rem;
-}
-
-.button_field_3 {
-    position: absolute;
-    padding-top: 15px;
-    margin-left: 8rem;
-}
-
-#saveTaskButton,
-#cancelTaskButton {
-    /* margin: 15px 20px; */
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: all 300ms ease-in-out;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.button_field {
-    position: relative;
-    margin-top: 50px;
-    padding-bottom: 15px;
-}
-
-.settingsDiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* width: 50%; */
-    background: #2980b9;
-    padding: 3rem;
-    border-radius: 1rem;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    z-index: 10;
-    width: 20rem;
-    height: 10rem;
-}
-
-#startingShortBreakValueInput,
-#startingLongBreakValueInput {
-    font-size: 24px;
-    width: 10%;
-    padding: 0.3rem;
+  width: 100%;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 
 #saveTaskButton:hover,
 #cancelTaskButton:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 #noteForTaskBtn {
-    margin: 30px 8px;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    width: 16vh;
-    font-size: 1rem;
-    font-weight: 700;
-    color: gray;
-    height: 1.5rem;
-    /* left: 50%;
+  margin: 30px 8px;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  width: 16vh;
+  font-size: 1rem;
+  font-weight: 700;
+  color: gray;
+  height: 1.5rem;
+  /* left: 50%;
     transform: translateX(-50%); */
-    justify-content: center;
+  justify-content: center;
 }
 
 #noteForTaskBtn:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
-
-
-/* #timerValueContainer {
-    border: 1px solid lightgrey;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 0.5rem;
-    padding: 10px;
-    position: relative;
-    height: 2rem;
-    width: 15rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-    padding-top: 15px;
-    margin-top: -50px;
-} */
 
 #taskText {
-    display: none;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 0.5rem;
-    max-width: 50vh;
-    max-height: 20vh;
-    padding: 20px;
+  display: none;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 0.5rem;
+  max-width: 50vh;
+  max-height: 20vh;
+  padding: 20px;
 }
-
-
-/* Bottom div with buttons for final actions of creating task */
 
 .liOfTasks {
-    max-width: 100%;
-    height: fit-content;
-    margin: 10px auto;
-    padding: 0 auto;
-    background-color: white;
-    display: inline-block;
-    height: fit-content;
-    position: relative;
+  max-width: 100%;
+  height: fit-content;
+  margin: 10px auto;
+  padding: 0 auto;
+  background-color: white;
+  display: inline-block;
+  height: fit-content;
+  position: relative;
 }
 
-
-/* 
-.divInLi {
-    display: inline-block;
-    height: fit-content;
-} */
-
-
-/* #hr {
-    margin-top: 10vh;
-} */
-
 .showNoteDiv {
-    position: absolute;
-    font-size: 0.9em;
-    font-weight: 300;
-    background: #2980b9;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    min-width: 85%;
-    min-height: 78%;
-    top: 43px;
-    z-index: 2;
-    word-wrap: break-word;
-    color: white;
-    left: 0;
-    right: 0;
-    padding: 10px;
+  position: absolute;
+  font-size: 0.9em;
+  font-weight: 300;
+  background: #2980b9;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  min-width: 85%;
+  min-height: 75%;
+  top: 50px;
+  z-index: 2;
+  word-wrap: break-word;
+  color: white;
+  left: 0;
+  right: 0;
+  padding: 10px;
 }
 
 .showNoteButton {
-    position: absolute;
-    /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    width: 12vh;
-    font-size: 1rem;
-    font-weight: 700;
-    color: rgb(80, 80, 80);
-    height: 1.5rem;
-    /* left: 50%;
+  position: absolute;
+  /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  width: 12vh;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(80, 80, 80);
+  height: 1.5rem;
+  /* left: 50%;
         transform: translateX(-50%); */
-    justify-content: center;
-    top: 87%;
-    left: 25px;
-    right: 20px;
+  justify-content: center;
+  top: 87%;
+  left: 33px;
+  right: 24px;
 }
 
 .showNoteButton:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 .hideNoteButton {
-    position: absolute;
-    /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    width: 12vh;
-    font-size: 1rem;
-    font-weight: 700;
-    color: rgb(80, 80, 80);
-    height: 1.5rem;
-    /* left: 50%;
+  position: absolute;
+  /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  width: 12vh;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(80, 80, 80);
+  height: 1.5rem;
+  /* left: 50%;
         transform: translateX(-50%); */
-    justify-content: center;
-    top: 85%;
-    left: 25px;
-    right: 20px;
+  justify-content: center;
+  top: 85%;
+  left: 33px;
+  right: 20px;
 }
 
 .hideNoteButton:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 .removeTaskButton {
-    position: absolute;
-    top: 0.3vh;
-    right: 0.3vh;
-    border: 0;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 10rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
+  position: absolute;
+  top: 0.3vh;
+  right: 0.3vh;
+  border: 0;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
 }
 
 .removeTaskButton:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* TASK FORM */
+
+.taskFormDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* width: 50%; */
+  background: #2980b9;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  height: 70%;
+  /* border: 2px solid grey; */
+  width: fit-content;
+  block-size: fit-content;
+  color: rgb(51, 51, 51);
+}
+
+.taskFormDiv h3 {
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid white;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+.form {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.txt_field {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+
+.txt_field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 30px;
+  font-size: 14px;
+  border: none;
+  background: none;
+  color: rgb(203, 203, 203);
+  outline: none;
+}
+
+.txt_field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.txt_field span::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: 0.5s;
+}
+
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+  top: -5px;
+  color: white;
+}
+
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+  width: 100%;
+}
+
+.timer_field {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 30px 0;
+}
+
+.timer_field input {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  color: #444;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  /* transition: all 300ms ease-in-out; */
+  width: 70px;
+}
+
+.timer_field label {
+  position: absolute;
+  top: -120%;
+  left: 5px;
+  color: #adadad;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.selection_field {
+  position: relative;
+  margin: 30px 0;
+}
+
+.selection_field select {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  color: #444;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  /* transition: all 300ms ease-in-out; */
+}
+
+.selection_field label {
+  position: absolute;
+  top: -100%;
+  left: 5px;
+  color: #adadad;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.timer_field input::-webkit-outer-spin-button,
+.timer_field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.timer_field input[type="number"] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+.upAndDown {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  color: #444;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.upAndDown:hover {
+  transform: scale(1.03);
+}
+
+.timer_break_field {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.timer_break_field label {
+  position: absolute;
+  top: -80%;
+  left: 5px;
+  color: #adadad;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.timer_break_field input {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  color: #444;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  height: 20px;
+}
+
+.timer_break_field input::-webkit-outer-spin-button,
+.timer_break_field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.timer_break_field input[type="number"] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+.button_field_2 {
+  position: absolute;
+  padding-top: 15px;
+  margin-right: 3rem;
+}
+
+.button_field_3 {
+  position: absolute;
+  padding-top: 15px;
+  margin-left: 8rem;
+}
+
+#saveTaskButton,
+#cancelTaskButton {
+  /* margin: 15px 20px; */
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: none;
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 300ms ease-in-out;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.button_field {
+  position: relative;
+  margin-top: 50px;
+  padding-bottom: 15px;
+}
+
+.settingsDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* width: 50%; */
+  background: #2980b9;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  z-index: 10;
+  width: 20rem;
+  height: 10rem;
+}
+
+#startingShortBreakValueInput,
+#startingLongBreakValueInput {
+  font-size: 24px;
+  width: 10%;
+  padding: 0.3rem;
 }
