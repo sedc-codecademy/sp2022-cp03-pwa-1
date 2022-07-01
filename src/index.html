@@ -160,7 +160,7 @@
                                         
                                 </div>
                                 <div class="timer_break_field">
-                                    <input id="startingLongBreakValueInput" placeholder="00" type="number" min="1" max="60" step="1" value="0">
+                                    <input  id="startingLongBreakValueInput" placeholder="00" type="number" min="1" max="60" step="1" value="0">
                                     <button id="arrowUpLongBreak" class="upAndDown">▲</button>
                                     <button id="arrowDownLongBreak" class="upAndDown">▼</button>
                                     <label for="starting longBreak">Insert long break duration (minutes):<label>
@@ -171,27 +171,31 @@
                                 </div>
                                 <div class="button_field_3">
                                     
-                                    <button id="startingTimerValueButton">Confirm</button>
+                                    <button class="values" id="startingTimerValueButton">Confirm</button>
                                 </div>
 
                             </div>
                             <div class="sessionOverlayDiv hidden"></div>
-                            <div class="hidden" id="timerDiv">00 : 00</div>
+                            <div class="hidden" id="timerDiv">00:00</div>
                             <div class="hidden" id="shortBreakDiv">00:00</div>
                             <div class="hidden" id="longBreakDiv">00:00</div>
-                            <div id="startButtonDiv">
-
+                            <!-- <button class="goToBreak">⏯︎</button>
+                            <button class="backToSession">⏮︎</button> -->
+                            <!-- <div id="startButtonDiv">
                                 <button id="startSessionBtn">&#x23f5;</button>
                                 <button id="stopSessionBtn">&#x23f8;</button>
-                                <button id="goToBreak">⏯︎</button>
-
+                                
+                            </div>
+                            <div id="startButtonShort">
                                 <button id="startShortBreakSessionBtn">&#x23f5;</button>
                                 <button id="stopShortBreakSessionBtn">⏹︎</button>
-                                <button id="backToSession">⏮︎</button>
-
+                                <button class="backToSession">⏮︎</button>
+                            </div>
+                            <div id="startButtonLong">
                                 <button id="startLongBreakSessionBtn">&#x23f5;</button>
                                 <button id="stopLongBreakSessionBtn">⏹︎</button>
-                            </div>
+                                <button class="backToSession"></button>
+                            </div> -->
                             <div id="openSessionDiv"></div>
                             <!-- <hr id="hr"> -->
                             <div id="taskButtons">
@@ -204,53 +208,44 @@
                                 <div class="taskFormDiv hidden"> <!--center-->
                                     <h3 >Add task</h3>
                                     <div class="form"> <!--post-->
-                                    <div class="txt_field">
-                                        <input id="inputForTaskTitle" maxlength="20" type="text" required >
-                                        <span></span>
-                                        <label>Title</label>
+                                        <div class="txt_field">
+                                            <input id="inputForTaskTitle" maxlength="20" type="text" required>
+                                            <span></span>
+                                            <label>Title</label>
                                 </div>
-
                                 <div class="timer_field">
-
                                     <label>Task time duration (minutes):</label>
                                     <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
                                     <button id="arrowUp" class="upAndDown">▲</button>
                                     <button id="arrowDown" class="upAndDown">▼</button>
                                     <label>Task time duration (minutes):</label>
-
-
-
                                 </div>
                                 <div class="selection_field">
                                     <select id="priority" required>
-                                        <option value="">---Nothing Selected---</option>
-                                        <option value="High">High</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="Low">Low</option>
-                                        </select>
+                                            <option value="">---Nothing Selected---</option>
+                                            <option value="High">High</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Low">Low</option>
+                                            </select>
                                     <!-- <span></span> -->
                                     <label for="priority">Priority:</label>
                                 </div>
                                 <div class="selection_field">
                                     <select id="pace" required>
-                                        <option value="">---Nothing Selected---</option>
-                                        <option value="High">High</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="Low">Low</option>
-                                        </select>
+                                            <option value="">---Nothing Selected---</option>
+                                            <option value="High">High</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Low">Low</option>
+                                            </select>
                                     <!-- <span></span> -->
                                     <label for="Pace">Pace:</label>
                                 </div>
-
                                 <button id="noteForTaskBtn">+ Add note</button>
-
                                 <textarea maxlength="300" name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
-
                                 <div class="button_field">
                                     <button id="cancelTaskButton">Cancel</button>
-                                    <button id="saveTaskButton">Save</button>
+                                    <button class="values" id="saveTaskButton">Save</button>
                                 </div>
-
                             </div>
                         </div>
                         <div class="listOfTasksDiv">
@@ -331,9 +326,10 @@
                             <option value="default">Choose...</option>
                             <option>Short Break</option>
                             <option>Long Break</option>
+                            <option>Session</option>
                         </select>
                     </label></p>
-                <div>
+                <div class="button_field_4">
                     <button id="cancelBtn" value="cancel">Cancel</button>
                     <button id="confirmBtn" value="default">Confirm</button>
                 </div>
