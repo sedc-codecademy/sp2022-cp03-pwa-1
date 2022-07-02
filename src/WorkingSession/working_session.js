@@ -344,16 +344,19 @@ let suma;
 //         existingItem.type = value.type;
 //     }
 // }
-const now = new Date();
-const timeStamp = new Intl.DateTimeFormat("en-GB", {
-    dateStyle: "full",
-    timeStyle: "long",
-}).format(now);
+
 
 
 
 document.querySelectorAll(".values").forEach(item => {
     item.addEventListener("click", function(e) {
+        favDialog.style.background = "#2980b9";
+        // Time Stamp must be inside of event listener so it will print a new time every time it has been called, if its outside it will be fired only once.
+        const now = new Date();
+        const timeStamp = new Intl.DateTimeFormat("en-GB", {
+            dateStyle: "full",
+            timeStyle: "long",
+        }).format(now);
 
         //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
         //close the AddTasks form upon clicking Save and return all values to empty - done
@@ -387,7 +390,9 @@ document.querySelectorAll(".values").forEach(item => {
         taskPriority.options[taskPriority.selectedIndex].value
       }<br> <b>Pace</b>: ${
         taskPace.options[taskPace.selectedIndex].value
-      } <br> <div id="timeStampValue" style="display: none;">${timeStamp}</div>`;
+      } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
+        <br> <div id="timerCard"></div>`;
+
                 let paragraphId = document.createElement("p");
                 paragraphId.setAttribute("class", "idOfCard");
                 paragraphId.innerText = `${number}`;
@@ -399,6 +404,8 @@ document.querySelectorAll(".values").forEach(item => {
                     console.log("hello");
                     let newDiv = document.createElement("div");
                     li.appendChild(newDiv);
+
+
 
                     newDiv.setAttribute("class", "showNoteDiv");
                     newDiv.style.display = "none";
@@ -571,7 +578,7 @@ document.querySelectorAll(".values").forEach(item => {
                                 sessionTimerDRY()
                                 break;
                             default:
-                                sessionTimerDRY()
+
                                 break;
                         }
                     });
@@ -652,18 +659,19 @@ document.querySelectorAll(".values").forEach(item => {
             new Timer(
                 shortBreakDiv,
                 shortBreakDurationInput.value
-
-            )
+            );
 
             new Timer(
                 longBreakDiv,
                 longBreakDurationInput.value
+            );
 
-            )
+            // const timeCard = document.querySelector("#timerCard");
+            //  new Timer(
+            //     timeCard,
+            //     taskDuration.value
+            // )
 
-            new Timer(
-                listOfTasks, +(suma - taskDuration.value)
-            )
 
             //console.log(arrayOfTasks);
             resetTaskInputs();
