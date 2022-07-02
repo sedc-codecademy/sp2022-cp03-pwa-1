@@ -644,7 +644,7 @@ document.querySelectorAll(".values").forEach(item => {
             <span class="timer__part timer__part--seconds">00</span>
             <button type="button" class="timer__btn timer__btn--control timer__btn--start"></button>
             <button type="button" class="timer__btn timer__btn--break">
-				    <span class="material-icons">⏯︎</span>
+				    <span class="fa fa-forward"></span>
 			      </button>
             
             `;
@@ -656,6 +656,7 @@ document.querySelectorAll(".values").forEach(item => {
                 suma,
             );
 
+
             new Timer(
                 shortBreakDiv,
                 shortBreakDurationInput.value
@@ -666,11 +667,11 @@ document.querySelectorAll(".values").forEach(item => {
                 longBreakDurationInput.value
             );
 
-            // const timeCard = document.querySelector("#timerCard");
-            //  new Timer(
-            //     timeCard,
-            //     taskDuration.value
-            // )
+            const timeCard = document.querySelector("#timerCard");
+            new Timer(
+                timeCard,
+                taskDuration.value
+            );
 
 
             //console.log(arrayOfTasks);
