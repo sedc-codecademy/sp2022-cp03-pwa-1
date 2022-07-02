@@ -20,21 +20,26 @@ function updateAccessedDays() {
 
     if (activityDetails.hasValues == false) {
 
-        activityDetails.previuosDate = currentAccessedDate;
+        activityDetails.previousDate = currentAccessedDate;
         activityDetails.countOfDaysAccessed = 1;
         activityDetails.countOfDaysStreak = 1;
         activityDetails.hasValues = true;
 
-    } else if (currentAccessedDate > activityDetails.previuosDate) {
-        const previousDateToCompare = new Date(activityDetails.previuosDate)
+    } else if (currentAccessedDate > activityDetails.previousDate || true) {
+        const previousDateToCompare = new Date(activityDetails.previousDate)
         previousDateToCompare.setDate(previousDateToCompare.getDate() + 1);
         const formatedPreviousDateToCompare = previousDateToCompare.toISOString().slice(0, 10);
         console.log(formatedPreviousDateToCompare);
 
+        
         if (currentAccessedDate == formatedPreviousDateToCompare) {
             activityDetails.countOfDaysStreak++;
         }
-        activityDetails.previuosDate = currentAccessedDate;
+        else {
+            activityDetails.countOfDaysStreak = 1;
+        }
+
+        activityDetails.previousDate = currentAccessedDate;
         activityDetails.countOfDaysAccessed++;
 
     }
