@@ -358,6 +358,24 @@ document.querySelectorAll(".values").forEach(item => {
             timeStyle: "long",
         }).format(now);
 
+        $(document).ready(function() {
+            $('#timer_0').backward_timer({
+                seconds: taskDuration.value * 60
+            })
+
+            $('#start_0').click(function() {
+                $('#timer_0').backward_timer('start')
+            })
+            $('#cancel_0').click(function() {
+                $('#timer_0').backward_timer('cancel')
+            })
+            $('#reset_0').click(function() {
+                $('#timer_0').backward_timer('reset')
+            })
+        })
+
+
+
         //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
         //close the AddTasks form upon clicking Save and return all values to empty - done
         //Each task in the list should have the added note visible as well as the assigned duration for the task - wtf?
@@ -378,6 +396,7 @@ document.querySelectorAll(".values").forEach(item => {
                 taskPriority.options[taskPriority.selectedIndex].value &&
                 taskPace.options[taskPace.selectedIndex].value
             ) {
+
                 settingsButton.style.display = "flex";
                 let number = Math.floor(Math.random() * 100);
                 //console.log(number);
@@ -391,7 +410,12 @@ document.querySelectorAll(".values").forEach(item => {
       }<br> <b>Pace</b>: ${
         taskPace.options[taskPace.selectedIndex].value
       } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
-        <br> <div id="timerCard"></div>`;
+        <br> `;
+
+
+
+
+
 
                 let paragraphId = document.createElement("p");
                 paragraphId.setAttribute("class", "idOfCard");
@@ -406,6 +430,17 @@ document.querySelectorAll(".values").forEach(item => {
                     li.appendChild(newDiv);
 
 
+
+                    //         $("div.showNoteDiv").html(function() {
+                    //             const testDoc = `<div class='timer_block'>
+                    //     <div class='controls'>
+                    //         <a href="javascript:void(0)" class="start_btn" id='start_0'>Start</a>
+                    //         <a href="javascript:void(0)" class="cancel_btn" id='cancel_0'>Cancel</a>
+                    //         <a href="javascript:void(0)" class="reset_btn" id='reset_0'>Reset</a>
+                    //     </div>
+                    //     <span id='timer_0' class='timer'></span>
+                    // </div>`; return "<div></div>";
+                    //         });
 
                     newDiv.setAttribute("class", "showNoteDiv");
                     newDiv.style.display = "none";
@@ -667,11 +702,11 @@ document.querySelectorAll(".values").forEach(item => {
                 longBreakDurationInput.value
             );
 
-            const timeCard = document.querySelector("#timerCard");
-            new Timer(
-                timeCard,
-                taskDuration.value
-            );
+            // const timeCard = document.querySelector("#timerCard");
+            // new Timer(
+            //     timeCard,
+            //     taskDuration.value
+            // );
 
 
             //console.log(arrayOfTasks);

@@ -141,6 +141,15 @@
                                 <button class="sessionButtonTimer" id="timer">Session</button>
                                 <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
                                 <button class="sessionButtonLongBreak" id="longBreak">Long break</button>
+                                <div class='timer_block'>
+                                    <div class='controls'>
+                                        <a href="javascript:void(0)" class="start_btn" id='start_0'>Start</a>
+                                        <a href="javascript:void(0)" class="cancel_btn" id='cancel_0'>Cancel</a>
+                                        <a href="javascript:void(0)" class="reset_btn" id='reset_0'>Reset</a>
+                                    </div>
+                                    <span id='timer_0' class='timer'>value placeholder</span>
+                                </div>
+
                             </div>
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
@@ -179,6 +188,8 @@
                             <div class="hidden" id="timerDiv">00:00</div>
                             <div class="hidden" id="shortBreakDiv">00:00</div>
                             <div class="hidden" id="longBreakDiv">00:00</div>
+                            
+                            
                             
                             <!-- <button class="goToBreak">⏯︎</button>
                             <button class="backToSession">⏮︎</button> -->
@@ -341,6 +352,8 @@
         </div>
 
     </main>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/lib/jquery-backward-timer.min.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
