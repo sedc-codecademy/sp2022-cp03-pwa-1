@@ -49,7 +49,6 @@ const longBreakDurationInput = document.querySelector(
 const shortBreakDiv = document.querySelector("#shortBreakDiv");
 const longBreakDiv = document.querySelector("#longBreakDiv");
 
-
 const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
 const taskButtonsDiv = document.querySelector("#taskButtons");
 const selectionFiledPriority = document.querySelector("#priority");
@@ -63,7 +62,6 @@ const favDialog = document.getElementById("favDialog");
 const outputBox = document.querySelector("output");
 const selectEl = favDialog.querySelector("select");
 const confirmBtn = favDialog.querySelector("#confirmBtn");
-
 
 // Modals functionality
 
@@ -109,7 +107,6 @@ confirmSessionDurationButton.addEventListener("click", () => {
     sessionCardButtonSetting.style.backgroundColor = "transparent";
     closeModalFunction();
 });
-
 
 //EVENT LISTENERS FOR BUTTONS
 closeButton.addEventListener("click", closeModalFunction);
@@ -176,7 +173,7 @@ function shortBreakDRY() {
 shortBreakDiv.style.display = "none";
 
 sessionCardButtonShortBreak.addEventListener("click", () => {
-    shortBreakDRY()
+    shortBreakDRY();
 });
 
 // LONG BREAK BUTTON DRYING countOfDaysAccessed
@@ -201,11 +198,11 @@ function longBreakDRY() {
     sessionCardButtonSetting.style.color = "#444";
     sessionCardButtonShortBreak.style.color = "#444";
     sessionCardButtonTimer.style.color = "#444";
-};
+}
 longBreakDiv.style.display = "none";
 
 sessionCardButtonsLongBreak.addEventListener("click", () => {
-    longBreakDRY()
+    longBreakDRY();
 });
 
 function sessionTimerDRY() {
@@ -231,8 +228,7 @@ function sessionTimerDRY() {
 
 // SESSION BUTTON
 sessionCardButtonTimer.addEventListener("click", () => {
-    sessionTimerDRY()
-
+    sessionTimerDRY();
 });
 
 settingsButton.addEventListener("click", () => {
@@ -292,12 +288,12 @@ if ((textAreaOfTask.style.display = "none")) {
 
 {
     /* <label for="priority">Priority:</label>
-        <select id="priority">
-            <option value="">---Nothing Selected---</option>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-        </select> */
+          <select id="priority">
+              <option value="">---Nothing Selected---</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+          </select> */
 }
 const saveTaskButton = document.querySelector("#saveTaskButton");
 const listOfTasks = document.querySelector(".orderedListOfTasks");
@@ -310,9 +306,8 @@ cancelTaskButton.addEventListener("click", function() {
     taskForm.classList.add("hidden");
     overlayDiv.classList.add("hidden");
 });
-
+let sessions = [];
 let arrayOfTasks = [];
-let arrayOfDurationInputValues = [];
 let suma;
 // let arrayOfDurationTimes = [];
 // const sumValues = arrayOfDurationTimes.reduce((partialSum, a) => partialSum + a, 0);
@@ -344,11 +339,30 @@ let suma;
 //         existingItem.type = value.type;
 //     }
 // }
+function reset() {
+    localStorage.removeItem("sessions");
+}
+// reset();
+function getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem("sessions"));
+    if (!data) return;
 
+    sessions = data;
 
-
-
-document.querySelectorAll(".values").forEach(item => {
+    const something = sessions.forEach((element) => {
+        for (let key in element) {
+            console.log(`${key} ${element[key]}`);
+        }
+    });
+    console.log(something);
+}
+// getLocalStorage();
+const saveSession = () => {
+    const allSessions = Json.parse(localStorage.getItem("sessions"));
+    allSessions.push(session);
+    localStorage.setItem("sessions", JSON.stringify(allSessions));
+};
+document.querySelectorAll(".values").forEach((item) => {
     item.addEventListener("click", function(e) {
         favDialog.style.background = "#2980b9";
         // Time Stamp must be inside of event listener so it will print a new time every time it has been called, if its outside it will be fired only once.
@@ -374,11 +388,9 @@ document.querySelectorAll(".values").forEach(item => {
             })
         })
 
-
-
         //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
         //close the AddTasks form upon clicking Save and return all values to empty - done
-        //Each task in the list should have the added note visible as well as the assigned duration for the task - wtf?
+        //Each task in the list should have the added note visible as well as the assigned duration for the task - wtf?-done
         //Include also the priority and pace, once they are added to the Add Task form - done
         //Add validation that makes sure priority, name, time and pace have values assigned by the user - done
         if (arrayOfTasks.length < 5) {
@@ -396,26 +408,23 @@ document.querySelectorAll(".values").forEach(item => {
                 taskPriority.options[taskPriority.selectedIndex].value &&
                 taskPace.options[taskPace.selectedIndex].value
             ) {
-
                 settingsButton.style.display = "flex";
                 let number = Math.floor(Math.random() * 100);
                 //console.log(number);
 
                 let li = document.createElement("li");
                 li.setAttribute("class", "liOfTasks");
-                li.innerHTML += `<b>Title</b>: ${taskTitle.value} <br><b>Duration</b>: ${
-        taskDuration.value
-      } min <br> <b>Priority</b>: ${
-        taskPriority.options[taskPriority.selectedIndex].value
-      }<br> <b>Pace</b>: ${
-        taskPace.options[taskPace.selectedIndex].value
-      } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
-        <br> `;
-
-
-
-
-
+                li.innerHTML += `<b>Title</b>: ${
+            taskTitle.value
+          } <br><b>Duration</b>: ${
+            taskDuration.value
+          } min <br> <b>Priority</b>: ${
+            taskPriority.options[taskPriority.selectedIndex].value
+          }<br> <b>Pace</b>: ${
+            taskPace.options[taskPace.selectedIndex].value
+          } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
+          <br><div id ="timerCard"></div>
+         `;
 
                 let paragraphId = document.createElement("p");
                 paragraphId.setAttribute("class", "idOfCard");
@@ -425,22 +434,9 @@ document.querySelectorAll(".values").forEach(item => {
                 li.appendChild(paragraphId);
 
                 if (!textAreaOfTask.value == "") {
-                    console.log("hello");
+                    //   console.log("hello");
                     let newDiv = document.createElement("div");
                     li.appendChild(newDiv);
-
-
-
-                    //         $("div.showNoteDiv").html(function() {
-                    //             const testDoc = `<div class='timer_block'>
-                    //     <div class='controls'>
-                    //         <a href="javascript:void(0)" class="start_btn" id='start_0'>Start</a>
-                    //         <a href="javascript:void(0)" class="cancel_btn" id='cancel_0'>Cancel</a>
-                    //         <a href="javascript:void(0)" class="reset_btn" id='reset_0'>Reset</a>
-                    //     </div>
-                    //     <span id='timer_0' class='timer'></span>
-                    // </div>`; return "<div></div>";
-                    //         });
 
                     newDiv.setAttribute("class", "showNoteDiv");
                     newDiv.style.display = "none";
@@ -522,7 +518,9 @@ document.querySelectorAll(".values").forEach(item => {
                 counter = 0;
 
                 let test = {
-                    element: li,
+                    title: taskTitle.value,
+                    assignedTaskDuration: taskDuration.value,
+                    timeNow: timeStamp,
                     time: [],
                     id: number,
                 };
@@ -533,11 +531,12 @@ document.querySelectorAll(".values").forEach(item => {
                 suma = arrayOfTasks
                     .flatMap((parameter) => parameter.time)
                     .reduce((sum, current) => sum + current, 0);
-                console.log(suma);
-
-            } else {
-
-            }
+                // console.log(suma);
+                function setLocalStorage() {
+                    localStorage.setItem("sessions", JSON.stringify(arrayOfTasks));
+                }
+                setLocalStorage();
+            } else {}
 
             // for (i = 0; i < arrayOfTasks.length; i++) {
 
@@ -557,7 +556,6 @@ document.querySelectorAll(".values").forEach(item => {
             // inputMinutes = inputMinutes * 60;
             // startButton.addEventListener("click", startTimer);
 
-
             class Timer {
                 constructor(root, timer) {
                     root.innerHTML = Timer.getHTML();
@@ -566,8 +564,7 @@ document.querySelectorAll(".values").forEach(item => {
                         minutes: root.querySelector(".timer__part--minutes"),
                         seconds: root.querySelector(".timer__part--seconds"),
                         control: root.querySelector(".timer__btn--control"),
-                        goToBreak: root.querySelector(".timer__btn--break")
-
+                        goToBreak: root.querySelector(".timer__btn--break"),
                     };
 
                     this.interval = null;
@@ -581,12 +578,11 @@ document.querySelectorAll(".values").forEach(item => {
                         }
                     });
 
-
-
                     this.el.goToBreak.addEventListener("click", () => {
-
-
-                        if (this.interval === null || typeof favDialog.showModal === "function") {
+                        if (
+                            this.interval === null ||
+                            typeof favDialog.showModal === "function"
+                        ) {
                             this.stop();
                             favDialog.showModal();
                         } else {
@@ -594,7 +590,6 @@ document.querySelectorAll(".values").forEach(item => {
                             outputBox.value =
                                 "Sorry, the <dialog> API is not supported by this browser.";
                         }
-
                     });
 
                     selectEl.addEventListener("change", function onSelect(e) {
@@ -604,20 +599,18 @@ document.querySelectorAll(".values").forEach(item => {
                     favDialog.addEventListener("close", function onClose() {
                         switch (favDialog.returnValue) {
                             case "Short Break":
-                                shortBreakDRY()
+                                shortBreakDRY();
                                 break;
                             case "Long Break":
-                                longBreakDRY()
+                                longBreakDRY();
                                 break;
                             case "Session":
-                                sessionTimerDRY()
+                                sessionTimerDRY();
                                 break;
                             default:
-
                                 break;
                         }
                     });
-
 
                     const inputMinutes = String(timer);
 
@@ -626,7 +619,6 @@ document.querySelectorAll(".values").forEach(item => {
                         this.remainingSeconds = inputMinutes * 60;
                         this.updateInterfaceTime();
                     }
-
                 }
 
                 updateInterfaceTime() {
@@ -674,40 +666,26 @@ document.querySelectorAll(".values").forEach(item => {
 
                 static getHTML() {
                     return `
-            <span class="timer__part timer__part--minutes">00</span>
-            <span class="timer__part">:</span>
-            <span class="timer__part timer__part--seconds">00</span>
-            <button type="button" class="timer__btn timer__btn--control timer__btn--start"></button>
-            <button type="button" class="timer__btn timer__btn--break">
-				    <span class="fa fa-forward"></span>
-			      </button>
-            
-            `;
+              <span class="timer__part timer__part--minutes">00</span>
+              <span class="timer__part">:</span>
+              <span class="timer__part timer__part--seconds">00</span>
+              <button type="button" class="timer__btn timer__btn--control timer__btn--start"></button>
+              <button type="button" class="timer__btn timer__btn--break">
+                      <span class="fa fa-forward"></span>
+                    </button>
+              
+              `;
                 }
             }
 
-            new Timer(
-                timerElement,
-                suma,
-            );
+            new Timer(timerElement, suma);
 
+            new Timer(shortBreakDiv, shortBreakDurationInput.value);
 
-            new Timer(
-                shortBreakDiv,
-                shortBreakDurationInput.value
-            );
+            new Timer(longBreakDiv, longBreakDurationInput.value);
 
-            new Timer(
-                longBreakDiv,
-                longBreakDurationInput.value
-            );
-
-            // const timeCard = document.querySelector("#timerCard");
-            // new Timer(
-            //     timeCard,
-            //     taskDuration.value
-            // );
-
+            const timeCard = document.querySelector("#timerCard");
+            new Timer(timeCard, taskDuration.value);
 
             //console.log(arrayOfTasks);
             resetTaskInputs();
@@ -716,10 +694,7 @@ document.querySelectorAll(".values").forEach(item => {
                 closeModalFunction();
             }
         } else alert("You can't have more than 5 tasks at a time!");
-
-    })
-
-
+    });
 });
 
 // Setting each note window color based on priority
