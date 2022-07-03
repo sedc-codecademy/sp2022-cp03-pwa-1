@@ -106,7 +106,7 @@ function getDay(date) {
 // --------rendering the calendar-----------
 function renderCalendar(elem, daysInMonthCallback) {
 
-  let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+  let table = '<table id="calendarTable"><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
   let daysInMonth = daysInMonthCallback;
   let EmptySpacesNum = getDay(firstDay);
   let totalTds = daysInMonth + EmptySpacesNum

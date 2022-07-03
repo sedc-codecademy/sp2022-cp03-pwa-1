@@ -301,7 +301,8 @@
                     <button class="reminderBtns" id="reminderBtn">Create New Reminder</button>
                     <button id="deleteReminder" class="reminderBtns">Clear Reminders</button>
                 </div>
-                <div class="AddReminderPopUp ">
+                <div id="AddReminderPopUpContainer">
+                <div class="AddReminderPopUp">
                     <label for="inputForCreatingReminder">Write reminder:</label>
                     <input class="reminderInput" id="inputForCreatingReminder" type="text" placeholder="Add User Reminder">
                     <label for="inputForSettingDateForTask">Enter date:</label>
@@ -315,8 +316,11 @@
                                 <option value="Low">Low</option>
                             </select>
                 </div>
+                </div>
                 <div class="js-clock" id="savedReminders">Saved Reminders:</div>
+                <div id="remindersContainer">
                 <div class="remindersTable" id="remindersTableId"></div>
+            </div>
             </div>
         </div>
         </div>

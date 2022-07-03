@@ -184,6 +184,11 @@ body {
     display: flex;
 }
 
+#calendarTable {
+    border-collapse: separate;
+  border-spacing: 0.2rem;
+}
+
 .container {
     display: flex;
     align-items: center;
@@ -299,7 +304,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 15px;
+    padding-top: 10px;
     height: fit-content;
 }
 
@@ -318,14 +323,6 @@ body {
 
 .reminderBtns:hover {
     transform: scale(1.03);
-}
-
-.AddReminderPopUp {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 10px;
-    height: fit-content;
 }
 
 .js-clock {
@@ -351,10 +348,21 @@ body {
     display: flex;
     justify-content: center;
     font-size: 1rem;
-    color: black;
-    max-height: fit-content;
+    width: 90%;
+    color: white;
     border-radius: 2%;
     text-shadow: 2px 2px 5px rgb(146, 144, 144);
+    background-color: #2980b9;
+    height: 10.5rem;
+    overflow: auto;
+    border-radius: 2rem;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+#remindersContainer {
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .AddReminderPopUp {
@@ -364,8 +372,15 @@ body {
     height: fit-content;
     border-radius: 2rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    background: #2980b9;
-    width: 100%;
+    text-shadow: 2px 2px 5px rgb(146, 144, 144);
+    background-color: #2980b9;
+    width: 90%; 
     color: aliceblue;
-    /* left: 50%; */
+}
+
+#AddReminderPopUpContainer {
+    padding-top: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
