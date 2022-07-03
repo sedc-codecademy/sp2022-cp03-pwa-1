@@ -264,14 +264,14 @@ body {
     border-radius: 5px;
     width: 40%;
     border: var(--clr-neutral-200) 2px solid;
-    background: var(--clr-neutral-300);
+    background: linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%);
     color: white;
     font-weight: bold;
     cursor: pointer;
 }
 
 .modal-container a {
-    color: var(--clr-neutral-300);
+    color: rgba(69, 68, 173, 0.7);
     cursor: pointer;
 }
 
@@ -292,9 +292,9 @@ body {
     display: none;
     padding: 10px;
     border-radius: 5px;
-    width: 40%;
-    border: var(--clr-neutral-200) 2px solid;
-    background: var(--clr-neutral-300);
+    width: 30%;
+    border: rgba(69, 68, 173, 1) 2px solid;
+    background: linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%);
     color: white;
     font-weight: bold;
     cursor: pointer;
