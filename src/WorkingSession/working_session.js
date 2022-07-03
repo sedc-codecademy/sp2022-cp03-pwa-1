@@ -466,7 +466,7 @@ document.querySelectorAll(".values").forEach((item) => {
                             newDiv.style.backgroundColor = "#2980b9";
                         });
                     }
-
+                    console.log("hello");
                     // arrayOfDurationInputValues.push(taskDuration.value);
                     // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
                     //     let helper = `${arrayOfDurationInputValues[i].time}`;
