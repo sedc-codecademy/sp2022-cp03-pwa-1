@@ -362,6 +362,8 @@ const saveSession = () => {
     allSessions.push(session);
     localStorage.setItem("sessions", JSON.stringify(allSessions));
 };
+let counterForCard = 0;
+
 document.querySelectorAll(".values").forEach((item) => {
     item.addEventListener("click", function(e) {
         favDialog.style.background = "#2980b9";
@@ -371,22 +373,6 @@ document.querySelectorAll(".values").forEach((item) => {
             dateStyle: "full",
             timeStyle: "long",
         }).format(now);
-
-        $(document).ready(function() {
-            $('#timer_0').backward_timer({
-                seconds: taskDuration.value * 60
-            })
-
-            $('#start_0').click(function() {
-                $('#timer_0').backward_timer('start')
-            })
-            $('#cancel_0').click(function() {
-                $('#timer_0').backward_timer('cancel')
-            })
-            $('#reset_0').click(function() {
-                $('#timer_0').backward_timer('reset')
-            })
-        })
 
         //TODO - Take the input values from the form and add them to listOfTasks in a <li> dynamically - done
         //close the AddTasks form upon clicking Save and return all values to empty - done
@@ -411,110 +397,161 @@ document.querySelectorAll(".values").forEach((item) => {
                 settingsButton.style.display = "flex";
                 let number = Math.floor(Math.random() * 100);
                 //console.log(number);
+                counterForCard++;
 
-                let li = document.createElement("li");
-                li.setAttribute("class", "liOfTasks");
-                li.innerHTML += `<b>Title</b>: ${
-            taskTitle.value
-          } <br><b>Duration</b>: ${
-            taskDuration.value
-          } min <br> <b>Priority</b>: ${
-            taskPriority.options[taskPriority.selectedIndex].value
-          }<br> <b>Pace</b>: ${
-            taskPace.options[taskPace.selectedIndex].value
-          } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
-          <br><div id ="timerCard"></div>
-         `;
+                console.log(counterForCard);
+                $(document).ready(function() {
 
-                let paragraphId = document.createElement("p");
-                paragraphId.setAttribute("class", "idOfCard");
-                paragraphId.innerText = `${number}`;
-                //console.log("hello");
-                paragraphId.style.display = "none";
-                li.appendChild(paragraphId);
+                    let li = document.createElement("li");
+                    li.setAttribute("class", "liOfTasks");
+                    li.innerHTML += `<b>Title</b>: ${taskTitle.value} <br><b>Duration</b>: ${taskDuration.value} min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
+                    }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
+                     <br> <div class='timer_block_${counterForCard}'>
+                     <div class='controls_${counterForCard}'>
+                         <button class="start_${counterForCard}" id="start_${counterForCard}">Play</button>
+                         <button class="cancel_${counterForCard}" id='cancel_${counterForCard}'>Pause</button>
+                         <button class="reset_${counterForCard}" id='reset_${counterForCard}'>Reset</button>
+                     </div>
+                     <span id='timer_${counterForCard}' class='timer_${counterForCard}'></span>
+                 </div> 
+                     `;
 
-                if (!textAreaOfTask.value == "") {
-                    //   console.log("hello");
-                    let newDiv = document.createElement("div");
-                    li.appendChild(newDiv);
 
-                    newDiv.setAttribute("class", "showNoteDiv");
-                    newDiv.style.display = "none";
-                    newDiv.innerText = `${textAreaOfTask.value}`;
-                    let showNoteButton = document.createElement("button");
-                    showNoteButton.setAttribute("class", "showNoteButton");
-                    showNoteButton.innerText = "Show note";
+                    let paragraphId = document.createElement("p");
+                    paragraphId.setAttribute("class", "idOfCard");
+                    paragraphId.innerText = `${number}`;
+                    //console.log("hello");
+                    paragraphId.style.display = "none";
+                    li.appendChild(paragraphId);
 
-                    li.appendChild(showNoteButton);
-                    showNoteButton.addEventListener("click", function() {
-                        newDiv.style.display = "flex";
+                    if (!textAreaOfTask.value == "") {
+                        //   console.log("hello");
+                        let newDiv = document.createElement("div");
+                        li.appendChild(newDiv);
 
-                        let hideNoteButton = document.createElement("button");
-                        hideNoteButton.setAttribute("class", "hideNoteButton");
-                        hideNoteButton.innerText = "Hide note";
-                        newDiv.appendChild(hideNoteButton);
+                        newDiv.setAttribute("class", "showNoteDiv");
+                        newDiv.style.display = "none";
+                        newDiv.innerText = `${textAreaOfTask.value}`;
+                        let showNoteButton = document.createElement("button");
+                        showNoteButton.setAttribute("class", "showNoteButton");
+                        showNoteButton.innerText = "Show note";
 
-                        hideNoteButton.addEventListener("click", function() {
-                            newDiv.style.display = "none";
+                        li.appendChild(showNoteButton);
+                        showNoteButton.addEventListener("click", function() {
+                            newDiv.style.display = "flex";
+
+                            let hideNoteButton = document.createElement("button");
+                            hideNoteButton.setAttribute("class", "hideNoteButton");
+                            hideNoteButton.innerText = "Hide note";
+                            newDiv.appendChild(hideNoteButton);
+
+                            hideNoteButton.addEventListener("click", function() {
+                                newDiv.style.display = "none";
+                            });
                         });
-                    });
 
-                    // If div note is active change inherit color from active UI
-                    sessionCardButtonsLongBreak.addEventListener("click", () => {
-                        newDiv.style.backgroundColor = "#5079a1";
-                    });
-                    sessionCardButtonShortBreak.addEventListener("click", () => {
-                        newDiv.style.backgroundColor = "#598f94";
-                    });
-                    sessionCardButtonSetting.addEventListener("click", () => {
-                        newDiv.style.backgroundColor = "#2980b9";
-                    });
-                    sessionCardButtonTimer.addEventListener("click", () => {
-                        newDiv.style.backgroundColor = "#2980b9";
-                    });
-                }
 
-                // arrayOfDurationInputValues.push(taskDuration.value);
-                // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
-                //     let helper = `${arrayOfDurationInputValues[i].time}`;
-                //     sum2 += helper;
-                // }
-                // console.log(sum2);
-                // for (const value of arrayOfDurationInputValues) {
-                //     sum1 += +value;
-                // }
 
-                // const sumWithInitial = arrayOfDurationTimes.reduce(
-                //     (previousValue, currentValue) =>
-                //         previousValue + currentValue, 0
-                // );
-                // console.log(sumWithInitial);
+                        // If div note is active change inherit color from active UI
+                        sessionCardButtonsLongBreak.addEventListener("click", () => {
+                            newDiv.style.backgroundColor = "#5079a1";
+                        });
+                        sessionCardButtonShortBreak.addEventListener("click", () => {
+                            newDiv.style.backgroundColor = "#598f94";
+                        });
+                        sessionCardButtonSetting.addEventListener("click", () => {
+                            newDiv.style.backgroundColor = "#2980b9";
+                        });
+                        sessionCardButtonTimer.addEventListener("click", () => {
+                            newDiv.style.backgroundColor = "#2980b9";
+                        });
+                    }
 
-                //     let helper = `${arrayOfDurationInputValues[i].time}`;
-                //     sum2 += helper;
+                    // arrayOfDurationInputValues.push(taskDuration.value);
+                    // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
+                    //     let helper = `${arrayOfDurationInputValues[i].time}`;
+                    //     sum2 += helper;
+                    // }
+                    // console.log(sum2);
+                    // for (const value of arrayOfDurationInputValues) {
+                    //     sum1 += +value;
+                    // }
 
-                let removeTaskButton = document.createElement("button");
-                removeTaskButton.setAttribute("class", "removeTaskButton");
-                removeTaskButton.innerText = "x";
-                li.appendChild(removeTaskButton);
+                    // const sumWithInitial = arrayOfDurationTimes.reduce(
+                    //     (previousValue, currentValue) =>
+                    //         previousValue + currentValue, 0
+                    // );
+                    // console.log(sumWithInitial);
 
-                removeTaskButton.addEventListener("click", function() {
-                    let confirmAction;
-                    confirmAction = confirm("Are you sure you want to remove this task?");
-                    if (confirmAction) {
-                        this.parentElement.remove();
-                        for (let i = 0; i < arrayOfTasks.length; i++) {
-                            if (arrayOfTasks[i].id == paragraphId.innerText) {
-                                arrayOfTasks.splice(i, 1);
+                    //     let helper = `${arrayOfDurationInputValues[i].time}`;
+                    //     sum2 += helper;
+
+                    let removeTaskButton = document.createElement("button");
+                    removeTaskButton.setAttribute("class", "removeTaskButton");
+                    removeTaskButton.innerText = "x";
+                    li.appendChild(removeTaskButton);
+
+                    removeTaskButton.addEventListener("click", function() {
+                        let confirmAction;
+                        confirmAction = confirm("Are you sure you want to remove this task?");
+                        if (confirmAction) {
+                            this.parentElement.remove();
+                            for (let i = 0; i < arrayOfTasks.length; i++) {
+                                if (arrayOfTasks[i].id == paragraphId.innerText) {
+                                    arrayOfTasks.splice(i, 1);
+                                }
                             }
                         }
-                    }
-                });
+                    });
 
-                listOfTasks.appendChild(li);
-                //console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
-                setColor(li);
-                getPriority(li);
+                    listOfTasks.appendChild(li);
+                    //console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
+                    setColor(li);
+                    getPriority(li);
+
+
+
+
+                    // var start = $("#start_" + counterForCard)
+                    // var cancel = $("#cancel_" + counterForCard)
+                    // var reset = $("#reset_" + counterForCard)
+                    // var timer = $("#timer_" + counterForCard)
+
+                    // function getKey(jQObject) {
+                    //     for (const [key, value] of Object.entries(jQObject)) {
+
+                    //         console.log(`this is the value: ${value}`);
+
+
+                    //     }
+
+                    // }
+
+                    // getKey(start);
+                    // getKey(cancel);
+                    // getKey(reset);
+                    // getKey(timer);
+
+
+                    // let startDynamicVariable = `start_${counterForCard++}`;
+                    // let cancelDynamicVariable = `cancel_${counterForCard++}`;
+                    // let resetDynamicVariable = `reset_${counterForCard++}`;
+                    // let timerDynamicVariable = `timer_${counterForCard++}`;
+
+
+
+                    // $(".timerCard").html("<div></div>").addClass("timer_block");
+                    // $(".timer_block").append($("<div></div>").addClass("controls"));
+                    // $(".controls").append($("<a>Start</a>").addClass("start_btn").attr("id", "start_0").attr("href", "javascript:void(0)"));
+                    // $(".controls").append($("<a>Cancel</a>").addClass("cancel_btn").attr("id", "cancel_0").attr("href", "javascript:void(0)"));
+                    // $(".controls").append($("<a>Reset</a>").addClass("reset_btn").attr("id", "reset_0").attr("href", "javascript:void(0)"));
+                    // $(".timer_block").append($("<span>value placeholder</span>").addClass("timer").attr("id", "timer_0"));
+
+
+                })
+
+
+
                 counter = 0;
 
                 let test = {
@@ -524,7 +561,20 @@ document.querySelectorAll(".values").forEach((item) => {
                     time: [],
                     id: number,
                 };
-                // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
+
+                $(`#timer_${counterForCard}`).backward_timer({
+                    seconds: test.assignedTaskDuration * 60
+                })
+                $(`#start_${counterForCard}`).click(function() {
+                    $(`#timer_${counterForCard}`).backward_timer('start')
+                })
+                $(`#cancel_${counterForCard}`).click(function() {
+                    $(`#timer_${counterForCard}`).backward_timer('cancel')
+                })
+                $(`#reset_${counterForCard}`).click(function() {
+                        $(`#timer_${counterForCard}`).backward_timer('reset')
+                    })
+                    // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
                 arrayOfTasks.push(test);
 
                 test.time.push(parseInt(taskDuration.value));
@@ -535,6 +585,7 @@ document.querySelectorAll(".values").forEach((item) => {
                 function setLocalStorage() {
                     localStorage.setItem("sessions", JSON.stringify(arrayOfTasks));
                 }
+
                 setLocalStorage();
             } else {}
 
@@ -684,11 +735,11 @@ document.querySelectorAll(".values").forEach((item) => {
 
             new Timer(longBreakDiv, longBreakDurationInput.value);
 
-            const timeCard = document.querySelector("#timerCard");
-            new Timer(timeCard, taskDuration.value);
+            // const timeCard = document.querySelector("#timerCard");
+            // new Timer(timeCard, taskDuration.value);
 
-            //console.log(arrayOfTasks);
-            resetTaskInputs();
+
+
 
             if (e.target === saveTaskButton) {
                 closeModalFunction();
