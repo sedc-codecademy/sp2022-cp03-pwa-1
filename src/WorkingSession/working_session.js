@@ -417,6 +417,7 @@ document.querySelectorAll(".values").forEach((item) => {
                      `;
 
 
+
                     let paragraphId = document.createElement("p");
                     paragraphId.setAttribute("class", "idOfCard");
                     paragraphId.innerText = `${number}`;
@@ -466,7 +467,7 @@ document.querySelectorAll(".values").forEach((item) => {
                             newDiv.style.backgroundColor = "#2980b9";
                         });
                     }
-                    console.log("fixing");
+
                     // arrayOfDurationInputValues.push(taskDuration.value);
                     // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
                     //     let helper = `${arrayOfDurationInputValues[i].time}`;
