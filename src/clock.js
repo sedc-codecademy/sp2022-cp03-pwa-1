@@ -18,16 +18,25 @@ let remindersContainer = [];
 
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
+    if(inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '' ) {
+        return alert('Please enter input in all fields!')
+    }
     createReminderObject();
     renderTable(remindersTable);
-    console.log(remindersContainer);
 });
 
-clearBtn.addEventListener("click", ClearReminders);
+clearBtn.addEventListener("click", function() {
+    remindersTable.innerHTML = '';
+    reminderId = 1;
+    inputReminderName = 0;
+    inputReminderDate = 0;
+    inputReminderTime = 0;
+    inputReminderPriority = 0; 
+    remindersContainer = [];
+});
 
 //function for getting inputs for reminder
 function gettingReminderInput(elem) {
-    console.log(elem.value)
 return elem.value;
 }
 
@@ -67,7 +76,7 @@ function createReminderObject() {
 
 //function for rendering the table of reminders
 function renderTable(elem) {
-    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Time</th><th>Priority</th></tr>';
+    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Time</th><th>Priority</th><th>Remove</th></tr>';
     for (const reminderData of remindersContainer) {
         table +=` <tr>`
         table += `<td>${reminderData.id}</td>`
@@ -75,11 +84,11 @@ function renderTable(elem) {
     table += `<td>${reminderData.date}</td>`
     table += `<td>${reminderData.time}</td>`
     table += `<td>${reminderData.priority}</td>`
+    table += `<td><button>X</button></td>`
     table += `</tr>`
     }
 
     table += `</table>`
-
     elem.innerHTML = table
 }
 
@@ -102,12 +111,3 @@ function init() {
     setInterval(getTime, 1000);
 }
 init();
-
-function CreateNewReminder(){
-}
-
-function ClearReminders(){
-    while (reminderWrapper.firstChild){
-        reminderWrapper.removeChild(reminderWrapper.firstChild);
-    }
-}
