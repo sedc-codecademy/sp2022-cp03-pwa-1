@@ -184,6 +184,11 @@ body {
     display: flex;
 }
 
+#calendarTable {
+    border-collapse: separate;
+  border-spacing: 0.2rem;
+}
+
 .container {
     display: flex;
     align-items: center;
