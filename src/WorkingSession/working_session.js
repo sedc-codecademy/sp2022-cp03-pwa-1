@@ -456,10 +456,17 @@ let suma;
 //         existingItem.type = value.type;
 //     }
 // }
+// SET LOCAL STORAGE
+function setLocalStorage() {
+  localStorage.setItem("sessions", JSON.stringify(sessions));
+}
+
+//////////
 function reset() {
   localStorage.removeItem("sessions");
 }
 // reset();
+///GET INFO FROM LOCAL STORAGE
 function getLocalStorage() {
   const data = JSON.parse(localStorage.getItem("sessions"));
   if (!data) return;
@@ -474,11 +481,11 @@ function getLocalStorage() {
   console.log(something);
 }
 // getLocalStorage();
-const saveSession = () => {
-  const allSessions = Json.parse(localStorage.getItem("sessions"));
-  allSessions.push(session);
-  localStorage.setItem("sessions", JSON.stringify(allSessions));
-};
+// const saveSession = () => {
+//   const allSessions = Json.parse(localStorage.getItem("sessions"));
+//   allSessions.push(session);
+//   localStorage.setItem("sessions", JSON.stringify(allSessions));
+// };
 let counterForCard = 0;
 let anotherCounterForCard = 0;
 
@@ -693,18 +700,15 @@ document.querySelectorAll(".values").forEach((item) => {
         // });
         // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
         arrayOfTasks.push(test);
-
+        sessions.push(test);
         test.time.push(parseInt(taskDuration.value));
+        console.log(sessions);
 
         suma = arrayOfTasks
           .flatMap((parameter) => parameter.time)
           .reduce((sum, current) => sum + current, 0);
+        setLocalStorage();
         // console.log(suma);
-        function setLocalStorage() {
-          localStorage.setItem("sessions", JSON.stringify(arrayOfTasks));
-        }
-
-        //setLocalStorage();
       } else {
       }
 
