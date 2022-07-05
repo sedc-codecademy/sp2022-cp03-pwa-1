@@ -110,7 +110,7 @@ class Timer {
       }
     });
 
-    const inputSeconds = String(timer * 60);
+    const inputSeconds = String(timer);
 
     if (inputSeconds < 100000) {
       this.stop();
@@ -571,9 +571,9 @@ let suma;
 // getLocalStorage();
 
 console.log(localStorage);
-
+let left;
 const excistingSessions = JSON.parse(localStorage.getItem("sessions"));
-let sessions = excistingSessions.length >= 0 ? excistingSessions : [];
+let sessions = excistingSessions?.length >= 0 ? excistingSessions : [];
 
 const endSessionButton = document.querySelector("#endSessionButton");
 localStorage.setItem("sessions", JSON.stringify(sessions));
@@ -696,6 +696,21 @@ document.querySelectorAll(".values").forEach((item) => {
             stopTask.setAttribute("class", "stopTask");
             stopTask.innerText = "Finish task";
             newDivContainer.appendChild(stopTask);
+            // newDivContainer.addEventListener("click", function (e) {
+            //   const clicked = e.target.closest(".stopTask");
+            //   console.log(clicked);
+            //   if (!clicked) return;
+
+            //   if (clicked) {
+            //     suma = arrayOfTasks
+            //       .flatMap((parameter) => parameter.time)
+            //       .reduce((sum, current) => sum + current, 0);
+
+            //     console.log(suma);
+            //     const timer11 = new Timer(timerElement, suma);
+            //     timer11;
+            //   }
+            // });
 
             stopTask.addEventListener("click", function () {
               let confirmAction;
@@ -704,8 +719,8 @@ document.querySelectorAll(".values").forEach((item) => {
                 newDivContainer.remove();
 
                 taskTimeLeftWhenStopped = play.remainingSeconds;
-                const left = initialTaskTime - taskTimeLeftWhenStopped;
-                console.log(left);
+                left = initialTaskTime - taskTimeLeftWhenStopped;
+
                 console.log(taskTimeLeftWhenStopped);
                 // new Timer(timerElement, test.assignedTaskDuration);
 
@@ -713,6 +728,7 @@ document.querySelectorAll(".values").forEach((item) => {
                 play2.stop();
               }
             });
+            console.log(left);
           }
         });
 
