@@ -22,6 +22,7 @@ reminderBtn.addEventListener("click", function() {
         return alert('Please enter input in all fields!')
     }
     createReminderObject();
+    addToLocalStorage();
     renderTable(remindersTable);
 });
 
@@ -101,6 +102,13 @@ function deleteReminderById(reminderId) {
     console.log(reminderMockData);
     renderTable(remindersTable);
 }
+
+//local storage for reminders Array
+
+function addToLocalStorage() {
+    localStorage.setItem("remindersData", JSON.stringify(reminderMockData));
+}
+
 
 //function for rendering the clock
 function getTime() {

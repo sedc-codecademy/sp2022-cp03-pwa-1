@@ -30,6 +30,7 @@ if(month > 1) {
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, getDaysInMonth);
+  seeLS();
 }})
 
 nextMonthBtn.addEventListener('click', function () {
@@ -168,3 +169,13 @@ renderCalendar(calendarMain, getDaysInMonth);
 // }
 
 // renderCalendar(calendarMain, getDaysInMonth);
+
+let mockdata = JSON.parse(localStorage.getItem("remindersData"));
+console.log(mockdata);
+
+function seeLS() {
+  console.log(mockdata);
+}
+
+seeLS();
+
