@@ -1067,4 +1067,3 @@ let clearHelper = clearTaskButton.addEventListener("click", function () {
 //     !backToSession.style.display == "none") {
 //     hrBorder.style.marginTop = "0vh";
 // }
- 
