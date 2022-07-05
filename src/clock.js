@@ -9,16 +9,47 @@ let reminderDate = document.querySelector('#inputForSettingDateForTask');
 let reminderTime = document.querySelector('#inputForTimeOfReminder');
 let reminderPriority = document.querySelector('#priorityRem');
 
+const remindersForm = document.querySelector(".AddReminderPopUp");
+const remindersFiled = document.querySelector("#remindersTableId");
+const sessionCardSettings3 = document.querySelector(".sessionButtonSetting");
+const sessionCardSessions3 = document.querySelector(".sessionButtonTimer");
+const sessionCardShortBreak3 = document.querySelector(".sessionButtonShortBreak");
+const sessionCardLongBreak3 = document.querySelector(".sessionButtonLongBreak");
+
+sessionCardSettings3.addEventListener("click", () => {
+    remindersForm.style.backgroundColor = "#2980b9";
+    remindersFiled.style.backgroundColor = "#2980b9";
+});
+
+sessionCardSessions3.addEventListener("click", () => {
+    remindersForm.style.backgroundColor = "#2980b9";
+    remindersFiled.style.backgroundColor = "#2980b9";
+});
+
+sessionCardShortBreak3.addEventListener("click", () => {
+    remindersForm.style.backgroundColor = "#598f94";
+    remindersFiled.style.backgroundColor = "#598f94";
+});
+
+sessionCardLongBreak3.addEventListener("click", () => {
+    remindersForm.style.backgroundColor = "#5079a1";
+    remindersFiled.style.backgroundColor = "#5079a1";
+});
+
+
+
 let reminderId = 1;
 let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
+
 let inputReminderPriority = 0; 
 let reminderMockData = [];
 
+
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
-    if(inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '' ) {
+    if (inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '') {
         return alert('Please enter input in all fields!')
     }
     createReminderObject();
@@ -31,13 +62,15 @@ clearBtn.addEventListener("click", function() {
     inputReminderName = 0;
     inputReminderDate = 0;
     inputReminderTime = 0;
+
     inputReminderPriority = 0; 
     reminderMockData = [];
+
 });
 
 //function for getting inputs for reminder
 function gettingReminderInput(elem) {
-return elem.value;
+    return elem.value;
 }
 
 //function for getting all inputs for reminder
@@ -78,6 +111,7 @@ function createReminderObject() {
 function renderTable(elem) {
     let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Time</th><th>Priority</th><th>Remove</th></tr>';
 
+
     reminderMockData.forEach((reminderItem, index) => {
         table +=` <tr>`
         table += `<td>${index + 1}</td>`
@@ -89,9 +123,25 @@ function renderTable(elem) {
     table += `</tr>`
     })
 
+
     table += `</table>`
     elem.innerHTML = table
 }
+
+
+// function getTime() {
+//     const date = new Date();
+//     const hours = date.getHours();
+//     const minutes = date.getMinutes();
+//     const seconds = date.getSeconds();
+//     clockTitle.innerText = `${
+//         hours < 10 ? `0${hours}` : hours
+//     }:${
+//         minutes < 10 ? `0${minutes}` : minutes
+//     }:${
+//         seconds < 10 ? `0${seconds}` : seconds
+//     }`;
+// }
 
 //function for deleting reminder by ID from the table
 function deleteReminderById(reminderId) {
@@ -102,23 +152,10 @@ function deleteReminderById(reminderId) {
     renderTable(remindersTable);
 }
 
-//function for rendering the clock
-function getTime() {
-    const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-    clockTitle.innerText = `${
-        hours < 10 ? `0${hours}` : hours
-    }:${
-        minutes < 10 ? `0${minutes}` : minutes
-    }:${
-        seconds < 10 ? `0${seconds}` : seconds
-    }`;
-}
 
-function init() {
-    getTime();
-    setInterval(getTime, 1000);
-}
-init();
+
+// function init() {
+//     getTime();
+//     setInterval(getTime, 1000);
+// }
+// init();
