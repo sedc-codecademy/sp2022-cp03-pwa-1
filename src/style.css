@@ -340,9 +340,11 @@ body {
 }
 
 .reminderInput {
+
     border: 1px solid black;
     border-radius: 0.5rem;
     border: none;
+
 }
 
 #savedReminders {
@@ -395,6 +397,7 @@ body {
     justify-content: center;
 }
 
+
 ::-webkit-scrollbar {
     width: 20px;
 }
@@ -414,13 +417,17 @@ body {
     background-color: #a8bbbf;
 }
 
-.reminderButtons {
-    border-radius: 0.5rem;
-    border: none;
+.removeReminderByIdBtn {
     transition: all 300ms ease-in-out;
-    cursor: pointer;
+    color: #2980b9;
+    border: 0px solid black;
+    background-color: aliceblue;
+    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    text-shadow: 2px 2px 5px rgb(146, 144, 144);
+    border-radius: 2rem;
 }
 
-.reminderButtons:hover {
-    transform: scale(1.03);
+.removeReminderByIdBtn:hover {
+    transform: scale(1.2);
+
 }
