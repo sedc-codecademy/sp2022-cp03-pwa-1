@@ -95,6 +95,7 @@ function renderTable(elem) {
     elem.innerHTML = table
 }
 
+//function for deleting reminder by ID from the table
 function deleteReminderById(reminderId) {
     console.log(reminderId);
     const newData = reminderMockData.filter(x => x.id !== reminderId);
