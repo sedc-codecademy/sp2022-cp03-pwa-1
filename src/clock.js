@@ -23,8 +23,6 @@ reminderBtn.addEventListener("click", function() {
     }
     createReminderObject();
     renderTable(remindersTable);
-    console.log(reminderMockData);
-
 });
 
 clearBtn.addEventListener("click", function() {
@@ -87,7 +85,7 @@ function renderTable(elem) {
     table += `<td>${reminderItem.date}</td>`
     table += `<td>${reminderItem.time}</td>`
     table += `<td>${reminderItem.priority}</td>`
-    table += `<td><button onclick="deleteReminderById(${reminderItem.id})">X</button></td>`
+    table += `<td><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id})">X</button></td>`
     table += `</tr>`
     })
 
@@ -104,6 +102,7 @@ function deleteReminderById(reminderId) {
     renderTable(remindersTable);
 }
 
+//function for rendering the clock
 function getTime() {
     const date = new Date();
     const hours = date.getHours();
