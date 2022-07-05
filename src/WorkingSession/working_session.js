@@ -423,7 +423,8 @@ cancelTaskButton.addEventListener("click", function () {
   taskForm.classList.add("hidden");
   overlayDiv.classList.add("hidden");
 });
-let sessions = [];
+
+
 let arrayOfTasks = [];
 let suma;
 // let arrayOfDurationTimes = [];
@@ -456,31 +457,84 @@ let suma;
 //         existingItem.type = value.type;
 //     }
 // }
-function reset() {
-  localStorage.removeItem("sessions");
-}
-// reset();
-function getLocalStorage() {
-  const data = JSON.parse(localStorage.getItem("sessions"));
-  if (!data) return;
 
-  sessions = data;
 
-  const something = sessions.forEach((element) => {
-    for (let key in element) {
-      console.log(`${key} ${element[key]}`);
-    }
-  });
-  console.log(something);
-}
+
+// function reset() {
+//   localStorage.removeItem("sessions");
+// }
+// // reset();
+// function getLocalStorage() {
+//   const data = JSON.parse(localStorage.getItem("sessions"));
+//   if (!data) return;
+
+//   sessions = data;
+
+//   const something = sessions.forEach((element) => {
+//     for (let key in element) {
+//       console.log(`${key} ${element[key]}`);
+//     }
+//   });
+//   console.log(something);
+// }
 // getLocalStorage();
+
+console.log(localStorage);
+
+const excistingSessions = JSON.parse(localStorage.getItem('sessions'))
+let sessions = excistingSessions.length >= 0 ? excistingSessions : []
+
+const endSessionButton = document.querySelector("#endSessionButton");
+localStorage.setItem("sessions", JSON.stringify(sessions));
+let session = {};
+
+
+endSessionButton.addEventListener("click", () => {
+  let confirmEnd;
+  confirmEnd = confirm(
+    "Are you sure you want to finish this session?"
+  );
+  if (confirmEnd) {
+    if (arrayOfTasks.length > 0) {
+      fillSession(session);
+      saveSession();
+      window.location.reload(); // deletes the local storage data after - fixed
+    }
+  }
+})
+
+//Fill the session with date and the tasks
+const fillSession = (object) => {
+
+  object.sessionDate = new Date().toISOString().slice(0, 10);
+  object.sessionTasks = [...arrayOfTasks];
+
+}
+
+//the array of the tasks in the session for the localStorage
+
+
+//Get the sessions[] from localStorage, push the new session into it and return it back to localStorage
 const saveSession = () => {
-  const allSessions = Json.parse(localStorage.getItem("sessions"));
+  const allSessions = JSON.parse(localStorage.getItem("sessions"));
   allSessions.push(session);
   localStorage.setItem("sessions", JSON.stringify(allSessions));
 };
+
+const clearAll = () => {
+  arrayOfTasks = [];
+  resetTaskInputs();
+}
+
+
+
 let counterForCard = 0;
 let anotherCounterForCard = 0;
+
+let timenow = new Date().toISOString().slice(0, 10);
+console.log(timenow);
+
+
 
 document.querySelectorAll(".values").forEach((item) => {
   item.addEventListener("click", function (e) {
@@ -513,7 +567,7 @@ document.querySelectorAll(".values").forEach((item) => {
         taskPace.options[taskPace.selectedIndex].value
       ) {
         settingsButton.style.display = "flex";
-        let number = Math.floor(Math.random() * 100);
+        let number = Math.floor(Math.random() * 10000);
         //console.log(number);
         counterForCard++;
         anotherCounterForCard++;
@@ -521,15 +575,11 @@ document.querySelectorAll(".values").forEach((item) => {
         $(document).ready(function () {
           let li = document.createElement("li");
           li.setAttribute("class", "liOfTasks");
-          li.innerHTML += `<b>Title</b>: ${
-            taskTitle.value
-          } <br><b>Duration</b>: ${
-            taskDuration.value
-          } min <br> <b>Priority</b>: ${
-            taskPriority.options[taskPriority.selectedIndex].value
-          }<br> <b>Pace</b>: ${
-            taskPace.options[taskPace.selectedIndex].value
-          } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
+          li.innerHTML += `<b>Title</b>: ${taskTitle.value
+            } <br><b>Duration</b>: ${taskDuration.value
+            } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
+            }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
+            } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
                      <br> <div class='timer_block_${counterForCard}'>
                      <div class='controls_${counterForCard}'>
                          <button class="start_${counterForCard}" id="start_${counterForCard}">Play</button>
