@@ -26,7 +26,7 @@ const swiper = new Swiper('.swiper', {
         el: '.swiper-pagination',
         transparent: false,
         clickable: true,
-        renderBullet: function (index, className) {
+        renderBullet: function(index, className) {
             return '<span class="' + className + '">' + (menu[index]) + '</span>';
         },
 
@@ -38,6 +38,7 @@ const swiper = new Swiper('.swiper', {
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
+
 
     },
 
