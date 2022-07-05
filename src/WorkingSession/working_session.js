@@ -171,10 +171,103 @@ class Timer {
             <button type="button" class="timer__btn timer__btn--break">
                     <span class="fa fa-forward"></span>
                   </button>
-            
+ 
             `;
   }
 }
+
+class TaskTimer {
+  constructor(root, timer) {
+    root.innerHTML = TaskTimer.getHTML();
+
+    this.el = {
+      minutes: root.querySelector(".timer__task--minutes"),
+      seconds: root.querySelector(".timer__task--seconds"),
+      control: root.querySelector(".timer__task--control"),
+      goToBreak: root.querySelector(".timer__task--break"),
+    };
+
+    this.interval = null;
+    this.remainingSeconds = 0;
+
+    this.el.control.addEventListener("click", () => {
+      if (this.interval === null) {
+        this.start();
+      } else {
+        this.stop();
+      }
+    });
+
+    const inputMinutes = String(timer);
+
+    if (inputMinutes < 60) {
+      this.stop();
+      this.remainingSeconds = inputMinutes * 60;
+      this.updateInterfaceTime();
+    }
+  }
+
+  updateInterfaceTime() {
+    const minutes = Math.floor(this.remainingSeconds / 60);
+    const seconds = this.remainingSeconds % 60;
+
+    this.el.minutes.textContent = minutes.toString().padStart(2, "0");
+    this.el.seconds.textContent = seconds.toString().padStart(2, "0");
+  }
+
+  updateInterfaceControls() {
+    if (this.interval === null) {
+      this.el.control.innerHTML = `<button id="star_task_session">&#x23f5;</button>`;
+      this.el.control.classList.add("timer__task--start");
+      this.el.control.classList.remove("timer__task--stop");
+    } else {
+      this.el.control.innerHTML = `<button id="stop_task_session">&#x23f8;</button>`;
+      this.el.control.classList.add("timer__task--stop");
+      this.el.control.classList.remove("timer__task--start");
+    }
+  }
+
+  start() {
+    if (this.remainingSeconds === 0) return;
+
+    this.interval = setInterval(() => {
+      this.remainingSeconds--;
+      this.updateInterfaceTime();
+
+      if (this.remainingSeconds === 0) {
+        this.stop();
+      }
+    }, 1000);
+
+    this.updateInterfaceControls();
+  }
+
+  stop() {
+    clearInterval(this.interval);
+
+    this.interval = null;
+
+    this.updateInterfaceControls();
+  }
+
+  static getHTML() {
+    return `
+            <span class="timer__task timer__task--minutes">00</span>
+            <span class="timer__task">:</span>
+            <span class="timer__task timer__task--seconds">00</span>
+            <button style= "display : none" type="button" class="timer__task timer__task--control timer__task--start"></button>
+            `;
+  }
+}
+
+// time value of initial task duration
+
+let initialTaskTime;
+
+// time value of when task was stopped
+
+let taskTimeLeftWhenStopped;
+
 // Dialog for Short & Long Break options
 
 const favDialog = document.getElementById("favDialog");
@@ -405,12 +498,12 @@ if ((textAreaOfTask.style.display = "none")) {
 
 {
   /* <label for="priority">Priority:</label>
-          <select id="priority">
-              <option value="">---Nothing Selected---</option>
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
-          </select> */
+            <select id="priority">
+                <option value="">---Nothing Selected---</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select> */
 }
 const saveTaskButton = document.querySelector("#saveTaskButton");
 const listOfTasks = document.querySelector(".orderedListOfTasks");
@@ -427,6 +520,7 @@ cancelTaskButton.addEventListener("click", function () {
 
 let arrayOfTasks = [];
 let suma;
+
 // let arrayOfDurationTimes = [];
 // const sumValues = arrayOfDurationTimes.reduce((partialSum, a) => partialSum + a, 0);
 // console.log(sumValues);
@@ -531,6 +625,7 @@ const clearAll = () => {
 let counterForCard = 0;
 let anotherCounterForCard = 0;
 
+
 let timenow = new Date().toISOString().slice(0, 10);
 console.log(timenow);
 
@@ -569,153 +664,247 @@ document.querySelectorAll(".values").forEach((item) => {
         settingsButton.style.display = "flex";
         let number = Math.floor(Math.random() * 10000);
         //console.log(number);
-        counterForCard++;
-        anotherCounterForCard++;
-        console.log(counterForCard);
-        $(document).ready(function () {
-          let li = document.createElement("li");
-          li.setAttribute("class", "liOfTasks");
-          li.innerHTML += `<b>Title</b>: ${taskTitle.value
-            } <br><b>Duration</b>: ${taskDuration.value
-            } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
-            }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
-            } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
-                     <br> <div class='timer_block_${counterForCard}'>
-                     <div class='controls_${counterForCard}'>
-                         <button class="start_${counterForCard}" id="start_${counterForCard}">Play</button>
-                         <button class="cancel_${counterForCard}" id='cancel_${counterForCard}'>Pause</button>               
-                     </div>
-                     <span id='timer_${counterForCard}' class='timer_${counterForCard}'></span>
-                 </div> 
-                     `;
 
-          let paragraphId = document.createElement("p");
-          paragraphId.setAttribute("class", "idOfCard");
-          paragraphId.innerText = `${number}`;
-          //console.log("hello");
-          paragraphId.style.display = "none";
-          li.appendChild(paragraphId);
 
-          if (!textAreaOfTask.value == "") {
-            //   console.log("hello");
-            let newDiv = document.createElement("div");
-            li.appendChild(newDiv);
+        let li = document.createElement("li");
+        li.setAttribute("class", "liOfTasks");
+        li.innerHTML += `<b>Title</b>: ${
+          taskTitle.value
+        } <br><b>Duration</b>: ${
+          taskDuration.value
+        } min <br> <b>Priority</b>: ${
+          taskPriority.options[taskPriority.selectedIndex].value
+        }<br> <b>Pace</b>: ${
+          taskPace.options[taskPace.selectedIndex].value
+        } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>
+ 
+          `;
+        let newDivContainer = document.createElement("div");
+        newDivContainer.setAttribute("class", "card_timer_container");
+        li.appendChild(newDivContainer);
 
-            newDiv.setAttribute("class", "showNoteDiv");
-            newDiv.style.display = "none";
-            newDiv.innerText = `${textAreaOfTask.value}`;
-            let showNoteButton = document.createElement("button");
-            showNoteButton.setAttribute("class", "showNoteButton");
-            showNoteButton.innerText = "Show note";
+        let newBtn = document.createElement("button");
+        newBtn.setAttribute("class", "startTask");
+        newBtn.innerHTML = "Start task";
+        newDivContainer.appendChild(newBtn);
 
-            li.appendChild(showNoteButton);
-            showNoteButton.addEventListener("click", function () {
-              newDiv.style.display = "flex";
+        newDivContainer.addEventListener("click", function (e) {
+          const clicked = e.target.closest(".startTask");
+          console.log(clicked);
+          if (!clicked) return;
 
-              let hideNoteButton = document.createElement("button");
-              hideNoteButton.setAttribute("class", "hideNoteButton");
-              hideNoteButton.innerText = "Hide note";
-              newDiv.appendChild(hideNoteButton);
+          if (clicked) {
+            const play = new TaskTimer(
+              newDivContainer,
+              test.assignedTaskDuration
+            );
+            const play2 = new Timer(timerElement, suma);
 
-              hideNoteButton.addEventListener("click", function () {
-                newDiv.style.display = "none";
-              });
-            });
+            play.start();
+            play2.start();
 
-            // If div note is active change inherit color from active UI
-            sessionCardButtonsLongBreak.addEventListener("click", () => {
-              newDiv.style.backgroundColor = "#5079a1";
-            });
-            sessionCardButtonShortBreak.addEventListener("click", () => {
-              newDiv.style.backgroundColor = "#598f94";
-            });
-            sessionCardButtonSetting.addEventListener("click", () => {
-              newDiv.style.backgroundColor = "#2980b9";
-            });
-            sessionCardButtonTimer.addEventListener("click", () => {
-              newDiv.style.backgroundColor = "#2980b9";
+            // task time duration
+            initialTaskTime = play.remainingSeconds;
+            console.log(initialTaskTime);
+
+            let stopTask = document.createElement("button");
+            stopTask.setAttribute("class", "stopTask");
+            stopTask.innerText = "Finish task";
+            newDivContainer.appendChild(stopTask);
+
+            stopTask.addEventListener("click", function () {
+              let confirmAction;
+              confirmAction = confirm(
+                "Are you sure you want to remove this task?"
+              );
+              if (confirmAction) {
+                newDivContainer.remove();
+
+                taskTimeLeftWhenStopped = play.remainingSeconds;
+                const left = initialTaskTime - taskTimeLeftWhenStopped;
+                console.log(left);
+                console.log(taskTimeLeftWhenStopped);
+                // new Timer(timerElement, test.assignedTaskDuration);
+
+                play.stop();
+                play2.stop();
+              }
             });
           }
-
-          // arrayOfDurationInputValues.push(taskDuration.value);
-          // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
-          //     let helper = `${arrayOfDurationInputValues[i].time}`;
-          //     sum2 += helper;
-          // }
-          // console.log(sum2);
-          // for (const value of arrayOfDurationInputValues) {
-          //     sum1 += +value;
-          // }
-
-          // const sumWithInitial = arrayOfDurationTimes.reduce(
-          //     (previousValue, currentValue) =>
-          //         previousValue + currentValue, 0
-          // );
-          // console.log(sumWithInitial);
-
-          //     let helper = `${arrayOfDurationInputValues[i].time}`;
-          //     sum2 += helper;
-
-          let removeTaskButton = document.createElement("button");
-          removeTaskButton.setAttribute("class", "removeTaskButton");
-          removeTaskButton.innerText = "x";
-          li.appendChild(removeTaskButton);
-
-          removeTaskButton.addEventListener("click", function () {
-            let confirmAction;
-            confirmAction = confirm(
-              "Are you sure you want to remove this task?"
-            );
-            if (confirmAction) {
-              this.parentElement.remove();
-
-              for (let i = 0; i < arrayOfTasks.length; i++) {
-                if (arrayOfTasks[i].id == paragraphId.innerText) {
-                  arrayOfTasks.splice(i, 1);
-                }
-              }
-            }
-          });
-
-          listOfTasks.appendChild(li);
-          //console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
-          setColor(li);
-          getPriority(li);
-
-          // var start = $("#start_" + counterForCard)
-          // var cancel = $("#cancel_" + counterForCard)
-          // var reset = $("#reset_" + counterForCard)
-          // var timer = $("#timer_" + counterForCard)
-
-          // function getKey(jQObject) {
-          //     for (const [key, value] of Object.entries(jQObject)) {
-
-          //         console.log(`this is the value: ${value}`);
-
-          //     }
-
-          // }
-
-          // getKey(start);
-          // getKey(cancel);
-          // getKey(reset);
-          // getKey(timer);
-
-          // let startDynamicVariable = `start_${counterForCard++}`;
-          // let cancelDynamicVariable = `cancel_${counterForCard++}`;
-          // let resetDynamicVariable = `reset_${counterForCard++}`;
-          // let timerDynamicVariable = `timer_${counterForCard++}`;
-
-          // $(".timerCard").html("<div></div>").addClass("timer_block");
-          // $(".timer_block").append($("<div></div>").addClass("controls"));
-          // $(".controls").append($("<a>Start</a>").addClass("start_btn").attr("id", "start_0").attr("href", "javascript:void(0)"));
-          // $(".controls").append($("<a>Cancel</a>").addClass("cancel_btn").attr("id", "cancel_0").attr("href", "javascript:void(0)"));
-          // $(".controls").append($("<a>Reset</a>").addClass("reset_btn").attr("id", "reset_0").attr("href", "javascript:void(0)"));
-          // $(".timer_block").append($("<span>value placeholder</span>").addClass("timer").attr("id", "timer_0"));
         });
 
-        counter = 0;
+        // tabsContainer.addEventListener('click', function (e) {
+        //     const clicked = e.target.closest('.operationstab');
+        //     // console.log(clicked);
+        //     if (!clicked) return; // guard close , if there is no click , return immediately, finish the function
+        //     //REMOVE ACTIVE CLASSES
+        //     tabs.forEach(tab => tab.classList.remove('operationstab--active')); // to put the inactive tabs down
+        //     tabsContent.forEach(content =>
+        //       content.classList.remove('.operationscontent--active')
+        //     );
+        //     // ACTIVE TAB
+        //     clicked.classList.add('operationstab--active');
+        //     // ACTIVE CONTENT AREA
+        //     document
+        //       .querySelector(.operations__content--${clicked.dataset.tab})
+        //       .classList.add('.operations__content--active');
+        //   });
 
+        // document.addEventListener("click", function(e) {
+        //     if (e.target.classList.contains("startTask")) {
+        //         const play = new TaskTimer(newDivContainer, test.assignedTaskDuration)
+
+        //         play.start();
+        //         test1.start();
+
+        //         // task time duration
+        //         initialTaskTime = play.remainingSeconds;
+        //         console.log(initialTaskTime);
+
+        //         let stopTask = document.createElement("button");
+        //         stopTask.setAttribute("class", "stopTask");
+        //         stopTask.innerText = "Finish task";
+        //         newDivContainer.appendChild(stopTask);
+
+        //         stopTask.addEventListener("click", function() {
+        //             let confirmAction;
+        //             confirmAction = confirm(
+        //                 "Are you sure you want to remove this task?");
+        //             if (confirmAction) {
+        //                 newDivContainer.remove();
+        //                 taskTimeLeftWhenStopped = play.remainingSeconds;
+        //                 console.log(taskTimeLeftWhenStopped);
+        //                 play.stop()
+        //                 test1.stop();
+
+        //             }
+        //         })
+        //     }
+        // });
+
+        let paragraphId = document.createElement("p");
+        paragraphId.setAttribute("class", "idOfCard");
+        paragraphId.innerText = `${number}`;
+        //console.log("hello");
+        paragraphId.style.display = "none";
+        li.appendChild(paragraphId);
+
+        if (!textAreaOfTask.value == "") {
+          //   console.log("hello");
+          let newDiv = document.createElement("div");
+          li.appendChild(newDiv);
+
+          newDiv.setAttribute("class", "showNoteDiv");
+          newDiv.style.display = "none";
+          newDiv.innerText = `${textAreaOfTask.value}`;
+          let showNoteButton = document.createElement("button");
+          showNoteButton.setAttribute("class", "showNoteButton");
+          showNoteButton.innerText = "Show note";
+
+          li.appendChild(showNoteButton);
+          showNoteButton.addEventListener("click", function () {
+            newDiv.style.display = "flex";
+
+            let hideNoteButton = document.createElement("button");
+            hideNoteButton.setAttribute("class", "hideNoteButton");
+            hideNoteButton.innerText = "Hide note";
+            newDiv.appendChild(hideNoteButton);
+
+            hideNoteButton.addEventListener("click", function () {
+              newDiv.style.display = "none";
+            });
+          });
+
+          // If div note is active change inherit color from active UI
+          sessionCardButtonsLongBreak.addEventListener("click", () => {
+            newDiv.style.backgroundColor = "#5079a1";
+          });
+          sessionCardButtonShortBreak.addEventListener("click", () => {
+            newDiv.style.backgroundColor = "#598f94";
+          });
+          sessionCardButtonSetting.addEventListener("click", () => {
+            newDiv.style.backgroundColor = "#2980b9";
+          });
+          sessionCardButtonTimer.addEventListener("click", () => {
+            newDiv.style.backgroundColor = "#2980b9";
+          });
+        }
+
+        // arrayOfDurationInputValues.push(taskDuration.value);
+        // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
+        //     let helper = `${arrayOfDurationInputValues[i].time}`;
+        //     sum2 += helper;
+        // }
+        // console.log(sum2);
+        // for (const value of arrayOfDurationInputValues) {
+        //     sum1 += +value;
+        // }
+
+        // const sumWithInitial = arrayOfDurationTimes.reduce(
+        //     (previousValue, currentValue) =>
+        //         previousValue + currentValue, 0
+        // );
+        // console.log(sumWithInitial);
+
+        //     let helper = `${arrayOfDurationInputValues[i].time}`;
+        //     sum2 += helper;
+
+        let removeTaskButton = document.createElement("button");
+        removeTaskButton.setAttribute("class", "removeTaskButton");
+        removeTaskButton.innerText = "x";
+        li.appendChild(removeTaskButton);
+
+        removeTaskButton.addEventListener("click", function () {
+          let confirmAction;
+          confirmAction = confirm("Are you sure you want to remove this task?");
+          if (confirmAction) {
+            this.parentElement.remove();
+
+            for (let i = 0; i < arrayOfTasks.length; i++) {
+              if (arrayOfTasks[i].id == paragraphId.innerText) {
+                arrayOfTasks.splice(i, 1);
+              }
+            }
+          }
+        });
+
+        listOfTasks.appendChild(li);
+        //console.log(taskPriority.options[taskPriority.selectedIndex].value, taskPace.options[taskPace.selectedIndex].value);
+        setColor(li);
+        getPriority(li);
+
+        // var start = $("#start_" + counterForCard)
+        // var cancel = $("#cancel_" + counterForCard)
+        // var reset = $("#reset_" + counterForCard)
+        // var timer = $("#timer_" + counterForCard)
+
+        // function getKey(jQObject) {
+        //     for (const [key, value] of Object.entries(jQObject)) {
+
+        //         console.log(`this is the value: ${value}`);
+
+        //     }
+
+        // }
+
+        // getKey(start);
+        // getKey(cancel);
+        // getKey(reset);
+        // getKey(timer);
+
+        // let startDynamicVariable = `start_${counterForCard++}`;
+        // let cancelDynamicVariable = `cancel_${counterForCard++}`;
+        // let resetDynamicVariable = `reset_${counterForCard++}`;
+        // let timerDynamicVariable = `timer_${counterForCard++}`;
+
+        // $(".timerCard").html("<div></div>").addClass("timer_block");
+        // $(".timer_block").append($("<div></div>").addClass("controls"));
+        // $(".controls").append($("<a>Start</a>").addClass("start_btn").attr("id", "start_0").attr("href", "javascript:void(0)"));
+        // $(".controls").append($("<a>Cancel</a>").addClass("cancel_btn").attr("id", "cancel_0").attr("href", "javascript:void(0)"));
+        // $(".controls").append($("<a>Reset</a>").addClass("reset_btn").attr("id", "reset_0").attr("href", "javascript:void(0)"));
+        // $(".timer_block").append($("<span>value placeholder</span>").addClass("timer").attr("id", "timer_0"));
+
+        counter = 0;
         let test = {
           title: taskTitle.value,
           assignedTaskDuration: taskDuration.value,
@@ -724,19 +913,6 @@ document.querySelectorAll(".values").forEach((item) => {
           id: number,
         };
 
-        $(`#timer_${counterForCard}`).backward_timer({
-          seconds: test.assignedTaskDuration * 60,
-        });
-        $(`#start_${counterForCard}`).click(function () {
-          if ($(`#timer_${counterForCard}`).backward_timer("start")) {
-            test1.start();
-          }
-        });
-        $(`#cancel_${counterForCard}`).click(function () {
-          if ($(`#timer_${anotherCounterForCard}`).backward_timer("cancel")) {
-            test1.stop();
-          }
-        });
         // <button class="reset_${counterForCard}" id='reset_${counterForCard}'>Reset</button>
         // $(`#reset_${counterForCard}`).click(function () {
         //   $(`#timer_${counterForCard}`).backward_timer("reset");
@@ -750,6 +926,7 @@ document.querySelectorAll(".values").forEach((item) => {
           .flatMap((parameter) => parameter.time)
           .reduce((sum, current) => sum + current, 0);
         // console.log(suma);
+
         function setLocalStorage() {
           localStorage.setItem("sessions", JSON.stringify(arrayOfTasks));
         }
