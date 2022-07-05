@@ -576,7 +576,7 @@ let suma;
 console.log(localStorage);
 
 const excistingSessions = JSON.parse(localStorage.getItem('sessions'))
-let sessions = excistingSessions.length >= 0 ? excistingSessions : []
+let sessions = excistingSessions?.length >= 0 ? excistingSessions : []
 
 const endSessionButton = document.querySelector("#endSessionButton");
 localStorage.setItem("sessions", JSON.stringify(sessions));
