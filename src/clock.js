@@ -14,7 +14,7 @@ let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
 let inputReminderPriority = 0; 
-let remindersContainer = [];
+let reminderMockData = [];
 
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
@@ -23,6 +23,8 @@ reminderBtn.addEventListener("click", function() {
     }
     createReminderObject();
     renderTable(remindersTable);
+    console.log(reminderMockData);
+
 });
 
 clearBtn.addEventListener("click", function() {
@@ -32,7 +34,7 @@ clearBtn.addEventListener("click", function() {
     inputReminderDate = 0;
     inputReminderTime = 0;
     inputReminderPriority = 0; 
-    remindersContainer = [];
+    reminderMockData = [];
 });
 
 //function for getting inputs for reminder
@@ -70,26 +72,35 @@ function createReminderObject() {
         gettingReminderInput(reminderTime),
         gettingReminderInput(reminderPriority)
     )
-    remindersContainer.push(reminder);
+    reminderMockData.push(reminder);
     reminderId++;
 }
 
 //function for rendering the table of reminders
 function renderTable(elem) {
     let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Time</th><th>Priority</th><th>Remove</th></tr>';
-    for (const reminderData of remindersContainer) {
+
+    reminderMockData.forEach((reminderItem, index) => {
         table +=` <tr>`
-        table += `<td>${reminderData.id}</td>`
-    table += `<td>${reminderData.name}</td>`
-    table += `<td>${reminderData.date}</td>`
-    table += `<td>${reminderData.time}</td>`
-    table += `<td>${reminderData.priority}</td>`
-    table += `<td><button>X</button></td>`
+        table += `<td>${index + 1}</td>`
+    table += `<td>${reminderItem.name}</td>`
+    table += `<td>${reminderItem.date}</td>`
+    table += `<td>${reminderItem.time}</td>`
+    table += `<td>${reminderItem.priority}</td>`
+    table += `<td><button onclick="deleteReminderById(${reminderItem.id})">X</button></td>`
     table += `</tr>`
-    }
+    })
 
     table += `</table>`
     elem.innerHTML = table
+}
+
+function deleteReminderById(reminderId) {
+    console.log(reminderId);
+    const newData = reminderMockData.filter(x => x.id !== reminderId);
+    reminderMockData = [...newData];
+    console.log(reminderMockData);
+    renderTable(remindersTable);
 }
 
 function getTime() {
