@@ -7,15 +7,41 @@ const singUp = document.getElementById("sign-up")
 const exits = document.querySelectorAll('#modal-exit');
 
 exits.forEach(function(exit) {
-    exit.addEventListener('click', function(event) {
-        event.preventDefault();
-        modal.classList.remove('open');
-        swiper1.classList.remove('z-index');
-        swiperNavArrows.classList.remove('z-index');
-        navigationBar.classList.remove('z-index');
 
+    if (exit.innerHTML === 'Sign in as a guest') {
+        exit.addEventListener('click', function(event) {
+            event.preventDefault();
 
-    });
+            localStorage.setItem("isGuest", "true")
+            
+            document.getElementById("arrows").style.display="none"
+
+            modal.classList.remove('open');
+            swiper1.classList.remove('z-index');
+            swiperNavArrows.classList.remove('z-index');
+            navigationBar.classList.remove('z-index');
+
+            setTimeout(function() {
+                for(let i = 0; i < 5; i++) {
+
+                    const swiper = document.getElementById("swiper"+i)
+                    
+                    if(swiper.innerText.toLocaleLowerCase() !== 'home') {
+                        swiper.style.pointerEvents="none"
+                    }
+                }
+            }, 100)
+        });
+    } else {
+        exit.addEventListener('click', function(event) {
+            event.preventDefault();
+            modal.classList.remove('open');
+            modalSingUp.classList.remove('open')
+            swiper1.classList.remove('z-index');
+            swiperNavArrows.classList.remove('z-index');
+            navigationBar.classList.remove('z-index');
+        });
+    }
 })
 
 singUp.addEventListener('click', function(event) {

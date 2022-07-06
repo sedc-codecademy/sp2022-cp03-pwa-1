@@ -28,7 +28,7 @@ const swiper = new Swiper('.swiper', {
         transparent: false,
         clickable: true,
         renderBullet: function(index, className) {
-            return '<span class="' + className + '">' + (menu[index]) + '</span>';
+            return '<span id="swiper' + index  + '" class="' + className + '">' + (menu[index]) + '</span>';
         },
 
 
@@ -45,4 +45,3 @@ const swiper = new Swiper('.swiper', {
 
 
 });
-
