@@ -248,6 +248,7 @@ function updateSummary(){
     const newStartDate2 = new Date(startDate2.value); // 2022-06-08
     const newEndeDate2 = new Date(endDate2.value);
     const numberOfDates2 = (newEndeDate2.getTime()-newStartDate2.getTime())/(1000 * 3600 * 24);
+    
     let sum = 0;
     // let count = 0;
     // let count2 = 0;
@@ -268,10 +269,10 @@ function updateSummary(){
     // }
     // streakDays.innerHTML = Math.max(...arrStreakDays);
     for (let i=0; i<=numberOfDates2; i++){
-         if (isNaN(datepoints[i])){
-             datepoints[i]=0;
+         if (isNaN(myChart.config.data.datasets[0].data[i])){
+            myChart.config.data.datasets[0].data[i]=0;
          }
-         sum+=datepoints[i];
+         sum+=myChart.config.data.datasets[0].data[i];
      }
      focusHours.innerHTML = sum;
      if (numberOfDates2 > 31) {
