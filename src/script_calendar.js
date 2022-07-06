@@ -81,7 +81,6 @@ renderYear(year);
 
 //-----------adding month name between buttons-----------
 const monthsNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
 let currentMonth;
 
 function renderMonth(monthsArray, monthNum, elem) {
@@ -119,9 +118,9 @@ for (let i = 0; i < getDay(firstDay); i++) {
     for (let i = 0; i <= totalTds - (EmptySpacesNum + 1); i++) {
        if ((i + EmptySpacesNum) % 7 === 0 ) {
         table += '</tr><tr>'
-        table += `<td>${i + 1}</td>`
+        table += `<td id="${i + 1}">${i + 1}</td>`
       } else {
-        table += `<td>${i + 1}</td>`
+        table += `<td id="${i + 1}">${i + 1}</td>`
       }
     }
     
@@ -170,15 +169,6 @@ renderCalendar(calendarMain, getDaysInMonth);
 
 // renderCalendar(calendarMain, getDaysInMonth);
 
-let mockdata = JSON.parse(localStorage.getItem("remindersData"));
-console.log(mockdata);
-
-function seeLS() {
-  console.log(mockdata);
-}
-
-seeLS();
-
 // ----------- REMINDERS ARREA CODE BELLOW ------------
 
 let clockContainer = document.querySelector(".js-clock");
@@ -219,16 +209,12 @@ sessionCardLongBreak3.addEventListener("click", () => {
     remindersFiled.style.backgroundColor = "#5079a1";
 });
 
-
-
 let reminderId = 1;
 let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
-
 let inputReminderPriority = 0; 
 let reminderMockData = [];
-
 
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
@@ -236,7 +222,6 @@ reminderBtn.addEventListener("click", function() {
         return alert('Please enter input in all fields!')
     }
     createReminderObject();
-    addToLocalStorage();
     renderTable(remindersTable);
 });
 
@@ -249,7 +234,6 @@ clearBtn.addEventListener("click", function() {
 
     inputReminderPriority = 0; 
     reminderMockData = [];
-
 });
 
 //function for getting inputs for reminder
@@ -295,7 +279,6 @@ function createReminderObject() {
 function renderTable(elem) {
     let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Time</th><th>Priority</th><th>Remove</th></tr>';
 
-
     reminderMockData.forEach((reminderItem, index) => {
         table +=` <tr>`
         table += `<td>${index + 1}</td>`
@@ -307,35 +290,13 @@ function renderTable(elem) {
     table += `</tr>`
     })
 
-
     table += `</table>`
     elem.innerHTML = table
 }
 
-
-// function getTime() {
-//     const date = new Date();
-//     const hours = date.getHours();
-//     const minutes = date.getMinutes();
-//     const seconds = date.getSeconds();
-//     clockTitle.innerText = `${
-//         hours < 10 ? `0${hours}` : hours
-//     }:${
-//         minutes < 10 ? `0${minutes}` : minutes
-//     }:${
-//         seconds < 10 ? `0${seconds}` : seconds
-//     }`;
-// }
-
 //function for deleting reminder by ID from the table
 function deleteReminderById(reminderId) {
-    console.log(reminderId);
     const newData = reminderMockData.filter(x => x.id !== reminderId);
     reminderMockData = [...newData];
-    console.log(reminderMockData);
     renderTable(remindersTable);
-}
-
-function addToLocalStorage() {
-    localStorage.setItem("remindersData", JSON.stringify(reminderMockData));
 }
