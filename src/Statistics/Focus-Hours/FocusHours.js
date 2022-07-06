@@ -79,14 +79,14 @@ function startingArrayOfChartDates(){
     return arrayOfDates;
  }
 
-function numberOfDailyHours(){ //temporary solution
-    let arrayOfHoursPerDay =[];
-    for (let i=1; i<32; i++){
-        let randomNumber = Math.floor(Math.random() * 16);
-        arrayOfHoursPerDay.push(randomNumber)
-    }
-    return arrayOfHoursPerDay;
-} 
+// function numberOfDailyHours(){ //temporary solution
+//     let arrayOfHoursPerDay =[];
+//     for (let i=1; i<32; i++){
+//         let randomNumber = Math.floor(Math.random() * 16);
+//         arrayOfHoursPerDay.push(randomNumber)
+//     }
+//     return arrayOfHoursPerDay;
+// } 
 
 const allSessions1 = JSON.parse(localStorage.getItem("sessions"));
  console.log(allSessions1);
@@ -126,7 +126,18 @@ console.log(finalArrayOfDates); // niza od datumite// bez da se povtoruvaat
 console.log(finalArrayOfHours); //niza od casovite za soodvetnite datumi
 
 const dates = startingArrayOfChartDates();
-const datepoints = numberOfDailyHours();
+function genDataArrayChart(){
+    dataArrayChart=[];
+    for(i=0; i<dates.length; i++){
+        if(finalArrayOfDates.includes(dates[i])){
+            let indexx = finalArrayOfDates.indexOf(dates[i]);
+            dataArrayChart.push(finalArrayOfHours[indexx])}
+            else{dataArrayChart.push(0)}
+        }
+        return dataArrayChart;
+};
+ 
+const datepoints = genDataArrayChart();
 const data = {
     labels: dates,
     datasets: [{
@@ -181,14 +192,14 @@ let focusHours = document.getElementById("dynamicFocusHours");
 //     }
 // streakDays.innerHTML = Math.max(...arrStreakDays);
 
-let sum=0;
-for (let i=0; i<7; i++){
-    if (isNaN(datepoints[i])){
-        datepoints[i]=0;
-    }
-    sum += datepoints[i];
-};
-focusHours.innerHTML = sum;
+ let sum=0;
+ for (let i=0; i<7; i++){
+     if (isNaN(datepoints[i])){
+         datepoints[i]=0;
+     }
+     sum += datepoints[i];
+ };
+ focusHours.innerHTML = sum;
 
 function filterDate() {
     const dynamicDates = [];
@@ -211,8 +222,19 @@ function filterDate() {
         dynamicDates.push(formatedDate);
         dateToBeFormated = nextDate;
     }
-
     myChart.config.data.labels = dynamicDates;
+    console.log(dynamicDates);
+    function genDataArrayChart1(){
+        const dataArrayChart1=[];
+        for(i=0; i<dynamicDates.length; i++){
+            if(finalArrayOfDates.includes(dynamicDates[i])){
+                let indexx1 = finalArrayOfDates.indexOf(dynamicDates[i]);
+                dataArrayChart1.push(finalArrayOfHours[indexx1])}
+                else{dataArrayChart1.push(0)}
+            }
+            return dataArrayChart1;
+    };
+    myChart.config.data.datasets[0].data = genDataArrayChart1();
     if (numberOfDates > 31) {
         alert("For better visibility of your chart, we highly recommend you to choose a time period that does not exceed 31 days! Please try again!");
      }
@@ -246,17 +268,17 @@ function updateSummary(){
     // }
     // streakDays.innerHTML = Math.max(...arrStreakDays);
     for (let i=0; i<=numberOfDates2; i++){
-        if (isNaN(datepoints[i])){
-            datepoints[i]=0;
-        }
-        sum+=datepoints[i];
-    }
-    focusHours.innerHTML = sum;
-    if (numberOfDates2 > 31) {
-        focusHours.innerHTML=null;
-        // streakDays.innerHTML=null;
-        // accessDays.innerHTML=null;
-    };
+         if (isNaN(datepoints[i])){
+             datepoints[i]=0;
+         }
+         sum+=datepoints[i];
+     }
+     focusHours.innerHTML = sum;
+     if (numberOfDates2 > 31) {
+         focusHours.innerHTML=null;
+         // streakDays.innerHTML=null;
+         // accessDays.innerHTML=null;
+     };
 };
 
 document.getElementById("startDate").addEventListener("change", updateSummary);
