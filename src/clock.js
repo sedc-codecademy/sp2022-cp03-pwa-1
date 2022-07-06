@@ -53,6 +53,7 @@ reminderBtn.addEventListener("click", function() {
         return alert('Please enter input in all fields!')
     }
     createReminderObject();
+    addToLocalStorage();
     renderTable(remindersTable);
 });
 
@@ -152,10 +153,6 @@ function deleteReminderById(reminderId) {
     renderTable(remindersTable);
 }
 
-
-
-// function init() {
-//     getTime();
-//     setInterval(getTime, 1000);
-// }
-// init();
+function addToLocalStorage() {
+    localStorage.setItem("remindersData", JSON.stringify(reminderMockData));
+}
