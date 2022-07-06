@@ -25,7 +25,7 @@ function updateAccessedDays() {
         activityDetails.countOfDaysStreak = 1;
         activityDetails.hasValues = true;
 
-    } else if (currentAccessedDate > activityDetails.previousDate || true) {
+    } else if (currentAccessedDate > activityDetails.previousDate) {
         const previousDateToCompare = new Date(activityDetails.previousDate)
         previousDateToCompare.setDate(previousDateToCompare.getDate() + 1);
         const formatedPreviousDateToCompare = previousDateToCompare.toISOString().slice(0, 10);
