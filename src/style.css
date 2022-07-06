@@ -38,7 +38,11 @@ body {
     height: 83vh;
     padding-top: 100px;
     padding-bottom: 20px;
+    overflow: hidden;
+
 }
+
+
 
 .swiper-slide {
     position: relative;
