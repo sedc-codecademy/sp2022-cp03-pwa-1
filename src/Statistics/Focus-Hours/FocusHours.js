@@ -91,7 +91,7 @@ function startingArrayOfChartDates(){
 const allSessions1 = JSON.parse(localStorage.getItem("sessions"));
  console.log(allSessions1);
  let arrayOfSessionDates = [];
- for (let i=0; i<allSessions1.length; i++){
+ for (let i=0; i<allSessions1?.length; i++){
     arrayOfSessionDates.push(allSessions1[i].sessionDate)
  }
  console.log(arrayOfSessionDates); // se dobiva niza od datumite na sekoja oddelna sesija// NO, datumite se povtoruvaat

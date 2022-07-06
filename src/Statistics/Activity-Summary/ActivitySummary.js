@@ -1,4 +1,7 @@
+// AS -> Activity Summary
+
 const ACTIVITY_DETAILS_KEY = 'activityDetails';
+const SESSIONS_KEY = 'sessions';
 let dynamicAccessedDaysParagraph = document.getElementById("dynamicAccessedDays");
 let dynamicStreakDaysParagraph = document.getElementById("dynamicStreakDays");
 let sessionCardButtonLongBreak1 = document.getElementById("longBreak");
@@ -8,6 +11,7 @@ let chartBox = document.getElementsByClassName("chartBox");
 let sessionButton = document.getElementById("timer");
 let sessionSettingsButton = document.getElementById("sessionSettings");
 document.addEventListener('load', updateAccessedDays());
+const AS_favDialog = document.getElementById("favDialog");
 
 
 function updateAccessedDays() {
@@ -26,14 +30,17 @@ function updateAccessedDays() {
         activityDetails.hasValues = true;
 
     } else if (currentAccessedDate > activityDetails.previousDate) {
-        const previousDateToCompare = new Date(activityDetails.previousDate)
+        const previousDateToCompare = new Date(activityDetails.previousDate);
         previousDateToCompare.setDate(previousDateToCompare.getDate() + 1);
         const formatedPreviousDateToCompare = previousDateToCompare.toISOString().slice(0, 10);
         console.log(formatedPreviousDateToCompare);
 
-
+        console.log(`currentAccessedDate == formatedPreviousDateToCompare`, currentAccessedDate == formatedPreviousDateToCompare);
         if (currentAccessedDate == formatedPreviousDateToCompare) {
-            activityDetails.countOfDaysStreak++;
+            console.log(`streakDaysValidation(activityDetails.previousDate)`, streakDaysValidation(activityDetails.previousDate));
+            if (streakDaysValidation(activityDetails.previousDate)) {
+                activityDetails.countOfDaysStreak++;
+            }
         }
         else {
             activityDetails.countOfDaysStreak = 1;
@@ -70,48 +77,98 @@ function getObjectFromLocalStorage(key) {
 function saveObjectToLocalStorage(key, someObject) {
     localStorage.setItem(key, JSON.stringify(someObject));
 }
-console.log(chartBox[0]);
-console.log(sessionCardButtonLongBreak1);
 
-sessionCardButtonLongBreak1.addEventListener("click", function () {
-    data.datasets[0].backgroundColor = ["rgba(80,121,161,0.6)"];
-    data.datasets[0].borderColor = ["rgba(68,151,173,1)"];
-    // "rgba(108, 146, 172, 1)" 
-    chartBox[0].style.borderColor = "rgba(68,151,173,1)";
+function streakDaysValidation(previousDate) {
+    const sessions = getObjectFromLocalStorage(SESSIONS_KEY);
+    for (const session of sessions) {
+        console.log(`Session Object : `, session);
+
+        if (session.sessionDate === previousDate) {
+            console.log("I am true! session.sessionDate = previousDate");
+
+            for (const sessionTask of session.sessionTasks) {
+                console.log(`Session Task:`, sessionTask)
+
+                if (sessionTask.time.length > 0) {
+                    return true;
+                }
+            }
+        }
+    }
+}
+
+// ======================= change colors =======================
+
+
+function changeColor(backgroundColor, borderColor, backgroundImage) {
+    data.datasets[0].backgroundColor = [backgroundColor];
+    data.datasets[0].borderColor = [borderColor];
+    chartBox[0].style.borderColor = borderColor;
     myChart.update();
-
     for (const card of activityCards) {
-        card.style.backgroundImage = "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)";
-        // "linear-gradient(27deg, rgba(212,218,222,1) 4%, rgba(142,165,182,1) 24%, rgba(83,120,149,1) 59%)";
-        card.style.borderColor = "rgba(68,151,173,1)";
-        // "#537895";
-    };
-});
+        card.style.backgroundImage = backgroundImage;
+        card.style.borderColor = borderColor;
+    }
+}
 
-sessionCardButtonShortBreak1.addEventListener("click", function () {
-    data.datasets[0].backgroundColor = ["rgba(89,143,148,0.6)"];
-    data.datasets[0].borderColor = ["rgba(68,144,173,1)"];
-    // "rgba(89, 143, 148, 1)" 
-    chartBox[0].style.borderColor = "rgba(68,144,173,1)";
-    myChart.update();
-    for (const card of activityCards) {
-        card.style.backgroundImage = " linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
-        // "linear-gradient(27deg, rgba(189,214,217,1) 7%, rgba(101,152,156,1) 40%, rgba(89,143,148,1) 55%)";
-        card.style.borderColor = "rgba(68,144,173,1)";
-    };
-});
+sessionCardButtonShortBreak1.addEventListener("click",
+    () => {
+        changeColor(
+            "rgba(89,143,148,0.6)",
+            "rgba(68,144,173,1)",
+            "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)"
+        )
+    }
+);
+
+sessionCardButtonLongBreak1.addEventListener("click",
+    () => {
+        changeColor(
+            "rgba(80,121,161,0.6)",
+            "rgba(68,151,173,1)",
+            "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)"
+        )
+    });
 
 function resetColors() {
-    data.datasets[0].backgroundColor = ["rgba(41, 128, 185, 0.6)"];
-    data.datasets[0].borderColor = ["rgba(69, 68, 173, 1)"];
-    chartBox[0].style.borderColor = "rgba(69, 68, 173, 1)";
-    myChart.update();
-    for (const card of activityCards) {
-        card.style.backgroundImage = "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
-        card.style.borderColor = "rgba(69, 68, 173, 1)";
-    };
+    changeColor(
+        "rgba(41, 128, 185, 0.6)",
+        "rgba(69, 68, 173, 1)",
+        "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)"
+    );
 }
+
+AS_favDialog.addEventListener("close", function onClose() {
+    console.info(`Clicked...`);
+    switch (AS_favDialog.returnValue) {
+        case "Short Break":
+            changeColor(
+                "rgba(89,143,148,0.6)",
+                "rgba(68,144,173,1)",
+                "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)"
+            )
+            break;
+        case "Long Break":
+            changeColor(
+                "rgba(80,121,161,0.6)",
+                "rgba(68,151,173,1)",
+                "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)"
+            )
+            break;
+        case "Session":
+            changeColor(
+                "rgba(41, 128, 185, 0.6)",
+                "rgba(69, 68, 173, 1)",
+                "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)"
+            );
+            break;
+        default:
+            break;
+    }
+});
 
 sessionButton.addEventListener("click", resetColors);
 sessionSettingsButton.addEventListener("click", resetColors);
+document.addEventListener('load', resetColors);
+
 
