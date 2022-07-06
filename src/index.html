@@ -262,14 +262,19 @@
                                     <button id="cancelTaskButton">Cancel</button>
                                     <button class="values" id="saveTaskButton">Save</button>
                                 </div>
+
                             </div>
+
                         </div>
-                        <div class="listOfTasksDiv">
-                            <ol class="orderedListOfTasks">
-                            </ol>
-                        </div>
+
                     </div>
+
                 </div>
+                <div class="listOfTasksDiv">
+                    <ol class="orderedListOfTasks">
+                    </ol>
+                </div>
+
             </div>
         </div>
         <div class="swiper-slide">
@@ -296,47 +301,50 @@
         <div class="swiper-slide">
             <h2 class="card-title">REMINDERS</h2>
             <div class="card-body">
-                <div class="js-clock">
+                <!-- <div class="js-clock">
                     <h1>00:00:00</h1>
-                </div>
+                </div> -->
                 <div class="reminderBtnsDiv">
                     <button class="reminderBtns" id="reminderBtn">Create New Reminder</button>
                     <button id="deleteReminder" class="reminderBtns">Clear Reminders</button>
                 </div>
                 <div id="AddReminderPopUpContainer">
-                <div class="AddReminderPopUp">
-                    <label for="inputForCreatingReminder">Write reminder:</label>
-                    <input class="reminderInput" id="inputForCreatingReminder" type="text" placeholder="Add User Reminder">
-                    <label for="inputForSettingDateForTask">Enter date:</label>
-                    <input class="reminderInput" id="inputForSettingDateForTask" type="date">
-                    <label for="inputForTimeOfReminder">Set time:</label>
-                    <input type="time" class="reminderInput" id="inputForTimeOfReminder" name="inputForTimeOfReminder" min="00:00" max="23:59" required>
-                    <label for="priorityRem">Choose priority:</label>
-                    <select class="reminderInput" name="priorityRem" id="priorityRem">
+                    <div class="AddReminderPopUp">
+                        <label for="inputForCreatingReminder">Write reminder:</label>
+                        <input class="reminderInput" id="inputForCreatingReminder" type="text" placeholder="Add User Reminder">
+                        <label for="inputForSettingDateForTask">Enter date:</label>
+                        <input class="reminderInput" id="inputForSettingDateForTask" type="date">
+                        <label for="inputForTimeOfReminder">Set time:</label>
+                        <input type="time" class="reminderInput" id="inputForTimeOfReminder" name="inputForTimeOfReminder" min="00:00" max="23:59" required>
+                        <label for="priorityRem">Choose priority:</label>
+                        <select class="reminderInput" name="priorityRem" id="priorityRem">
                                 <option value="High">High</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Low">Low</option>
                             </select>
-                </div>
+                    </div>
                 </div>
                 <div class="js-clock" id="savedReminders">Saved Reminders:</div>
                 <div id="remindersContainer">
-                <div class="remindersTable" id="remindersTableId"></div>
-            </div>
+                    <div class="remindersTable" id="remindersTableId"></div>
+                </div>
             </div>
         </div>
         </div>
         </div>
         </div>
         <!-- Pagination A.K.A. The navigation-bar-->
-        <div class="nav-container">
+        <div class="nav-container z-index">
             <div id="navbar" class="swiper-pagination"></div>
         </div>
 
 
         <!-- Navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="swiperBarArrows z-index">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
 
         <!--Dialog options Long & Short Break-->
         <dialog id="favDialog">
