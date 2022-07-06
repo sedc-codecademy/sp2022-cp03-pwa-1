@@ -309,13 +309,12 @@ cancelTimeInput.addEventListener("click", function () {
 // FOR LONG BREAK SESSION
 confirmSessionDurationButton.addEventListener("click", () => {
   settingsDiv.classList.add("hidden");
-  settingsDiv.classList.add("hidden");
-  timerElement.style.display = "none";
-  shortBreakDiv.style.display = "flex";
+  
+
   body.style.background =
     "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
-  sessionCardButtonShortBreak.style.backgroundColor = "#598f94";
-  sessionCardButtonShortBreak.style.color = "white";
+  
+  
   taskForm.style.background = "#598f94";
   taskButtonsDiv.style.background = "#598f94";
   sessionCardButtonSetting.style.color = "#444";
@@ -469,24 +468,34 @@ timerDownButton.addEventListener("click", () => {
   timerInput.value > 0 ? timerInput.value-- : (timerInput.value = 0);
 });
 
+
 shortBreakUpButton.addEventListener("click", () => {
   shortBreakDurationInput.value++;
+  new Timer(shortBreakDiv, shortBreakDurationInput.value * 60);
+  
+  
 });
 
 shortBreakDownButton.addEventListener("click", () => {
   shortBreakDurationInput.value > 0
     ? shortBreakDurationInput.value--
     : (shortBreakDurationInput.value = 0);
+    new Timer(shortBreakDiv, shortBreakDurationInput.value * 60);
+    
 });
 
 longBreakUpButton.addEventListener("click", () => {
   longBreakDurationInput.value++;
+  new Timer(longBreakDiv, longBreakDurationInput.value * 60);
+  
 });
 
 longBreakDownButton.addEventListener("click", () => {
   longBreakDurationInput.value > 0
     ? longBreakDurationInput.value--
     : (longBreakDurationInput.value = 0);
+    new Timer(longBreakDiv, longBreakDurationInput.value * 60);
+    
 });
 
 //Add note in task form button
@@ -754,6 +763,14 @@ document.querySelectorAll(".values").forEach((item) => {
             //     timer11;
             //   }
             // });
+
+            
+            // sessionCardBodyDiv.addEventListener("click", (e) =>{
+            //   if(e.target == document.querySelector("#stopSessionButton")) {
+            //     playTask.stop()
+            //   }
+      
+            // })
 
             stopTask.addEventListener("click", function () {
               let confirmAction;
@@ -1049,6 +1066,7 @@ document.querySelectorAll(".values").forEach((item) => {
 
         //setLocalStorage();
       } else {
+        alert("Fill all of the value inputs")
       }
 
       // for (i = 0; i < arrayOfTasks.length; i++) {
@@ -1084,11 +1102,7 @@ document.querySelectorAll(".values").forEach((item) => {
           console.log(e);
         }
       });
-
-      new Timer(shortBreakDiv, shortBreakDurationInput.value * 60);
-
-      new Timer(longBreakDiv, longBreakDurationInput.value * 60);
-
+     
       // const timeCard = document.querySelector("#timerCard");
       // new Timer(timeCard, taskDuration.value);
 

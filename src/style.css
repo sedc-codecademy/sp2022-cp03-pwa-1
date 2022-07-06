@@ -65,7 +65,7 @@ body {
     font-size: x-large;
 }
 
-.card-title::after {
+/* .card-title::after {
     content: "";
     position: absolute;
     height: 3px;
@@ -73,7 +73,7 @@ body {
     left: 0;
     bottom: 0;
     background: var(--clr-neutral-700);
-}
+} */
 
 
 /* BUTTONS FOR SLIDER NAVIGATION "LEFT & RIGHT" */
@@ -361,8 +361,9 @@ body {
     border-radius: 2%;
     text-shadow: 2px 2px 5px rgb(146, 144, 144);
     background-color: #2980b9;
-    height: 10.5rem;
+    max-height: 20rem;
     overflow: auto;
+    height: auto;
     border-radius: 0.8rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -431,3 +432,10 @@ body {
     transform: scale(1.2);
 
 }
+
+td {
+    
+    padding: 1.2rem;
+    
+}
+

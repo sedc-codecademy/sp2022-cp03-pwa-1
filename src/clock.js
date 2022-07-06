@@ -156,3 +156,6 @@ function deleteReminderById(reminderId) {
 function addToLocalStorage() {
     localStorage.setItem("remindersData", JSON.stringify(reminderMockData));
 }
+
+    
+

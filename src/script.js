@@ -3,6 +3,7 @@
 const menu = ['CALENDAR', 'STATISTICS', 'HOME', 'PRODUCTIVITY', 'REMINDERS']
 const swiper = new Swiper('.swiper', {
     // Optional parameters
+    
     direction: 'horizontal',
     effect: 'coverflow',
     grabCursor: false,
@@ -44,3 +45,4 @@ const swiper = new Swiper('.swiper', {
 
 
 });
+
