@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="Statistics/Activity-Summary/ActivitySummary.css" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="Statistics/Activity-Summary/ActivitySummary.css" type="text/css" />
     <link rel="stylesheet" href="Statistics/Focus-Hours/FocusHours.css" type="text/css" />
     <link rel="stylesheet" href="WorkingSession/workingSessionStyle.css" type="text/css" />
     <title>Productivity Web App</title>
@@ -97,14 +97,14 @@
                                 </div>
                                 <div class="activityCard">
                                     <div class="acitivityCard_header">
-                                        <i style="font-size:24px" class="fa">&#xf274;</i>
+                                        <i class="fa fa-calendar"></i>
                                         <p id="dynamicAccessedDays"></p>
                                     </div>
                                     <p>days accessed</p>
                                 </div>
                                 <div class="activityCard">
                                     <div class="acitivityCard_header">
-                                        <i style="font-size:24px" class="fa">&#xf219;</i>
+                                        <i class="fa fa-diamond"></i>
                                         <p id="dynamicStreakDays"></p>
                                     </div>
                                     <p>days streak</p>
@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="button_field_3">
                                     
-                                    <button  id="startingTimerValueButton">Confirm</button>
+                                    <button class="values" id="startingTimerValueButton">Confirm</button>
                                 </div>
 
                             </div>
@@ -380,7 +380,7 @@
     <script src="Statistics/Activity-Summary/ActivitySummary.js"></script>
     <script src="WorkingSession/working_session.js"></script>
     <script src="modal.js"></script>
-    <!-- <script src="clock.js"></script> -->
+    <script src="clock.js"></script>
     <script src="productivity.js"></script>
 
 
