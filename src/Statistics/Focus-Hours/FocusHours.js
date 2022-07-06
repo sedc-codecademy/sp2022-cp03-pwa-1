@@ -199,7 +199,7 @@ let focusHours = document.getElementById("dynamicFocusHours");
      }
      sum += datepoints[i];
  };
- focusHours.innerHTML = sum;
+ focusHours.innerHTML = Math.round(sum*100)/100;
 
 function filterDate() {
     const dynamicDates = [];
@@ -274,7 +274,7 @@ function updateSummary(){
          }
          sum+=myChart.config.data.datasets[0].data[i];
      }
-     focusHours.innerHTML = sum;
+     focusHours.innerHTML = Math.round(sum*100)/100;
      if (numberOfDates2 > 31) {
          focusHours.innerHTML=null;
          // streakDays.innerHTML=null;
