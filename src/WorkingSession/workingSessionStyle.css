@@ -1004,3 +1004,8 @@ ol {
 .stopTask:hover {
     transform: scale(1.03);
 }
+
+.active {
+    transform: scale(1.1);
+    transition: all 300ms ease-in-out;
+}
