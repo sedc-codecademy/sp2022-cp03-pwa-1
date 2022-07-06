@@ -183,7 +183,10 @@ let focusHours = document.getElementById("dynamicFocusHours");
 
 let sum=0;
 for (let i=0; i<7; i++){
-    sum+=datepoints[i];
+    if (isNaN(datepoints[i])){
+        datepoints[i]=0;
+    }
+    sum += datepoints[i];
 };
 focusHours.innerHTML = sum;
 
@@ -243,7 +246,10 @@ function updateSummary(){
     // }
     // streakDays.innerHTML = Math.max(...arrStreakDays);
     for (let i=0; i<=numberOfDates2; i++){
-    sum+=datepoints[i];
+        if (isNaN(datepoints[i])){
+            datepoints[i]=0;
+        }
+        sum+=datepoints[i];
     }
     focusHours.innerHTML = sum;
     if (numberOfDates2 > 31) {
