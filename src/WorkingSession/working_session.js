@@ -111,7 +111,7 @@ class Timer {
     });
  
     const inputSeconds = String(timer);
- 
+    
     if (inputSeconds < 100000) {
       this.stop();
       this.remainingSeconds = inputSeconds;
@@ -141,7 +141,7 @@ class Timer {
  
   start() {
     if (this.remainingSeconds === 0) return;
- 
+    
     this.interval = setInterval(() => {
       this.remainingSeconds--;
       this.updateInterfaceTime();
@@ -153,14 +153,19 @@ class Timer {
  
     this.updateInterfaceControls();
   }
- 
+  
+  
+  
   stop() {
+    
     clearInterval(this.interval);
- 
+   
     this.interval = null;
  
     this.updateInterfaceControls();
   }
+
+  
  
   static getHTML() {
     return `
@@ -175,6 +180,8 @@ class Timer {
             `;
   }
 }
+
+
  
 class TaskTimer {
   constructor(root, timer) {
@@ -202,7 +209,7 @@ class TaskTimer {
  
     if (inputMinutes < 1000) {
       this.stop();
-      this.remainingSeconds = inputMinutes * 60;
+      this.remainingSeconds = inputMinutes;
       this.updateInterfaceTime();
     }
   }
@@ -519,6 +526,7 @@ cancelTaskButton.addEventListener("click", function () {
  
 let arrayOfTasks = [];
 let suma;
+
  
 // let arrayOfDurationTimes = [];
 // const sumValues = arrayOfDurationTimes.reduce((partialSum, a) => partialSum + a, 0);
@@ -571,7 +579,7 @@ let suma;
 // getLocalStorage();
  
 console.log(localStorage);
-let left;
+
 const excistingSessions = JSON.parse(localStorage.getItem("sessions"));
 let sessions = excistingSessions?.length >= 0 ? excistingSessions : [];
  
@@ -681,54 +689,60 @@ document.querySelectorAll(".values").forEach((item) => {
           if (clicked) {
             const play = new TaskTimer(
               newDivContainer,
-              test.assignedTaskDuration
+              test.assignedTaskDuration * 60
             );
+              
+
+            
+
             const play2 = new Timer(timerElement, suma);
+            
+
+            
+            
  
             play.start();
             play2.start();
  
             // task time duration
-            initialTaskTime = play.remainingSeconds;
+              
+
+            initialTaskTime = parseInt(play.remainingSeconds);
             console.log(initialTaskTime);
+            
  
             let stopTask = document.createElement("button");
             stopTask.setAttribute("class", "stopTask");
             stopTask.innerText = "Finish task";
             newDivContainer.appendChild(stopTask);
-            // newDivContainer.addEventListener("click", function (e) {
-            //   const clicked = e.target.closest(".stopTask");
-            //   console.log(clicked);
-            //   if (!clicked) return;
- 
-            //   if (clicked) {
-            //     suma = arrayOfTasks
-            //       .flatMap((parameter) => parameter.time)
-            //       .reduce((sum, current) => sum + current, 0);
- 
-            //     console.log(suma);
-            //     const timer11 = new Timer(timerElement, suma);
-            //     timer11;
-            //   }
-            // });
- 
+            
+            
+
+            
+
+
+
+
+            
             stopTask.addEventListener("click", function () {
+              
               let confirmAction;
               confirmAction = confirm("End task?");
               if (confirmAction) {
                 newDivContainer.remove();
  
                 taskTimeLeftWhenStopped = play.remainingSeconds;
-                left = initialTaskTime - taskTimeLeftWhenStopped;
+                
  
-                console.log(taskTimeLeftWhenStopped);
+                
                 // new Timer(timerElement, test.assignedTaskDuration);
- 
+                
                 play.stop();
                 play2.stop();
               }
             });
-            console.log(left);
+            
+           
           }
         });
  
@@ -929,7 +943,7 @@ document.querySelectorAll(".values").forEach((item) => {
         // arrayOfDurationInputValues.push(parseInt(taskDuration.value));
         arrayOfTasks.push(test);
  
-        test.time.push(parseInt(taskDuration.value));
+        test.time.push(parseInt(taskDuration.value * 60));
  
         suma = arrayOfTasks
           .flatMap((parameter) => parameter.time)
