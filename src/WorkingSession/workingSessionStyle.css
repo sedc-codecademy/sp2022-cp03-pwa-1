@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 15px;
-  margin-top: -50px;
+  margin-top: -80px;
   height: fit-content;
   /* border: 1px solid; */
   transition: all 300ms ease-in-out;
@@ -72,7 +72,7 @@
 #endSessionButton:hover {
 transform: scale(1.03);
 background: rgb(234, 113, 113);
-color: white;
+color: white
 }
 
 .sessionButtonSetting:hover {
@@ -386,6 +386,7 @@ color: white;
   margin: auto;
   width: 50%;
   padding: 60px;
+ 
   /* bottom: 0; */
 }
 
@@ -393,8 +394,10 @@ color: white;
 
 #sessionMain {
   position: relative;
-  height: 100%;
+  height: 80%;
   color: (var) --clr-neutral-200;
+  
+
 }
 
 /* Classes to make popups work HIDDEN */
@@ -469,6 +472,7 @@ color: white;
   background: #2980b9;
   width: 89%;
   left: 50%;
+  
   transform: translate(-50%, -50%);
 }
 
@@ -524,12 +528,13 @@ ol {
   margin-top: auto;
   margin-inline: auto;
   width: min(90%, 70.5rem);
-  height: 35vh;
+  height: auto;
   /* margin-left: -10vh;
     margin-right: -10vh; */
-  bottom: 0;
+  
   left: 0;
   right: 0;
+  
 }
 
 .listOfTasksDiv li {
@@ -1009,3 +1014,7 @@ ol {
   transform: scale(1.05);
   transition: all 300ms ease-in-out;
 }
+
+/* @media only screen and (max-width: 600px) {
+    
+  } */

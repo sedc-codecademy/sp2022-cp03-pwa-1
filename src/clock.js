@@ -1,4 +1,4 @@
-let clockContainer = document.querySelector(".js-clock");
+// let clockContainer = document.querySelector(".js-clock");
 let clockTitle = clockContainer.querySelector("h1");
 let reminderBtn = document.querySelector("#reminderBtn");
 let clearBtn = document.querySelector('#deleteReminder');

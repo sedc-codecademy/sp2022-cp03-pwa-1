@@ -3,7 +3,6 @@
 const menu = ['CALENDAR', 'STATISTICS', 'HOME', 'PRODUCTIVITY', 'REMINDERS']
 const swiper = new Swiper('.swiper', {
     // Optional parameters
-    
     direction: 'horizontal',
     effect: 'coverflow',
     grabCursor: false,
@@ -11,6 +10,8 @@ const swiper = new Swiper('.swiper', {
     slidesPerView: 'auto',
     initialSlide: 2,
     allowTouchMove: false,
+    keyboardControl: true,
+        speed: 600,
 
 
 
