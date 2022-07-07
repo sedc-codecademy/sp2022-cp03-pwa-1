@@ -21,7 +21,7 @@ nextYearBtn.addEventListener('click', function () {
   renderYear(year);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-})
+});
 
 prevMonthBtn.addEventListener('click', function () {
 if(month > 1) {
@@ -30,7 +30,7 @@ if(month > 1) {
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-}})
+}});
 
 nextMonthBtn.addEventListener('click', function () {
   if(month <= 11) {
@@ -39,7 +39,7 @@ nextMonthBtn.addEventListener('click', function () {
     renderMonth(monthsNames, month, renderedMonth);
     getDaysInMonthFunc(year, month)
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-  }})
+  }});
 
 //-----------getting current year-----------
 let year;
@@ -55,7 +55,7 @@ let month;
 
 function getMonth() {
   month = new Date().getMonth() + 1;
-}
+};
 
 getMonth();
 
@@ -64,7 +64,7 @@ let getDaysInMonth = 0;
 
 function getDaysInMonthFunc(year, month) {
    getDaysInMonth = new Date(year, month, 0).getDate();
-}
+};
 
 getDaysInMonthFunc(year, month);
 
@@ -75,7 +75,8 @@ let firstDay = new Date(date.getFullYear(), date.getMonth(), 1)
 //-----------adding year between buttons-----------
 function renderYear(year) {
   renderedYear.innerText = (year);
-}
+};
+
 renderYear(year);
 
 //-----------adding month name between buttons-----------
@@ -92,7 +93,8 @@ function renderMonth(monthsArray, monthNum, elem) {
     month = 12;
   }
   elem.innerText = (currentMonth);
-}
+};
+
 renderMonth(monthsNames, month, renderedMonth);
 
 // --------Helper Function for getting day as number-----------
@@ -100,7 +102,7 @@ function getDay(date) {
   let day = date.getDay();
   if (day === 0) day = 7; 
   return day - 1;
-}
+};
 
 // --------rendering the calendar-----------
 function renderCalendar(elem, daysInMonthCallback, dataArr) {
@@ -111,18 +113,18 @@ function renderCalendar(elem, daysInMonthCallback, dataArr) {
       year: parseInt(parsedData[0]),
       month: parseInt(parsedData[1]),
       day: parsedData[2],
-    }
+    };
     return newObj.year === year && newObj.month === month ? newObj : null;
   }).filter(item => item !== null).map(x => parseInt(x.day));
 
   let table = '<table id="calendarTable"><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
   let daysInMonth = daysInMonthCallback;
   let EmptySpacesNum = getDay(firstDay);
-  let totalTds = daysInMonth + EmptySpacesNum
+  let totalTds = daysInMonth + EmptySpacesNum;
 
 for (let i = 0; i < getDay(firstDay); i++) {
       table += '<td></td>';
-    }
+    };
     
     for (let i = 0; i <= totalTds - (EmptySpacesNum + 1); i++) {
        if ((i + EmptySpacesNum) % 7 === 0 ) {
@@ -131,11 +133,11 @@ for (let i = 0; i < getDay(firstDay); i++) {
       } else {
         table += `<td class="${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
       }
-    }
+    };
 
   table += `</tr></table>`
   elem.innerHTML = table
-}
+};
 
 renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 
@@ -188,7 +190,7 @@ reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
     if (inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '') {
         return alert('Please enter input in all fields!')
-    }
+    };
 
     createReminderObject();
     renderTable(remindersTable);
@@ -209,7 +211,7 @@ clearBtn.addEventListener("click", function() {
 //function for getting inputs for reminder
 function gettingReminderInput(elem) {
     return elem.value;
-}
+};
 
 //function for getting all inputs for reminder
 function gettingAllReminders() {
@@ -217,12 +219,12 @@ function gettingAllReminders() {
     inputReminderDate = gettingReminderInput(reminderDate);
     inputReminderTime = gettingReminderInput(reminderTime);
     inputReminderPriority = gettingReminderInput(reminderPriority);
-}
+};
 
 //function for deleting all reminders
 function ClearAllReminders(elem) {
     elem.innerHTML = "";
-}
+};
 
 //function for making objects with reminders
 function ReminderObject(id, name, date, time, priority) {
@@ -231,7 +233,7 @@ function ReminderObject(id, name, date, time, priority) {
     this.date = date;
     this.time = time;
     this.priority = priority;
-}
+};
 
 function createReminderObject() {
     let reminder = new ReminderObject(
@@ -240,10 +242,11 @@ function createReminderObject() {
         gettingReminderInput(reminderDate),
         gettingReminderInput(reminderTime),
         gettingReminderInput(reminderPriority)
-    )
+    );
+
     reminderMockData.push(reminder);
     reminderId++;
-}
+};
 
 //function for rendering the table of reminders
 function renderTable(elem) {
@@ -264,11 +267,11 @@ function renderTable(elem) {
 
     table += `</table>`
     elem.innerHTML = table
-}
+};
 
 //function for deleting reminder by ID from the table
 function deleteReminderById(reminderId) {
     const newData = reminderMockData.filter(x => x.id !== reminderId);
     reminderMockData = [...newData];
     renderTable(remindersTable);
-}
+};
