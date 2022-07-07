@@ -774,21 +774,35 @@ document.querySelectorAll(".values").forEach((item) => {
               if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
 
 
-                let minutes = parseInt(newDivContainer.innerText.trim().slice(1, 2));
-                //let seconds = timerElement.innerText.slice(5, 7);
+                let secondsArray3 = newDivContainer.innerText.split('');
+                let arrayOfNumbers3 = [];
 
-                let secondsArray = newDivContainer.innerText.split('');
-                console.log(secondsArray);
-                let firstDigit = parseInt(secondsArray[5]);
-                let secondDigit = parseInt(secondsArray[6]);
-                let seconds = 10 * firstDigit + secondDigit;
+                for (let i = 0; i < secondsArray3.length; i++) {
+                  let parsedCharacter = parseInt(secondsArray3[i]);
+                  if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
+                    arrayOfNumbers3.push(parsedCharacter);
+                  }
+                }
+                let suma204 = arrayOfNumbers3[0] * 60 * 10 + arrayOfNumbers3[1] * 60 + arrayOfNumbers3[2] * 10 + arrayOfNumbers3[3];
+                console.log(arrayOfNumbers3);
+                console.log(suma204);
+                new TaskTimer(newDivContainer, suma204);
 
-                console.log(minutes);
-                console.log(seconds);
+                // let minutes = parseInt(newDivContainer.innerText.trim().slice(1, 2));
+                // //let seconds = timerElement.innerText.slice(5, 7);
 
-                let suma20 = minutes * 60 + seconds;
+                // let secondsArray = newDivContainer.innerText.split('');
+                // console.log(secondsArray);
+                // let firstDigit = parseInt(secondsArray[5]);
+                // let secondDigit = parseInt(secondsArray[6]);
+                // let seconds = 10 * firstDigit + secondDigit;
 
-                new TaskTimer(newDivContainer, suma20);
+                // console.log(minutes);
+                // console.log(seconds);
+
+                // let suma20 = minutes * 60 + seconds;
+
+                // new TaskTimer(newDivContainer, suma20);
                 listOfTasks.style.display = "none";
                 let interval_id = window.setInterval(() => { }, 99999);
                 for (let i = 0; i < interval_id; i++) window.clearInterval(i);
@@ -823,7 +837,37 @@ document.querySelectorAll(".values").forEach((item) => {
                       let resumeTimer = new TaskTimer(newDivContainer, suma20);
                       resumeTimer.start();
 
-                      let mainResumeTimer = new Timer(timerElement, suma20);
+                      ////////////////////////////////////////////////////////////////////////
+
+                      // let minutes2 = parseInt(timerElement.innerText.trim().slice(1, 2));
+                      //let seconds = timerElement.innerText.slice(5, 7);
+
+                      let secondsArray2 = timerElement.innerText.split('');
+                      let arrayOfNumbers = [];
+
+                      for (let i = 0; i < secondsArray2.length; i++) {
+                        let parsedCharacter = parseInt(secondsArray2[i]);
+                        if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
+                          arrayOfNumbers.push(parsedCharacter);
+                        }
+                      }
+
+                      console.log(arrayOfNumbers);
+
+                      console.log(secondsArray2);
+
+                      // let firstDigit2 = parseInt(secondsArray2[42]);
+                      // let secondDigit2 = parseInt(secondsArray2[43]);
+                      // let seconds2 = 10 * firstDigit2 + secondDigit2;
+
+                      // console.log(minutes2);
+                      // console.log(seconds2);
+
+                      let suma202 = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
+
+                      new Timer(timerElement, suma202);
+
+                      let mainResumeTimer = new Timer(timerElement, suma202);
                       mainResumeTimer.start();
 
                     })
@@ -862,6 +906,7 @@ document.querySelectorAll(".values").forEach((item) => {
 
                 arrayOfTasks.map(x => {
                   if (x.id === currentId) {
+
                     x.finished = "true";
                     arrayOfFinishedTasks.push(x);
                     arrayOfNotFinishedTasks.splice(x, 1);
@@ -936,11 +981,12 @@ document.querySelectorAll(".values").forEach((item) => {
                 // let currentId = currentParent.paraId.innerText;
                 console.log(currentParent.paraId);
                 console.log(currentId);
-                // console.log(currentId);
+                //console.log(currentId);
                 console.log(flagParagraph.parentElement);
                 clearInterval(interval);
                 arrayOfTasks.map(x => {
                   if (x.id === currentId) {
+                    console.log(x.id, currentId);
                     x.finished = "true";
                     arrayOfFinishedTasks.push(x);
                     arrayOfNotFinishedTasks.splice(x, 1);
@@ -1046,11 +1092,24 @@ document.querySelectorAll(".values").forEach((item) => {
 
             for (let i = 0; i < arrayOfTasks.length; i++) {
               if (arrayOfTasks[i].id == paragraphId.innerText) {
+                console.log(arrayOfTasks[i].id, paragraphId.innerText);
+                i.finished = "false";
                 arrayOfTasks.splice(i, 1);
-                arrayOfNotFinishedTasks.splice(i, 1);
+                //arrayOfNotFinishedTasks.splice(i, 1);
                 arrayOfFinishedTasks.splice(i, 1);
               }
             }
+
+            for (let i = 0; i < arrayOfNotFinishedTasks.length; i++) {
+              if (arrayOfNotFinishedTasks[i].id == paragraphId.innerText) {
+                console.log(arrayOfNotFinishedTasks[i].id, paragraphId.innerText);
+                i.finished = "false";
+                arrayOfNotFinishedTasks.splice(i, 1);
+                //arrayOfNotFinishedTasks.splice(i, 1);
+                //arrayOfFinishedTasks.splice(i, 1);
+              }
+            }
+
 
             if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
               sessionCardButtonSetting.style.display = "none";
@@ -1169,21 +1228,32 @@ document.querySelectorAll(".values").forEach((item) => {
       sessionButtonsDiv.addEventListener("click", (e) => {
         if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
 
-          let minutes = parseInt(timerElement.innerText.trim().slice(1, 2));
-          //let seconds = timerElement.innerText.slice(5, 7);
+          // let minutes = parseInt(timerElement.innerText.trim().slice(1, 2));
+          // //let seconds = timerElement.innerText.slice(5, 7);
 
-          let secondsArray = timerElement.innerText.split('');
-          console.log(secondsArray);
-          let firstDigit = parseInt(secondsArray[42]);
-          let secondDigit = parseInt(secondsArray[43]);
-          let seconds = 10 * firstDigit + secondDigit;
+          // let secondsArray = timerElement.innerText.split('');
+          // console.log(secondsArray);
+          // let firstDigit = parseInt(secondsArray[42]);
+          // let secondDigit = parseInt(secondsArray[43]);
+          // let seconds = 10 * firstDigit + secondDigit;
 
-          console.log(minutes);
-          console.log(seconds);
+          // console.log(minutes);
+          // console.log(seconds);
 
-          let suma20 = minutes * 60 + seconds;
+          // let suma20 = minutes * 60 + seconds;
+          let secondsArray2 = timerElement.innerText.split('');
+          let arrayOfNumbers2 = [];
 
-          new Timer(timerElement, suma20);
+          for (let i = 0; i < secondsArray2.length; i++) {
+            let parsedCharacter = parseInt(secondsArray2[i]);
+            if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
+              arrayOfNumbers2.push(parsedCharacter);
+            }
+          }
+          let suma203 = arrayOfNumbers2[0] * 60 * 10 + arrayOfNumbers2[1] * 60 + arrayOfNumbers2[2] * 10 + arrayOfNumbers2[3];
+          console.log(arrayOfNumbers2);
+          console.log(suma203);
+          new Timer(timerElement, suma203);
 
         }
       })
