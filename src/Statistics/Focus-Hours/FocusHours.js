@@ -88,6 +88,7 @@ function startingArrayOfChartDates(){
 //     return arrayOfHoursPerDay;
 // } 
 
+
 const allSessions1 = JSON.parse(localStorage.getItem("sessions"));
  console.log(allSessions1);
  let arrayOfSessionDates = [];
@@ -175,22 +176,22 @@ let focusHours = document.getElementById("dynamicFocusHours");
 
 // let count=0;
 // for (let i=0; i < 7; i++){
-//     if(datepoints[i] != 0){
-//     count++
-//     };
-//     }
-// accessDays.innerHTML = count;
+//      if(datepoints[i] != 0){
+//      count++
+//      };
+//      }
+//  accessDays.innerHTML = count;
 
-// let count2=0;
-// let arrStreakDays = [];
-// for (let i=0; i < 7; i++){ 
-//     count2++;
-//     if(datepoints[i] == 0){
-//     count2=0;   
-//         }
-//         arrStreakDays.push(count2);
-//     }
-// streakDays.innerHTML = Math.max(...arrStreakDays);
+//  let count2=0;
+//  let arrStreakDays = [];
+//  for (let i=0; i < 7; i++){ 
+//      count2++;
+//      if(datepoints[i] == 0){
+//      count2=0;   
+//          }
+//          arrStreakDays.push(count2);
+//      }
+//  streakDays.innerHTML = Math.max(...arrStreakDays);
 
  let sum=0;
  for (let i=0; i<7; i++){
@@ -199,7 +200,9 @@ let focusHours = document.getElementById("dynamicFocusHours");
      }
      sum += datepoints[i];
  };
- focusHours.innerHTML = Math.round(sum*100)/100;
+ const focusHours1 = (Math.floor(sum)+((sum-Math.floor(sum))*60/100)).toFixed(2);
+
+ focusHours.innerHTML = `${Math.floor(sum)} h ${(((sum-Math.floor(sum))*60)).toFixed(0)} min`;
 
 function filterDate() {
     const dynamicDates = [];
@@ -255,14 +258,14 @@ function updateSummary(){
     // let arrStreakDays =[];
 
     // for (let i=0; i < numberOfDates2+1; i++){
-    // if(datepoints[i] != 0){
+    // if(myChart.config.data.datasets[0].data[i]=0 != 0){
     // count++
     // };
     // }
     // accessDays.innerHTML = count;
     // for (let i=0; i < numberOfDates2+1; i++){ 
     // count2++;
-    // if(datepoints[i] == 0){
+    // if(myChart.config.data.datasets[0].data[i]=0){
     // count2=0;   
     // }
     // arrStreakDays.push(count2);
@@ -274,11 +277,11 @@ function updateSummary(){
          }
          sum+=myChart.config.data.datasets[0].data[i];
      }
-     focusHours.innerHTML = Math.round(sum*100)/100;
+     focusHours.innerHTML = `${Math.floor(sum)} h ${(((sum-Math.floor(sum))*60)).toFixed(0)} min`;
      if (numberOfDates2 > 31) {
          focusHours.innerHTML=null;
-         // streakDays.innerHTML=null;
-         // accessDays.innerHTML=null;
+         //streakDays.innerHTML=null;
+         //accessDays.innerHTML=null;
      };
 };
 
