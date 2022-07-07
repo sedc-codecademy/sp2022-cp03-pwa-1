@@ -361,7 +361,9 @@ function renderTable(elem) {
     table += `<td>${reminderItem.date}</td>`
     table += `<td>${reminderItem.time}</td>`
     table += `<td>${reminderItem.priority}</td>`
-    table += `<td><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id})">X</button></td>`
+    table += `<td><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
+    renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+    ">X</button></td>`
     table += `</tr>`
     })
 
