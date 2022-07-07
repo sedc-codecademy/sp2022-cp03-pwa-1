@@ -276,6 +276,7 @@ let initialTaskTime;
 
 let taskTimeLeftWhenStopped;
 
+
 // Dialog for Short & Long Break options
 
 const favDialog = document.getElementById("favDialog");
@@ -680,7 +681,7 @@ document.querySelectorAll(".values").forEach((item) => {
 
         let paraId = document.createElement('p');
         paraId.innerText = number;
-        paraId.style.display = "flex";
+        paraId.style.display = "none";
         paraId.setAttribute('id', "paraId");
 
         // console.log(number);
@@ -696,6 +697,7 @@ document.querySelectorAll(".values").forEach((item) => {
           `;
         let newDivContainer = document.createElement("div");
         newDivContainer.setAttribute("class", "card_timer_container");
+        newDivContainer.classList.add("hidden");
         li.appendChild(newDivContainer);
         li.appendChild(paraId);
         console.log(paraId);
@@ -712,6 +714,7 @@ document.querySelectorAll(".values").forEach((item) => {
         newBtn.setAttribute("class", "startTask");
         newBtn.innerHTML = "Start task";
         newDivContainer.appendChild(newBtn);
+
 
         // arrayOfTasks.map(x => {
         //   if (x.finished === "false") arrayOfNotFinishedTasks.push(x);
@@ -734,130 +737,111 @@ document.querySelectorAll(".values").forEach((item) => {
               .flatMap((parameter) => parameter.time)
               .reduce((sum, current) => sum + current, 0);
 
-            sumaNotFinishedTasks = arrayOfFinishedTasks
+            sumaFinishedTasks = arrayOfFinishedTasks
               .flatMap((parameter) => parameter.time)
               .reduce((sum, current) => sum + current, 0);
 
-            const play2 = new Timer(timerElement, suma3 - sumaNotFinishedTasks);
+            const play2 = new Timer(timerElement, suma3 - sumaFinishedTasks);
 
             let allLiCards = Array.from(document.getElementsByTagName('li'));
             console.log(allLiCards);
 
             allLiCards.forEach(card => {
               if (card.classList.contains("active")) {
+                console.log("hellooooo");
                 card.classList.remove("active");
               }
             })
 
             let grandParent = newDivContainer.parentElement;
             grandParent.classList.add("active");
+            //newBtn.style.display = "flex";
 
 
-            let somethingNice = function () {
-              const somethingNicer = setInterval(() => {
-                let familija = listOfTasks.lastChild.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
-                console.log(familija);
-                let splitted = familija.split('')
-                let splittedDigits = [parseInt(splitted[0]), parseInt(splitted[1]), parseInt(splitted[5]), parseInt(splitted[6])]
-                let checkZeroStatus = splittedDigits.reduce((sum, current) => sum + current, 0);
-                console.log(splittedDigits);
+            allLiCards.forEach(card => {
 
-                if (checkZeroStatus === 0) {
+              if (!card.classList.contains("active")) {
+                newBtn.classList.add("hidden");
+                console.log(newBtn);
+              }
+            })
+            //newBtn.style.display = "flex";
 
 
-                  flagParagraph.contentEditable = "true";
+            //newDivContainer.style.display = "flex";
 
-                  let currentParent = flagParagraph.parentElement;
-                  currentParent.classList.remove("active");
-                  console.log(currentParent);
-                  let lastElement = currentParent.lastElementChild;
-                  let previousSibling = lastElement.previousElementSibling;
-                  console.log(previousSibling);
-                  console.log(lastElement);
-                  let currentId = parseInt(previousSibling.innerText);
-                  //console.log(lastParagraph);
-                  // let currentId = currentParent.paraId.innerText;
-                  console.log(currentParent.paraId);
-                  console.log(currentId);
-                  // console.log(currentId);
-                  console.log(flagParagraph.parentElement);
+            sessionButtonsDiv.addEventListener("click", (e) => {
+              if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
 
-                  arrayOfTasks.map(x => {
-                    if (x.id === currentId) {
-                      x.finished = "true";
-                      arrayOfFinishedTasks.push(x);
-                      arrayOfNotFinishedTasks.splice(x, 1);
-                    }
 
-                  })
+                let minutes = parseInt(newDivContainer.innerText.trim().slice(1, 2));
+                //let seconds = timerElement.innerText.slice(5, 7);
 
-                  if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
-                    const test3 = new Timer(timerElement, 0);
-                    sessionCardButtonSetting.style.display = "none";
+                let secondsArray = newDivContainer.innerText.split('');
+                console.log(secondsArray);
+                let firstDigit = parseInt(secondsArray[5]);
+                let secondDigit = parseInt(secondsArray[6]);
+                let seconds = 10 * firstDigit + secondDigit;
+
+                console.log(minutes);
+                console.log(seconds);
+
+                let suma20 = minutes * 60 + seconds;
+
+                new TaskTimer(newDivContainer, suma20);
+                listOfTasks.style.display = "none";
+                let interval_id = window.setInterval(() => { }, 99999);
+                for (let i = 0; i < interval_id; i++) window.clearInterval(i);
+              }
+              if (e.target == sessionCardButtonTimer) {
+                listOfTasks.style.display = "flex";
+                let allLiCards = Array.from(document.getElementsByTagName('li'));
+                console.log(allLiCards);
+
+                allLiCards.forEach(card => {
+                  if (card.classList.contains("active")) {
+                    let resumeBtn = document.createElement("button");
+                    resumeBtn.setAttribute("class", "resumeBtn");
+                    resumeBtn.innerText = "resume";
+                    newDivContainer.appendChild(resumeBtn);
+
+                    resumeBtn.addEventListener("click", function () {
+                      let minutes = parseInt(newDivContainer.innerText.trim().slice(1, 2));
+
+                      let secondsArray = newDivContainer.innerText.split('');
+                      console.log(secondsArray);
+
+                      let firstDigit = parseInt(secondsArray[5]);
+                      let secondDigit = parseInt(secondsArray[6]);
+                      let seconds = 10 * firstDigit + secondDigit;
+
+                      console.log(minutes);
+                      console.log(seconds);
+
+                      let suma20 = minutes * 60 + seconds;
+
+                      let resumeTimer = new TaskTimer(newDivContainer, suma20);
+                      resumeTimer.start();
+
+                      let mainResumeTimer = new Timer(timerElement, suma20);
+                      mainResumeTimer.start();
+
+                    })
                   }
-                  else {
-                    let suma6 = arrayOfNotFinishedTasks
-                      .flatMap((parameter) => parameter.time)
-                      .reduce((sum, current) => sum + current, 0);
+                })
+              }
+            })
 
-                    const test2 = new Timer(timerElement, suma6);
-                    console.log(suma6);
-                  }
-                  console.log(suma5);
+            function somethingNicer() {
+              let familija = listOfTasks.lastChild.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
+              console.log(familija);
+              let splitted = familija.split('')
+              let splittedDigits = [parseInt(splitted[0]), parseInt(splitted[1]), parseInt(splitted[5]), parseInt(splitted[6])]
+              let checkZeroStatus = splittedDigits.reduce((sum, current) => sum + current, 0);
+              console.log(splittedDigits);
 
+              if (checkZeroStatus === 0) {
 
-                  newDivContainer.remove();
-                  taskTimeLeftWhenStopped = play.remainingSeconds;
-                  left = initialTaskTime - taskTimeLeftWhenStopped;
-
-                  console.log(taskTimeLeftWhenStopped);
-                  // new Timer(timerElement, test.assignedTaskDuration);
-
-                  play.stop();
-                  play2.stop();
-
-                  clearInterval(somethingNicer);
-                }
-                console.log(checkZeroStatus);
-                console.log(splittedDigits);
-
-              }, 1000)
-            };
-
-            somethingNice();
-
-            play.start();
-            play2.start();
-
-
-            // task time duration
-            initialTaskTime = play.remainingSeconds;
-            console.log(initialTaskTime);
-
-            let stopTask = document.createElement("button");
-            stopTask.setAttribute("class", "stopTask");
-            stopTask.innerText = "Finish task";
-            newDivContainer.appendChild(stopTask);
-            // newDivContainer.addEventListener("click", function (e) {
-            //   const clicked = e.target.closest(".stopTask");
-            //   console.log(clicked);
-            //   if (!clicked) return;
-
-            //   if (clicked) {
-            //     suma = arrayOfTasks
-            //       .flatMap((parameter) => parameter.time)
-            //       .reduce((sum, current) => sum + current, 0);
-
-            //     console.log(suma);
-            //     const timer11 = new Timer(timerElement, suma);
-            //     timer11;
-            //   }
-            // });
-
-            stopTask.addEventListener("click", function () {
-              let confirmAction;
-              confirmAction = confirm("End task?");
-              if (confirmAction) {
 
                 flagParagraph.contentEditable = "true";
 
@@ -909,60 +893,90 @@ document.querySelectorAll(".values").forEach((item) => {
 
                 play.stop();
                 play2.stop();
+
+                clearInterval(interval);
+              }
+              console.log(checkZeroStatus);
+              console.log(splittedDigits);
+
+            }
+            let interval = setInterval(somethingNicer, 1000);
+            // somethingNice();
+
+            play.start();
+            play2.start();
+
+
+            // task time duration
+            initialTaskTime = play.remainingSeconds;
+            console.log(initialTaskTime);
+
+            let stopTask = document.createElement("button");
+            stopTask.setAttribute("class", "stopTask");
+            stopTask.innerText = "Finish task";
+            newDivContainer.appendChild(stopTask);
+
+
+            stopTask.addEventListener("click", function () {
+              let confirmAction;
+              confirmAction = confirm("End task?");
+              if (confirmAction) {
+
+                flagParagraph.contentEditable = "true";
+
+                let currentParent = flagParagraph.parentElement;
+                currentParent.classList.remove("active");
+                console.log(currentParent);
+                let lastElement = currentParent.lastElementChild;
+                let previousSibling = lastElement.previousElementSibling;
+                console.log(previousSibling);
+                console.log(lastElement);
+                let currentId = parseInt(previousSibling.innerText);
+                //console.log(lastParagraph);
+                // let currentId = currentParent.paraId.innerText;
+                console.log(currentParent.paraId);
+                console.log(currentId);
+                // console.log(currentId);
+                console.log(flagParagraph.parentElement);
+                clearInterval(interval);
+                arrayOfTasks.map(x => {
+                  if (x.id === currentId) {
+                    x.finished = "true";
+                    arrayOfFinishedTasks.push(x);
+                    arrayOfNotFinishedTasks.splice(x, 1);
+                  }
+
+                })
+
+                if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
+                  const test3 = new Timer(timerElement, 0);
+                  sessionCardButtonSetting.style.display = "none";
+                }
+                else {
+                  let suma6 = arrayOfNotFinishedTasks
+                    .flatMap((parameter) => parameter.time)
+                    .reduce((sum, current) => sum + current, 0);
+
+                  const test2 = new Timer(timerElement, suma6);
+                  console.log(suma6);
+                }
+                console.log(suma5);
+
+
+                newDivContainer.remove();
+                taskTimeLeftWhenStopped = play.remainingSeconds;
+                left = initialTaskTime - taskTimeLeftWhenStopped;
+
+                console.log(taskTimeLeftWhenStopped);
+                // new Timer(timerElement, test.assignedTaskDuration);
+
+                play.stop();
+                play2.stop();
               }
             });
             console.log(left);
           }
         });
-
-        // tabsContainer.addEventListener('click', function (e) {
-        //     const clicked = e.target.closest('.operationstab');
-        //     // console.log(clicked);
-        //     if (!clicked) return; // guard close , if there is no click , return immediately, finish the function
-        //     //REMOVE ACTIVE CLASSES
-        //     tabs.forEach(tab => tab.classList.remove('operationstab--active')); // to put the inactive tabs down
-        //     tabsContent.forEach(content =>
-        //       content.classList.remove('.operationscontent--active')
-        //     );
-        //     // ACTIVE TAB
-        //     clicked.classList.add('operationstab--active');
-        //     // ACTIVE CONTENT AREA
-        //     document
-        //       .querySelector(.operations__content--${clicked.dataset.tab})
-        //       .classList.add('.operations__content--active');
-        //   });
-
-        // document.addEventListener("click", function(e) {
-        //     if (e.target.classList.contains("startTask")) {
-        //         const play = new TaskTimer(newDivContainer, test.assignedTaskDuration)
-
-        //         play.start();
-        //         test1.start();
-
-        //         // task time duration
-        //         initialTaskTime = play.remainingSeconds;
-        //         console.log(initialTaskTime);
-
-        //         let stopTask = document.createElement("button");
-        //         stopTask.setAttribute("class", "stopTask");
-        //         stopTask.innerText = "Finish task";
-        //         newDivContainer.appendChild(stopTask);
-
-        //         stopTask.addEventListener("click", function() {
-        //             let confirmAction;
-        //             confirmAction = confirm(
-        //                 "Are you sure you want to remove this task?");
-        //             if (confirmAction) {
-        //                 newDivContainer.remove();
-        //                 taskTimeLeftWhenStopped = play.remainingSeconds;
-        //                 console.log(taskTimeLeftWhenStopped);
-        //                 play.stop()
-        //                 test1.stop();
-
-        //             }
-        //         })
-        //     }
-        // });
 
         let paragraphId = document.createElement("p");
         paragraphId.setAttribute("class", "idOfCard");
@@ -1012,24 +1026,6 @@ document.querySelectorAll(".values").forEach((item) => {
           });
         }
 
-        // arrayOfDurationInputValues.push(taskDuration.value);
-        // for (i = 0; i < arrayOfDurationInputValues.length; i++) {
-        //     let helper = `${arrayOfDurationInputValues[i].time}`;
-        //     sum2 += helper;
-        // }
-        // console.log(sum2);
-        // for (const value of arrayOfDurationInputValues) {
-        //     sum1 += +value;
-        // }
-
-        // const sumWithInitial = arrayOfDurationTimes.reduce(
-        //     (previousValue, currentValue) =>
-        //         previousValue + currentValue, 0
-        // );
-        // console.log(sumWithInitial);
-
-        //     let helper = `${arrayOfDurationInputValues[i].time}`;
-        //     sum2 += helper;
 
         let suma3;
         let removeTaskButton = document.createElement("button");
@@ -1041,6 +1037,10 @@ document.querySelectorAll(".values").forEach((item) => {
           let confirmAction;
           confirmAction = confirm("Are you sure you want to remove this task?");
           if (confirmAction) {
+
+            let interval_id = window.setInterval(() => { }, 99999);
+            for (let i = 0; i < interval_id; i++) window.clearInterval(i);
+
             this.parentElement.remove();
             console.log(arrayOfTasks);
 
@@ -1048,6 +1048,7 @@ document.querySelectorAll(".values").forEach((item) => {
               if (arrayOfTasks[i].id == paragraphId.innerText) {
                 arrayOfTasks.splice(i, 1);
                 arrayOfNotFinishedTasks.splice(i, 1);
+                arrayOfFinishedTasks.splice(i, 1);
               }
             }
 
@@ -1055,16 +1056,16 @@ document.querySelectorAll(".values").forEach((item) => {
               sessionCardButtonSetting.style.display = "none";
             }
 
-            suma3 = arrayOfTasks
+            suma3 = arrayOfNotFinishedTasks
               .flatMap((parameter) => parameter.time)
               .reduce((sum, current) => sum + current, 0);
             console.log(suma);
             console.log(suma3);
-            if (arrayOfFinishedTasks.length === arrayOfFinishedTasks.length) {
+            if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
               new Timer(timerElement, 0);
             } else {
               const timer18 = new Timer(timerElement, suma3);
-              timer18;
+              //timer18;
             }
 
           }
@@ -1087,7 +1088,15 @@ document.querySelectorAll(".values").forEach((item) => {
           if (!click) return;
 
           li.classList.remove("active");
+          if (!click.classList.contains("active")) {
+            newDivContainer.classList.add("hidden");
+          }
           click.classList.add("active");
+          let getNewDiv = click.getElementsByClassName("hidden");
+          newDivContainer.classList.remove("hidden");
+          //getNewDiv.classList.remove("hidden");
+          console.log(newDivContainer);
+          console.log(getNewDiv);
         })
 
 
@@ -1099,36 +1108,6 @@ document.querySelectorAll(".values").forEach((item) => {
         setColor(li);
         getPriority(li);
 
-        // var start = $("#start_" + counterForCard)
-        // var cancel = $("#cancel_" + counterForCard)
-        // var reset = $("#reset_" + counterForCard)
-        // var timer = $("#timer_" + counterForCard)
-
-        // function getKey(jQObject) {
-        //     for (const [key, value] of Object.entries(jQObject)) {
-
-        //         console.log(`this is the value: ${value}`);
-
-        //     }
-
-        // }
-
-        // getKey(start);
-        // getKey(cancel);
-        // getKey(reset);
-        // getKey(timer);
-
-        // let startDynamicVariable = `start_${counterForCard++}`;
-        // let cancelDynamicVariable = `cancel_${counterForCard++}`;
-        // let resetDynamicVariable = `reset_${counterForCard++}`;
-        // let timerDynamicVariable = `timer_${counterForCard++}`;
-
-        // $(".timerCard").html("<div></div>").addClass("timer_block");
-        // $(".timer_block").append($("<div></div>").addClass("controls"));
-        // $(".controls").append($("<a>Start</a>").addClass("start_btn").attr("id", "start_0").attr("href", "javascript:void(0)"));
-        // $(".controls").append($("<a>Cancel</a>").addClass("cancel_btn").attr("id", "cancel_0").attr("href", "javascript:void(0)"));
-        // $(".controls").append($("<a>Reset</a>").addClass("reset_btn").attr("id", "reset_0").attr("href", "javascript:void(0)"));
-        // $(".timer_block").append($("<span>value placeholder</span>").addClass("timer").attr("id", "timer_0"));
 
         counter = 0;
         let test = {
@@ -1206,11 +1185,6 @@ document.querySelectorAll(".values").forEach((item) => {
 
           new Timer(timerElement, suma20);
 
-
-
-
-          // test1.stop();
-          // console.log(e);
         }
       })
 
