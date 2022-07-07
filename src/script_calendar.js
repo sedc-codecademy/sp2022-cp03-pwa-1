@@ -5,13 +5,51 @@ let prevYearBtn = document.getElementById('prevYearBtn');
 let nextYearBtn = document.getElementById('nextYearBtn');
 let prevMonthBtn = document.getElementById('prevMonthbtn');
 let nextMonthBtn = document.getElementById('nextMonthbtn');
+let reminderMockData;
+reminderMockData = [
+//   {
+//       "id": 1,
+//       "name": "123",
+//       "date": "2022-08-29",
+//       "time": "16:36",
+//       "priority": "High"
+//   },
+//   {
+//       "id": 2,
+//       "name": "1234",
+//       "date": "2022-06-22",
+//       "time": "16:36",
+//       "priority": "High"
+//   },
+//   {
+//       "id": 3,
+//       "name": "12345",
+//       "date": "2022-05-21",
+//       "time": "16:36",
+//       "priority": "High"
+//   },
+//   {
+//     "id": 4,
+//     "name": "12345",
+//     "date": "2022-07-15",
+//     "time": "16:36",
+//     "priority": "High"
+// },
+// {
+//   "id": 4,
+//   "name": "12345",
+//   "date": "2022-07-18",
+//   "time": "16:36",
+//   "priority": "High"
+// }
+];
 
 prevYearBtn.addEventListener('click', function () {
   year --;
   firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, getDaysInMonth);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 });
 
 nextYearBtn.addEventListener('click', function () {
@@ -19,18 +57,16 @@ nextYearBtn.addEventListener('click', function () {
   firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, getDaysInMonth);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 })
 
 prevMonthBtn.addEventListener('click', function () {
 if(month > 1) {
   month --;
   firstDay = new Date(year, month - 1, 1)
-
   renderMonth(monthsNames, month, renderedMonth);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, getDaysInMonth);
-  seeLS();
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 }})
 
 nextMonthBtn.addEventListener('click', function () {
@@ -39,7 +75,7 @@ nextMonthBtn.addEventListener('click', function () {
     firstDay = new Date(year, month - 1, 1)
     renderMonth(monthsNames, month, renderedMonth);
     getDaysInMonthFunc(year, month)
-    renderCalendar(calendarMain, getDaysInMonth);
+    renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
   }})
 
 //-----------getting current year-----------
@@ -104,7 +140,20 @@ function getDay(date) {
 }
 
 // --------rendering the calendar-----------
-function renderCalendar(elem, daysInMonthCallback) {
+function renderCalendar(elem, daysInMonthCallback, dataArr) {
+
+  console.log(dataArr);
+  const parsedReminderData = dataArr.map((item) => {
+    const parsedData = item.date.split('-')
+    const newObj = {
+      year: parseInt(parsedData[0]),
+      month: parseInt(parsedData[1]),
+      day: parsedData[2],
+    }
+    return newObj.year === year && newObj.month === month ? newObj : null;
+  }).filter(item => item !== null).map(x => parseInt(x.day));
+
+  console.log(parsedReminderData);
 
   let table = '<table id="calendarTable"><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
   let daysInMonth = daysInMonthCallback;
@@ -118,18 +167,18 @@ for (let i = 0; i < getDay(firstDay); i++) {
     for (let i = 0; i <= totalTds - (EmptySpacesNum + 1); i++) {
        if ((i + EmptySpacesNum) % 7 === 0 ) {
         table += '</tr><tr>'
-        table += `<td id="${i + 1}">${i + 1}</td>`
+        table += `<td class="${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
       } else {
-        table += `<td id="${i + 1}">${i + 1}</td>`
+        table += `<td class="${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
       }
     }
-    
+
   table += `</tr></table>`
 
   elem.innerHTML = table
 }
 
-renderCalendar(calendarMain, getDaysInMonth);
+renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 
 // 2nd kind of implementation for render calendar func
 // --------rendering the calendar-----------
@@ -214,7 +263,29 @@ let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
 let inputReminderPriority = 0; 
-let reminderMockData = [];
+// reminderMockData = [
+//   {
+//       "id": 1,
+//       "name": "123",
+//       "date": "2022-06-29",
+//       "time": "16:36",
+//       "priority": "High"
+//   },
+//   {
+//       "id": 2,
+//       "name": "1234",
+//       "date": "2022-07-22",
+//       "time": "16:36",
+//       "priority": "High"
+//   },
+//   {
+//       "id": 3,
+//       "name": "12345",
+//       "date": "2022-05-21",
+//       "time": "16:36",
+//       "priority": "High"
+//   }
+// ];
 
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
@@ -223,6 +294,8 @@ reminderBtn.addEventListener("click", function() {
     }
     createReminderObject();
     renderTable(remindersTable);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+
 });
 
 clearBtn.addEventListener("click", function() {
@@ -234,6 +307,8 @@ clearBtn.addEventListener("click", function() {
 
     inputReminderPriority = 0; 
     reminderMockData = [];
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+
 });
 
 //function for getting inputs for reminder

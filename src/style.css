@@ -459,3 +459,12 @@ td {
     width: 23%;
     height: 155px;
 }
+
+.calendarReminderDataDay {
+    color: red;
+    font-weight: bold;
+}
+
+.calendarReminderDataDay :hover {
+    color: red;
+}
