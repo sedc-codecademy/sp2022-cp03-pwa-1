@@ -6,6 +6,46 @@ let nextYearBtn = document.getElementById('nextYearBtn');
 let prevMonthBtn = document.getElementById('prevMonthbtn');
 let nextMonthBtn = document.getElementById('nextMonthbtn');
 let reminderMockData = [];
+const calendarYear1 = document.querySelector(".calendarYear");
+const calendarMonth1 = document.querySelector(".calendarMonth");
+const sessionCardSettings4 = document.querySelector(".sessionButtonSetting");
+const sessionCardSessions4 = document.querySelector(".sessionButtonTimer");
+const sessionCardShortBreak4 = document.querySelector(".sessionButtonShortBreak");
+const sessionCardLongBreak4 = document.querySelector(".sessionButtonLongBreak");
+const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
+
+
+sessionCardSettings4.addEventListener("click", () => {
+
+  calendarYear1.style.backgroundColor = "#2980b9";
+  calendarMonth1.style.backgroundColor = "#2980b9";
+  calendarMain.style.backgroundColor = "#2980b9";
+  calendarOuterWrapper.style.backgroundColor = "#2980b9";
+});
+
+sessionCardSessions4.addEventListener("click", () => {
+
+  calendarYear1.style.backgroundColor = "#2980b9";
+  calendarMonth1.style.backgroundColor = "#2980b9";
+  calendarMain.style.backgroundColor = "#2980b9";
+  calendarOuterWrapper.style.backgroundColor = "#2980b9";
+});
+
+sessionCardShortBreak4.addEventListener("click", () => {
+
+  calendarYear1.style.backgroundColor = "#598f94";
+  calendarMonth1.style.backgroundColor = "#598f94";
+  calendarMain.style.backgroundColor = "#598f94";
+  calendarOuterWrapper.style.backgroundColor = "#598f94";
+});
+
+sessionCardLongBreak4.addEventListener("click", () => {
+
+  calendarYear1.style.backgroundColor = "#5079a1";
+  calendarMonth1.style.backgroundColor = "#5079a1";
+  calendarMain.style.backgroundColor = "#5079a1";
+  calendarOuterWrapper.style.backgroundColor = "#5079a1";
+});
 
 prevYearBtn.addEventListener('click', function () {
   year --;
@@ -117,7 +157,7 @@ function renderCalendar(elem, daysInMonthCallback, dataArr) {
     return newObj.year === year && newObj.month === month ? newObj : null;
   }).filter(item => item !== null).map(x => parseInt(x.day));
 
-  let table = '<table id="calendarTable"><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+  let table = '<table id="calendarTable"><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr class="testTr2">';
   let daysInMonth = daysInMonthCallback;
   let EmptySpacesNum = getDay(firstDay);
   let totalTds = daysInMonth + EmptySpacesNum;
@@ -128,10 +168,10 @@ for (let i = 0; i < getDay(firstDay); i++) {
     
     for (let i = 0; i <= totalTds - (EmptySpacesNum + 1); i++) {
        if ((i + EmptySpacesNum) % 7 === 0 ) {
-        table += '</tr><tr>'
-        table += `<td class="${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
+        table += '</tr><tr class="testTr2">'
+        table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
       } else {
-        table += `<td class="${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
+        table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
       }
     };
 
@@ -254,12 +294,12 @@ function renderTable(elem) {
 
     reminderMockData.forEach((reminderItem, index) => {
         table +=` <tr>`
-        table += `<td>${index + 1}</td>`
-    table += `<td>${reminderItem.name}</td>`
-    table += `<td>${reminderItem.date}</td>`
-    table += `<td>${reminderItem.time}</td>`
-    table += `<td>${reminderItem.priority}</td>`
-    table += `<td><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
+        table += `<td class="remindersTd">${index + 1}</td>`
+    table += `<td class="remindersTd">${reminderItem.name}</td>`
+    table += `<td class="remindersTd">${reminderItem.date}</td>`
+    table += `<td class="remindersTd">${reminderItem.time}</td>`
+    table += `<td class="remindersTd">${reminderItem.priority}</td>`
+    table += `<td class="remindersTd"><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
     ">X</button></td>`
     table += `</tr>`

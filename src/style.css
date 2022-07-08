@@ -143,6 +143,7 @@ body {
 #calendarOuterWrapper {
     background-color: #2980b9;
     border-radius: 20%;
+    /* width: 100%; */
 }
 
 #calendarMain {
@@ -153,7 +154,8 @@ body {
     background-color: #2980b9;
     max-height: fit-content;
     border-radius: 2%;
-    transform: scale(0.85)
+    transform: scale(0.85);
+    /* width: 100%; */
 }
 
 .dateInfo {
@@ -203,8 +205,9 @@ body {
 }
 
 #calendarTable {
-    border-collapse: separate;
+    /* border-collapse: separate; */
     border-spacing: 0.2rem;
+    min-height: 80%;
 }
 
 .container {
@@ -449,10 +452,8 @@ body {
 
 }
 
-td {
-    
+.remindersTd {
     padding: 1.2rem;
-    
 }
 
 .productivity-images img {
