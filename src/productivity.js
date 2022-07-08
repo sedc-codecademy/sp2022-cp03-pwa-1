@@ -45,11 +45,40 @@ const productivity = {
 const productivityElement = document.getElementById("productivity")
 const informations = document.getElementById("informations")
 const goBackButton = document.getElementById("go-back")
+const backButton = document.querySelector(".go-back-button");
+const sessionCardSettings7 = document.querySelector(".sessionButtonSetting");
+const sessionCardSessions7 = document.querySelector(".sessionButtonTimer");
+const sessionCardShortBreak7 = document.querySelector(".sessionButtonShortBreak");
+const sessionCardLongBreak7 = document.querySelector(".sessionButtonLongBreak");
+
+
+
+sessionCardSettings7.addEventListener("click", () => {
+  backButton.style.background = "#2980b9";
+  backButton.style.border = "none";
+
+});
+
+sessionCardSessions7.addEventListener("click", () => {
+  backButton.style.background = "#2980b9";
+  backButton.style.border = "none";
+});
+
+sessionCardShortBreak7.addEventListener("click", () => {
+    backButton.style.background = "#598f94";
+    backButton.style.border = "none";
+});
+
+sessionCardLongBreak7.addEventListener("click", () => {
+  backButton.style.background = "#5079a1";
+  backButton.style.border = "none";
+});
 
 const children = productivityElement.children
 
 goBackButton.addEventListener('click', function(event){
-    productivityElement.style.display = "block"
+    // productivityElement.style.display = "block"
+    productivityElement.style.display = "flex"
     informations.innerHTML = ``
     goBackButton.style.display = "none"
 })
@@ -60,6 +89,7 @@ for (let i = 0 ; i < children.length ; i++) {
         const { title, discription } = productivity[children[i].alt]
 
         informations.innerHTML = `<h1>${title}</h1> <p> ${discription} </p>`
+        // productivityElement.style.display = "none"
         productivityElement.style.display = "none"
       })
 }
