@@ -989,7 +989,7 @@ ol {
   transform: scale(1.03);
 }
 
-.stopTask {
+.stopTask, #resumeBtn {
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;

@@ -262,7 +262,7 @@ class TaskTimer {
     return `
             <span class="timer__task timer__task--minutes">00</span>
             <span class="timer__task">:</span>
-            <span class="timer__task timer__task--seconds">00</span>
+            <span class="timer__task timer__task--seconds">00</span>            
             <button style= "display : none" type="button" class="timer__task timer__task--control timer__task--start"></button>
             `;
   }
@@ -314,18 +314,25 @@ cancelTimeInput.addEventListener("click", function () {
 
 // FOR LONG BREAK SESSION
 confirmSessionDurationButton.addEventListener("click", () => {
-  settingsDiv.classList.add("hidden");
-  settingsDiv.classList.add("hidden");
-  timerElement.style.display = "none";
-  shortBreakDiv.style.display = "flex";
+  sessionModals.classList.add("hidden");
+  overlayDiv.classList.add("hidden");
+  timerElement.style.display = "flex";
+  shortBreakDiv.style.display = "none";
+  longBreakDiv.style.display = "none";
   body.style.background =
-    "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
-  sessionCardButtonShortBreak.style.backgroundColor = "#598f94";
-  sessionCardButtonShortBreak.style.color = "white";
-  taskForm.style.background = "#598f94";
-  taskButtonsDiv.style.background = "#598f94";
-  sessionCardButtonSetting.style.color = "#444";
+    "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
+  sessionCardButtonTimer.style.backgroundColor = "#2980b9";
+  taskForm.style.background = "#2980b9";
+  favDialog.style.background = "#2980b9";
+  taskButtonsDiv.style.background = "#2980b9";
+  sessionCardButtonTimer.style.color = "white";
+  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
   sessionCardButtonSetting.style.backgroundColor = "transparent";
+  sessionCardButtonShortBreak.style.color = "#444";
+  sessionCardButtonsLongBreak.style.color = "#444";
+  sessionCardButtonSetting.style.color = "#444";
+  listOfTasks.style.display = "flex";
   closeModalFunction();
 });
 
@@ -446,6 +453,7 @@ function sessionTimerDRY() {
   sessionCardButtonShortBreak.style.color = "#444";
   sessionCardButtonsLongBreak.style.color = "#444";
   sessionCardButtonSetting.style.color = "#444";
+  listOfTasks.style.display = "flex";
 }
 
 // SESSION BUTTON
@@ -697,7 +705,7 @@ document.querySelectorAll(".values").forEach((item) => {
           `;
         let newDivContainer = document.createElement("div");
         newDivContainer.setAttribute("class", "card_timer_container");
-        newDivContainer.classList.add("hidden");
+        //newDivContainer.classList.add("hidden");
         li.appendChild(newDivContainer);
         li.appendChild(paraId);
         console.log(paraId);
@@ -815,33 +823,35 @@ document.querySelectorAll(".values").forEach((item) => {
                 allLiCards.forEach(card => {
                   if (card.classList.contains("active")) {
                     let resumeBtn = document.createElement("button");
-                    resumeBtn.setAttribute("class", "resumeBtn");
-                    resumeBtn.innerText = "resume";
+                    resumeBtn.setAttribute("id", "resumeBtn");
+                    resumeBtn.innerText = "Resume";
                     newDivContainer.appendChild(resumeBtn);
 
                     resumeBtn.addEventListener("click", function () {
-                      let minutes = parseInt(newDivContainer.innerText.trim().slice(1, 2));
+                      // FOR TIMERTASK
+                      let secondsArray3 = newDivContainer.innerText.split('');
+                      let arrayOfNumbers3 = [];
 
-                      let secondsArray = newDivContainer.innerText.split('');
-                      console.log(secondsArray);
+                      for (let i = 0; i < secondsArray3.length; i++) {
+                        let parsedCharacter = parseInt(secondsArray3[i]);
+                        if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
+                          arrayOfNumbers3.push(parsedCharacter);
+                        }
+                      }
 
-                      let firstDigit = parseInt(secondsArray[5]);
-                      let secondDigit = parseInt(secondsArray[6]);
-                      let seconds = 10 * firstDigit + secondDigit;
+                      // console.log(arrayOfNumbers3);
 
-                      console.log(minutes);
-                      console.log(seconds);
+                      // console.log(secondsArray3);
 
-                      let suma20 = minutes * 60 + seconds;
+                      let suma209 = arrayOfNumbers3[0] * 60 * 10 + arrayOfNumbers3[1] * 60 + arrayOfNumbers3[2] * 10 + arrayOfNumbers3[3];
 
-                      let resumeTimer = new TaskTimer(newDivContainer, suma20);
+
+
+                      let resumeTimer = new TaskTimer(newDivContainer, suma209);
                       resumeTimer.start();
 
-                      ////////////////////////////////////////////////////////////////////////
 
-                      // let minutes2 = parseInt(timerElement.innerText.trim().slice(1, 2));
-                      //let seconds = timerElement.innerText.slice(5, 7);
-
+                      // FOR MAIN TIMER
                       let secondsArray2 = timerElement.innerText.split('');
                       let arrayOfNumbers = [];
 
@@ -856,20 +866,88 @@ document.querySelectorAll(".values").forEach((item) => {
 
                       console.log(secondsArray2);
 
-                      // let firstDigit2 = parseInt(secondsArray2[42]);
-                      // let secondDigit2 = parseInt(secondsArray2[43]);
-                      // let seconds2 = 10 * firstDigit2 + secondDigit2;
-
-                      // console.log(minutes2);
-                      // console.log(seconds2);
 
                       let suma202 = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
 
                       new Timer(timerElement, suma202);
 
                       let mainResumeTimer = new Timer(timerElement, suma202);
-                      mainResumeTimer.start();
 
+                      console.log(resumeTimer);
+                      // let ourButton = resumeTimer.getElementById("stop_task_session");
+                      // console.log(ourButton);
+
+                      mainResumeTimer.start();
+                      console.log(resumeBtn);
+                      //resumeBtn.classList.add("timer__task--stop");
+                      console.log(resumeBtn);
+                      let interval = setInterval(somethingNicer, 1000);
+
+                      /// NEW FINISHED TASK BUTTON
+                      let stopTask2 = document.createElement("button");
+                      stopTask2.setAttribute("class", "stopTask");
+                      stopTask2.innerText = "Finish task";
+                      newDivContainer.appendChild(stopTask2);
+
+
+                      stopTask2.addEventListener("click", function () {
+                        let confirmAction;
+                        confirmAction = confirm("End task?");
+                        if (confirmAction) {
+                          removeTaskButton.style.display = "none";
+                          flagParagraph.contentEditable = "true";
+
+                          let currentParent = flagParagraph.parentElement;
+                          currentParent.classList.remove("active");
+                          console.log(currentParent);
+                          let lastElement = currentParent.lastElementChild;
+                          let previousSibling = lastElement.previousElementSibling;
+                          console.log(previousSibling);
+                          console.log(lastElement);
+                          let currentId = parseInt(previousSibling.innerText);
+                          //console.log(lastParagraph);
+                          // let currentId = currentParent.paraId.innerText;
+                          console.log(currentParent.paraId);
+                          console.log(currentId);
+                          //console.log(currentId);
+                          console.log(flagParagraph.parentElement);
+                          clearInterval(interval);
+                          arrayOfTasks.map(x => {
+                            if (x.id === currentId) {
+                              console.log(x.id, currentId);
+                              x.finished = "true";
+                              arrayOfFinishedTasks.push(x);
+                              arrayOfNotFinishedTasks.splice(x, 1);
+                            }
+
+                          })
+
+                          if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
+                            const test3 = new Timer(timerElement, 0);
+                            sessionCardButtonSetting.style.display = "none";
+                          }
+                          else {
+                            let suma6 = arrayOfNotFinishedTasks
+                              .flatMap((parameter) => parameter.time)
+                              .reduce((sum, current) => sum + current, 0);
+
+                            const test2 = new Timer(timerElement, suma6);
+                            console.log(suma6);
+                          }
+                          console.log(suma5);
+
+
+                          newDivContainer.remove();
+                          taskTimeLeftWhenStopped = play.remainingSeconds;
+                          left = initialTaskTime - taskTimeLeftWhenStopped;
+
+                          console.log(taskTimeLeftWhenStopped);
+                          // new Timer(timerElement, test.assignedTaskDuration);
+
+                          play.stop();
+                          play2.stop();
+                        }
+                      });
                     })
                   }
                 })
@@ -966,7 +1044,7 @@ document.querySelectorAll(".values").forEach((item) => {
               let confirmAction;
               confirmAction = confirm("End task?");
               if (confirmAction) {
-
+                removeTaskButton.style.display = "none";
                 flagParagraph.contentEditable = "true";
 
                 let currentParent = flagParagraph.parentElement;
@@ -1022,7 +1100,7 @@ document.querySelectorAll(".values").forEach((item) => {
             });
             console.log(left);
           }
-        });
+        }, { once: true });
 
         let paragraphId = document.createElement("p");
         paragraphId.setAttribute("class", "idOfCard");
@@ -1228,19 +1306,6 @@ document.querySelectorAll(".values").forEach((item) => {
       sessionButtonsDiv.addEventListener("click", (e) => {
         if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
 
-          // let minutes = parseInt(timerElement.innerText.trim().slice(1, 2));
-          // //let seconds = timerElement.innerText.slice(5, 7);
-
-          // let secondsArray = timerElement.innerText.split('');
-          // console.log(secondsArray);
-          // let firstDigit = parseInt(secondsArray[42]);
-          // let secondDigit = parseInt(secondsArray[43]);
-          // let seconds = 10 * firstDigit + secondDigit;
-
-          // console.log(minutes);
-          // console.log(seconds);
-
-          // let suma20 = minutes * 60 + seconds;
           let secondsArray2 = timerElement.innerText.split('');
           let arrayOfNumbers2 = [];
 
@@ -1332,6 +1397,8 @@ let clearHelper = clearTaskButton.addEventListener("click", function () {
       listOfTasks.innerHTML = "";
       new Timer(timerElement, resetTaskDurationValue());
       arrayOfTasks = [];
+      arrayOfFinishedTasks = [];
+      arrayOfNotFinishedTasks = [];
       console.log("List successfully deleted");
       console.log(arrayOfTasks);
     }
