@@ -327,7 +327,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     height: fit-content;
 }
 
@@ -491,6 +491,6 @@ body {
 .Productivity-pics:hover {
     gap: 20px;
     transition: all 300ms ease-in-out;
-    transform: scale(1.2)
+    transform: scale(1.12)
 
 }
