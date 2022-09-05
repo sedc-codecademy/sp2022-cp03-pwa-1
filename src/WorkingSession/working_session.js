@@ -54,9 +54,8 @@ const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
 const taskButtonsDiv = document.querySelector("#taskButtons");
 const selectionFiledPriority = document.querySelector("#priority");
 const selectionFieldPace = document.querySelector("#pace");
- 
-settingsButton.style.display = "none";
- 
+
+// settingsButton.style.display = "none";
 // Class Timer
 class Timer {
   constructor(root, timer) {
@@ -133,10 +132,12 @@ class Timer {
   updateInterfaceControls() {
     if (this.interval === null) {
       this.el.control.innerHTML = `<button id="startSessionBtn">&#x23f5;</button>`;
+      
       this.el.control.classList.add("timer__btn--start");
       this.el.control.classList.remove("timer__btn--stop");
     } else {
       this.el.control.innerHTML = `<button id="stopSessionBtn">&#x23f8;</button>`;
+      
       this.el.control.classList.add("timer__btn--stop");
       this.el.control.classList.remove("timer__btn--start");
     }
@@ -170,10 +171,8 @@ class Timer {
             <span class="timer__part timer__part--minutes">00</span>
             <span class="timer__part">:</span>
             <span class="timer__part timer__part--seconds">00</span>
-            <button type="button" class="timer__btn timer__btn--control timer__btn--start"></button>
-            <button type="button" class="timer__btn timer__btn--break">
-                    <span>⇌</span>
-                  </button>
+            <div class="controlsDivTimer"><button type="button" class="timer__btn timer__btn--control timer__btn--start"></button>
+            <button type="button" class="timer__btn timer__btn--break">⇌</button></div>
  
             `;
   }
@@ -316,23 +315,23 @@ cancelTimeInput.addEventListener("click", function () {
 confirmSessionDurationButton.addEventListener("click", () => {
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
-  timerElement.style.display = "flex";
-  shortBreakDiv.style.display = "none";
-  longBreakDiv.style.display = "none";
-  body.style.background =
-    "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
-  sessionCardButtonTimer.style.backgroundColor = "#2980b9";
-  taskForm.style.background = "#2980b9";
-  favDialog.style.background = "#2980b9";
-  taskButtonsDiv.style.background = "#2980b9";
-  sessionCardButtonTimer.style.color = "white";
-  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-  sessionCardButtonSetting.style.backgroundColor = "transparent";
-  sessionCardButtonShortBreak.style.color = "#444";
-  sessionCardButtonsLongBreak.style.color = "#444";
-  sessionCardButtonSetting.style.color = "#444";
-  listOfTasks.style.display = "flex";
+  // timerElement.style.display = "flex";
+  // shortBreakDiv.style.display = "none";
+  // longBreakDiv.style.display = "none";
+  // body.style.background =
+  //   "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
+  // sessionCardButtonTimer.style.backgroundColor = "#2980b9";
+  // taskForm.style.background = "#2980b9";
+  // favDialog.style.background = "#2980b9";
+  // taskButtonsDiv.style.background = "#2980b9";
+  // sessionCardButtonTimer.style.color = "white";
+  // sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonSetting.style.backgroundColor = "transparent";
+  // sessionCardButtonShortBreak.style.color = "#444";
+  // sessionCardButtonsLongBreak.style.color = "#444";
+  // sessionCardButtonSetting.style.color = "#444";
+  // listOfTasks.style.display = "flex";
   closeModalFunction();
 });
  
@@ -355,48 +354,50 @@ if (!sessionModals.classList.contains("hidden")) {
  
 // SETTINGS BUTTON
 sessionCardButtonSetting.addEventListener("click", () => {
-  sessionModals.classList.remove("hidden");
-  overlayDiv.classList.remove("hidden");
-  shortBreakDiv.style.display = "none";
-  longBreakDiv.style.display = "none";
-  timerElement.style.display = "flex";
-  // cardContainer.style.backgroundColor = "white";
-  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-  sessionCardButtonTimer.style.backgroundColor = "transparent";
-  sessionCardButtonTimer.style.color = "#444";
-  sessionCardButtonsLongBreak.style.color = "#444";
-  sessionCardButtonShortBreak.style.color = "#444";
-  body.style.background =
-    "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
-  taskForm.style.background = "#2980b9";
-  taskButtonsDiv.style.background = "#2980b9";
-  settingsDiv.style.backgroundImage = "#2980b9";
+  // sessionModals.classList.remove("hidden");
+  // overlayDiv.classList.remove("hidden");
+  // shortBreakDiv.style.display = "none";
+  // longBreakDiv.style.display = "none";
+  // timerElement.style.display = "flex";
+  
+  // sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonTimer.style.backgroundColor = "transparent";
+  // sessionCardButtonTimer.style.color = "#444";
+  // sessionCardButtonsLongBreak.style.color = "#444";
+  // sessionCardButtonShortBreak.style.color = "#444";
+  // body.style.background =
+  //   "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
+  // taskForm.style.background = "#2980b9";
+  // taskButtonsDiv.style.background = "#2980b9";
+  // settingsDiv.style.backgroundImage = "#2980b9";
 });
  
 // SHORT BREAK BUTTON DRYING CODE
  
 function shortBreakDRY() {
-  taskForm.style.background = "#598f94";
-  favDialog.style.background = "#598f94";
-  taskButtonsDiv.style.background = "#598f94";
+  // taskForm.style.background = "#598f94";
+  // favDialog.style.background = "#598f94";
+  // taskButtonsDiv.style.background = "#598f94";
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
   shortBreakDiv.classList.remove("hidden");
-  timerElement.style.display = "none";
-  longBreakDiv.style.display = "none";
-  shortBreakDiv.style.display = "flex";
-  body.style.background =
-    "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
-  sessionCardButtonShortBreak.style.backgroundColor = "#598f94";
-  sessionCardButtonShortBreak.style.color = "white";
-  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-  sessionCardButtonTimer.style.backgroundColor = "transparent";
-  sessionCardButtonSetting.style.backgroundColor = "transparent";
-  sessionCardButtonsLongBreak.style.color = "#444";
-  sessionCardButtonTimer.style.color = "#444";
-  sessionCardButtonSetting.style.color = "#444";
- 
+
+  // timerElement.style.display = "none";
+  // longBreakDiv.style.display = "none";
+  // shortBreakDiv.style.display = "flex";
+  // body.style.background =
+  //   "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
+  // sessionCardButtonShortBreak.style.backgroundColor = "#598f94";
+  // sessionCardButtonShortBreak.style.color = "white";
+  // sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonTimer.style.backgroundColor = "transparent";
+  // sessionCardButtonSetting.style.backgroundColor = "transparent";
+  // sessionCardButtonsLongBreak.style.color = "#444";
+  // sessionCardButtonTimer.style.color = "#444";
+  // sessionCardButtonSetting.style.color = "#444";
+
+
 }
  
 shortBreakDiv.style.display = "none";
@@ -408,25 +409,25 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
 // LONG BREAK BUTTON DRYING countOfDaysAccessed
  
 function longBreakDRY() {
-  taskForm.style.background = "#5079a1";
-  favDialog.style.background = "#5079a1";
-  taskButtonsDiv.style.background = "#5079a1";
+  // taskForm.style.background = "#5079a1";
+  // favDialog.style.background = "#5079a1";
+  // taskButtonsDiv.style.background = "#5079a1";
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
   longBreakDiv.classList.remove("hidden");
-  timerElement.style.display = "none";
-  shortBreakDiv.style.display = "none";
-  longBreakDiv.style.display = "flex";
-  body.style.background =
-    "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)";
-  sessionCardButtonsLongBreak.style.backgroundColor = "rgb(80, 121, 161)";
-  sessionCardButtonsLongBreak.style.color = "white";
-  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-  sessionCardButtonTimer.style.backgroundColor = "transparent";
-  sessionCardButtonSetting.style.backgroundColor = "transparent";
-  sessionCardButtonSetting.style.color = "#444";
-  sessionCardButtonShortBreak.style.color = "#444";
-  sessionCardButtonTimer.style.color = "#444";
+  // timerElement.style.display = "none";
+  // shortBreakDiv.style.display = "none";
+  // longBreakDiv.style.display = "flex";
+  // body.style.background =
+  //   "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)";
+  // sessionCardButtonsLongBreak.style.backgroundColor = "rgb(80, 121, 161)";
+  // sessionCardButtonsLongBreak.style.color = "white";
+  // sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonTimer.style.backgroundColor = "transparent";
+  // sessionCardButtonSetting.style.backgroundColor = "transparent";
+  // sessionCardButtonSetting.style.color = "#444";
+  // sessionCardButtonShortBreak.style.color = "#444";
+  // sessionCardButtonTimer.style.color = "#444";
 }
 longBreakDiv.style.display = "none";
  
@@ -437,28 +438,39 @@ sessionCardButtonsLongBreak.addEventListener("click", () => {
 function sessionTimerDRY() {
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
-  timerElement.style.display = "flex";
-  shortBreakDiv.style.display = "none";
-  longBreakDiv.style.display = "none";
-  body.style.background =
-    "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
-  sessionCardButtonTimer.style.backgroundColor = "#2980b9";
-  taskForm.style.background = "#2980b9";
-  favDialog.style.background = "#2980b9";
-  taskButtonsDiv.style.background = "#2980b9";
-  sessionCardButtonTimer.style.color = "white";
-  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-  sessionCardButtonSetting.style.backgroundColor = "transparent";
-  sessionCardButtonShortBreak.style.color = "#444";
-  sessionCardButtonsLongBreak.style.color = "#444";
-  sessionCardButtonSetting.style.color = "#444";
-  listOfTasks.style.display = "flex";
+  // timerElement.style.display = "flex";
+  // shortBreakDiv.style.display = "none";
+  // longBreakDiv.style.display = "none";
+  // body.style.background =
+  //   "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
+  // sessionCardButtonTimer.style.backgroundColor = "#2980b9";
+  // taskForm.style.background = "#2980b9";
+  // favDialog.style.background = "#2980b9";
+  // taskButtonsDiv.style.background = "#2980b9";
+  // sessionCardButtonTimer.style.color = "white";
+  // sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+  // sessionCardButtonSetting.style.backgroundColor = "transparent";
+  // sessionCardButtonShortBreak.style.color = "#444";
+  // sessionCardButtonsLongBreak.style.color = "#444";
+  // sessionCardButtonSetting.style.color = "#444";
+  // listOfTasks.style.display = "flex";
 }
- 
+
+// let elem = document.querySelector(".evening");
+// let background = document.querySelector(".wrapper");
+// elem.classList.remove("evening");
+// background.classList.remove("evening");
+
 // SESSION BUTTON
 sessionCardButtonTimer.addEventListener("click", () => {
   sessionTimerDRY();
+  
+  // elem.style.display = "flex";
+
+  // elem.classList.add("evening")
+  // background.classList.add("wrapper")
+  
 });
  
 settingsButton.addEventListener("click", () => {
@@ -467,12 +479,17 @@ settingsButton.addEventListener("click", () => {
   sessionModals.classList.add("hidden");
   // resetInputValuesForTimer();
 });
+
  
 //Add task
+
 addTaskButton.addEventListener("click", () => {
   taskForm.classList.remove("hidden");
   overlayDiv.classList.remove("hidden");
   addNoteButton.style.display = "flex";
+  // myMove()
+
+  
 });
  
 //Arrows up and down
@@ -612,9 +629,11 @@ let sessions = excistingSessions?.length >= 0 ? excistingSessions : [];
 const endSessionButton = document.querySelector("#endSessionButton");
 localStorage.setItem("sessions", JSON.stringify(sessions));
 let session = {};
- 
-endSessionButton.style.display = "none";
- 
+
+
+// endSessionButton.style.display = "none";
+
+
 endSessionButton.addEventListener("click", () => {
   let confirmEnd;
   confirmEnd = confirm("Are you sure you want to finish this session?");
@@ -656,7 +675,7 @@ console.log(timenow);
 document.querySelectorAll(".values").forEach((item) => {
   item.addEventListener("click", function (e) {
     favDialog.style.background = "#2980b9";
-    endSessionButton.style.display = "flex";
+    // endSessionButton.style.display = "flex";
     // Time Stamp must be inside of event listener so it will print a new time every time it has been called, if its outside it will be fired only once.
     const now = new Date();
     const timeStamp = new Intl.DateTimeFormat("en-GB", {
@@ -695,7 +714,7 @@ document.querySelectorAll(".values").forEach((item) => {
         // console.log(number);
  
         let li = document.createElement("li");
-        li.setAttribute("class", "liOfTasks");
+        li.setAttribute("class", "liOfTasks swiper-slide");
         li.innerHTML += `<b>Title</b>: ${taskTitle.value
           } <br><b>Duration</b>: ${taskDuration.value
           } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
@@ -924,7 +943,7 @@ document.querySelectorAll(".values").forEach((item) => {
  
                           if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
                             const test3 = new Timer(timerElement, 0);
-                            sessionCardButtonSetting.style.display = "none";
+                            // sessionCardButtonSetting.style.display = "none";
                           }
                           else {
                             let suma6 = arrayOfNotFinishedTasks
@@ -994,7 +1013,7 @@ document.querySelectorAll(".values").forEach((item) => {
  
                 if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
                   const test3 = new Timer(timerElement, 0);
-                  sessionCardButtonSetting.style.display = "none";
+                  // sessionCardButtonSetting.style.display = "none";
                 }
                 else {
                   let suma6 = arrayOfNotFinishedTasks
@@ -1074,7 +1093,7 @@ document.querySelectorAll(".values").forEach((item) => {
  
                 if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
                   const test3 = new Timer(timerElement, 0);
-                  sessionCardButtonSetting.style.display = "none";
+                  // sessionCardButtonSetting.style.display = "none";
                 }
                 else {
                   let suma6 = arrayOfNotFinishedTasks
@@ -1190,7 +1209,7 @@ document.querySelectorAll(".values").forEach((item) => {
  
  
             if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
-              sessionCardButtonSetting.style.display = "none";
+              // sessionCardButtonSetting.style.display = "none";
             }
  
             suma3 = arrayOfNotFinishedTasks
@@ -1388,8 +1407,16 @@ function resetTaskDurationValue() {
   suma = 0;
 }
 const clearTaskButton = document.querySelector("#clearTasksBtn");
- 
+
+
+// ANIMATIONS
+
 let clearHelper = clearTaskButton.addEventListener("click", function () {
+
+
+  
+  
+
   let confirmAction;
   if (!listOfTasks.innerHTML.trim() == "") {
     confirmAction = confirm("Are you sure you want to clear the tasks list?");
@@ -1431,5 +1458,10 @@ let clearHelper = clearTaskButton.addEventListener("click", function () {
 // }
 console.log(listOfTasks.children.length);
 if (!listOfTasks.children.length) {
-  sessionCardButtonSetting.style.display = "none";
+
+  // sessionCardButtonSetting.style.display = "none";
 }
+
+
+
+
