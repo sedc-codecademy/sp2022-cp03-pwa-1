@@ -321,7 +321,11 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding-top: 1rem;
+
+    /* padding-top: 10px; */
+
     height: fit-content;
 }
 
@@ -468,7 +472,7 @@ h4 {
 .Productivity-pics:hover {
     gap: 2rem;
     transition: all 300ms ease-in-out;
-    transform: scale(1.2)
+    transform: scale(1.12)
 
 }
 

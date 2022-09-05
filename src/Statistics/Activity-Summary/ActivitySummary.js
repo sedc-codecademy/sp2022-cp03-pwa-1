@@ -173,7 +173,7 @@ sessionButton.addEventListener("click", resetColors);
 sessionSettingsButton.addEventListener("click", resetColors);
 document.addEventListener('load', resetColors);
 
-localStorage.clear();
+// localStorage.clear();
 var allSessions2 = 
 [
     {sessionDate:"2022-06-07",

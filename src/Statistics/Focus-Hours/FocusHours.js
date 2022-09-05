@@ -99,7 +99,7 @@ const allSessions1 = JSON.parse(localStorage.getItem("sessions"));
 
  let arrayOfHours = [];
  for (let i=0; i<allSessions1.length; i++){
-    arrayOfHours.push((allSessions1[i].sessionTasks).flatMap((parameter) => Math.round(parameter.time/60 * 100) / 100).reduce((sum, current) => sum + current, 0));
+    arrayOfHours.push((allSessions1[i].sessionTasks).flatMap((parameter) => Math.round(parameter.time/60/60 * 100) / 100).reduce((sum, current) => sum + current, 0));
 //zaokruzuvanje na brojot na casovi na 2 decimali...
  }
  console.log(arrayOfHours); // se dobiva niza od casovi za sekoja sesija// NO, casovite se odnesuvaat na sekoja oddelna sesija a oddelnite sesii moze da se na ist datum
