@@ -559,7 +559,7 @@ document.querySelectorAll(".values").forEach((item) => {
         removeTaskButton.innerText = "x";
         li.appendChild(removeTaskButton);
 
-        //Cel event listener da se izvadi nadvor i da se povikuva so parametri
+        //Cel event listener da se izvadi nadvor i da se povikuva so parametri - DONE
         removeTaskButton.addEventListener("click", removeTaskFunctionality);
 
         listOfTasks.appendChild(li);
@@ -685,7 +685,9 @@ function resetTaskDurationValue() {
 }
 const clearTaskButton = document.querySelector("#clearTasksBtn");
 
-let clearHelper = clearTaskButton.addEventListener("click", function () {
+let clearHelper = clearTaskButton.addEventListener("click", clearTasks);
+
+function clearTasks() {
   let confirmAction;
   if (!listOfTasks.innerHTML.trim() == "") {
     confirmAction = confirm("Are you sure you want to clear the tasks list?");
@@ -698,7 +700,7 @@ let clearHelper = clearTaskButton.addEventListener("click", function () {
       console.log(arrayOfTasks);
     }
   } else console.log("The list is already empty.");
-});
+}
 
 console.log(listOfTasks.children.length);
 if (!listOfTasks.children.length) {
@@ -709,6 +711,7 @@ if (!listOfTasks.children.length) {
 function buttonsFunctionality(){
   addTaskButton.removeEventListener("click", adjustClasses);
   addTaskButton.removeEventListener("click", closeModalFunction);
+  clearTaskButton.removeEventListener("click", clearTasks);
 
   let removeButtons = document.querySelectorAll(".removeTaskButton");
   for (let i = 0; i < removeButtons.length; i++){
