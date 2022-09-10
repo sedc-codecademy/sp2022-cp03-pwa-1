@@ -458,139 +458,10 @@ document.querySelectorAll(".values").forEach((item) => {
     favDialog.style.background = "#2980b9";
     endSessionButton.style.display = "flex";
     // Time Stamp must be inside of event listener so it will print a new time every time it has been called, if its outside it will be fired only once.
-    const now = new Date();
-    const timeStamp = new Intl.DateTimeFormat("en-GB", {
-      dateStyle: "full",
-      timeStyle: "long",
-    }).format(now);
-
-    if (arrayOfTasks.length < 5) {
-      if (
-        taskTitle.value &&
-        taskDuration.value &&
-        taskPriority.options[taskPriority.selectedIndex].value &&
-        taskPace.options[taskPace.selectedIndex].value
-      ) {
-        settingsButton.style.display = "flex";
-        let number = Math.floor(Math.random() * 10000);
-
-        //paraId - take out in separate function
-        let paraId = document.createElement('p');
-        paraId.innerText = number;
-        paraId.style.display = "none";
-        paraId.setAttribute('id', "paraId");
-
-        let li = document.createElement("li");
-        li.setAttribute("class", "liOfTasks");
-        //li innerHTML - take out in separate function
-        li.innerHTML += `<b>Title</b>: ${taskTitle.value
-          } <br><b>Duration</b>: ${taskDuration.value
-          } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
-          }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
-          } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
-
-        let activeCardMarker = document.createElement("div");
-        activeCardMarker.setAttribute("class", "card_timer_container");
-        li.appendChild(activeCardMarker);
-        li.appendChild(paraId);
-
-        //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
-        let flagParagraph = document.createElement("p");
-        flagParagraph.style.display = "none";
-        flagParagraph.setAttribute("contenteditable", "false")
-        li.appendChild(flagParagraph);
-
-        let paragraphId = document.createElement("p");
-        paragraphId.setAttribute("class", "idOfCard");
-        paragraphId.innerText = `${number}`;
-        paragraphId.style.display = "none";
-        li.appendChild(paragraphId);
-
-        if (!textAreaOfTask.value == "") {
-          let noteHolderDiv = document.createElement("div");
-          li.appendChild(noteHolderDiv);
-
-          noteHolderDiv.setAttribute("class", "showNoteDiv");
-          noteHolderDiv.style.display = "none";
-          noteHolderDiv.innerText = `${textAreaOfTask.value}`;
-          let showNoteButton = document.createElement("button");
-          showNoteButton.setAttribute("class", "showNoteButton");
-          showNoteButton.innerText = "Show note";
-
-          li.appendChild(showNoteButton);
-          showNoteButton.addEventListener("click", function () {
-            noteHolderDiv.style.display = "flex";
-
-            let hideNoteButton = document.createElement("button");
-            hideNoteButton.setAttribute("class", "hideNoteButton");
-            hideNoteButton.innerText = "Hide note";
-            noteHolderDiv.appendChild(hideNoteButton);
-
-            hideNoteButton.addEventListener("click", function () {
-              noteHolderDiv.style.display = "none";
-            });
-          });
-
-          // If div note is active change inherit color from active UI - SEt them in functions outside
-          sessionCardButtonsLongBreak.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#5079a1";
-          });
-          sessionCardButtonShortBreak.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#598f94";
-          });
-          sessionCardButtonSetting.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#2980b9";
-          });
-          sessionCardButtonTimer.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#2980b9";
-          });
-        }
-  
-        //let suma3;
-        let removeTaskButton = document.createElement("button");
-        removeTaskButton.setAttribute("class", "removeTaskButton");
-        removeTaskButton.innerText = "x";
-        li.appendChild(removeTaskButton);
-
-        //Cel event listener da se izvadi nadvor i da se povikuva so parametri - DONE
-        removeTaskButton.addEventListener("click", removeTaskFunctionality);
-
-        listOfTasks.appendChild(li);
-        //da se izvadi nadvor vo funkcija ama prvo da se proveri funkcionalnosta??
-        listOfTasks.addEventListener("click", (e) => {
-          const click = e.target.closest(".liOfTasks");
-          if (!click) return;
-
-          li.classList.remove("active");
-          if (!click.classList.contains("active")) {
-            activeCardMarker.classList.add("hidden");
-          }
-          click.classList.add("active");
-          let getNewDiv = click.getElementsByClassName("hidden"); // Wass is dass??
-          activeCardMarker.classList.remove("hidden");
-        })
-  
-        setColor(li);
-        getPriority(li);
-
-        //Take the object creation out in function
-        let test = {
-          title: taskTitle.value,
-          assignedTaskDuration: taskDuration.value,
-          timeNow: timeStamp,
-          time: [],
-          id: number,
-          finished: flagParagraph.contentEditable
-        };
-
-        arrayOfTasks.push(test);
-
-        test.time.push(parseInt(taskDuration.value * 60));
-
-        suma = arrayOfTasks
-          .flatMap((parameter) => parameter.time)
-          .reduce((sum, current) => sum + current, 0);
-      } 
+    
+    if (document.querySelectorAll(".orderedListOfTasks li").length < 5) //zamena za (arrayOfTasks < 5)
+    {
+       let idOfTask = createTask();
 
       sessionButtonsDiv.addEventListener("click", (e) => {
         if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
@@ -624,7 +495,7 @@ document.querySelectorAll(".values").forEach((item) => {
           .reduce((sum, current) => sum + current.time[0], 0);
         new Timer(timerElement, updateTimer);
       }
-    } else alert("You can't have more than 5 tasks at a time!");
+    }else alert("You can't have more than 5 tasks at a time!");
   });
 });
   
@@ -717,18 +588,15 @@ function removeTaskFunctionality() {
   confirmAction = confirm("Are you sure you want to remove this task?");
   if (confirmAction) {
 
-    let interval_id = window.setInterval(() => { }, 99999);
-    for (let i = 0; i < interval_id; i++) window.clearInterval(i);
-    this.parentElement.remove();
-    
     for (let i = 0; i < arrayOfTasks.length; i++) {
-      if (arrayOfTasks[i].id == paragraphId.innerText) {
-        console.log(arrayOfTasks[i].id, paragraphId.innerText);
+      if (arrayOfTasks[i].id == this.parentElement.querySelector(".idOfCard").innerText) {
         i.finished = "false";
         arrayOfTasks.splice(i, 1);
         arrayOfFinishedTasks.splice(i, 1);
       }
     }
+    
+    this.parentElement.remove();
 
     let updateTimer = arrayOfTasks
           .reduce((sum, current) => sum + current.time[0], 0);
@@ -745,3 +613,145 @@ function removeTaskFunctionality() {
     } 
   }
 }
+
+function timeStamp(){
+  const now = new Date();
+  const timeStamp = new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "full",
+    timeStyle: "long",
+  }).format(now);
+};
+
+function createId(){
+  return Math.floor(Math.random() * 10000);
+}
+
+function createTask(){
+  timeStamp();
+  if (
+    taskTitle.value &&
+    taskDuration.value &&
+    taskPriority.options[taskPriority.selectedIndex].value &&
+    taskPace.options[taskPace.selectedIndex].value
+  ) {
+    settingsButton.style.display = "flex";
+    let number = createId();
+
+    let li = document.createElement("li");
+    li.setAttribute("class", "liOfTasks");
+    //li innerHTML - take out in separate function
+    li.innerHTML += `<b>Title</b>: ${taskTitle.value
+      } <br><b>Duration</b>: ${taskDuration.value
+      } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
+      }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
+      } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
+
+    let activeCardMarker = document.createElement("div");
+    activeCardMarker.setAttribute("class", "card_timer_container");
+    li.appendChild(activeCardMarker);
+
+    //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
+    let flagParagraph = document.createElement("p");
+    flagParagraph.style.display = "none";
+    flagParagraph.setAttribute("contenteditable", "false")
+    li.appendChild(flagParagraph);
+
+    let paragraphId = document.createElement("p");
+    paragraphId.setAttribute("class", "idOfCard");
+    paragraphId.innerText = `${number}`;
+    paragraphId.style.display = "none";
+    li.appendChild(paragraphId);
+
+    if (!textAreaOfTask.value == "") {
+      let noteHolderDiv = document.createElement("div");
+      li.appendChild(noteHolderDiv);
+
+      noteHolderDiv.setAttribute("class", "showNoteDiv");
+      noteHolderDiv.style.display = "none";
+      noteHolderDiv.innerText = `${textAreaOfTask.value}`;
+      let showNoteButton = document.createElement("button");
+      showNoteButton.setAttribute("class", "showNoteButton");
+      showNoteButton.innerText = "Show note";
+
+      li.appendChild(showNoteButton);
+      showNoteButton.addEventListener("click", function () {
+        noteHolderDiv.style.display = "flex";
+
+        let hideNoteButton = document.createElement("button");
+        hideNoteButton.setAttribute("class", "hideNoteButton");
+        hideNoteButton.innerText = "Hide note";
+        noteHolderDiv.appendChild(hideNoteButton);
+
+        hideNoteButton.addEventListener("click", function () {
+          noteHolderDiv.style.display = "none";
+        });
+      });
+
+      // If div note is active change inherit color from active UI - SEt them in functions outside
+      sessionCardButtonsLongBreak.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#5079a1";
+      });
+      sessionCardButtonShortBreak.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#598f94";
+      });
+      sessionCardButtonSetting.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#2980b9";
+      });
+      sessionCardButtonTimer.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#2980b9";
+      });
+    }
+
+    //let suma3;
+    let removeTaskButton = document.createElement("button");
+    removeTaskButton.setAttribute("class", "removeTaskButton");
+    removeTaskButton.innerText = "x";
+    li.appendChild(removeTaskButton);
+
+    listOfTasks.appendChild(li);
+
+    //var idToDelete = removeTaskFunctionality(paragraphId);
+    //Cel event listener da se izvadi nadvor i da se povikuva so parametri - DONE
+    // if(removeTaskButton.addEventListener("click", function(){
+    //   return removeTaskFunctionality();
+    // }));
+    removeTaskButton.addEventListener("click", removeTaskFunctionality);
+
+    //da se izvadi nadvor vo funkcija ama prvo da se proveri funkcionalnosta??
+    listOfTasks.addEventListener("click", (e) => {
+      const click = e.target.closest(".liOfTasks");
+      if (!click) return;
+
+      li.classList.remove("active");
+      if (!click.classList.contains("active")) {
+        activeCardMarker.classList.add("hidden");
+      }
+      click.classList.add("active");
+      let getNewDiv = click.getElementsByClassName("hidden"); // Wass is dass??
+      activeCardMarker.classList.remove("hidden");
+    })
+
+    setColor(li);
+    getPriority(li);
+
+    //Take the object creation out in function
+    let test = {
+      title: taskTitle.value,
+      assignedTaskDuration: taskDuration.value,
+      timeNow: timeStamp,
+      time: [],
+      id: number,
+      finished: flagParagraph.contentEditable
+    };
+
+    arrayOfTasks.push(test);
+
+    test.time.push(parseInt(taskDuration.value * 60));
+
+    suma = arrayOfTasks
+      .flatMap((parameter) => parameter.time)
+      .reduce((sum, current) => sum + current, 0);
+  }
+  
+}
+
