@@ -45,8 +45,7 @@ settingsButton.style.display = "none";
 // Class Timer
 class Timer {
   constructor(root, timer) {
-    root.innerHTML = Timer.getHTML();
-    
+    root.innerHTML = Timer.getHTML();  
  
     this.el = {
       minutes: root.querySelector(".timer__part--minutes"),
@@ -106,7 +105,7 @@ class Timer {
       this.remainingSeconds = inputSeconds;
       this.updateInterfaceTime();
     }
-  }startSessionBtn
+  }
  
   updateInterfaceTime() {
     const minutes = Math.floor(this.remainingSeconds / 60);
@@ -129,7 +128,7 @@ class Timer {
   }
  
   start() {
-    if (this.remainingSeconds === 0) return;
+    if (this.remainingSeconds == 0) return;//so 3 ednakvi e bag
     
     this.interval = setInterval(() => {
       this.remainingSeconds--;
@@ -501,12 +500,6 @@ document.querySelectorAll(".values").forEach((item) => {
         flagParagraph.setAttribute("contenteditable", "false")
         li.appendChild(flagParagraph);
 
-        // activeCardMarker.addEventListener("click", function (e) {
-        //   const clicked = e.target.closest(".startTask");
-        //   console.log(clicked);
-        //   if (!clicked) return;
-        // }, { once: true });
-
         let paragraphId = document.createElement("p");
         paragraphId.setAttribute("class", "idOfCard");
         paragraphId.innerText = `${number}`;
@@ -579,9 +572,8 @@ document.querySelectorAll(".values").forEach((item) => {
   
         setColor(li);
         getPriority(li);
-  
-        counter = 0;// Wass is dass??
-        //Take the object cration out in function
+
+        //Take the object creation out in function
         let test = {
           title: taskTitle.value,
           assignedTaskDuration: taskDuration.value,
@@ -627,7 +619,6 @@ document.querySelectorAll(".values").forEach((item) => {
         resetTaskInputs();
         closeModalFunction();
         //Update the Timer based on total sum of tasks' assigned durations
-        console.log(arrayOfTasks);
         let updateTimer = arrayOfTasks
           //.flatMap((parameter) => parameter.time)
           .reduce((sum, current) => sum + current.time[0], 0);
@@ -729,7 +720,7 @@ function removeTaskFunctionality() {
     let interval_id = window.setInterval(() => { }, 99999);
     for (let i = 0; i < interval_id; i++) window.clearInterval(i);
     this.parentElement.remove();
-
+    
     for (let i = 0; i < arrayOfTasks.length; i++) {
       if (arrayOfTasks[i].id == paragraphId.innerText) {
         console.log(arrayOfTasks[i].id, paragraphId.innerText);
@@ -738,6 +729,10 @@ function removeTaskFunctionality() {
         arrayOfFinishedTasks.splice(i, 1);
       }
     }
+
+    let updateTimer = arrayOfTasks
+          .reduce((sum, current) => sum + current.time[0], 0);
+        new Timer(timerElement, updateTimer);
 
     if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
       sessionCardButtonSetting.style.display = "none";
