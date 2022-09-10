@@ -61,7 +61,8 @@ class Timer {
       if (this.interval === null) {
         this.start();
         isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
-        buttonsFunctionality();//blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
+        buttonsFunctionality(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
+        settingsButton.style.display = "none";
       } else {
         this.stop();
       }
@@ -751,7 +752,6 @@ function createTask(){
     suma = arrayOfTasks
       .flatMap((parameter) => parameter.time)
       .reduce((sum, current) => sum + current, 0);
-  }
-  
+  }  
 }
 
