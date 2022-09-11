@@ -16,7 +16,7 @@ const body = document.querySelector("body");
 const settingsButton = document.querySelector("#sessionSettings");
 const settingsDiv = document.querySelector(".settingsDiv");
 const timerElement = document.querySelector("#timerDiv");
-const sessionButtonsDiv = document.querySelector("#sessionCardButtonsDiv"); 
+const sessionButtonsDiv = document.querySelector("#sessionCardButtonsDiv");
 const timerInput = document.querySelector("#inputForTimeOfTask");
 const addTaskButton = document.querySelector("#addTaskBtn");
 const taskForm = document.querySelector(".taskFormDiv");
@@ -32,9 +32,9 @@ const taskTitle = document.querySelector("#inputForTaskTitle");
 const taskDuration = document.querySelector("#inputForTimeOfTask");
 const confirmSessionDurationButton = document.querySelector("#startingTimerValueButton");
 const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
-const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput"); 
+const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
 const shortBreakDiv = document.querySelector("#shortBreakDiv");
-const longBreakDiv = document.querySelector("#longBreakDiv"); 
+const longBreakDiv = document.querySelector("#longBreakDiv");
 const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
 const taskButtonsDiv = document.querySelector("#taskButtons");
 const selectionFiledPriority = document.querySelector("#priority");
@@ -45,28 +45,29 @@ settingsButton.style.display = "none";
 // Class Timer
 class Timer {
   constructor(root, timer) {
-    root.innerHTML = Timer.getHTML();  
- 
+    root.innerHTML = Timer.getHTML();
+
     this.el = {
       minutes: root.querySelector(".timer__part--minutes"),
       seconds: root.querySelector(".timer__part--seconds"),
       control: root.querySelector(".timer__btn--control"),
       goToBreak: root.querySelector(".timer__btn--break"),
     };
- 
+
     this.interval = null;
     this.remainingSeconds = 0;
- 
+
     this.el.control.addEventListener("click", () => {
       if (this.interval === null) {
         this.start();
         isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
-        buttonsFunctionality();//blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
+        buttonsFunctionality(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
+        settingsButton.style.display = "none";
       } else {
         this.stop();
       }
-    });    
-    
+    });
+
     this.el.goToBreak.addEventListener("click", () => {
       if (this.interval === null || typeof favDialog.showModal === "function") {
         this.stop();
@@ -77,11 +78,11 @@ class Timer {
           "Sorry, the <dialog> API is not supported by this browser.";
       }
     });
- 
+
     selectEl.addEventListener("change", function onSelect(e) {
       confirmBtn.value = selectEl.value;
     });
- 
+
     favDialog.addEventListener("close", function onClose() {
       switch (favDialog.returnValue) {
         case "Short Break":
@@ -97,24 +98,24 @@ class Timer {
           break;
       }
     });
- 
+
     const inputSeconds = String(timer);
- 
+
     if (inputSeconds < 100000) {
       this.stop();
       this.remainingSeconds = inputSeconds;
       this.updateInterfaceTime();
     }
   }
- 
+
   updateInterfaceTime() {
     const minutes = Math.floor(this.remainingSeconds / 60);
     const seconds = this.remainingSeconds % 60;
- 
+
     this.el.minutes.textContent = minutes.toString().padStart(2, "0");
     this.el.seconds.textContent = seconds.toString().padStart(2, "0");
   }
- 
+
   updateInterfaceControls() {
     if (this.interval === null) {
       this.el.control.innerHTML = `<button id="startSessionBtn">&#x23f5;</button>`;
@@ -126,30 +127,30 @@ class Timer {
       this.el.control.classList.remove("timer__btn--start");
     }
   }
- 
+
   start() {
     if (this.remainingSeconds == 0) return;//so 3 ednakvi e bag
-    
+
     this.interval = setInterval(() => {
       this.remainingSeconds--;
       this.updateInterfaceTime();
- 
+
       if (this.remainingSeconds === 0) {
         this.stop();
       }
     }, 1000);
- 
+
     this.updateInterfaceControls();
   }
- 
+
   stop() {
     clearInterval(this.interval);
- 
+
     this.interval = null;
- 
+
     this.updateInterfaceControls();
   }
- 
+
   static getHTML() {
     return `
             <span class="timer__part timer__part--minutes">00</span>
@@ -284,7 +285,7 @@ function shortBreakDRY() {
   sessionCardButtonsLongBreak.style.color = "#444";
   sessionCardButtonTimer.style.color = "#444";
   sessionCardButtonSetting.style.color = "#444";
- 
+
 }
 
 shortBreakDiv.style.display = "none";
@@ -358,7 +359,7 @@ settingsButton.addEventListener("click", () => {
 //Add task
 addTaskButton.addEventListener("click", adjustClasses);
 
-function adjustClasses(){
+function adjustClasses() {
   taskForm.classList.remove("hidden");
   overlayDiv.classList.remove("hidden");
   addNoteButton.style.display = "flex";
@@ -458,139 +459,10 @@ document.querySelectorAll(".values").forEach((item) => {
     favDialog.style.background = "#2980b9";
     endSessionButton.style.display = "flex";
     // Time Stamp must be inside of event listener so it will print a new time every time it has been called, if its outside it will be fired only once.
-    const now = new Date();
-    const timeStamp = new Intl.DateTimeFormat("en-GB", {
-      dateStyle: "full",
-      timeStyle: "long",
-    }).format(now);
 
-    if (arrayOfTasks.length < 5) {
-      if (
-        taskTitle.value &&
-        taskDuration.value &&
-        taskPriority.options[taskPriority.selectedIndex].value &&
-        taskPace.options[taskPace.selectedIndex].value
-      ) {
-        settingsButton.style.display = "flex";
-        let number = Math.floor(Math.random() * 10000);
-
-        //paraId - take out in separate function
-        let paraId = document.createElement('p');
-        paraId.innerText = number;
-        paraId.style.display = "none";
-        paraId.setAttribute('id', "paraId");
-
-        let li = document.createElement("li");
-        li.setAttribute("class", "liOfTasks");
-        //li innerHTML - take out in separate function
-        li.innerHTML += `<b>Title</b>: ${taskTitle.value
-          } <br><b>Duration</b>: ${taskDuration.value
-          } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
-          }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
-          } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
-
-        let activeCardMarker = document.createElement("div");
-        activeCardMarker.setAttribute("class", "card_timer_container");
-        li.appendChild(activeCardMarker);
-        li.appendChild(paraId);
-
-        //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
-        let flagParagraph = document.createElement("p");
-        flagParagraph.style.display = "none";
-        flagParagraph.setAttribute("contenteditable", "false")
-        li.appendChild(flagParagraph);
-
-        let paragraphId = document.createElement("p");
-        paragraphId.setAttribute("class", "idOfCard");
-        paragraphId.innerText = `${number}`;
-        paragraphId.style.display = "none";
-        li.appendChild(paragraphId);
-
-        if (!textAreaOfTask.value == "") {
-          let noteHolderDiv = document.createElement("div");
-          li.appendChild(noteHolderDiv);
-
-          noteHolderDiv.setAttribute("class", "showNoteDiv");
-          noteHolderDiv.style.display = "none";
-          noteHolderDiv.innerText = `${textAreaOfTask.value}`;
-          let showNoteButton = document.createElement("button");
-          showNoteButton.setAttribute("class", "showNoteButton");
-          showNoteButton.innerText = "Show note";
-
-          li.appendChild(showNoteButton);
-          showNoteButton.addEventListener("click", function () {
-            noteHolderDiv.style.display = "flex";
-
-            let hideNoteButton = document.createElement("button");
-            hideNoteButton.setAttribute("class", "hideNoteButton");
-            hideNoteButton.innerText = "Hide note";
-            noteHolderDiv.appendChild(hideNoteButton);
-
-            hideNoteButton.addEventListener("click", function () {
-              noteHolderDiv.style.display = "none";
-            });
-          });
-
-          // If div note is active change inherit color from active UI - SEt them in functions outside
-          sessionCardButtonsLongBreak.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#5079a1";
-          });
-          sessionCardButtonShortBreak.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#598f94";
-          });
-          sessionCardButtonSetting.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#2980b9";
-          });
-          sessionCardButtonTimer.addEventListener("click", () => {
-            noteHolderDiv.style.backgroundColor = "#2980b9";
-          });
-        }
-  
-        //let suma3;
-        let removeTaskButton = document.createElement("button");
-        removeTaskButton.setAttribute("class", "removeTaskButton");
-        removeTaskButton.innerText = "x";
-        li.appendChild(removeTaskButton);
-
-        //Cel event listener da se izvadi nadvor i da se povikuva so parametri - DONE
-        removeTaskButton.addEventListener("click", removeTaskFunctionality);
-
-        listOfTasks.appendChild(li);
-        //da se izvadi nadvor vo funkcija ama prvo da se proveri funkcionalnosta??
-        listOfTasks.addEventListener("click", (e) => {
-          const click = e.target.closest(".liOfTasks");
-          if (!click) return;
-
-          li.classList.remove("active");
-          if (!click.classList.contains("active")) {
-            activeCardMarker.classList.add("hidden");
-          }
-          click.classList.add("active");
-          let getNewDiv = click.getElementsByClassName("hidden"); // Wass is dass??
-          activeCardMarker.classList.remove("hidden");
-        })
-  
-        setColor(li);
-        getPriority(li);
-
-        //Take the object creation out in function
-        let test = {
-          title: taskTitle.value,
-          assignedTaskDuration: taskDuration.value,
-          timeNow: timeStamp,
-          time: [],
-          id: number,
-          finished: flagParagraph.contentEditable
-        };
-
-        arrayOfTasks.push(test);
-
-        test.time.push(parseInt(taskDuration.value * 60));
-
-        suma = arrayOfTasks
-          .flatMap((parameter) => parameter.time)
-          .reduce((sum, current) => sum + current, 0);
-      } 
+    if (document.querySelectorAll(".orderedListOfTasks li").length < 5) //zamena za (arrayOfTasks < 5)
+    {
+      let idOfTask = createTask();
 
       sessionButtonsDiv.addEventListener("click", (e) => {
         if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
@@ -607,7 +479,7 @@ document.querySelectorAll(".values").forEach((item) => {
           let suma203 = arrayOfNumbers2[0] * 60 * 10 + arrayOfNumbers2[1] * 60 + arrayOfNumbers2[2] * 10 + arrayOfNumbers2[3];
           console.log(arrayOfNumbers2);
           console.log(suma203);
-          new Timer(timerElement, suma203); 
+          new Timer(timerElement, suma203);
         }
       })
 
@@ -627,7 +499,7 @@ document.querySelectorAll(".values").forEach((item) => {
     } else alert("You can't have more than 5 tasks at a time!");
   });
 });
-  
+
 // Setting each note window color based on priority
 function getPriority(element) {
   switch (taskPriority.options[taskPriority.selectedIndex].value) {
@@ -699,14 +571,14 @@ if (!listOfTasks.children.length) {
 }
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot
-function buttonsFunctionality(){
+function buttonsFunctionality() {
   addTaskButton.removeEventListener("click", adjustClasses);
   addTaskButton.removeEventListener("click", closeModalFunction);
   clearTaskButton.removeEventListener("click", clearTasks);
 
   let removeButtons = document.querySelectorAll(".removeTaskButton");
-  for (let i = 0; i < removeButtons.length; i++){
-  removeButtons[i].removeEventListener("click", removeTaskFunctionality);
+  for (let i = 0; i < removeButtons.length; i++) {
+    removeButtons[i].removeEventListener("click", removeTaskFunctionality);
   }
 }
 //funkcijava originalno beshe vo kolbasata od kod, kako anonimna vo eventListenerot na removeTaskButton. Ja izvadiv nadvor
@@ -717,31 +589,178 @@ function removeTaskFunctionality() {
   confirmAction = confirm("Are you sure you want to remove this task?");
   if (confirmAction) {
 
-    let interval_id = window.setInterval(() => { }, 99999);
-    for (let i = 0; i < interval_id; i++) window.clearInterval(i);
-    this.parentElement.remove();
-    
     for (let i = 0; i < arrayOfTasks.length; i++) {
-      if (arrayOfTasks[i].id == paragraphId.innerText) {
-        console.log(arrayOfTasks[i].id, paragraphId.innerText);
+      if (arrayOfTasks[i].id == this.parentElement.querySelector(".idOfCard").innerText) {
         i.finished = "false";
         arrayOfTasks.splice(i, 1);
         arrayOfFinishedTasks.splice(i, 1);
       }
     }
 
+    this.parentElement.remove();
+
     let updateTimer = arrayOfTasks
-          .reduce((sum, current) => sum + current.time[0], 0);
-        new Timer(timerElement, updateTimer);
+      .reduce((sum, current) => sum + current.time[0], 0);
+    new Timer(timerElement, updateTimer);
 
     if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
       sessionCardButtonSetting.style.display = "none";
-    } 
+    }
 
     if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
       new Timer(timerElement, 0);
     } else {
       const timer18 = new Timer(timerElement, suma3);
-    } 
+    }
+  }
+}
+
+function timeStamp() {
+  const now = new Date();
+  const timeStamp = new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "full",
+    timeStyle: "long",
+  }).format(now);
+};
+
+function createId() {
+  return Math.floor(Math.random() * 10000);
+}
+
+// CREATE ELEMENT 
+
+function createElementFunction(inter, dis, attr, attrName, inner, where, type) {
+  inter = document.createElement(type);
+  inter.style.display = dis;
+  inter.setAttribute(attr, attrName) //option 1
+  where.appendChild(inter);
+  inter.innerText = inner;
+}
+
+function createTask() {
+  timeStamp();
+  if (
+    taskTitle.value &&
+    taskDuration.value &&
+    taskPriority.options[taskPriority.selectedIndex].value &&
+    taskPace.options[taskPace.selectedIndex].value
+  ) {
+    settingsButton.style.display = "flex";
+    let number = createId();
+
+    let li = document.createElement("li");
+    li.setAttribute("class", "liOfTasks"); // option 3
+    //li innerHTML - take out in separate function
+    li.innerHTML += `<b>Title</b>: ${taskTitle.value
+      } <br><b>Duration</b>: ${taskDuration.value
+      } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
+      }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
+      } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
+
+    let activeCardMarker = document.createElement("div");
+    activeCardMarker.setAttribute("class", "card_timer_container"); //option 2
+    li.appendChild(activeCardMarker);
+
+    //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
+
+    createElementFunction("flagParagraph", "none", "contenteditable", "false", '', li, "p");
+    createElementFunction("paragraphId", "none", "class", "idOfCard", number, li, "p");
+
+    // DO TUJA RABOTE
+
+    if (!textAreaOfTask.value == "") {
+
+      let noteHolderDiv = document.createElement("div");
+      noteHolderDiv.style.display = "none";
+      noteHolderDiv.setAttribute("class", "showNoteDiv"); //option 1
+      li.appendChild(noteHolderDiv);
+      noteHolderDiv.innerText = `${textAreaOfTask.value}`;
+
+      let showNoteButton = document.createElement("button");
+      showNoteButton.style.display = "flex";
+      showNoteButton.setAttribute("class", "showNoteButton"); //option 1
+      li.appendChild(showNoteButton);
+      showNoteButton.innerText = "Show note";
+
+
+      showNoteButton.addEventListener("click", function () {
+        noteHolderDiv.style.display = "flex";
+
+        let hideNoteButton = document.createElement("button");
+        hideNoteButton.style.display = "flex";
+        hideNoteButton.setAttribute("class", "hideNoteButton"); //option 1
+        noteHolderDiv.appendChild(hideNoteButton);
+        hideNoteButton.innerText = "Hide note";
+
+
+        hideNoteButton.addEventListener("click", function () {
+          noteHolderDiv.style.display = "none";
+        });
+      });
+
+      // If div note is active change inherit color from active UI - SEt them in functions outside
+      sessionCardButtonsLongBreak.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#5079a1";
+      });
+      sessionCardButtonShortBreak.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#598f94";
+      });
+      sessionCardButtonSetting.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#2980b9";
+      });
+      sessionCardButtonTimer.addEventListener("click", () => {
+        noteHolderDiv.style.backgroundColor = "#2980b9";
+      });
+    }
+
+    //let suma3;
+    let removeTaskButton = document.createElement("button");
+    removeTaskButton.setAttribute("class", "removeTaskButton");
+    removeTaskButton.innerText = "x";
+    li.appendChild(removeTaskButton);
+
+    listOfTasks.appendChild(li);
+
+    //var idToDelete = removeTaskFunctionality(paragraphId);
+    //Cel event listener da se izvadi nadvor i da se povikuva so parametri - DONE
+    // if(removeTaskButton.addEventListener("click", function(){
+    //   return removeTaskFunctionality();
+    // }));
+    removeTaskButton.addEventListener("click", removeTaskFunctionality);
+
+    //da se izvadi nadvor vo funkcija ama prvo da se proveri funkcionalnosta??
+    listOfTasks.addEventListener("click", (e) => {
+      const click = e.target.closest(".liOfTasks");
+      if (!click) return;
+
+      li.classList.remove("active");
+      if (!click.classList.contains("active")) {
+        activeCardMarker.classList.add("hidden");
+      }
+      click.classList.add("active");
+      let getNewDiv = click.getElementsByClassName("hidden"); // Wass is dass??
+      activeCardMarker.classList.remove("hidden");
+    })
+
+    setColor(li);
+    getPriority(li);
+
+    //Take the object creation out in function
+    // let test = {
+    //   title: taskTitle.value,
+    //   assignedTaskDuration: taskDuration.value,
+    //   timeNow: timeStamp,
+    //   time: [],
+    //   id: number,
+    //   finished: flagParagraph.contentEditable
+    // };
+
+    // arrayOfTasks.push(test);
+
+    // test.time.push(parseInt(taskDuration.value * 60));
+
+    suma = arrayOfTasks
+      .flatMap((parameter) => parameter.time)
+      .reduce((sum, current) => sum + current, 0);
   }
 }
