@@ -627,6 +627,16 @@ function createId(){
   return Math.floor(Math.random() * 10000);
 }
 
+// CREATE ELEMENT 
+
+function createElementFunction(inter, dis, attr, attrName, inner, where, type) {
+    inter = document.createElement(type);
+    inter.style.display = dis;
+    inter.setAttribute(attr, attrName) //option 1
+    where.appendChild(inter);
+    inter.innerText = inner;
+}
+
 function createTask(){
   timeStamp();
   if (
@@ -639,7 +649,7 @@ function createTask(){
     let number = createId();
 
     let li = document.createElement("li");
-    li.setAttribute("class", "liOfTasks");
+    li.setAttribute("class", "liOfTasks"); // option 3
     //li innerHTML - take out in separate function
     li.innerHTML += `<b>Title</b>: ${taskTitle.value
       } <br><b>Duration</b>: ${taskDuration.value
@@ -648,40 +658,40 @@ function createTask(){
       } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
 
     let activeCardMarker = document.createElement("div");
-    activeCardMarker.setAttribute("class", "card_timer_container");
+    activeCardMarker.setAttribute("class", "card_timer_container"); //option 2
     li.appendChild(activeCardMarker);
 
     //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
-    let flagParagraph = document.createElement("p");
-    flagParagraph.style.display = "none";
-    flagParagraph.setAttribute("contenteditable", "false")
-    li.appendChild(flagParagraph);
+    
+    createElementFunction("flagParagraph", "none", "contenteditable", "false", '', li, "p");
+    createElementFunction("paragraphId", "none", "class", "idOfCard", number, li, "p");
 
-    let paragraphId = document.createElement("p");
-    paragraphId.setAttribute("class", "idOfCard");
-    paragraphId.innerText = `${number}`;
-    paragraphId.style.display = "none";
-    li.appendChild(paragraphId);
+    // DO TUJA RABOTE
 
     if (!textAreaOfTask.value == "") {
+
       let noteHolderDiv = document.createElement("div");
-      li.appendChild(noteHolderDiv);
-
-      noteHolderDiv.setAttribute("class", "showNoteDiv");
       noteHolderDiv.style.display = "none";
+      noteHolderDiv.setAttribute("class", "showNoteDiv"); //option 1
+      li.appendChild(noteHolderDiv);
       noteHolderDiv.innerText = `${textAreaOfTask.value}`;
+
       let showNoteButton = document.createElement("button");
-      showNoteButton.setAttribute("class", "showNoteButton");
-      showNoteButton.innerText = "Show note";
-
+      showNoteButton.style.display = "flex";
+      showNoteButton.setAttribute("class", "showNoteButton"); //option 1
       li.appendChild(showNoteButton);
-      showNoteButton.addEventListener("click", function () {
-        noteHolderDiv.style.display = "flex";
+      showNoteButton.innerText = "Show note";
+      
 
-        let hideNoteButton = document.createElement("button");
-        hideNoteButton.setAttribute("class", "hideNoteButton");
-        hideNoteButton.innerText = "Hide note";
-        noteHolderDiv.appendChild(hideNoteButton);
+      showNoteButton.addEventListener("click", function () {
+      noteHolderDiv.style.display = "flex";
+
+      let hideNoteButton = document.createElement("button");
+      hideNoteButton.style.display = "flex";
+      hideNoteButton.setAttribute("class", "hideNoteButton"); //option 1
+      noteHolderDiv.appendChild(hideNoteButton);
+      hideNoteButton.innerText = "Hide note";
+      
 
         hideNoteButton.addEventListener("click", function () {
           noteHolderDiv.style.display = "none";
@@ -736,18 +746,18 @@ function createTask(){
     getPriority(li);
 
     //Take the object creation out in function
-    let test = {
-      title: taskTitle.value,
-      assignedTaskDuration: taskDuration.value,
-      timeNow: timeStamp,
-      time: [],
-      id: number,
-      finished: flagParagraph.contentEditable
-    };
+    // let test = {
+    //   title: taskTitle.value,
+    //   assignedTaskDuration: taskDuration.value,
+    //   timeNow: timeStamp,
+    //   time: [],
+    //   id: number,
+    //   finished: flagParagraph.contentEditable
+    // };
 
-    arrayOfTasks.push(test);
+    // arrayOfTasks.push(test);
 
-    test.time.push(parseInt(taskDuration.value * 60));
+    // test.time.push(parseInt(taskDuration.value * 60));
 
     suma = arrayOfTasks
       .flatMap((parameter) => parameter.time)
