@@ -60,7 +60,7 @@ class Timer {
         this.start();
         isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
         buttonsFunctionality(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
-        document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector("stopTask")).addEventListener("click", finishTask);
+        document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
         settingsButton.style.display = "none";
       } else {
         this.stop();
@@ -606,6 +606,7 @@ function createTask() {
 
     //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
     let flagParagraph = createElementFunction("flagParagraph", "none", "contenteditable", "false", '', li, "p");
+    flagParagraph.setAttribute("class", "flag_paragraph");
     createElementFunction("paragraphId", "none", "class", "idOfCard", number, li, "p");
 
     //FINISH TASK BUTTON NEW LOGIC (12.09.2022)
@@ -683,7 +684,6 @@ function styleBackgroundColor(onWhat, where, value) {
 }
 
 function finishTask() {
-  //this.parentElement.style.webkitFilter = "blur(5px)";
-  console.log(this.parentElement);
+  this.parentElement.querySelector(".flag_paragraph").contentEditable = true;
   this.parentElement.style.opacity = "0.5";
 }
