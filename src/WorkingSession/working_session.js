@@ -60,6 +60,7 @@ class Timer {
         this.start();
         isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
         buttonsFunctionality(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
+        document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector("stopTask")).addEventListener("click", finishTask);
         settingsButton.style.display = "none";
       } else {
         this.stop();
@@ -683,5 +684,6 @@ function styleBackgroundColor(onWhat, where, value) {
 
 function finishTask() {
   //this.parentElement.style.webkitFilter = "blur(5px)";
+  console.log(this.parentElement);
   this.parentElement.style.opacity = "0.5";
 }
