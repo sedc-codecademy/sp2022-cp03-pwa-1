@@ -112,9 +112,7 @@ class Timer {
 
   stop() {
     clearInterval(this.interval);
-
     this.interval = null;
-
     this.updateInterfaceControls();
   }
 
@@ -571,8 +569,6 @@ function createId() {
   return Math.floor(Math.random() * 10000);
 }
 
-// CREATE ELEMENT 
-
 function createElementFunction(name, dis, attr, attrName, inner, where, type) {
   name = document.createElement(type);
   name.style.display = dis;
@@ -614,10 +610,7 @@ function createTask() {
     //FINISH TASK BUTTON NEW LOGIC (12.09.2022)
     let finishedTaskButton = createElementFunction("finishedTaskButton", "flex", "class", "stopTask", "Finish task", li, "button");
     finishedTaskButton.addEventListener("click", finishTask);
-    function finishTask() {
-      //this.parentElement.style.webkitFilter = "blur(5px)";
-      this.parentElement.style.opacity = "0.5";
-    }
+
 
     if (!textAreaOfTask.value == "") {
 
@@ -686,4 +679,9 @@ function styleBackgroundColor(onWhat, where, value) {
   onWhat.addEventListener("click", () => {
     where.style.backgroundColor = value;
   });
+}
+
+function finishTask() {
+  //this.parentElement.style.webkitFilter = "blur(5px)";
+  this.parentElement.style.opacity = "0.5";
 }
