@@ -47,7 +47,7 @@ body {
 .swiper-slide {
     position: relative;
     background-size: cover;
-    width: 140vh;
+    width: 80%;
     height: 80vh;
     background-color: var(--clr-neutral-100);
     padding: 2rem 2 2 2;

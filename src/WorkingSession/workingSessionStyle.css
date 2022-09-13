@@ -641,7 +641,7 @@ ol {
   /* left: 50%;
         transform: translateX(-50%); */
   justify-content: center;
-  top: 87%;
+  top: 75%;
   left: 0;
   right: 0;
   margin-inline: auto;
@@ -991,7 +991,7 @@ ol {
 }
 
 .stopTask, #resumeBtn {
-
+  position: absolute;
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;
@@ -1001,12 +1001,11 @@ ol {
   font-weight: 700;
   color: rgb(80, 80, 80);
   height: 1.5rem;
-  /* left: 50%;
-        transform: translateX(-50%); */
   justify-content: center;
-  top: 80%;
-  left: 33px;
-  right: 20px;
+  top: 87%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
 }
  
 .stopTask:hover {
