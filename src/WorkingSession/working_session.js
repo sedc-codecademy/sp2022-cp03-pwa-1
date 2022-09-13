@@ -38,6 +38,7 @@ const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
 const taskButtonsDiv = document.querySelector("#taskButtons");
 const selectionFiledPriority = document.querySelector("#priority");
 const selectionFieldPace = document.querySelector("#pace");
+let startSessionTime;
 
 settingsButton.style.display = "none";
 
@@ -59,9 +60,11 @@ class Timer {
       if (this.interval === null) {
         this.start();
         isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
-        buttonsFunctionality(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
+        buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
         document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
+        startSessionTime = new Date();
         settingsButton.style.display = "none";
+        endSessionButton.addEventListener("click", endSessionFunction);
       } else {
         this.stop();
       }
@@ -144,10 +147,10 @@ const closeModalFunction = () => {
 };
 
 const openModalFunction = () => {
-  sessionModals.classList.remove("hidden");
-  overlayDiv.classList.remove("hidden");
+  sessionModals.classList.add("hidden");
+  //overlayDiv.classList.remove("hidden");
   taskForm.classList.remove("hidden");
-  settingsDiv.classList.remove("hidden");
+  settingsDiv.classList.add("hidden");
 };
 
 // Exit from dev of timers set 
@@ -375,23 +378,37 @@ let session = {};
 
 endSessionButton.style.display = "none";
 
-endSessionButton.addEventListener("click", () => {
+function endSessionFunction() {
   let confirmEnd;
-  confirmEnd = confirm("Are you sure you want to finish this session?");
+  confirmEnd = confirm("End the session: Have you marked the tasks you have finished as 'Finished'? If yes, press okay.");
   if (confirmEnd) {
     if (arrayOfTasks.length > 0) {
       fillSession(session);
+      arrayOfTasks = [];
+      new Timer(timerElement, 0);
+      document.querySelectorAll(".liOfTasks").forEach((item) => item.remove());
       //saveSession();
-      window.location.reload(); // deletes the local storage data after - fixed
+      //window.location.reload(); // deletes the local storage data after - fixed      
     }
+    isSessionActive = false; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
+    startSessionTime = "";
+    endSessionButton.removeEventListener("click", endSessionFunction);
+    buttonsAddEvents(); //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
   }
-});
+}
 
 //Fill the session with date and the tasks
 const fillSession = (object) => {
-  object.sessionDate = new Date().toISOString().slice(0, 10);
+  object.startTime = startSessionTime;
+  object.finishTime = new Date();
   object.sessionTasks = [...arrayOfTasks];
+  object.sessionLength = diffBetweenTimes(object.startTime, object.finishTime);
+  console.log(object);
 };
+
+const diffBetweenTimes = (date1, date2) => {
+  return Math.abs(date2 - date1) / 1000;
+}
 
 const clearAll = () => {
   arrayOfTasks = [];
@@ -402,7 +419,7 @@ let counterForCard = 0;
 let anotherCounterForCard = 0;
 
 let timenow = new Date().toISOString().slice(0, 10);
-console.log(timenow);
+//console.log(timenow);
 
 document.querySelectorAll(".values").forEach((item) => {
   item.addEventListener("click", function (e) {
@@ -415,21 +432,23 @@ document.querySelectorAll(".values").forEach((item) => {
 
       sessionButtonsDiv.addEventListener("click", (e) => {
         if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
-
-          let secondsArray2 = timerElement.innerText.split('');
-          let arrayOfNumbers2 = [];
-
-          for (let i = 0; i < secondsArray2.length; i++) {
-            let parsedCharacter = parseInt(secondsArray2[i]);
-            if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
-              arrayOfNumbers2.push(parsedCharacter);
-            }
-          }
-          let suma203 = arrayOfNumbers2[0] * 60 * 10 + arrayOfNumbers2[1] * 60 + arrayOfNumbers2[2] * 10 + arrayOfNumbers2[3];
-          console.log(arrayOfNumbers2);
-          console.log(suma203);
-          new Timer(timerElement, suma203);
+          saveTimer(timerElement);
+          // let shortTimer = new Timer(shortBreakDiv, shortBreakDurationInput.value * 60);
+          // shortTimer.start();
+          // let longTimer = new Timer(longBreakDiv, longBreakDurationInput.value * 60);
+          // longTimer.start();
         }
+        if (e.target == sessionCardButtonTimer) {
+          saveTimer(shortBreakDiv);
+          saveTimer(longBreakDiv);
+        }
+        if (e.target == sessionCardButtonShortBreak) {
+          saveTimer(longBreakDiv);
+        }
+        if (e.target == sessionCardButtonsLongBreak) {
+          saveTimer(shortBreakDiv);
+        }
+
       })
 
       new Timer(shortBreakDiv, shortBreakDurationInput.value * 60);
@@ -512,21 +531,27 @@ function clearTasks() {
   } else console.log("The list is already empty.");
 }
 
-console.log(listOfTasks.children.length);
 if (!listOfTasks.children.length) {
   sessionCardButtonSetting.style.display = "none";
 }
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot
-function buttonsFunctionality() {
+function buttonsRemoveEvents() {
   addTaskButton.removeEventListener("click", adjustClasses);
-  addTaskButton.removeEventListener("click", closeModalFunction);
+  //addTaskButton.removeEventListener("click", closeModalFunction);
+  addTaskButton.removeEventListener("click", openModalFunction);
   clearTaskButton.removeEventListener("click", clearTasks);
 
   let removeButtons = document.querySelectorAll(".removeTaskButton");
   for (let i = 0; i < removeButtons.length; i++) {
     removeButtons[i].removeEventListener("click", removeTaskFunctionality);
   }
+}
+
+function buttonsAddEvents() {
+  addTaskButton.addEventListener("click", adjustClasses);
+  addTaskButton.addEventListener("click", openModalFunction);
+  clearTaskButton.addEventListener("click", clearTasks);
 }
 //funkcijava originalno beshe vo kolbasata od kod, kako anonimna vo eventListenerot na removeTaskButton. Ja izvadiv nadvor
 //za da mozham da ja povikam vo funkcijata buttonsFunctionality(nad ovaa odma)
@@ -686,4 +711,21 @@ function styleBackgroundColor(onWhat, where, value) {
 function finishTask() {
   this.parentElement.querySelector(".flag_paragraph").contentEditable = true;
   this.parentElement.style.opacity = "0.5";
+}
+
+function saveTimer(element) {
+  let secondsArray = element.innerText.split('');
+  console.log(secondsArray);
+  let arrayOfNumbers = [];
+
+  for (let i = 0; i < secondsArray.length; i++) {
+    let parsedCharacter = parseInt(secondsArray[i]);
+    if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
+      arrayOfNumbers.push(parsedCharacter);
+    }
+  }
+  let suma = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
+  console.log(arrayOfNumbers);
+  console.log(suma);
+  new Timer(element, suma);
 }

@@ -52,7 +52,7 @@ function updateAccessedDays() {
         activityDetails.countOfDaysAccessed++;
 
     }
-    console.log(activityDetails.countOfDaysStreak)
+    //console.log(activityDetails.countOfDaysStreak)
     saveObjectToLocalStorage(ACTIVITY_DETAILS_KEY, activityDetails);
     dynamicAccessedDaysParagraph.innerHTML = activityDetails.countOfDaysAccessed;
     dynamicStreakDaysParagraph.innerHTML = activityDetails.countOfDaysStreak;
@@ -83,13 +83,13 @@ function saveObjectToLocalStorage(key, someObject) {
 function streakDaysValidation(previousDate) {
     const sessions = getObjectFromLocalStorage(SESSIONS_KEY);
     for (const session of sessions) {
-        console.log(`Session Object : `, session);
+        //console.log(`Session Object : `, session);
 
         if (session.sessionDate === previousDate) {
-            console.log("I am true! session.sessionDate = previousDate");
+            //console.log("I am true! session.sessionDate = previousDate");
 
             for (const sessionTask of session.sessionTasks) {
-                console.log(`Session Task:`, sessionTask)
+                //console.log(`Session Task:`, sessionTask)
 
                 if (sessionTask.time.length > 0) {
                     return true;
