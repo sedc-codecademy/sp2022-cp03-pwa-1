@@ -90,26 +90,26 @@ function startingArrayOfChartDates(){
 
 
 const allSessions1 = JSON.parse(localStorage.getItem("sessions"));
- console.log(allSessions1);
+ //console.log(allSessions1);
  let arrayOfSessionDates = [];
  for (let i=0; i<allSessions1?.length; i++){
     arrayOfSessionDates.push(allSessions1[i].sessionDate)
  }
- console.log(arrayOfSessionDates); // se dobiva niza od datumite na sekoja oddelna sesija// NO, datumite se povtoruvaat
+ //console.log(arrayOfSessionDates); // se dobiva niza od datumite na sekoja oddelna sesija// NO, datumite se povtoruvaat
 
  let arrayOfHours = [];
  for (let i=0; i<allSessions1.length; i++){
     arrayOfHours.push((allSessions1[i].sessionTasks).flatMap((parameter) => Math.round(parameter.time/60/60 * 100) / 100).reduce((sum, current) => sum + current, 0));
 //zaokruzuvanje na brojot na casovi na 2 decimali...
  }
- console.log(arrayOfHours); // se dobiva niza od casovi za sekoja sesija// NO, casovite se odnesuvaat na sekoja oddelna sesija a oddelnite sesii moze da se na ist datum
+ //console.log(arrayOfHours); // se dobiva niza od casovi za sekoja sesija// NO, casovite se odnesuvaat na sekoja oddelna sesija a oddelnite sesii moze da se na ist datum
 
 const objectOfDatesHoursPairs = arrayOfHours.reduce((acc,e,i, arr) => {
   acc[arrayOfSessionDates[i]] = (acc[arrayOfSessionDates[i]] || 0) + e;
   return acc;
 }, {});
 
-console.log(objectOfDatesHoursPairs); // objekt kade datumite se keys, a casovite se values// datumite ne se povtoruvaat, a casovite se sobrani vo ramki na sekoj datum
+//console.log(objectOfDatesHoursPairs); // objekt kade datumite se keys, a casovite se values// datumite ne se povtoruvaat, a casovite se sobrani vo ramki na sekoj datum
 
 var finalArrayOfDates = [],
     finalArrayOfHours = [];
@@ -123,8 +123,8 @@ for (var property in objectOfDatesHoursPairs) {
    finalArrayOfDates.push(property);
    finalArrayOfHours.push(objectOfDatesHoursPairs[property]);
 }
-console.log(finalArrayOfDates); // niza od datumite// bez da se povtoruvaat
-console.log(finalArrayOfHours); //niza od casovite za soodvetnite datumi
+//console.log(finalArrayOfDates); // niza od datumite// bez da se povtoruvaat
+//console.log(finalArrayOfHours); //niza od casovite za soodvetnite datumi
 
 const dates = startingArrayOfChartDates();
 function genDataArrayChart(){
@@ -226,7 +226,7 @@ function filterDate() {
         dateToBeFormated = nextDate;
     }
     myChart.config.data.labels = dynamicDates;
-    console.log(dynamicDates);
+    //console.log(dynamicDates);
     function genDataArrayChart1(){
         const dataArrayChart1=[];
         for(i=0; i<dynamicDates.length; i++){
