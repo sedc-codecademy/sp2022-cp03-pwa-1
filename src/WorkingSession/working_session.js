@@ -1,164 +1,164 @@
-import {
-  sessionCardButtons, sessionModals, closeButton, overlayDiv, startButton, cardContainer, sessionCardBodyDiv, sessionCardButtonSetting,
-  sessionCardButtonShortBreak, sessionCardButtonsLongBreak, sessionCardButtonTimer, body, settingsButton, settingsDiv, timerElement,
-  sessionButtonsDiv, timerInput, addTaskButton, taskForm, timerUpButton, timerDownButton, shortBreakUpButton, shortBreakDownButton,
-  longBreakUpButton, longBreakDownButton, addNoteButton, textAreaOfTask, taskTitle, taskDuration, confirmSessionDurationButton,
-  shortBreakDurationInput, longBreakDurationInput, shortBreakDiv, longBreakDiv, cancelTimeInput, taskButtonsDiv, selectionFiledPriority,
-  selectionFieldPace, saveTaskButton, listOfTasks, taskPriority, taskPace, cancelTaskButton, endSessionButton, clearTaskButton
-} from './Variables/selectors.js';
+// import {
+//   sessionCardButtons, sessionModals, closeButton, overlayDiv, startButton, cardContainer, sessionCardBodyDiv, sessionCardButtonSetting,
+//   sessionCardButtonShortBreak, sessionCardButtonsLongBreak, sessionCardButtonTimer, body, settingsButton, settingsDiv, timerElement,
+//   sessionButtonsDiv, timerInput, addTaskButton, taskForm, timerUpButton, timerDownButton, shortBreakUpButton, shortBreakDownButton,
+//   longBreakUpButton, longBreakDownButton, addNoteButton, textAreaOfTask, taskTitle, taskDuration, confirmSessionDurationButton,
+//   shortBreakDurationInput, longBreakDurationInput, shortBreakDiv, longBreakDiv, cancelTimeInput, taskButtonsDiv, selectionFiledPriority,
+//   selectionFieldPace, saveTaskButton, listOfTasks, taskPriority, taskPace, cancelTaskButton, endSessionButton, clearTaskButton
+// } from './Variables/selectors.js';
 
-import {
-  initialTaskTime, taskTimeLeftWhenStopped, timenow,
-  isSessionActive, startSessionTime, arrayOfTasks, arrayOfFinishedTasks, session
-} from './Variables/globalVariables.js';
+// import {
+//   initialTaskTime, taskTimeLeftWhenStopped, timenow,
+//   isSessionActive, startSessionTime, arrayOfTasks, arrayOfFinishedTasks, session,
+// } from './Variables/globalVariables.js';
 
-import { Timer } from './Classes/timer.js';
+// import Timer from './Classes/timer.js';
 
-// const sessionCardButtons = document.querySelectorAll(".sessionButtons");
-// const sessionModals = document.querySelector(".sessionPopUpModals");
-// const closeButton = document.querySelector(".closeSessionModal");
-// const overlayDiv = document.querySelector(".sessionOverlayDiv");
-// const startButton = document.querySelector("#startSessionBtn");
-// const cardContainer = document.querySelector("#sessionMain");
-// const sessionCardBodyDiv = document.querySelector("#sessionCardBody");
-// const sessionCardButtonSetting = document.querySelector(".sessionButtonSetting");
-// const sessionCardButtonShortBreak = document.querySelector(".sessionButtonShortBreak");
-// const sessionCardButtonsLongBreak = document.querySelector(".sessionButtonLongBreak");
-// const sessionCardButtonTimer = document.querySelector(".sessionButtonTimer");
-// const body = document.querySelector("body");
-// const settingsButton = document.querySelector("#sessionSettings");
-// const settingsDiv = document.querySelector(".settingsDiv");
-// const timerElement = document.querySelector("#timerDiv");
-// const sessionButtonsDiv = document.querySelector("#sessionCardButtonsDiv");
-// const timerInput = document.querySelector("#inputForTimeOfTask");
-// const addTaskButton = document.querySelector("#addTaskBtn");
-// const taskForm = document.querySelector(".taskFormDiv");
-// const timerUpButton = document.querySelector("#arrowUp");
-// const timerDownButton = document.querySelector("#arrowDown");
-// const shortBreakUpButton = document.querySelector("#arrowUpShortBreak");
-// const shortBreakDownButton = document.querySelector("#arrowDownShortBreak");
-// const longBreakUpButton = document.querySelector("#arrowUpLongBreak");
-// const longBreakDownButton = document.querySelector("#arrowDownLongBreak");
-// const addNoteButton = document.querySelector("#noteForTaskBtn");
-// const textAreaOfTask = document.querySelector("#taskText");
-// const taskTitle = document.querySelector("#inputForTaskTitle");
-// const taskDuration = document.querySelector("#inputForTimeOfTask");
-// const confirmSessionDurationButton = document.querySelector("#startingTimerValueButton");
-// const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
-// const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
-// const shortBreakDiv = document.querySelector("#shortBreakDiv");
-// const longBreakDiv = document.querySelector("#longBreakDiv");
-// const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
-// const taskButtonsDiv = document.querySelector("#taskButtons");
-// const selectionFiledPriority = document.querySelector("#priority");
-// const selectionFieldPace = document.querySelector("#pace");
-// const saveTaskButton = document.querySelector("#saveTaskButton");
-// const listOfTasks = document.querySelector(".orderedListOfTasks");
-// const taskPriority = document.querySelector("#priority");
-// const taskPace = document.querySelector("#pace");
-// const cancelTaskButton = document.querySelector("#cancelTaskButton");
-// const endSessionButton = document.querySelector("#endSessionButton");
-// const clearTaskButton = document.querySelector("#clearTasksBtn");
+const sessionCardButtons = document.querySelectorAll(".sessionButtons");
+const sessionModals = document.querySelector(".sessionPopUpModals");
+const closeButton = document.querySelector(".closeSessionModal");
+const overlayDiv = document.querySelector(".sessionOverlayDiv");
+const startButton = document.querySelector("#startSessionBtn");
+const cardContainer = document.querySelector("#sessionMain");
+const sessionCardBodyDiv = document.querySelector("#sessionCardBody");
+const sessionCardButtonSetting = document.querySelector(".sessionButtonSetting");
+const sessionCardButtonShortBreak = document.querySelector(".sessionButtonShortBreak");
+const sessionCardButtonsLongBreak = document.querySelector(".sessionButtonLongBreak");
+const sessionCardButtonTimer = document.querySelector(".sessionButtonTimer");
+const body = document.querySelector("body");
+const settingsButton = document.querySelector("#sessionSettings");
+const settingsDiv = document.querySelector(".settingsDiv");
+const timerElement = document.querySelector("#timerDiv");
+const sessionButtonsDiv = document.querySelector("#sessionCardButtonsDiv");
+const timerInput = document.querySelector("#inputForTimeOfTask");
+const addTaskButton = document.querySelector("#addTaskBtn");
+const taskForm = document.querySelector(".taskFormDiv");
+const timerUpButton = document.querySelector("#arrowUp");
+const timerDownButton = document.querySelector("#arrowDown");
+const shortBreakUpButton = document.querySelector("#arrowUpShortBreak");
+const shortBreakDownButton = document.querySelector("#arrowDownShortBreak");
+const longBreakUpButton = document.querySelector("#arrowUpLongBreak");
+const longBreakDownButton = document.querySelector("#arrowDownLongBreak");
+const addNoteButton = document.querySelector("#noteForTaskBtn");
+const textAreaOfTask = document.querySelector("#taskText");
+const taskTitle = document.querySelector("#inputForTaskTitle");
+const taskDuration = document.querySelector("#inputForTimeOfTask");
+const confirmSessionDurationButton = document.querySelector("#startingTimerValueButton");
+const shortBreakDurationInput = document.querySelector("#startingShortBreakValueInput");
+const longBreakDurationInput = document.querySelector("#startingLongBreakValueInput");
+const shortBreakDiv = document.querySelector("#shortBreakDiv");
+const longBreakDiv = document.querySelector("#longBreakDiv");
+const cancelTimeInput = document.querySelector("#cancelTimerValueButton");
+const taskButtonsDiv = document.querySelector("#taskButtons");
+const selectionFiledPriority = document.querySelector("#priority");
+const selectionFieldPace = document.querySelector("#pace");
+const saveTaskButton = document.querySelector("#saveTaskButton");
+const listOfTasks = document.querySelector(".orderedListOfTasks");
+const taskPriority = document.querySelector("#priority");
+const taskPace = document.querySelector("#pace");
+const cancelTaskButton = document.querySelector("#cancelTaskButton");
+const endSessionButton = document.querySelector("#endSessionButton");
+const clearTaskButton = document.querySelector("#clearTasksBtn");
 
-// let initialTaskTime;
-// let taskTimeLeftWhenStopped;
-// let arrayOfTasks = [];
-// let arrayOfFinishedTasks = [];
-// let session = {};
-// let timenow = new Date().toISOString().slice(0, 10);
-// let isSessionActive = false;
-// let startSessionTime;
+let initialTaskTime;
+let taskTimeLeftWhenStopped;
+let arrayOfTasks = [];
+let arrayOfFinishedTasks = [];
+let session = {};
+let timenow = new Date().toISOString().slice(0, 10);
+let isSessionActive = false;
+let startSessionTime;
 
 let suma;
 settingsButton.style.display = "none";
 
 //Class Timer
-// class Timer {
-//   constructor(root, timer) {
-//     root.innerHTML = Timer.getHTML();
+class Timer {
+  constructor(root, timer) {
+    root.innerHTML = Timer.getHTML();
 
-//     this.el = {
-//       minutes: root.querySelector(".timer__part--minutes"),
-//       seconds: root.querySelector(".timer__part--seconds"),
-//       control: root.querySelector(".timer__btn--control")
-//     };
+    this.el = {
+      minutes: root.querySelector(".timer__part--minutes"),
+      seconds: root.querySelector(".timer__part--seconds"),
+      control: root.querySelector(".timer__btn--control")
+    };
 
-//     this.interval = null;
-//     this.remainingSeconds = 0;
+    this.interval = null;
+    this.remainingSeconds = 0;
 
-//     this.el.control.addEventListener("click", () => {
-//       if (this.interval === null) {
-//         this.start();
-//         isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
-//         buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
-//         document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
-//         startSessionTime = new Date();
-//         settingsButton.style.display = "none";
-//         endSessionButton.addEventListener("click", endSessionFunction);
-//       } else {
-//         this.stop();
-//       }
-//     });
+    this.el.control.addEventListener("click", () => {
+      if (this.interval === null) {
+        this.start();
+        isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
+        buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
+        document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
+        startSessionTime = new Date();
+        settingsButton.style.display = "none";
+        endSessionButton.addEventListener("click", endSessionFunction);
+      } else {
+        this.stop();
+      }
+    });
 
-//     const inputSeconds = String(timer);
+    const inputSeconds = String(timer);
 
-//     if (inputSeconds < 100000) {
-//       this.stop();
-//       this.remainingSeconds = inputSeconds;
-//       this.updateInterfaceTime();
-//     }
-//   }
+    if (inputSeconds < 100000) {
+      this.stop();
+      this.remainingSeconds = inputSeconds;
+      this.updateInterfaceTime();
+    }
+  }
 
-//   updateInterfaceTime() {
-//     const minutes = Math.floor(this.remainingSeconds / 60);
-//     const seconds = this.remainingSeconds % 60;
+  updateInterfaceTime() {
+    const minutes = Math.floor(this.remainingSeconds / 60);
+    const seconds = this.remainingSeconds % 60;
 
-//     this.el.minutes.textContent = minutes.toString().padStart(2, "0");
-//     this.el.seconds.textContent = seconds.toString().padStart(2, "0");
-//   }
+    this.el.minutes.textContent = minutes.toString().padStart(2, "0");
+    this.el.seconds.textContent = seconds.toString().padStart(2, "0");
+  }
 
-//   updateInterfaceControls() {
-//     if (this.interval === null) {
-//       this.el.control.innerHTML = `<button id="startSessionBtn">&#x23f5;</button>`;
-//       this.el.control.classList.add("timer__btn--start");
-//       this.el.control.classList.remove("timer__btn--stop");
-//     } else {
-//       this.el.control.innerHTML = `<button id="stopSessionBtn">&#x23f8;</button>`;
-//       this.el.control.classList.add("timer__btn--stop");
-//       this.el.control.classList.remove("timer__btn--start");
-//     }
-//   }
+  updateInterfaceControls() {
+    if (this.interval === null) {
+      this.el.control.innerHTML = `<button id="startSessionBtn">&#x23f5;</button>`;
+      this.el.control.classList.add("timer__btn--start");
+      this.el.control.classList.remove("timer__btn--stop");
+    } else {
+      this.el.control.innerHTML = `<button id="stopSessionBtn">&#x23f8;</button>`;
+      this.el.control.classList.add("timer__btn--stop");
+      this.el.control.classList.remove("timer__btn--start");
+    }
+  }
 
-//   start() {
-//     if (this.remainingSeconds == 0) return;//so 3 ednakvi e bag
+  start() {
+    if (this.remainingSeconds == 0) return;//so 3 ednakvi e bag
 
-//     this.interval = setInterval(() => {
-//       this.remainingSeconds--;
-//       this.updateInterfaceTime();
+    this.interval = setInterval(() => {
+      this.remainingSeconds--;
+      this.updateInterfaceTime();
 
-//       if (this.remainingSeconds === 0) {
-//         this.stop();
-//       }
-//     }, 1000);
+      if (this.remainingSeconds === 0) {
+        this.stop();
+      }
+    }, 1000);
 
-//     this.updateInterfaceControls();
-//   }
+    this.updateInterfaceControls();
+  }
 
-//   stop() {
-//     clearInterval(this.interval);
-//     this.interval = null;
-//     this.updateInterfaceControls();
-//   }
+  stop() {
+    clearInterval(this.interval);
+    this.interval = null;
+    this.updateInterfaceControls();
+  }
 
-//   static getHTML() {
-//     return `
-//             <span class="timer__part timer__part--minutes">00</span>
-//             <span class="timer__part">:</span>
-//             <span class="timer__part timer__part--seconds">00</span>
-//             <button type="button" class="timer__btn timer__btn--control timer__btn--start"></button>
-//             `;
-//   }
-// }
+  static getHTML() {
+    return `
+            <span class="timer__part timer__part--minutes">00</span>
+            <span class="timer__part">:</span>
+            <span class="timer__part timer__part--seconds">00</span>
+            <button type="button" class="timer__btn timer__btn--control timer__btn--start"></button>
+            `;
+  }
+}
 
 
 
@@ -648,7 +648,7 @@ function createTask() {
     //FINISH TASK BUTTON NEW LOGIC (12.09.2022)
     let finishedTaskButton = createElementFunction("finishedTaskButton", "flex", "class", "stopTask", "Finish task", li, "button");
 
-    finishedTaskButton.addEventListener("click", finishTask);
+    //finishedTaskButton.addEventListener("click", finishTask);
 
     if (!textAreaOfTask.value == "") {
 
@@ -735,8 +735,8 @@ function saveTimer(element) {
       arrayOfNumbers.push(parsedCharacter);
     }
   }
-  let suma = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
+  let sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
   console.log(arrayOfNumbers);
-  console.log(suma);
-  new Timer(element, suma);
+  console.log(sumOfTimer);
+  new Timer(element, sumOfTimer);
 }
