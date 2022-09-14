@@ -35,11 +35,11 @@ function updateAccessedDays() {
         const previousDateToCompare = new Date(activityDetails.previousDate);
         previousDateToCompare.setDate(previousDateToCompare.getDate() + 1);
         const formatedPreviousDateToCompare = previousDateToCompare.toISOString().slice(0, 10);
-        console.log(formatedPreviousDateToCompare);
+        //console.log(formatedPreviousDateToCompare);
 
-        console.log(`currentAccessedDate == formatedPreviousDateToCompare`, currentAccessedDate == formatedPreviousDateToCompare);
+        //console.log(`currentAccessedDate == formatedPreviousDateToCompare`, currentAccessedDate == formatedPreviousDateToCompare);
         if (currentAccessedDate == formatedPreviousDateToCompare) {
-            console.log(`streakDaysValidation(activityDetails.previousDate)`, streakDaysValidation(activityDetails.previousDate));
+            //console.log(`streakDaysValidation(activityDetails.previousDate)`, streakDaysValidation(activityDetails.previousDate));
             if (streakDaysValidation(activityDetails.previousDate)) {
                 activityDetails.countOfDaysStreak++;
             }

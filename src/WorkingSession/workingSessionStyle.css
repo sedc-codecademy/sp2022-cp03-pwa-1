@@ -994,21 +994,22 @@ ol {
 }
 
 .stopTask, #resumeBtn {
-    position: absolute;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    width: 12vh;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: rgb(80, 80, 80);
-    height: 1.5rem;
-    justify-content: center;
-    top: 87%;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
+
+  position: absolute;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  width: 12vh;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgb(80, 80, 80);
+  height: 1.5rem;
+  justify-content: center;
+  top: 87%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
 }
  
 .stopTask:hover {
