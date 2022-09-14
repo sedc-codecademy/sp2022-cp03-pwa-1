@@ -60,6 +60,7 @@ const cancelTaskButton = document.querySelector("#cancelTaskButton");
 const endSessionButton = document.querySelector("#endSessionButton");
 const clearTaskButton = document.querySelector("#clearTasksBtn");
 
+
 let initialTaskTime;
 let taskTimeLeftWhenStopped;
 let arrayOfTasks = [];
@@ -159,8 +160,6 @@ class Timer {
             `;
   }
 }
-
-
 
 // Modals functionality
 
@@ -603,7 +602,7 @@ function timeStamp() {
 };
 
 function createId() {
-  return Math.floor(Math.random() * 10000);
+  return randomNumber = Date.now();
 }
 
 function createElementFunction(name, dis, attr, attrName, inner, where, type) {
@@ -721,7 +720,26 @@ function styleBackgroundColor(onWhat, where, value) {
 
 function finishTask() {
   this.parentElement.querySelector(".flag_paragraph").contentEditable = true;
-  this.parentElement.style.opacity = "0.5";
+  this.parentElement.style.opacity = "0.6";
+  marker = document.createElement("div");
+  // marker.style.display = "flex";
+  marker.setAttribute("class", "MarkerContainer") //option 1
+  this.parentElement.appendChild(marker);
+  marker.innerHTML += `
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-success" viewBox="0 0 24 24">
+  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+    <circle class="success-circle-outline" cx="12" cy="12" r="11.5"/>
+    <circle class="success-circle-fill" cx="12" cy="12" r="11.5"/>
+    <polyline class="success-tick" points="17,8.5 9.5,15.5 7,13"/>
+  </g>
+</svg>
+  `;
+  this.parentElement.querySelector(".stopTask").style.display = "none";
+  this.parentElement.querySelector(".removeTaskButton").style.display = "none";
+  this.parentElement.querySelector(".showNoteButton").style.display = "none";
+ 
+  
+  
 }
 
 function saveTimer(element) {

@@ -2,6 +2,8 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+
  
 #sessionCardButtonsDiv {
   display: flex;
@@ -206,10 +208,8 @@ color: white
   right: 32%;
   text-align: center;
 }
- 
-#startSessionBtn,
-#stopSessionBtn {
-  
+
+.timer__btn, .timer__btn--control, .timer__btn--start {
   margin: 0 5px;
   position: absolute;
   font-size: 1.6rem;
@@ -221,18 +221,30 @@ color: white
   cursor: pointer;
   box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: all 300ms ease-in-out;
-  margin-top: 45px;
-  width: 80px;
+  margin-top: 18vh;
+  width: 65px;
+  height: 42px;
   margin-inline: auto;
   left: auto;
   right: auto;
   display: flex;
   text-align: center;
-  /* transform: translate(-50%, -50%); */
+  cursor: pointer;
 }
  
-#stopSessionBtn:hover,
-#startSessionBtn:hover {
+ #startSessionBtn,
+#stopSessionBtn {
+  color: #444;
+  margin: 0 5px;
+  position: absolute;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+} 
+ 
+.timer__btn:hover {
   transform: scale(1.03);
 }
  
@@ -608,6 +620,11 @@ ol {
   display: inline-block;
   height: fit-content;
   position: relative;
+  transition: all 600ms ease-in-out;
+}
+
+.liOfTasks:active {
+  transform: scale(1.1);
 }
  
 .showNoteDiv {
@@ -627,6 +644,7 @@ ol {
   left: 0;
   right: 0;
   padding: 10px;
+
 }
  
 .showNoteButton {
@@ -994,7 +1012,6 @@ ol {
 }
 
 .stopTask, #resumeBtn {
-
   position: absolute;
   border-radius: 0.5rem;
   border: none;
@@ -1019,3 +1036,106 @@ ol {
   transform: scale(1.05);
   transition: all 300ms ease-in-out;
 }
+
+/* Marker */
+
+
+
+.markerContainer {
+  width: 30px;
+  margin: 50px auto;
+  opacity: 111;
+}
+.svg-success {
+  display: inline-block;
+  vertical-align: top;
+  height: 80%;
+  width: 100%;
+  opacity: 1;
+  overflow: visible;
+  margin-top: 5vh;
+  margin-inline: auto;
+ 
+}
+  @keyframes success-tick {
+    0% {
+      stroke-dashoffset: 16px;
+      opacity: 1
+    }
+
+    100% {
+      stroke-dashoffset: 31px;
+      opacity: 1
+    }
+  }
+
+  @keyframes success-circle-outline {
+    0% {
+      stroke-dashoffset: 72px;
+      opacity: 1
+    }
+
+    100% {
+      stroke-dashoffset: 0px;
+      opacity: 1
+    }
+  }
+
+  @keyframes success-circle-fill {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .success-tick {
+    fill: none;
+    stroke-width: 1px;
+    stroke: rgb(74, 74, 74);
+    stroke-dasharray: 15px, 15px;
+    stroke-dashoffset: -14px;
+    animation: success-tick 450ms ease 1400ms forwards;
+    opacity: 0;
+  }
+
+  .success-circle-outline {
+    fill: none;
+    stroke-width: 1px;
+    stroke: #3878c000;
+    stroke-dasharray: 72px, 72px;
+    stroke-dashoffset: 72px;
+    animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+    opacity: 0;
+  }
+
+  .success-circle-fill {
+    fill: rgb(240, 240, 240);
+    stroke: none;
+    opacity: 0;
+    animation: success-circle-fill 300ms ease-out 1100ms forwards;
+  }
+
+ 
+  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    .success-tick {
+      stroke-dasharray: 0;
+      stroke-dashoffset: 0;
+      animation: none;
+      opacity: 1;
+    }
+
+    .success-circle-outline {
+      stroke-dasharray: 0;
+      stroke-dashoffset: 0;
+      animation: none;
+      opacity: 1;
+    }
+
+    .success-circle-fill {
+      animation: none;
+      opacity: 1;
+    }
+  }
