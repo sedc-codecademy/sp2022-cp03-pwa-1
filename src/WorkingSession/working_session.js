@@ -640,7 +640,7 @@ function createTask() {
     li.appendChild(activeCardMarker);
 
     //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
-    let flagParagraph = createElementFunction("flagParagraph", "none", "contenteditable", "false", '', li, "p");
+    let flagParagraph = createElementFunction("flagParagraph", "none", "contentEditable", "false", '', li, "p");
     flagParagraph.setAttribute("class", "flag_paragraph");
     createElementFunction("paragraphId", "none", "class", "idOfCard", number, li, "p");
 
@@ -720,6 +720,17 @@ function styleBackgroundColor(onWhat, where, value) {
 
 function finishTask() {
   this.parentElement.querySelector(".flag_paragraph").contentEditable = true;
+  
+  for (let i = 0; i < arrayOfTasks.length; i++) {
+    if (arrayOfTasks[i].id == this.parentElement.querySelector(".idOfCard").innerText) {
+    arrayOfTasks[i].finished = "true";
+    arrayOfFinishedTasks.push(arrayOfTasks[i]);
+    }
+    if(arrayOfTasks.length == arrayOfFinishedTasks.length) {
+      saveTimer(timerElement);
+    }
+  }
+
   this.parentElement.style.opacity = "0.6";
   marker = document.createElement("div");
   // marker.style.display = "flex";
@@ -736,8 +747,9 @@ function finishTask() {
   `;
   this.parentElement.querySelector(".stopTask").style.display = "none";
   this.parentElement.querySelector(".removeTaskButton").style.display = "none";
-  this.parentElement.querySelector(".showNoteButton").style.display = "none";
- 
+  if(this.parentElement.querySelector(".showNoteButton")) {
+    this.parentElement.querySelector(".showNoteButton").style.display = "none";
+  }
   
   
 }

@@ -134,26 +134,13 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content" id="sessionMain">
-                        <h2 class="card-title">WORK SESSION</h2>
-
-                        <!-- <a href="#" class="button">ADD TASK</a> -->
-                        <div class="card-body" id="sessionCardBody">
+                        
                             <div id="sessionCardButtonsDiv">
                                 <button class="sessionButtonSetting" id="sessionSettings">Settings</button>
                                 <button class="sessionButtonTimer" id="timer">Session</button>
                                 <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
                                 <button class="sessionButtonLongBreak" id="longBreak">Long break</button>
                                 <button id="endSessionButton">End session</button>
-
-                                <!-- <div class='timer_block'>
-                                    <div class='controls'>
-                                        <a href="javascript:void(0)" class="start_btn" id='start_0'>Start</a>
-                                        <a href="javascript:void(0)" class="cancel_btn" id='cancel_0'>Cancel</a>
-                                        <a href="javascript:void(0)" class="reset_btn" id='reset_0'>Reset</a>
-                                    </div>
-                                    <span id='timer_0' class='timer'>value placeholder</span>
-                                </div> -->
-
                             </div>
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
@@ -161,16 +148,11 @@
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
                             </div>
                             <div class="settingsDiv hidden">
-
-                                <!-- <label for="starting timer"><b>Insert session duration (minutes):</b></label>
-                                <input id="startingTimerValueInput" placeholder="00" type="number" min="1" max="300"
-                                    step="1" value="0"> -->
                                 <div class="timer_break_field">
                                     <input id="startingShortBreakValueInput" placeholder="00" type="number" min="1" max="120" step="1" value="0">
                                     <button id="arrowUpShortBreak" class="upAndDown">▲</button>
                                     <button id="arrowDownShortBreak" class="upAndDown">▼</button>
                                     <label for="starting shortBreak">Insert short break duration (minutes):<label>
-                                        
                                 </div>
                                 <div class="timer_break_field">
                                     <input  id="startingLongBreakValueInput" placeholder="00" type="number" min="1" max="60" step="1" value="0">
@@ -178,86 +160,72 @@
                                     <button id="arrowDownLongBreak" class="upAndDown">▼</button>
                                     <label for="starting longBreak">Insert long break duration (minutes):<label>
                                 </div>
-                                <div class="button_field_2">
-                                    <button id="cancelTimerValueButton">Cancel</button>
-                                    
+                                    <div class="button_field_2">
+                                        <button id="cancelTimerValueButton">Cancel</button>
+                                    </div>
+                                    <div class="button_field_3">
+                                        <button class="values" id="startingTimerValueButton">Confirm</button>
+                                    </div>
                                 </div>
-                                <div class="button_field_3">
-                                    
-                                    <button class="values" id="startingTimerValueButton">Confirm</button>
-                                </div>
-
-                            </div>
-                            <div class="sessionOverlayDiv hidden"></div>
-                            <div class="hidden" id="timerDiv">00:00</div>
-                            <div class="hidden" id="shortBreakDiv">00:00</div>
-                            <div class="hidden" id="longBreakDiv">00:00</div>
-                            
-                            <div id="openSessionDiv"></div>
-                            <!-- <hr id="hr"> -->
-                            <div id="taskButtons">
-                                <!-- <h3 id="tasksHeader">Tasks</h3> -->
-                                <button id="addTaskBtn">Add task</button>
-                                <button id="clearTasksBtn">Clear tasks</button>
-                            </div>
-                            <!-- <hr> -->
-                            <div class="taskContainer">
-                                <div class="taskFormDiv hidden"> <!--center-->
-                                    <h3 >Add task</h3>
-                                    <div class="form"> <!--post-->
-                                        <div class="txt_field">
-                                            <input id="inputForTaskTitle" maxlength="20" type="text" required>
-                                            <span></span>
-                                            <label>Title</label>
-                                </div>
-                                <div class="timer_field">
-                                    <label>Task time duration (minutes):</label>
-                                    <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
-                                    <button id="arrowUp" class="upAndDown">▲</button>
-                                    <button id="arrowDown" class="upAndDown">▼</button>
-                                    <label>Task time duration (minutes):</label>
-                                </div>
-                                <div class="selection_field">
-                                    <select id="priority" required>
-                                            <option value="">---Nothing Selected---</option>
-                                            <option value="High">High</option>
-                                            <option value="Medium">Medium</option>
-                                            <option value="Low">Low</option>
-                                            </select>
-                                    <!-- <span></span> -->
-                                    <label for="priority">Priority:</label>
-                                </div>
-                                <div class="selection_field">
-                                    <select id="pace" required>
-                                            <option value="">---Nothing Selected---</option>
-                                            <option value="High">High</option>
-                                            <option value="Medium">Medium</option>
-                                            <option value="Low">Low</option>
-                                            </select>
-                                    <!-- <span></span> -->
-                                    <label for="Pace">Pace:</label>
-                                </div>
-                                <button id="noteForTaskBtn">+ Add note</button>
-                                <textarea maxlength="300" name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
-                                <div class="button_field">
-                                    <button id="cancelTaskButton">Cancel</button>
-                                    <button class="values" id="saveTaskButton">Save</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="listOfTasksDiv">
-                    <ol class="orderedListOfTasks">
-                    </ol>
-                </div>
-
-            </div>
-        </div>
+                                <div class="sessionOverlayDiv hidden"></div>
+                                <div class="hidden" id="timerDiv">00:00</div>
+                                <div class="hidden" id="shortBreakDiv">00:00</div>
+                                <div class="hidden" id="longBreakDiv">00:00</div>
+                                <div id="openSessionDiv"></div>
+                                    <div id="taskButtons">
+                                        <button id="addTaskBtn">Add task</button>
+                                        <button id="clearTasksBtn">Clear tasks</button>
+                                    </div>
+                                    <div class="taskContainer">
+                                        <div class="taskFormDiv hidden"> 
+                                            <h3 >Add task</h3>
+                                            <div class="form"> 
+                                                <div class="txt_field">
+                                                    <input id="inputForTaskTitle" maxlength="20" type="text" required>
+                                                    <span></span>
+                                                    <label>Title</label>
+                                                </div>
+                                                <div class="timer_field">
+                                                    <label>Task time duration (minutes):</label>
+                                                    <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
+                                                    <button id="arrowUp" class="upAndDown">▲</button>
+                                                    <button id="arrowDown" class="upAndDown">▼</button>
+                                                    <label>Task time duration (minutes):</label>
+                                                </div>
+                                                <div class="selection_field">
+                                                    <select id="priority" required>
+                                                        <option value="">---Nothing Selected---</option>
+                                                        <option value="High">High</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Low">Low</option>
+                                                    </select>
+                                                    <label for="priority">Priority:</label>
+                                                </div>
+                                                <div class="selection_field">
+                                                    <select id="pace" required>
+                                                        <option value="">---Nothing Selected---</option>
+                                                        <option value="High">High</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Low">Low</option>
+                                                    </select>
+                                                    <label for="Pace">Pace:</label>
+                                                </div>
+                                                    <button id="noteForTaskBtn">+ Add note</button>
+                                                    <textarea maxlength="300" name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
+                                                    <div class="button_field">
+                                                        <button id="cancelTaskButton">Cancel</button>
+                                                        <button class="values" id="saveTaskButton">Save</button>
+                                                    </div>
+                                            </div> <!-- div of class form -->
+                                        </div> <!-- div of class taskFormDiv -->
+                                    </div> <!-- div of class taskContainer -->
+                                    <div class="listOfTasksDiv">
+                                        <ol class="orderedListOfTasks">
+                                        </ol>
+                                    </div>
+                    </div> <!-- div of class card-content -->
+                </div> <!-- div of class swiper-slid -->
+                
         <div class="swiper-slide">
             <div class="card-content">
                 <h2 class="card-title">HOW TO BE PRODUCTIVE</h2>
