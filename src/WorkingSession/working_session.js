@@ -600,11 +600,9 @@ function finishTask() {
     }
     if (arrayOfTasks.length == arrayOfTruths.length) {
       saveTimer(timerElement);
-      console.log(saveTimer(timerElement));
       timerElement.style.display = "none";
       shortBreakDiv.style.display = "none"
       longBreakDiv.style.display = "none"
-      console.log(arrayOfTasks);
       let message = document.createElement("div");
       message.setAttribute("class", "message");
       document.querySelector("#sessionMain").appendChild(message);
@@ -640,12 +638,12 @@ function finishTask() {
   this.parentElement.appendChild(marker);
   marker.innerHTML += `
   <svg xmlns="http://www.w3.org/2000/svg" class="svg-success" viewBox="0 0 24 24">
-  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
-    <circle class="success-circle-outline" cx="12" cy="12" r="11.5"/>
-    <circle class="success-circle-fill" cx="12" cy="12" r="11.5"/>
-    <polyline class="success-tick" points="17,8.5 9.5,15.5 7,13"/>
-  </g>
-</svg>
+    <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+      <circle class="success-circle-outline" cx="12" cy="12" r="11.5"/>
+      <circle class="success-circle-fill" cx="12" cy="12" r="11.5"/>
+      <polyline class="success-tick" points="17,8.5 9.5,15.5 7,13"/>
+    </g>
+  </svg>
   `;
   this.parentElement.querySelector(".stopTask").style.display = "none";
   this.parentElement.querySelector(".removeTaskButton").style.display = "none";
@@ -655,10 +653,8 @@ function finishTask() {
 
 }
 
-
 function saveTimer(element) {
   let secondsArray = element.innerText.split('');
-  console.log(secondsArray);
   let arrayOfNumbers = [];
   let sumOfTimer;
   for (let i = 0; i < secondsArray.length; i++) {
@@ -668,7 +664,5 @@ function saveTimer(element) {
     }
   }
   sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
-  console.log(arrayOfNumbers);
-  console.log(sumOfTimer);
   new Timer(element, sumOfTimer, startTimerFunctionality);
 }
