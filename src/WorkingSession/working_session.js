@@ -60,7 +60,6 @@ const cancelTaskButton = document.querySelector("#cancelTaskButton");
 const endSessionButton = document.querySelector("#endSessionButton");
 const clearTaskButton = document.querySelector("#clearTasksBtn");
 
-
 let initialTaskTime;
 let taskTimeLeftWhenStopped;
 let arrayOfTasks = [];
@@ -69,8 +68,8 @@ let session = {};
 let timenow = new Date().toISOString().slice(0, 10);
 let isSessionActive = false;
 let startSessionTime;
-
 let suma;
+
 settingsButton.style.display = "none";
 
 //Class Timer
@@ -267,7 +266,6 @@ function shortBreakDRY() {
   sessionCardButtonsLongBreak.style.color = "#444";
   sessionCardButtonTimer.style.color = "#444";
   sessionCardButtonSetting.style.color = "#444";
-
 }
 
 shortBreakDiv.style.display = "none";
@@ -384,14 +382,11 @@ if ((textAreaOfTask.style.display = "none")) {
 
 ///ADD TASK FUNCTIONALITY
 
-
 cancelTaskButton.addEventListener("click", function () {
   resetTaskInputs();
   taskForm.classList.add("hidden");
   overlayDiv.classList.add("hidden");
 });
-
-
 
 endSessionButton.style.display = "none";
 
@@ -402,6 +397,7 @@ function endSessionFunction() {
     if (arrayOfTasks.length > 0) {
       fillSession(session);
       arrayOfTasks = [];
+      arrayOfTruths = [];
       new Timer(timerElement, 0);
       document.querySelectorAll(".liOfTasks").forEach((item) => item.remove());
       //saveSession();
@@ -410,6 +406,11 @@ function endSessionFunction() {
     isSessionActive = false; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
     startSessionTime = "";
     endSessionButton.removeEventListener("click", endSessionFunction);
+    document.querySelector(".message").style.display = "none";
+    timerElement.style.display = "flex";
+    sessionCardButtonShortBreak.disabled = false;
+    sessionCardButtonsLongBreak.disabled = false;
+    sessionCardButtonTimer.disabled = false;
     buttonsAddEvents(); //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
   }
 }
@@ -718,19 +719,49 @@ function styleBackgroundColor(onWhat, where, value) {
   });
 }
 
+let arrayOfTruths = [];
+let flag = false;
 function finishTask() {
   this.parentElement.querySelector(".flag_paragraph").contentEditable = true;
-  
   for (let i = 0; i < arrayOfTasks.length; i++) {
     if (arrayOfTasks[i].id == this.parentElement.querySelector(".idOfCard").innerText) {
     arrayOfTasks[i].finished = "true";
-    arrayOfFinishedTasks.push(arrayOfTasks[i]);
+    arrayOfTruths.push(arrayOfTasks[i]);
     }
-    if(arrayOfTasks.length == arrayOfFinishedTasks.length) {
+    if(arrayOfTasks.length == arrayOfTruths.length) {
       saveTimer(timerElement);
+      console.log(saveTimer(timerElement));
+      timerElement.style.display = "none";
+      shortBreakDiv.style.display = "none"
+      longBreakDiv.style.display = "none"
+      let message = document.createElement("div");
+      message.setAttribute("class", "message");
+      document.querySelector("#sessionMain").appendChild(message);
+      let h1 = document.createElement("h1");
+      let h1_duration = document.createElement("h1");
+      let h1_timeWhenFinished = document.createElement("h1");
+      
+      h1_timeWhenFinished.setAttribute("class", "timerLeft");
+      h1_duration.innerText =`Session duration: ${suma / 60} minutes`;
+
+      // let minutes = Math.floor(sumOfTimer / 60);
+      // let seconds = sumOfTimer - minutes * 60;
+      // h1_timeWhenFinished.innerText = `Session finished at ${minutes} minutes and ${seconds} seconds`;
+      
+      if(document.querySelector(".timer__part--minutes").innerText == "00" && document.querySelector(".timer__part--seconds").innerText == "00"){
+        h1.innerText = "Not all tasks were completed on time";
+      } else {
+        h1.innerText = "Well done, All tasks finished on time";
+      }
+      message.appendChild(h1);
+      message.appendChild(h1_duration);
+
+      sessionCardButtonShortBreak.disabled = true;
+      sessionCardButtonsLongBreak.disabled = true;
+      sessionCardButtonTimer.disabled = true;
     }
   }
-
+  
   this.parentElement.style.opacity = "0.6";
   marker = document.createElement("div");
   // marker.style.display = "flex";
@@ -751,21 +782,21 @@ function finishTask() {
     this.parentElement.querySelector(".showNoteButton").style.display = "none";
   }
   
-  
 }
+
 
 function saveTimer(element) {
   let secondsArray = element.innerText.split('');
   console.log(secondsArray);
   let arrayOfNumbers = [];
-
+  let sumOfTimer;
   for (let i = 0; i < secondsArray.length; i++) {
     let parsedCharacter = parseInt(secondsArray[i]);
     if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
       arrayOfNumbers.push(parsedCharacter);
     }
   }
-  let sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
+  sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
   console.log(arrayOfNumbers);
   console.log(sumOfTimer);
   new Timer(element, sumOfTimer);
