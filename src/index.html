@@ -136,7 +136,7 @@
                     <div class="card-content" id="sessionMain">
                         
                             <div id="sessionCardButtonsDiv">
-                                <button class="sessionButtonSetting" id="sessionSettings">Settings</button>
+                                <!-- <button class="sessionButtonSetting" id="sessionSettings">Settings</button> -->
                                 <button class="sessionButtonTimer" id="timer">Session</button>
                                 <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
                                 <button class="sessionButtonLongBreak" id="longBreak">Long break</button>
@@ -147,26 +147,7 @@
                                 <h1>SessionPopUpModals</h1>
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatum modi illum, velit rem iusto ut! Suscipit doloribus ea deleniti?</p>
                             </div>
-                            <div class="settingsDiv hidden">
-                                <div class="timer_break_field">
-                                    <input id="startingShortBreakValueInput" placeholder="00" type="number" min="1" max="120" step="1" value="0">
-                                    <button id="arrowUpShortBreak" class="upAndDown">▲</button>
-                                    <button id="arrowDownShortBreak" class="upAndDown">▼</button>
-                                    <label for="starting shortBreak">Insert short break duration (minutes):<label>
-                                </div>
-                                <div class="timer_break_field">
-                                    <input  id="startingLongBreakValueInput" placeholder="00" type="number" min="1" max="60" step="1" value="0">
-                                    <button id="arrowUpLongBreak" class="upAndDown">▲</button>
-                                    <button id="arrowDownLongBreak" class="upAndDown">▼</button>
-                                    <label for="starting longBreak">Insert long break duration (minutes):<label>
-                                </div>
-                                    <div class="button_field_2">
-                                        <button id="cancelTimerValueButton">Cancel</button>
-                                    </div>
-                                    <div class="button_field_3">
-                                        <button class="values" id="startingTimerValueButton">Confirm</button>
-                                    </div>
-                                </div>
+                           
                                 <div class="sessionOverlayDiv hidden"></div>
                                 <div class="hidden" id="timerDiv">00:00</div>
                                 <div class="hidden" id="shortBreakDiv">00:00</div>
@@ -212,11 +193,28 @@
                                                 </div>
                                                     <button id="noteForTaskBtn">+ Add note</button>
                                                     <textarea maxlength="300" name="Task description" id="taskText" cols="30" rows="3" placeholder="Text description here please"></textarea>
-                                                    <div class="button_field">
-                                                        <button id="cancelTaskButton">Cancel</button>
-                                                        <button class="values" id="saveTaskButton">Save</button>
-                                                    </div>
                                             </div> <!-- div of class form -->
+                                            <div class="breaksDiv">
+                                                <div class="timer_break_field">
+                                                    <input id="startingShortBreakValueInput" placeholder="00" type="number" min="1" max="120" step="1" value="0">
+                                                    <button id="arrowUpShortBreak" class="upAndDown">▲</button>
+                                                    <button id="arrowDownShortBreak" class="upAndDown">▼</button>
+                                                    <label for="starting shortBreak">Insert short break duration (minutes):<label>
+                                                </div>
+                                                <div class="timer_break_field">
+                                                    <input  id="startingLongBreakValueInput" placeholder="00" type="number" min="1" max="60" step="1" value="0">
+                                                    <button id="arrowUpLongBreak" class="upAndDown">▲</button>
+                                                    <button id="arrowDownLongBreak" class="upAndDown">▼</button>
+                                                    <label for="starting longBreak">Insert long break duration (minutes):<label>
+                                                </div>
+                                                  
+                                                </div>
+
+                                                <div class="button_field">
+                                                    <button id="cancelTaskButton">Cancel</button>
+                                                    <button class="values" id="saveTaskButton">Save</button>
+                                                </div>
+                                               
                                         </div> <!-- div of class taskFormDiv -->
                                     </div> <!-- div of class taskContainer -->
                                     <div class="listOfTasksDiv">

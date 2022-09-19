@@ -51,14 +51,6 @@ const sessionCardSessions7 = document.querySelector(".sessionButtonTimer");
 const sessionCardShortBreak7 = document.querySelector(".sessionButtonShortBreak");
 const sessionCardLongBreak7 = document.querySelector(".sessionButtonLongBreak");
 
-
-
-sessionCardSettings7.addEventListener("click", () => {
-  backButton.style.background = "#2980b9";
-  backButton.style.border = "none";
-
-});
-
 sessionCardSessions7.addEventListener("click", () => {
   backButton.style.background = "#2980b9";
   backButton.style.border = "none";

@@ -170,7 +170,6 @@ function resetColors() {
 // });
 
 sessionButton.addEventListener("click", resetColors);
-sessionSettingsButton.addEventListener("click", resetColors);
 document.addEventListener('load', resetColors);
 
 // localStorage.clear();

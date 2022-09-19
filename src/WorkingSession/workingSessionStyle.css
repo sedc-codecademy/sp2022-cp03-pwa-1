@@ -14,11 +14,11 @@
 
 #sessionMain {
   position: relative;
-  color: (var) --clr-neutral-200;
   margin: auto;
   width: 90%;
   padding: 30px;
   height: 89%;
+  background-color: rgb(252, 252, 252);
 }
 
 #sessionCardButtonsDiv {
@@ -34,17 +34,28 @@
 }
 
 .message {
-  top: 12%;
+  top: 24%;
   left: 0;
   right: 0;
   width: 50%;
-  height: 25%;
+  height: 15%;
   margin: auto;
   position: absolute;
   text-align:center;
   border-radius: 1rem;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: white;
   
+}
+
+.hide {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: transparent;
 }
 
 .message h1 {
@@ -326,36 +337,6 @@ color: white
   margin-top: -5rem;
 }
  
-#favDialog {
-  position: relative;
-  border-radius: 1rem;
-  border: none;
-  /* background: rgb(148, 160, 209); */
-  background: "#2980b9";
-  color: var(--clr-neutral-100);
-  font-size: 1rem;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  margin-top: 15rem;
-  height: 8.2rem;
-  width: 15rem;
-}
- 
-#favDialog label {
-  position: absolute;
-  left: 40px;
-}
- 
-#favDialog select {
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0 10px;
-  border: none;
-  color: #444;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  /* transition: all 300ms ease-in-out; */
-}
- 
 #cancelBtn,
 #confirmBtn {
   font-size: 1.2rem;
@@ -490,9 +471,9 @@ color: white
 /* Tasks div */
  
 .taskContainer {
-  position: absolute;
+  position: relative;
   display: flex;
-  /* flex-direction: row; */
+/* flex-direction: row; */
   justify-content: center;
   align-items: center;
   justify-content: space-between;
@@ -500,9 +481,8 @@ color: white
   /* width: 100%; */
   padding: 0px;
   top: 50%;
-  left: 50%;
-  right: 50%;
-  transform: translate (-50%, -50%);
+  
+  
 }
  
 #taskButtons {
@@ -511,11 +491,11 @@ color: white
   justify-content: space-between;
   align-items: center;
   height: fit-content;
-  /* border: 0.5px solid rgba(113, 113, 113, 0.62); */
+  border: 0.5px solid rgba(113, 113, 113, 0.62);
   padding: 5px;
   border-radius: 2rem;
   height: 2rem;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
   background: #2980b9;
   width: 89%;
   top: 40%;
@@ -724,10 +704,11 @@ ol {
  
 .removeTaskButton {
   position: absolute;
-  top: 0.3vh;
-  right: 0.3vh;
-  width: 1.5rem;
-  height: 1.5rem;
+  top: 0.7vh;
+  right: 0.7vh;
+  width: 1.2rem;
+  height: 1.2rem;
+  line-height: 1.2;
   border: 0;
   box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 10rem;
@@ -747,17 +728,43 @@ ol {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* width: 50%; */
   background: #2980b9;
   border-radius: 1rem;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
   z-index: 10;
-  height: 70%;
+  height: 100%;
   /* border: 2px solid grey; */
-  width: fit-content;
+  width: 50rem;
   block-size: fit-content;
   color: rgb(51, 51, 51);
 }
+
+.breaksDiv {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  padding: 3rem;
+  border-radius: 1rem;
+  z-index: 10;
+  width: 20rem;
+  height: 10rem;
+}
+
+/* .settingsDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2980b9;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  z-index: 10;
+  width: 20rem;
+  height: 10rem;
+  
+} */
  
 .taskFormDiv h3 {
   text-align: center;
@@ -771,12 +778,14 @@ ol {
 .form {
   padding: 0 40px;
   box-sizing: border-box;
+  width: 50%;
 }
  
 .txt_field {
   position: relative;
   border-bottom: 2px solid #adadad;
   margin: 30px 0;
+  width: 75%;
 }
  
 .txt_field input {
@@ -906,8 +915,10 @@ ol {
  
 .timer_break_field {
   position: relative;
-  margin-top: 10px;
+  
   margin-bottom: 40px;
+  
+  
 }
  
 .timer_break_field label {
@@ -943,8 +954,9 @@ ol {
   -moz-appearance: textfield;
   /* Firefox */
 }
- 
-.button_field_2 {
+
+
+ .button_field_2 {
   position: absolute;
   padding-top: 15px;
   margin-right: 3rem;
@@ -978,20 +990,8 @@ ol {
   position: relative;
   margin-top: 50px;
   padding-bottom: 15px;
-}
- 
-.settingsDiv {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #2980b9;
-  padding: 3rem;
-  border-radius: 1rem;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  z-index: 10;
-  width: 20rem;
-  height: 10rem;
+  left: 33%;
+  
 }
  
 #startingShortBreakValueInput,
@@ -1064,8 +1064,6 @@ ol {
 
 /* Marker */
 
-
-
 .markerContainer {
   width: 30px;
   margin: 50px auto;
@@ -1122,7 +1120,7 @@ ol {
     stroke: rgb(74, 74, 74);
     stroke-dasharray: 15px, 15px;
     stroke-dashoffset: -14px;
-    animation: success-tick 450ms ease 1400ms forwards;
+    animation: success-tick 450ms ease 400ms forwards;
     opacity: 0;
   }
 
@@ -1132,7 +1130,7 @@ ol {
     stroke: #3878c000;
     stroke-dasharray: 72px, 72px;
     stroke-dashoffset: 72px;
-    animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+    animation: success-circle-outline 300ms ease-in-out 400ms forwards;
     opacity: 0;
   }
 
@@ -1140,7 +1138,7 @@ ol {
     fill: rgb(240, 240, 240);
     stroke: none;
     opacity: 0;
-    animation: success-circle-fill 300ms ease-out 1100ms forwards;
+    animation: success-circle-fill 300ms ease-out 400ms forwards;
   }
 
  

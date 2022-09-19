@@ -5,7 +5,6 @@ const overlayDiv = document.querySelector(".sessionOverlayDiv");
 const startButton = document.querySelector("#startSessionBtn");
 const cardContainer = document.querySelector("#sessionMain");
 const sessionCardBodyDiv = document.querySelector("#sessionCardBody");
-const sessionCardButtonSetting = document.querySelector(".sessionButtonSetting");
 const sessionCardButtonShortBreak = document.querySelector(".sessionButtonShortBreak");
 const sessionCardButtonsLongBreak = document.querySelector(".sessionButtonLongBreak");
 const sessionCardButtonTimer = document.querySelector(".sessionButtonTimer");
@@ -44,7 +43,7 @@ const cancelTaskButton = document.querySelector("#cancelTaskButton");
 const endSessionButton = document.querySelector("#endSessionButton");
 const clearTaskButton = document.querySelector("#clearTasksBtn");
 
-export {sessionCardButtons, sessionModals,closeButton,overlayDiv,startButton,cardContainer,sessionCardBodyDiv,sessionCardButtonSetting,
+export {sessionCardButtons, sessionModals,closeButton,overlayDiv,startButton,cardContainer,sessionCardBodyDiv,
     sessionCardButtonShortBreak,sessionCardButtonsLongBreak,sessionCardButtonTimer,body,settingsButton,settingsDiv,timerElement,
     sessionButtonsDiv,timerInput,addTaskButton,taskForm,timerUpButton,timerDownButton,shortBreakUpButton,shortBreakDownButton,
     longBreakUpButton,longBreakDownButton,addNoteButton,textAreaOfTask,taskTitle,taskDuration,confirmSessionDurationButton,
