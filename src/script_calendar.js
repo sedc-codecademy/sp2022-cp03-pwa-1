@@ -15,14 +15,6 @@ const sessionCardLongBreak4 = document.querySelector(".sessionButtonLongBreak");
 const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
 
 
-sessionCardSettings4.addEventListener("click", () => {
-
-  calendarYear1.style.backgroundColor = "#2980b9";
-  calendarMonth1.style.backgroundColor = "#2980b9";
-  calendarMain.style.backgroundColor = "#2980b9";
-  calendarOuterWrapper.style.backgroundColor = "#2980b9";
-});
-
 sessionCardSessions4.addEventListener("click", () => {
 
   calendarYear1.style.backgroundColor = "#2980b9";
@@ -199,11 +191,6 @@ const sessionCardSettings3 = document.querySelector(".sessionButtonSetting");
 const sessionCardSessions3 = document.querySelector(".sessionButtonTimer");
 const sessionCardShortBreak3 = document.querySelector(".sessionButtonShortBreak");
 const sessionCardLongBreak3 = document.querySelector(".sessionButtonLongBreak");
-
-sessionCardSettings3.addEventListener("click", () => {
-    remindersForm.style.backgroundColor = "#2980b9";
-    remindersFiled.style.backgroundColor = "#2980b9";
-});
 
 sessionCardSessions3.addEventListener("click", () => {
     remindersForm.style.backgroundColor = "#2980b9";

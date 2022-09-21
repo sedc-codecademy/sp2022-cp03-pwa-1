@@ -46,6 +46,25 @@ const productivityElement = document.getElementById("productivity")
 const informations = document.getElementById("informations")
 const goBackButton = document.getElementById("go-back")
 const backButton = document.querySelector(".go-back-button");
+const sessionCardSettings7 = document.querySelector(".sessionButtonSetting");
+const sessionCardSessions7 = document.querySelector(".sessionButtonTimer");
+const sessionCardShortBreak7 = document.querySelector(".sessionButtonShortBreak");
+const sessionCardLongBreak7 = document.querySelector(".sessionButtonLongBreak");
+
+sessionCardSessions7.addEventListener("click", () => {
+  backButton.style.background = "#2980b9";
+  backButton.style.border = "none";
+});
+
+sessionCardShortBreak7.addEventListener("click", () => {
+    backButton.style.background = "#598f94";
+    backButton.style.border = "none";
+});
+
+sessionCardLongBreak7.addEventListener("click", () => {
+  backButton.style.background = "#5079a1";
+  backButton.style.border = "none";
+});
 
 const children = productivityElement.children
 
@@ -66,24 +85,3 @@ for (let i = 0 ; i < children.length ; i++) {
         productivityElement.style.display = "none"
       })
 }
-
-// Search box 
-
-function toggleShow () {
-    var el = document.getElementById("box");
-    el.classList.toggle("show");
-}
-
-// Fixed positioning
-
-// window.onload = function() {     var left1 = document.getElementById("left1");
-// var origOffsetY = left1.offsetTop;
-
-// function onScroll(e) {
-//    console.log("calling scroll")
-//     window.scrollY >= origOffsetY ? left1.style.position = "fixed":
-//     left1.style.position="absolute";
-// }
-
-// document.addEventListener('scroll', onScroll);
-//                       }
