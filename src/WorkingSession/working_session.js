@@ -631,4 +631,5 @@ function saveTimer(element) {
   }
   sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
   new Timer(element, sumOfTimer, startTimerFunctionality);
+  console.log("gg");
   }
