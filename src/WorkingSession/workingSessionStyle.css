@@ -18,7 +18,7 @@
   width: 90%;
   padding: 30px;
   height: 89%;
-  background-color: rgb(252, 252, 252);
+  
 }
 
 #sessionCardButtonsDiv {
@@ -49,9 +49,9 @@
 
 .hide {
   width: 5rem;
-  height: 5rem;
+  height: 10rem;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 0;
   right: 0;
   margin: auto;

@@ -12,57 +12,76 @@
     <link rel="stylesheet" href="Statistics/Activity-Summary/ActivitySummary.css" type="text/css" />
     <link rel="stylesheet" href="Statistics/Focus-Hours/FocusHours.css" type="text/css" />
     <link rel="stylesheet" href="WorkingSession/workingSessionStyle.css" type="text/css" />
+    <link rel="stylesheet" href="productivity.css" type="text/css" />
     <title>Productivity Web App</title>
 </head>
 
 <body>
+    <nav>
+        <div class="L-tewelve"> 
+            <div class="row">
+                <header class="header">
+                    <div class="logo-container">
+                        <h1>Productivity</h1>
+                        <span class="toggle-btn">&#9776;</span>
+                    </div>
+                        <ul class="display-none-mobile">
+                            <li><a href = "#" data-slide="0">Calendar</a></li>
+                            <li><a href = "#" data-slide="1">Statistics</a></li>
+                            <li><a href = "#" data-slide="2">Home</a></li>
+                            <li><a href = "#" data-slide="3">Productivity</a></li>
+                            <li><a href = "#" data-slide="4">Reminders</a></li>
+                        </ul>
+                </header>
+            </div>
+        </div>
+    </nav>
+    <div class="arrow bounce"></div>
     <!--MAIN-->
     <main>
         <!-- Modal -->
-        <div class="modal open" id="modal-sign-in">
+        <!-- <div class="modal open" id="modal-sign-in">
             <div class="modal-bg modal-exit"></div>
-            <div class="modal-container">
-                <h1>Log in</h1>
-                <div>
-                    <h2>Email</h2>
-                    <input type="email" placeholder="Enter your email">
-                </div>
+                <div class="modal-container">
+                    <h1>Log in</h1>
+                    <div>
+                        <h2>Email</h2>
+                        <input type="email" placeholder="Enter your email">
+                    </div>
                 <div>
                     <h2>Password</h2>
                     <input type="password" placeholder="Enter your password">
                 </div>
-                <button class="modal-exit" id="modal-exit">Log in</button>
-                <br />
-                <a class="modal-exit" id="modal-exit">Sign in as a guest</a>
-                <br />
-                <br />
-                <a class="modal-exit" id="sign-up">Sign up</a>
+                    <button class="modal-exit" id="modal-exit">Log in</button>
+                    <br />
+                    <a class="modal-exit" id="modal-exit">Sign in as a guest</a>
+                    <br />
+                    <br />
+                    <a class="modal-exit" id="sign-up">Sign up</a>
             </div>
         </div>
-
-        <div class="modal" id="modal-sign-up">
-            <div class="modal-bg modal-exit"></div>
-            <div class="modal-container">
-                <h1>Sign up</h1>
-                <div>
-                    <h2>Email</h2>
-                    <input type="email" placeholder="Enter your email">
-                </div>
-                <div>
-                    <h2>Password</h2>
-                    <input type="password" placeholder="Enter your password">
-                </div>
-                <button class="modal-exit" id="modal-exit">Sign up</button>
-            </div>
-        </div>
-        <!-- Slider main container -->
-        <div class="swiper z-index" id="swiper">
+                <div class="modal" id="modal-sign-up">
+                    <div class="modal-bg modal-exit"></div>
+                        <div class="modal-container">
+                            <h1>Sign up</h1>
+                            <div>
+                                <h2>Email</h2>
+                                <input type="email" placeholder="Enter your email">
+                            </div>
+                            <div>
+                                <h2>Password</h2>
+                                <input type="password" placeholder="Enter your password">
+                            </div>
+                            <button class="modal-exit" id="modal-exit">Sign up</button>
+                        </div>
+                </div> -->
+                <!-- Slider main container -->
+        <div class="swiper" id="swiper"> <!--z-index class was here to work with modal-->
             <!-- Additional wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide">
-                    <div class="card-content">
-                        <h2 class="card-title">CALENDAR</h2>
+                    <div class="card-content calendar-page">
                         <div class="card-body">
                             <div class="dateInfo">
                                 <div class="calendarYear">
@@ -82,10 +101,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="card-content" id="card-content-statistics">
-                        <h2 class="card-title">STATISTICS</h2>
                         <div class="card-body" id="card-body-statistics">
-
-
                             <div id="activitySummaryContainer1">
                                 <h2>Activity Summary</h2>
                                 <div class="activityCard">
@@ -225,24 +241,8 @@
                 </div> <!-- div of class swiper-slid -->
                 
         <div class="swiper-slide">
-            <div class="card-content">
-                <h2 class="card-title">HOW TO BE PRODUCTIVE</h2>
-                <div class="card-body">
-                    <div id="productivity" class="productivity-images">
-                        <img class="Productivity-pics" src="Pics/rule-of-three.png" alt="ruleOfThree"> 
-                        <img class="Productivity-pics" src="Pics/deep work.png" alt="deepWork">
-                        <img class="Productivity-pics" src="Pics/time blocking.png" alt="timeBlocking">
-                        <img class="Productivity-pics" src="Pics/two minute rule.png" alt="twoMinuteRule">
-                        <img class="Productivity-pics" src="Pics/single tasking.png" alt="singTaksing">
-                        <img class="Productivity-pics" src="Pics/pareto principal.png" alt="paretoPrinciple">
-                        <img class="Productivity-pics" src="Pics/eat the frog.png" alt="eisenhowerPrinciple">
-                        <img class="Productivity-pics" src="Pics/task batching.png" alt="taskBatching">
-                        <img class="Productivity-pics" src="Pics/dry principle.png" alt="repeatYourself">
-                        <img class="Productivity-pics" src="Pics/productivity journaling.png" alt="productivityJournaling">
-                    </div>
-                    <div id="informations"></div>
-                    <button class="go-back-button" id="go-back">Go back</button>
-                </div>
+            <div class="card-content productivity-container">
+                
             </div>
         </div>
         <div class="swiper-slide">
@@ -280,40 +280,9 @@
         </div>
         </div>
         </div>
-        <!-- Pagination A.K.A. The navigation-bar-->
-        <div class="nav-container z-index">
-            <div id="navbar" class="swiper-pagination"></div>
-        </div>
-
-
-        <!-- Navigation buttons -->
-        <div class="swiperBarArrows z-index" id="arrows">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
-
-
-        <!--Dialog options Long & Short Break-->
-        <!-- <dialog id="favDialog">
-            <form method="dialog">
-                <p><label>Skip to?:
-                        <select>
-                            <option value="default">Choose...</option>
-                            <option>Short Break</option>
-                            <option>Long Break</option>
-                            <option>Session</option>
-                        </select>
-                    </label></p>
-                <div class="button_field_4">
-                    <button id="cancelBtn" value="cancel">Cancel</button>
-                    <button id="confirmBtn" value="default">Confirm</button>
-                </div>
-            </form>
-        </dialog> -->
         </div>
         </div>
         </div>
-
     </main>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

@@ -15,11 +15,6 @@
     min-height: 90%;
 }
 
-/* .card-content,
-.card-body{
-    height: 100%
-} */
-
 .activityCard {
     display: flex;
     flex-direction: column;
