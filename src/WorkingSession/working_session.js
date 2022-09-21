@@ -80,7 +80,7 @@ function shortBreakDRY() {
   sessionCardButtonTimer.style.backgroundColor = "transparent";
   sessionCardButtonsLongBreak.style.color = "#444";
   sessionCardButtonTimer.style.color = "#444";
-  }
+}
 
 shortBreakDiv.style.display = "none";
 
@@ -197,7 +197,7 @@ function endSessionFunction() {
   let confirmEnd;
   confirmEnd = confirm("End the session: Have you marked the tasks you have finished as 'Finished'? If yes, press okay.");
   if (confirmEnd) {
-      
+
     if (arrayOfTasks.length > 0) {
 
       fillSession(session);
@@ -206,11 +206,11 @@ function endSessionFunction() {
       new Timer(timerElement, 0, startTimerFunctionality);
       new Timer(shortBreakDiv, 0);
       new Timer(longBreakDiv, 0);
-      
+
       let div = document.createElement("div");
-        div.setAttribute("class", "hide");
-        document.querySelector("#sessionMain").appendChild(div);
-      
+      div.setAttribute("class", "hide");
+      document.querySelector("#sessionMain").appendChild(div);
+
       document.querySelectorAll(".liOfTasks").forEach((item) => item.remove());
       if (document.querySelector(".message")) {
         document.querySelector(".message").remove();
@@ -346,18 +346,18 @@ function clearTasks() {
   if (!listOfTasks.innerHTML.trim() == "") {
     confirmAction = confirm("Are you sure you want to clear the tasks list?");
     if (confirmAction) {
-      
+
       listOfTasks.innerHTML = "";
       new Timer(timerElement, resetTaskDurationValue(), startTimerFunctionality);
       new Timer(shortBreakDiv, 0);
       new Timer(longBreakDiv, 0);
       arrayOfTasks = [];
       arrayOfFinishedTasks = [];
-      
+
       shortBreakDiv.style.display = "flex";
       let div = document.createElement("div");
-        div.setAttribute("class", "hide");
-        document.querySelector("#sessionMain").appendChild(div);
+      div.setAttribute("class", "hide");
+      document.querySelector("#sessionMain").appendChild(div);
 
       disableAndReset();
       console.log("List successfully deleted");
@@ -368,15 +368,15 @@ function clearTasks() {
 }
 
 function disableAndReset() {
-    sessionCardButtonShortBreak.disabled = true;
-    sessionCardButtonsLongBreak.disabled = true;
-    sessionCardButtonTimer.disabled = true;
-    sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-    sessionCardButtonTimer.style.backgroundColor = "transparent";
-    sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-    sessionCardButtonShortBreak.style.color = "#444";
-    sessionCardButtonsLongBreak.style.color = "#444";
-    sessionCardButtonTimer.style.color = "#444";
+  sessionCardButtonShortBreak.disabled = true;
+  sessionCardButtonsLongBreak.disabled = true;
+  sessionCardButtonTimer.disabled = true;
+  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
+  sessionCardButtonTimer.style.backgroundColor = "transparent";
+  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
+  sessionCardButtonShortBreak.style.color = "#444";
+  sessionCardButtonsLongBreak.style.color = "#444";
+  sessionCardButtonTimer.style.color = "#444";
 }
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot
@@ -410,14 +410,14 @@ function removeTaskFunctionality() {
         arrayOfTasks.splice(i, 1);
         arrayOfFinishedTasks.splice(i, 1);
       }
-      if(arrayOfTasks.length == 0) {
+      if (arrayOfTasks.length == 0) {
         disableAndReset();
         let div = document.createElement("div");
         div.setAttribute("class", "hide");
         document.querySelector("#sessionMain").appendChild(div);
-      } 
+      }
     }
-   
+
     this.parentElement.remove();
 
     let updateTimer = arrayOfTasks
@@ -425,7 +425,7 @@ function removeTaskFunctionality() {
     new Timer(timerElement, updateTimer, startTimerFunctionality);
 
     if (arrayOfFinishedTasks.length === arrayOfTasks.length) {
-      
+
       new Timer(timerElement, 0, startTimerFunctionality);
     } else {
       const timer18 = new Timer(timerElement, updateTimer, startTimerFunctionality);
@@ -458,18 +458,18 @@ function createElementFunction(name, dis, attr, attrName, inner, where, type) {
 function createTask() {
   timeStamp();
   endSessionButton.disabled = false;
-  if(document.querySelector(".hide")) {
+  if (document.querySelector(".hide")) {
     document.querySelector(".hide").remove();
   }
   shortBreakDiv.style.display = "none";
-  
+
   if (
     taskTitle.value &&
     taskDuration.value &&
     taskPriority.options[taskPriority.selectedIndex].value &&
     taskPace.options[taskPace.selectedIndex].value
   ) {
-    
+
     let number = createId();
 
     let li = document.createElement("li");
@@ -512,7 +512,7 @@ function createTask() {
       // If div note is active change inherit color from active UI - SEt them in functions outside
       styleBackgroundColor(sessionCardButtonsLongBreak, noteContainer, "#5079a1");
       styleBackgroundColor(sessionCardButtonShortBreak, noteContainer, "#598f94");
-      
+
       styleBackgroundColor(sessionCardButtonTimer, noteContainer, "#2980b9");
     }
     let removeTaskButton = createElementFunction("removeTaskButton", "flex", "class", "removeTaskButton", "x", li, "button");
@@ -576,18 +576,18 @@ function finishTask() {
     if (arrayOfTasks.length == arrayOfTruths.length) {
       saveTimer(timerElement);
       disableAndReset();
-      
+
       shortBreakDiv.style.display = "none";
       longBreakDiv.style.display = "none";
       timerElement.style.display = "flex";
-      
+
       let message = document.createElement("div");
       message.setAttribute("class", "message");
       document.querySelector("#sessionMain").appendChild(message);
       let h1 = document.createElement("h1");
       let h1_duration = document.createElement("h1");
       h1_duration.innerText = `Session duration: ${suma / 60} minutes`;
-    
+
       if (document.querySelector(".timer__part--minutes").innerText == "00" && document.querySelector(".timer__part--seconds").innerText == "00") {
         h1.innerText = "Not all tasks were completed on time";
       } else {
@@ -614,7 +614,7 @@ function finishTask() {
   `;
   this.parentElement.querySelector(".stopTask").style.display = "none";
   this.parentElement.querySelector(".removeTaskButton").style.display = "none";
-  if(this.parentElement.querySelector(".showNoteButton")) {
+  if (this.parentElement.querySelector(".showNoteButton")) {
     this.parentElement.querySelector(".showNoteButton").style.display = "none";
   }
 }
@@ -629,7 +629,16 @@ function saveTimer(element) {
       arrayOfNumbers.push(parsedCharacter);
     }
   }
-  sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
-  new Timer(element, sumOfTimer, startTimerFunctionality);
-  console.log("gg");
+  if (arrayOfNumbers.length == 4) {
+    sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
+  } else if (arrayOfNumbers.length == 5) {
+    sumOfTimer = arrayOfNumbers[0] * 100 * 60 + arrayOfNumbers[1] * 60 * 10 + arrayOfNumbers[2] * 60 + arrayOfNumbers[3] * 10 + arrayOfNumbers[4];
   }
+  //55:33  5 *60 *10 3000 + 
+  //20500 =  2*100*60 + 0 + 30
+  //105 14
+
+
+  new Timer(element, sumOfTimer, startTimerFunctionality);
+
+}
