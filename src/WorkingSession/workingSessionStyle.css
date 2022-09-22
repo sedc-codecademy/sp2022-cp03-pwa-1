@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -66,102 +66,42 @@
   vertical-align:middle;
 }
 
-.sessionButtonTimer {
-  /* margin: 15px 20px; */
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0 10px;
-  margin: 0 5px;
+/* SESSION BUTTONS  */
+
+.sessionButtonTimer, #endSessionButton, .sessionButtonShortBreak, .sessionButtonLongBreak {
+  display: inline-block;
   border: none;
-  /* background-color: rgba(255, 255, 255, 0); */
-  color: #444;
-  border-radius: 10rem;
+  padding: 5px 10px;
+  background-color: transparent;
+  border-bottom: 5px solid transparent;
+  -webkit-transition: padding 0.4s linear 0s;
+  font-size: 16px;
+  color: #1E1E1E;
   cursor: pointer;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 300ms ease-in-out;
 }
  
-.sessionButtonTimer:hover {
-  transform: scale(1.03);
+.sessionButtonTimer:hover, .sessionButtonShortBreak:hover, #endSessionButton:hover, .sessionButtonLongBreak:hover  {
+  border-bottom: 5px solid rgb(138, 138, 138);
 }
- 
-.sessionButtonSetting {
-  /* margin: 15px 20px; */
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0 10px;
-  margin: 0 5px;
+
+#saveTaskButton,
+#cancelTaskButton {
+  display: inline-block;
   border: none;
-  /* background-color: rgba(255, 255, 255, 0); */
-  color: #444;
-  border-radius: 10rem;
+  padding: 5px 10px;
+  background-color: transparent;
+  border-bottom: 5px solid transparent;
+  -webkit-transition: padding 0.4s linear 0s;
+  font-size: 16px;
+  color: #1E1E1E;
   cursor: pointer;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 300ms ease-in-out;
+  margin-left: 20px;
+  margin-right: 20px;
 }
- 
-#endSessionButton {
-  /* margin: 15px 20px; */
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0 10px;
-  margin: 0 5px;
-  border: none;
-  /* background-color: rgba(255, 255, 255, 0); */
-  color: #444;
-  border-radius: 10rem;
-  background: transparent;
-  cursor: pointer;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 300ms ease-in-out;
-}
- 
-#endSessionButton:hover {
-transform: scale(1.03);
-background: rgb(234, 113, 113);
-color: white
-}
- 
-.sessionButtonSetting:hover {
-  transform: scale(1.03);
-}
- 
-.sessionButtonShortBreak {
-  /* margin: 15px 20px; */
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0 10px;
-  margin: 0 5px;
-  border: none;
-  /* background-color: rgba(255, 255, 255, 0); */
-  color: #444;
-  border-radius: 10rem;
-  cursor: pointer;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 300ms ease-in-out;
-}
- 
-.sessionButtonShortBreak:hover {
-  transform: scale(1.03);
-}
- 
-.sessionButtonLongBreak {
-  /* margin: 15px 20px; */
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0 10px;
-  margin: 0 5px;
-  border: none;
-  /* background-color: rgba(255, 255, 255, 0); */
-  color: #444;
-  border-radius: 10rem;
-  cursor: pointer;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 300ms ease-in-out;
-}
- 
-.sessionButtonLongBreak:hover {
-  transform: scale(1.03);
+
+#saveTaskButton:hover,
+#cancelTaskButton:hover {
+  border-bottom: 5px solid rgb(138, 138, 138);
 }
  
 .sessionButtons,
@@ -359,73 +299,25 @@ color: white
   transform: scale(1.03);
 }
  
-#timerDiv {
+#timerDiv, #shortBreakDiv, #longBreakDiv {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  
   background-color: rgba(255, 255, 255, 0);
   width: 80%;
   padding: 0px 50px 10px 50px;
   height: 100px;
   max-height: fit-content;
   font-size: 4rem;
-  color: black;
-  margin-bottom: 4rem;
-  top: 10%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  
-
-}
- 
-#shortBreakDiv {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  background-color: rgba(255, 255, 255, 0);
-  max-width: 50%;
-  padding: 0px 50px 10px 50px;
-  height: 100px;
-  max-height: fit-content;
-  font-size: 4rem;
-  color: black;
+  color: #5d5d5d;
   margin-bottom: 4rem;
   top: 10%;
   left: 0;
   right: 0;
   margin: auto;
 }
- 
-#longBreakDiv {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  background-color: rgba(255, 255, 255, 0);
-  max-width: 50%;
-  padding: 0px 50px 10px 50px;
-  height: 100px;
-  max-height: fit-content;
-  font-size: 4rem;
-  color: black;
-  margin-bottom: 4rem;
-  top: 10%;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
- 
-
- 
 /* optional color : linear-gradient(to top left, #28b487, #7dd56f) */
- 
-
  
 /* Classes to make popups work HIDDEN */
  
@@ -581,15 +473,11 @@ ol {
   margin-left: -1.4rem;
 }
  
-#saveTaskButton:hover,
-#cancelTaskButton:hover {
-  transform: scale(1.03);
-}
+
  
 #noteForTaskBtn {
   margin: 30px 8px;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   border: none;
   cursor: pointer;
   transition: all 300ms ease-in-out;
@@ -598,22 +486,24 @@ ol {
   font-weight: 700;
   color: gray;
   height: 1.5rem;
-  /* left: 50%;
-    transform: translateX(-50%); */
   justify-content: center;
+  transition: all 300ms ease-in-out;
 }
  
 #noteForTaskBtn:hover {
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
  
 #taskText {
   display: none;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0px 0px 2px 2px #ccc;
+  box-shadow: 0px 0px 2px 2px #ccc;
   border-radius: 0.5rem;
-  max-width: 50vh;
+  max-width: 30vh;
   max-height: 20vh;
   padding: 20px;
+  margin-bottom: 2vh;
+  border: none;
 }
  
 .liOfTasks {
@@ -728,15 +618,24 @@ ol {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #2980b9;
-  border-radius: 1rem;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border-radius: 0.3rem;
   z-index: 10;
   height: 100%;
-  /* border: 2px solid grey; */
   width: 50rem;
   block-size: fit-content;
-  color: rgb(51, 51, 51);
+  color: #1E1E1E;
+  -webkit-box-shadow: 0px 0px 2px 2px #ccc;
+  box-shadow: 0px 0px 2px 2px #ccc;
+}
+
+.button_field {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  margin-inline: auto;
+  bottom: 0%;
+  
 }
 
 .breaksDiv {
@@ -751,26 +650,13 @@ ol {
   height: 10rem;
 }
 
-/* .settingsDiv {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #2980b9;
-  padding: 3rem;
-  border-radius: 1rem;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  z-index: 10;
-  width: 20rem;
-  height: 10rem;
-  
-} */
+
  
 .taskFormDiv h3 {
   text-align: center;
   padding: 0 0 20px 0;
-  border-bottom: 1px solid white;
-  color: white;
+  border-bottom: 1px solid #bababa;
+  color: #1E1E1E;
   font-family: "Poppins", sans-serif;
   font-size: 20px;
 }
@@ -817,7 +703,7 @@ ol {
   left: 0;
   width: 0%;
   height: 2px;
-  background: white;
+  background: #1E1E1E;
   transition: 0.5s;
 }
  
@@ -843,9 +729,9 @@ ol {
   font-weight: 600;
   padding: 0 10px;
   margin: 0 5px;
+  color: #1E1E1E;
   border: none;
-  color: #444;
-  border-radius: 0.5rem;
+  border-bottom: 1px solid #1E1E1E;
   cursor: pointer;
   /* transition: all 300ms ease-in-out; */
   width: 70px;
@@ -862,7 +748,22 @@ ol {
  
 .selection_field {
   position: relative;
+  padding: 2px;
+  width: 100%;
   margin: 30px 0;
+  width: 75%;
+  background: rgb(240, 240, 240);
+}
+
+.selection_field::after {
+  color: black;
+  content: "▾";
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 20px;
+  
 }
  
 .selection_field select {
@@ -871,10 +772,13 @@ ol {
   padding: 0 10px;
   margin: 0 5px;
   border: none;
-  color: #444;
-  border-radius: 0.5rem;
+  color: #1E1E1E;
+  border-radius: 0.2rem;
   cursor: pointer;
-  /* transition: all 300ms ease-in-out; */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  background: rgb(240, 240, 240);
 }
  
 .selection_field label {
@@ -885,6 +789,8 @@ ol {
   font-size: 16px;
   pointer-events: none;
 }
+
+
  
 .timer_field input::-webkit-outer-spin-button,
 .timer_field input::-webkit-inner-spin-button {
@@ -904,9 +810,9 @@ ol {
   margin: 0 5px;
   border: none;
   color: #444;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   cursor: pointer;
-  transition: all 300ms ease-in-out;
+  transition: all 100ms ease-in-out;
 }
  
 .upAndDown:hover {
@@ -915,10 +821,7 @@ ol {
  
 .timer_break_field {
   position: relative;
-  
   margin-bottom: 40px;
-  
-  
 }
  
 .timer_break_field label {
@@ -933,15 +836,13 @@ ol {
 .timer_break_field input {
   font-size: 1.2rem;
   font-weight: 600;
-  padding: 0 10px;
+  padding: 5px 10px;
   margin: 0 5px;
   border: none;
   color: #444;
-  border-radius: 0.5rem;
   cursor: pointer;
   width: 100%;
   height: 20px;
-  
 }
  
 .timer_break_field input::-webkit-outer-spin-button,
@@ -968,37 +869,12 @@ ol {
   margin-left: 8rem;
 }
  
-#saveTaskButton,
-#cancelTaskButton {
-  /* margin: 15px 20px; */
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0 10px;
-  margin: 0 5px;
-  border: none;
-  /* background-color: rgba(255, 255, 255, 0); */
-  color: #444;
-  border-radius: 10rem;
-  cursor: pointer;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 300ms ease-in-out;
-  margin-left: 20px;
-  margin-right: 20px;
-}
- 
-.button_field {
-  position: relative;
-  margin-top: 50px;
-  padding-bottom: 15px;
-  left: 33%;
-  
-}
  
 #startingShortBreakValueInput,
 #startingLongBreakValueInput {
   font-size: 24px;
   width: 10%;
-  padding: 0.3rem;
+  border-bottom: 1px solid #1E1E1E;
 }
  
 .card_timer_container {

@@ -64,7 +64,6 @@ if (!sessionModals.classList.contains("hidden")) {
 // SHORT BREAK BUTTON DRYING CODE
 
 function shortBreakDRY() {
-  taskForm.style.background = "#598f94";
   taskButtonsDiv.style.background = "#598f94";
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
@@ -74,12 +73,6 @@ function shortBreakDRY() {
   shortBreakDiv.style.display = "flex";
   body.style.background =
     "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
-  sessionCardButtonShortBreak.style.backgroundColor = "#598f94";
-  sessionCardButtonShortBreak.style.color = "white";
-  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-  sessionCardButtonTimer.style.backgroundColor = "transparent";
-  sessionCardButtonsLongBreak.style.color = "#444";
-  sessionCardButtonTimer.style.color = "#444";
 }
 
 shortBreakDiv.style.display = "none";
@@ -91,7 +84,6 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
 // LONG BREAK BUTTON DRYING countOfDaysAccessed
 
 function longBreakDRY() {
-  taskForm.style.background = "#5079a1";
   taskButtonsDiv.style.background = "#5079a1";
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
@@ -101,12 +93,6 @@ function longBreakDRY() {
   longBreakDiv.style.display = "flex";
   body.style.background =
     "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)";
-  sessionCardButtonsLongBreak.style.backgroundColor = "rgb(80, 121, 161)";
-  sessionCardButtonsLongBreak.style.color = "white";
-  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-  sessionCardButtonTimer.style.backgroundColor = "transparent";
-  sessionCardButtonShortBreak.style.color = "#444";
-  sessionCardButtonTimer.style.color = "#444";
 }
 longBreakDiv.style.display = "none";
 
@@ -122,14 +108,7 @@ function sessionTimerDRY() {
   longBreakDiv.style.display = "none";
   body.style.background =
     "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
-  sessionCardButtonTimer.style.backgroundColor = "#2980b9";
-  taskForm.style.background = "#2980b9";
   taskButtonsDiv.style.background = "#2980b9";
-  sessionCardButtonTimer.style.color = "white";
-  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-  sessionCardButtonShortBreak.style.color = "#444";
-  sessionCardButtonsLongBreak.style.color = "#444";
   listOfTasks.style.display = "flex";
 }
 
