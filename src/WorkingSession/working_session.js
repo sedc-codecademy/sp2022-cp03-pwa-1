@@ -64,15 +64,12 @@ if (!sessionModals.classList.contains("hidden")) {
 // SHORT BREAK BUTTON DRYING CODE
 
 function shortBreakDRY() {
-  taskButtonsDiv.style.background = "#598f94";
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
   shortBreakDiv.classList.remove("hidden");
   timerElement.style.display = "none";
   longBreakDiv.style.display = "none";
   shortBreakDiv.style.display = "flex";
-  body.style.background =
-    "linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%)";
 }
 
 shortBreakDiv.style.display = "none";
@@ -84,15 +81,12 @@ sessionCardButtonShortBreak.addEventListener("click", () => {
 // LONG BREAK BUTTON DRYING countOfDaysAccessed
 
 function longBreakDRY() {
-  taskButtonsDiv.style.background = "#5079a1";
   sessionModals.classList.add("hidden");
   overlayDiv.classList.add("hidden");
   longBreakDiv.classList.remove("hidden");
   timerElement.style.display = "none";
   shortBreakDiv.style.display = "none";
   longBreakDiv.style.display = "flex";
-  body.style.background =
-    "linear-gradient(120deg, rgba(80,121,161,1) 42%, rgba(68,151,173,1) 100%)";
 }
 longBreakDiv.style.display = "none";
 
@@ -106,9 +100,6 @@ function sessionTimerDRY() {
   timerElement.style.display = "flex";
   shortBreakDiv.style.display = "none";
   longBreakDiv.style.display = "none";
-  body.style.background =
-    "linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%)";
-  taskButtonsDiv.style.background = "#2980b9";
   listOfTasks.style.display = "flex";
 }
 
@@ -261,6 +252,9 @@ document.querySelectorAll(".values").forEach((item) => {
       if (e.target === saveTaskButton) {
         resetTaskInputs();
         closeModalFunction();
+        timerElement.style.display = "flex";
+        shortBreakDiv.style.display = "none";
+        longBreakDiv.style.display = "none";
         sessionCardButtonShortBreak.disabled = false;
         sessionCardButtonsLongBreak.disabled = false;
         sessionCardButtonTimer.disabled = false;
@@ -350,12 +344,6 @@ function disableAndReset() {
   sessionCardButtonShortBreak.disabled = true;
   sessionCardButtonsLongBreak.disabled = true;
   sessionCardButtonTimer.disabled = true;
-  sessionCardButtonShortBreak.style.backgroundColor = "transparent";
-  sessionCardButtonTimer.style.backgroundColor = "transparent";
-  sessionCardButtonsLongBreak.style.backgroundColor = "transparent";
-  sessionCardButtonShortBreak.style.color = "#444";
-  sessionCardButtonsLongBreak.style.color = "#444";
-  sessionCardButtonTimer.style.color = "#444";
 }
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav>
+    <section>
         <div class="L-tewelve"> 
             <div class="row">
                 <header class="header">
@@ -35,7 +35,7 @@
                 </header>
             </div>
         </div>
-    </nav>
+    </section>
     <div class="arrow bounce"></div>
     <!--MAIN-->
     <main>
@@ -152,12 +152,30 @@
                     <div class="card-content" id="sessionMain">
                         
                             <div id="sessionCardButtonsDiv">
-                                <!-- <button class="sessionButtonSetting" id="sessionSettings">Settings</button> -->
-                                <button class="sessionButtonTimer" id="timer">Session</button>
-                                <button class="sessionButtonShortBreak" id="shortBreak">Short break</button>
-                                <button class="sessionButtonLongBreak" id="longBreak">Long break</button>
-                                <button id="endSessionButton">End session</button>
+                                <nav class="nav js-nav">
+                                    <ul class="nav__list">
+                                       <li class="nav__item">
+                                          <a href="#" class="nav__link nav__link_active sessionButtonTimer" id="timer" data-transform="0" type="button">Session</a>
+                                       </li>
+                                       <li class="nav__item">
+                                          <a href="#" class="nav__link sessionButtonShortBreak" id="shortBreak" data-transform="100" type="button">Short Break</a>
+                                       </li>
+                                       <li class="nav__item">
+                                          <a href="#" class="nav__link sessionButtonLongBreak" id="longBreak" data-transform="200" type="button">Long Break</a>
+                                       </li>
+                                    </ul>
+                                    <div class="nav__slider">
+                                       <div class="nav__slider-rect"></div>
+                                    </div>
+                                 </nav>
+                                 <button class="item-1" id="endSessionButton">
+                                    <span class="inner">
+                                      <span class="label">End session</span>
+                                    </span>
+                                  </button>
+                                 
                             </div>
+                             
                             <div class="sessionPopUpModals hidden">
                                 <button class="closeSessionModal">&times;</button>
                                 <h1>SessionPopUpModals</h1>

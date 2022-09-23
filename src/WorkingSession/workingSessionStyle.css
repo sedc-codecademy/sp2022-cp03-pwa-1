@@ -1,3 +1,13 @@
+:root {
+  --white: #ffffff;
+  --black: #002A32;
+  --lightGreen: #E6F4F1;
+  --green: rgb(89, 143, 148);
+  --blue: #BFD6D9;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 * {
   font-family: "Poppins", sans-serif;
@@ -67,41 +77,176 @@
 }
 
 /* SESSION BUTTONS  */
+.nav {
+  position: relative;
+  width: 400px;
+  height: 40px;
+  border-radius: 15px;
+  background-color: var(--lightGreen);
+  box-shadow: 2px 4px 6px rgba(0, 42, 50, 0.1);
+}
+.nav_copy {
+  margin-top: 80px;
+}
+.nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  height: 100%;
+  z-index: 1;
+}
+.nav__item {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.nav__link {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--black);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+.nav_copy .nav__link {
+  transition: color 0.3s ease-in-out;
+}
+.nav__link_active {
+  color: var(--white);
+}
+.nav__slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3px;
+  pointer-events: none;
+  z-index: 0;
+}
+.nav_copy .nav__slider {
+  left: 3px;
+  right: 3px;
+  padding: 0;
+}
+.nav__slider-rect {
+  width: 33.3%;
+  height: 100%;
+  background-color: var(--green);
+  border-radius: 12px;
+  transition: transform 0.4s;
+  box-shadow: 1px 1px 3px rgba(0, 42, 50, 0.15);
+}
+.nav_copy .nav__slider-rect {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  right: 66.6%;
+  bottom: 3px;
+  height: auto;
+  width: auto;
+  transition: all 0.3s cubic-bezier(1, 0.48, 0.71, 0.96);
+}
 
-.sessionButtonTimer, #endSessionButton, .sessionButtonShortBreak, .sessionButtonLongBreak {
-  display: inline-block;
+/* END SESSION BUTTON */
+
+[class^=item] {
+  text-decoration: none;
+  margin-right: 20px;
+  background: transparent;
+  box-shadow: none;
   border: none;
-  padding: 5px 10px;
-  background-color: transparent;
-  border-bottom: 5px solid transparent;
-  -webkit-transition: padding 0.4s linear 0s;
-  font-size: 16px;
-  color: #1E1E1E;
+  box-sizing: border-box;
   cursor: pointer;
 }
- 
-.sessionButtonTimer:hover, .sessionButtonShortBreak:hover, #endSessionButton:hover, .sessionButtonLongBreak:hover  {
-  border-bottom: 5px solid rgb(138, 138, 138);
+
+.item-1 {
+  height: 60px;
 }
+.item-1 .inner {
+  display: block;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.item-1 .inner:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 50px;
+  background-color: rgb(93, 93, 93);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transition: ease-out 0.2s all;
+}
+.item-1 .inner:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 50px;
+  background-color: rgb(93, 93, 93);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: ease-out 0.2s all;
+}
+.item-1 .label {
+  color: rgb(84, 84, 84);
+  opacity: 0;
+  transition: linear 0.3s all;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.item-1:hover .inner:before, .item-1:focus .inner:before {
+  transform: translate(-50%, 0%) rotate(0);
+  top: 25%;
+}
+.item-1:hover .inner:after, .item-1:focus .inner:after {
+  transform: translate(-50%, 0%) rotate(0);
+  top: 76%;
+}
+.item-1:hover .label, .item-1:focus .label {
+  opacity: 1;
+}
+
+#endSessionButton {
+  display: inline-block;
+  position: absolute;
+  color: #1E1E1E;
+  right: -3%;
+}
+
 
 #saveTaskButton,
 #cancelTaskButton {
   display: inline-block;
   border: none;
   padding: 5px 10px;
-  background-color: transparent;
-  border-bottom: 5px solid transparent;
   -webkit-transition: padding 0.4s linear 0s;
   font-size: 16px;
   color: #1E1E1E;
   cursor: pointer;
   margin-left: 20px;
   margin-right: 20px;
+  border: none;
+  border-radius: 0.2rem;
+  box-shadow: inset -5px -5px 9px 
+  rgba(255,255,255,0.45), inset 5px 5px 9px 
+  rgba(94,104,121,0.3);
 }
 
 #saveTaskButton:hover,
 #cancelTaskButton:hover {
-  border-bottom: 5px solid rgb(138, 138, 138);
+  
 }
  
 .sessionButtons,
@@ -387,8 +532,7 @@
   padding: 5px;
   border-radius: 2rem;
   height: 2rem;
-
-  background: #2980b9;
+  background: rgb(89, 143, 148);
   width: 89%;
   top: 40%;
   left: 0;
@@ -731,10 +875,15 @@ ol {
   margin: 0 5px;
   color: #1E1E1E;
   border: none;
-  border-bottom: 1px solid #1E1E1E;
+  border-radius: 0.2rem;
   cursor: pointer;
   /* transition: all 300ms ease-in-out; */
   width: 70px;
+  border: none;
+  border-radius: 0.2rem;
+  box-shadow: inset -5px -5px 9px 
+  rgba(255,255,255,0.45), inset 5px 5px 9px 
+  rgba(94,104,121,0.3);
 }
  
 .timer_field label {
@@ -838,11 +987,15 @@ ol {
   font-weight: 600;
   padding: 5px 10px;
   margin: 0 5px;
-  border: none;
   color: #444;
   cursor: pointer;
   width: 100%;
   height: 20px;
+  border: none;
+  border-radius: 0.2rem;
+  box-shadow: inset -5px -5px 9px 
+  rgba(255,255,255,0.45), inset 5px 5px 9px 
+  rgba(94,104,121,0.3);
 }
  
 .timer_break_field input::-webkit-outer-spin-button,
@@ -874,7 +1027,7 @@ ol {
 #startingLongBreakValueInput {
   font-size: 24px;
   width: 10%;
-  border-bottom: 1px solid #1E1E1E;
+  
 }
  
 .card_timer_container {

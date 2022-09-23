@@ -23,7 +23,7 @@
 }
 
 body {
-    background: linear-gradient(120deg, rgba(41, 128, 185, 1) 49%, rgba(69, 68, 173, 1) 98%);
+    background: linear-gradient(120deg, rgba(89,143,148,1) 42%, rgba(68,144,173,1) 100%);
     font-size: 14px;
     color: var(--clr-neutral-700);
     margin: 0;
