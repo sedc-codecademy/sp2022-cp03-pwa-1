@@ -268,7 +268,7 @@ document.querySelectorAll(".values").forEach((item) => {
         if (!(document.querySelector("#playButtonDiv"))) {
           let startTheSession = createElementFunction("playButtonHolder", "flex", "id", "playButtonDiv", "Start session", cardContainer, "button");
           startTheSession.addEventListener("click", saveTimerAndPlay2);
-          isSessionActive = true;
+          startTimerFunctionality();
         }
       }
     } else alert("You can't have more than 5 tasks at a time!");
@@ -622,6 +622,7 @@ function saveTimerAndPlay(element) {
 }
 
 function saveTimerAndPlay2() {
+  isSessionActive = true;
   let timerSeconds = saveTimer(timerElement);
   new Timer(timerElement, timerSeconds).start();
   document.querySelector("#playButtonDiv").remove();

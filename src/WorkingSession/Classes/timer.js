@@ -8,10 +8,8 @@ export default class Timer {
             control: root.querySelector(".timer__btn--control")
         };
 
-
         let timerButtons = document.querySelectorAll(".timer__btn");
         timerButtons.forEach((button) => { button.style.display = "none" });
-
 
         this.interval = null;
         this.remainingSeconds = 0;
@@ -61,6 +59,10 @@ export default class Timer {
 
             if (this.remainingSeconds === 0) {
                 this.stop();
+                if (document.querySelector("#sessionCardButtonTimer")) {
+                    console.log(document.querySelector("#sessionCardButtonTimer"));
+                    document.querySelector("#sessionCardButtonTimer").click();
+                }
             }
         }, 1000);
 
