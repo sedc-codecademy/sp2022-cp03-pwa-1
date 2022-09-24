@@ -39,11 +39,9 @@ export default class Timer {
 
     updateInterfaceControls() {
         if (this.interval === null) {
-            this.el.control.innerHTML = `<button id="startSessionBtn">&#x23f5;</button>`;
             this.el.control.classList.add("timer__btn--start");
             this.el.control.classList.remove("timer__btn--stop");
         } else {
-            this.el.control.innerHTML = `<button id="stopSessionBtn">&#x23f8;</button>`;
             this.el.control.classList.add("timer__btn--stop");
             this.el.control.classList.remove("timer__btn--start");
         }

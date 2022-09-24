@@ -230,18 +230,21 @@ document.querySelectorAll(".values").forEach((item) => {
       let idOfTask = createTask();
 
       sessionButtonsDiv.addEventListener("click", (e) => {
-        if (e.target == sessionCardButtonShortBreak || e.target == sessionCardButtonsLongBreak) {
-          saveTimer(timerElement);
-        }
+
         if (e.target == sessionCardButtonTimer) {
           saveTimer(shortBreakDiv);
           saveTimer(longBreakDiv);
+          saveTimerAndPlay(timerElement);
         }
         if (e.target == sessionCardButtonShortBreak) {
+          saveTimer(timerElement);
           saveTimer(longBreakDiv);
+          saveTimerAndPlay(shortBreakDiv);
         }
         if (e.target == sessionCardButtonsLongBreak) {
+          saveTimer(timerElement);
           saveTimer(shortBreakDiv);
+          saveTimerAndPlay(longBreakDiv);
         }
 
       })
@@ -262,6 +265,7 @@ document.querySelectorAll(".values").forEach((item) => {
         let updateTimer = arrayOfTasks
           .reduce((sum, current) => sum + current.time[0], 0);
         new Timer(timerElement, updateTimer, startTimerFunctionality);
+        
       }
     } else alert("You can't have more than 5 tasks at a time!");
   });
@@ -607,5 +611,13 @@ function saveTimer(element) {
 
 
   new Timer(element, sumOfTimer, startTimerFunctionality);
+  return sumOfTimer;
+}
 
+function saveTimerAndPlay(element) {
+  if(arrayOfTasks.length != arrayOfTruths.length) {
+    let timerSeconds = saveTimer(element);
+    new Timer(element, timerSeconds).start();
+  }
+  
 }
