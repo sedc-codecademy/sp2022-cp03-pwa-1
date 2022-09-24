@@ -222,7 +222,7 @@
   display: inline-block;
   border: none;
   padding: 5px 10px;
-  -webkit-transition: padding 0.4s linear 0s;
+  /* -webkit-transition: padding 0.4s linear 0s; */
   font-size: 16px;
   color: #1E1E1E;
   cursor: pointer;
@@ -235,10 +235,10 @@
   rgba(94,104,121,0.3);
 }
 
-#saveTaskButton:hover,
+/* #saveTaskButton:hover,
 #cancelTaskButton:hover {
   
-}
+} */
  
 .sessionButtons,
 #startSessionBtn,
@@ -1072,6 +1072,14 @@ ol {
   transition: all 300ms ease-in-out;
 }
 
+#playButtonDiv{
+  position: relative;    
+  left: 0;
+  padding-top: 100px;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+}
 /* Marker */
 
 .markerContainer {

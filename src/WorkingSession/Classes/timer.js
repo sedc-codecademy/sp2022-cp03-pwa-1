@@ -8,6 +8,11 @@ export default class Timer {
             control: root.querySelector(".timer__btn--control")
         };
 
+
+        let timerButtons = document.querySelectorAll(".timer__btn");
+        timerButtons.forEach((button) => { button.style.display = "none" });
+
+
         this.interval = null;
         this.remainingSeconds = 0;
 

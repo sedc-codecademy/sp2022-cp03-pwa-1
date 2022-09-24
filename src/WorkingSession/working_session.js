@@ -265,7 +265,11 @@ document.querySelectorAll(".values").forEach((item) => {
         let updateTimer = arrayOfTasks
           .reduce((sum, current) => sum + current.time[0], 0);
         new Timer(timerElement, updateTimer, startTimerFunctionality);
-        
+        if (!(document.querySelector("#playButtonDiv"))) {
+          let startTheSession = createElementFunction("playButtonHolder", "flex", "id", "playButtonDiv", "Start session", cardContainer, "button");
+          startTheSession.addEventListener("click", saveTimerAndPlay2);
+          isSessionActive = true;
+        }
       }
     } else alert("You can't have more than 5 tasks at a time!");
   });
@@ -522,7 +526,7 @@ function createTask() {
 
     arrayOfTasks.push(test);
     test.time.push(parseInt(taskDuration.value * 60));
-
+    console.log(isSessionActive);
     suma = arrayOfTasks
       .flatMap((parameter) => parameter.time)
       .reduce((sum, current) => sum + current, 0);
@@ -605,19 +609,20 @@ function saveTimer(element) {
   } else if (arrayOfNumbers.length == 5) {
     sumOfTimer = arrayOfNumbers[0] * 100 * 60 + arrayOfNumbers[1] * 60 * 10 + arrayOfNumbers[2] * 60 + arrayOfNumbers[3] * 10 + arrayOfNumbers[4];
   }
-  //55:33  5 *60 *10 3000 + 
-  //20500 =  2*100*60 + 0 + 30
-  //105 14
-
 
   new Timer(element, sumOfTimer, startTimerFunctionality);
   return sumOfTimer;
 }
 
 function saveTimerAndPlay(element) {
-  if(arrayOfTasks.length != arrayOfTruths.length) {
+  if (arrayOfTasks.length != arrayOfTruths.length && isSessionActive == true) {
     let timerSeconds = saveTimer(element);
     new Timer(element, timerSeconds).start();
   }
-  
+}
+
+function saveTimerAndPlay2() {
+  let timerSeconds = saveTimer(timerElement);
+  new Timer(timerElement, timerSeconds).start();
+  document.querySelector("#playButtonDiv").remove();
 }
