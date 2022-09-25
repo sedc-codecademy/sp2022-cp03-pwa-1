@@ -239,18 +239,18 @@ document.querySelectorAll(".values").forEach((item) => {
         if (e.target == sessionCardButtonShortBreak) {
           saveTimer(timerElement);
           saveTimer(longBreakDiv);
-          saveTimerAndPlay(shortBreakDiv);
+          saveTimerAndPlay(shortBreakDiv, sessionCardButtonShortBreak);
         }
         if (e.target == sessionCardButtonsLongBreak) {
           saveTimer(timerElement);
           saveTimer(shortBreakDiv);
-          saveTimerAndPlay(longBreakDiv);
+          saveTimerAndPlay(longBreakDiv, sessionCardButtonsLongBreak);
         }
 
       })
 
-      new Timer(shortBreakDiv, shortBreakDurationInput.value * 60);
-      new Timer(longBreakDiv, longBreakDurationInput.value * 60);
+      new Timer(shortBreakDiv, shortBreakDurationInput.value * 60, null, autoClick);
+      new Timer(longBreakDiv, longBreakDurationInput.value * 60, null, autoClick);
 
       if (e.target === saveTaskButton) {
         resetTaskInputs();
@@ -614,10 +614,10 @@ function saveTimer(element) {
   return sumOfTimer;
 }
 
-function saveTimerAndPlay(element) {
+function saveTimerAndPlay(element, button = null) {
   if (arrayOfTasks.length != arrayOfTruths.length && isSessionActive == true) {
     let timerSeconds = saveTimer(element);
-    new Timer(element, timerSeconds).start();
+    new Timer(element, timerSeconds, null, () => { autoClick(button) }).start();
   }
 }
 
@@ -626,4 +626,9 @@ function saveTimerAndPlay2() {
   let timerSeconds = saveTimer(timerElement);
   new Timer(timerElement, timerSeconds).start();
   document.querySelector("#playButtonDiv").remove();
+}
+
+function autoClick(button = null) {
+  sessionCardButtonTimer.click();
+  button.disabled = true;
 }

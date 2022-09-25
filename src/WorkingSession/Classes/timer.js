@@ -1,5 +1,5 @@
 export default class Timer {
-    constructor(root, timer, myFunction = null) {
+    constructor(root, timer, myFunction = null, autoClickFunction = null) {
         root.innerHTML = Timer.getHTML();
 
         this.el = {
@@ -13,6 +13,7 @@ export default class Timer {
 
         this.interval = null;
         this.remainingSeconds = 0;
+        this.autoClick = autoClickFunction;
 
         this.el.control.addEventListener("click", () => {
             if (this.interval === null) {
@@ -59,8 +60,10 @@ export default class Timer {
 
             if (this.remainingSeconds === 0) {
                 this.stop();
+
+                if (this.autoClick != null) this.autoClick();
+
                 if (document.querySelector("#sessionCardButtonTimer")) {
-                    console.log(document.querySelector("#sessionCardButtonTimer"));
                     document.querySelector("#sessionCardButtonTimer").click();
                 }
             }
