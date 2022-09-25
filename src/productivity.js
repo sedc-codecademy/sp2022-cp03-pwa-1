@@ -15,7 +15,7 @@ let createElement= (initObj)=> {
         else element[prop] = initObj[prop];
     }
     return element;
-}
+};
 
 // Search Box CreateElements
 
@@ -42,7 +42,7 @@ for(let i = 0; i < 20; i++) {
     pngWrapper = createElement({Tag: "div", classList: "png-wrapper", childNodes: [swiperSlide]});
     textHeadline = createElement({Tag: "div", classList: "text-headline", childNodes: [swiperSlide]});
     innerTextHeadline = createElement({Tag: "h2", childNodes: [textHeadline]});
-}
+};
 
 // Initializing Swiper
 

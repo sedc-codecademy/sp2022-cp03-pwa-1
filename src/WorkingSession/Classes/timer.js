@@ -10,6 +10,7 @@ export default class Timer {
 
         let timerButtons = document.querySelectorAll(".timer__btn");
         timerButtons.forEach((button) => { button.style.display = "none" });
+       
 
         this.interval = null;
         this.remainingSeconds = 0;

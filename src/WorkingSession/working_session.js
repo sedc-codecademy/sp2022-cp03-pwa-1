@@ -17,14 +17,16 @@ let suma;
 
 import Timer from "./Classes/timer.js"
 
+
+
 function startTimerFunctionality() {
   isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
   buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
   document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
   startSessionTime = new Date();
-  sessionCardButtonShortBreak.disabled = false;
-  sessionCardButtonsLongBreak.disabled = false;
-  sessionCardButtonTimer.disabled = false;
+  sessionCardButtonShortBreak.disabled = true;
+  sessionCardButtonsLongBreak.disabled = true;
+  sessionCardButtonTimer.disabled = true;
 
   endSessionButton.addEventListener("click", endSessionFunction);
 };
@@ -231,17 +233,17 @@ document.querySelectorAll(".values").forEach((item) => {
 
       sessionButtonsDiv.addEventListener("click", (e) => {
 
-        if (e.target == sessionCardButtonTimer) {
+        if (e.target == sessionCardButtonTimer & !document.querySelector("#playButtonDiv")) {
           saveTimer(shortBreakDiv);
           saveTimer(longBreakDiv);
           saveTimerAndPlay(timerElement);
         }
-        if (e.target == sessionCardButtonShortBreak) {
+        if (e.target == sessionCardButtonShortBreak & !document.querySelector("#playButtonDiv")) {
           saveTimer(timerElement);
           saveTimer(longBreakDiv);
           saveTimerAndPlay(shortBreakDiv, sessionCardButtonShortBreak);
         }
-        if (e.target == sessionCardButtonsLongBreak) {
+        if (e.target == sessionCardButtonsLongBreak & !document.querySelector("#playButtonDiv")) {
           saveTimer(timerElement);
           saveTimer(shortBreakDiv);
           saveTimerAndPlay(longBreakDiv, sessionCardButtonsLongBreak);
@@ -253,14 +255,15 @@ document.querySelectorAll(".values").forEach((item) => {
       new Timer(longBreakDiv, longBreakDurationInput.value * 60, null, autoClick);
 
       if (e.target === saveTaskButton) {
+
         resetTaskInputs();
         closeModalFunction();
         timerElement.style.display = "flex";
         shortBreakDiv.style.display = "none";
         longBreakDiv.style.display = "none";
-        sessionCardButtonShortBreak.disabled = false;
-        sessionCardButtonsLongBreak.disabled = false;
-        sessionCardButtonTimer.disabled = false;
+        sessionCardButtonShortBreak.disabled = true;
+        sessionCardButtonsLongBreak.disabled = true;
+        sessionCardButtonTimer.disabled = true;
         //Update the Timer based on total sum of tasks' assigned durations
         let updateTimer = arrayOfTasks
           .reduce((sum, current) => sum + current.time[0], 0);
@@ -626,6 +629,7 @@ function saveTimerAndPlay2() {
   let timerSeconds = saveTimer(timerElement);
   new Timer(timerElement, timerSeconds).start();
   document.querySelector("#playButtonDiv").remove();
+  
 }
 
 function autoClick(button = null) {
