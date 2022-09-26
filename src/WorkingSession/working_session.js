@@ -229,17 +229,23 @@ document.querySelectorAll(".values").forEach((item) => {
         if (e.target == sessionCardButtonTimer && !document.querySelector("#playButtonDiv")) {
           saveTimer(shortBreakDiv);
           saveTimer(longBreakDiv);
-          saveTimerAndPlay(timerElement);
+          saveTimerAndPlay(timerElement, "");
         }
-        if (e.target == sessionCardButtonShortBreak && !document.querySelector("#playButtonDiv")) {
+        if (e.target == sessionCardButtonShortBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(shortBreakDiv)) {
           saveTimer(timerElement);
           saveTimer(longBreakDiv);
-          saveTimerAndPlay(shortBreakDiv, sessionCardButtonShortBreak);
+          saveTimerAndPlay(shortBreakDiv);
         }
-        if (e.target == sessionCardButtonsLongBreak && !document.querySelector("#playButtonDiv")) {
+        else {
+          setTimeout(autoClick, 5000);
+        }
+        if (e.target == sessionCardButtonsLongBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(longBreakDiv)) {
           saveTimer(timerElement);
           saveTimer(shortBreakDiv);
-          saveTimerAndPlay(longBreakDiv, sessionCardButtonsLongBreak);
+          saveTimerAndPlay(longBreakDiv);
+        }
+        else {
+          setTimeout(autoClick, 5000);
         }
 
       })
@@ -537,7 +543,7 @@ function finishTask() {
     }
     if (arrayOfTasks.length == arrayOfTruths.length) {
       saveTimer(timerElement);
-     
+
       shortBreakDiv.style.display = "none";
       longBreakDiv.style.display = "none";
       timerElement.style.display = "flex";
@@ -600,10 +606,10 @@ function saveTimer(element) {
   return sumOfTimer;
 }
 
-function saveTimerAndPlay(element, button = null) {
+function saveTimerAndPlay(element) {
   if (arrayOfTasks.length != arrayOfTruths.length && isSessionActive == true) {
     let timerSeconds = saveTimer(element);
-    new Timer(element, timerSeconds, null, () => { autoClick(button) }).start();
+    new Timer(element, timerSeconds, null, autoClick).start();
   }
 }
 
@@ -612,10 +618,23 @@ function saveTimerAndPlay2() {
   let timerSeconds = saveTimer(timerElement);
   new Timer(timerElement, timerSeconds).start();
   document.querySelector("#playButtonDiv").remove();
-  
 }
 
-function autoClick(button = null) {
+function autoClick() {
   sessionCardButtonTimer.click();
-  button.disabled = true;
+}
+
+function isTheTimerZero(element) {
+  let secondsArray = element.innerText.split('');
+  let arrayOfNumbers = [];
+  let sumOfTimer;
+  for (let i = 0; i < secondsArray.length; i++) {
+    let parsedCharacter = parseInt(secondsArray[i]);
+    if (typeof parsedCharacter == "number" && isNaN(parsedCharacter) == false) {
+      arrayOfNumbers.push(parsedCharacter);
+    }
+  }
+  sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
+  if (sumOfTimer > 0) return true;
+  else return false;
 }
