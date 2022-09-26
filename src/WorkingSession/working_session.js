@@ -17,17 +17,11 @@ let suma;
 
 import Timer from "./Classes/timer.js"
 
-
-
 function startTimerFunctionality() {
   isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
   buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
   document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
   startSessionTime = new Date();
-  sessionCardButtonShortBreak.disabled = true;
-  sessionCardButtonsLongBreak.disabled = true;
-  sessionCardButtonTimer.disabled = true;
-
   endSessionButton.addEventListener("click", endSessionFunction);
 };
 
@@ -196,7 +190,6 @@ function endSessionFunction() {
     timerElement.style.display = "flex";
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
-    disableAndReset();
     buttonsAddEvents();
     //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
   }
@@ -233,17 +226,17 @@ document.querySelectorAll(".values").forEach((item) => {
 
       sessionButtonsDiv.addEventListener("click", (e) => {
 
-        if (e.target == sessionCardButtonTimer & !document.querySelector("#playButtonDiv")) {
+        if (e.target == sessionCardButtonTimer && !document.querySelector("#playButtonDiv")) {
           saveTimer(shortBreakDiv);
           saveTimer(longBreakDiv);
           saveTimerAndPlay(timerElement);
         }
-        if (e.target == sessionCardButtonShortBreak & !document.querySelector("#playButtonDiv")) {
+        if (e.target == sessionCardButtonShortBreak && !document.querySelector("#playButtonDiv")) {
           saveTimer(timerElement);
           saveTimer(longBreakDiv);
           saveTimerAndPlay(shortBreakDiv, sessionCardButtonShortBreak);
         }
-        if (e.target == sessionCardButtonsLongBreak & !document.querySelector("#playButtonDiv")) {
+        if (e.target == sessionCardButtonsLongBreak && !document.querySelector("#playButtonDiv")) {
           saveTimer(timerElement);
           saveTimer(shortBreakDiv);
           saveTimerAndPlay(longBreakDiv, sessionCardButtonsLongBreak);
@@ -261,9 +254,6 @@ document.querySelectorAll(".values").forEach((item) => {
         timerElement.style.display = "flex";
         shortBreakDiv.style.display = "none";
         longBreakDiv.style.display = "none";
-        sessionCardButtonShortBreak.disabled = true;
-        sessionCardButtonsLongBreak.disabled = true;
-        sessionCardButtonTimer.disabled = true;
         //Update the Timer based on total sum of tasks' assigned durations
         let updateTimer = arrayOfTasks
           .reduce((sum, current) => sum + current.time[0], 0);
@@ -343,7 +333,6 @@ function clearTasks() {
       div.setAttribute("class", "hide");
       document.querySelector("#sessionMain").appendChild(div);
 
-      disableAndReset();
       console.log("List successfully deleted");
       console.log(arrayOfTasks);
 
@@ -351,11 +340,7 @@ function clearTasks() {
   } else console.log("The list is empty");
 }
 
-function disableAndReset() {
-  sessionCardButtonShortBreak.disabled = true;
-  sessionCardButtonsLongBreak.disabled = true;
-  sessionCardButtonTimer.disabled = true;
-}
+
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot
 function buttonsRemoveEvents() {
@@ -389,7 +374,6 @@ function removeTaskFunctionality() {
         arrayOfFinishedTasks.splice(i, 1);
       }
       if (arrayOfTasks.length == 0) {
-        disableAndReset();
         let div = document.createElement("div");
         div.setAttribute("class", "hide");
         document.querySelector("#sessionMain").appendChild(div);
@@ -553,8 +537,7 @@ function finishTask() {
     }
     if (arrayOfTasks.length == arrayOfTruths.length) {
       saveTimer(timerElement);
-      disableAndReset();
-
+     
       shortBreakDiv.style.display = "none";
       longBreakDiv.style.display = "none";
       timerElement.style.display = "flex";

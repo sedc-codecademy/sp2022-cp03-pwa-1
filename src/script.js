@@ -49,7 +49,7 @@ window.addEventListener('scroll',function(){
 function header_scroll(){
     var my_header = document.getElementsByTagName('header')[0];
     var scroll_height = window.pageYOffset;
-    if(scroll_height > 650){
+    if(scroll_height > 300){
       my_header.className = 'header header-scroll';
       
     }
