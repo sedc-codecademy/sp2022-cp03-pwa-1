@@ -579,6 +579,7 @@ ol {
   right: 0;
   margin: auto;
   top: 50%;
+  
 }
  
 /* OVA */
@@ -851,6 +852,7 @@ ol {
   position: relative;
   margin-top: 50px;
   margin-bottom: 30px 0;
+  
 }
  
 .timer_field input {
@@ -869,6 +871,12 @@ ol {
   box-shadow: inset -5px -5px 9px 
   rgba(255,255,255,0.45), inset 5px 5px 9px 
   rgba(94,104,121,0.3);
+  border-style: none; 
+  border-color: Transparent; 
+  overflow: auto;   
+  resize: none;
+  border:0px;
+  outline:0px;
 }
  
 .timer_field label {
@@ -913,6 +921,12 @@ ol {
   -webkit-appearance: none;
   width: 98%;
   background: rgb(240, 240, 240);
+  border-style: none; 
+  border-color: Transparent; 
+  overflow: auto;   
+  resize: none;
+  border:0px;
+  outline:0px;
 }
  
 .selection_field label {
@@ -930,10 +944,12 @@ ol {
 .timer_field input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+  
 }
  
 .timer_field input[type="number"] {
   -moz-appearance: textfield;
+  
   /* Firefox */
 }
  
@@ -981,6 +997,12 @@ ol {
   box-shadow: inset -5px -5px 9px 
   rgba(255,255,255,0.45), inset 5px 5px 9px 
   rgba(94,104,121,0.3);
+  border-style: none; 
+  border-color: Transparent; 
+  overflow: auto;   
+  resize: none;
+  border:0px;
+  outline:0px;
 }
  
 .timer_break_field input::-webkit-outer-spin-button,
@@ -1052,7 +1074,7 @@ ol {
 
 .stopTask, #resumeBtn {
   position: absolute;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   border: none;
   cursor: pointer;
   transition: all 300ms ease-in-out;
@@ -1066,10 +1088,11 @@ ol {
   left: 0;
   right: 0;
   margin-inline: auto;
+  line-height: 1.7;
 }
  
 .stopTask:hover {
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
 .active {
   transform: scale(1.05);

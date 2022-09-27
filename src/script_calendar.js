@@ -176,7 +176,6 @@ renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 // ----------- REMINDERS ARREA CODE BELLOW ------------
 
 let clockContainer = document.querySelector(".js-clock");
-let clockTitle = clockContainer.querySelector("h1");
 let reminderBtn = document.querySelector("#reminderBtn");
 let clearBtn = document.querySelector('#deleteReminder');
 let reminderWrapper = document.querySelector('#remindersWrapper');
@@ -192,20 +191,7 @@ const sessionCardSessions3 = document.querySelector(".sessionButtonTimer");
 const sessionCardShortBreak3 = document.querySelector(".sessionButtonShortBreak");
 const sessionCardLongBreak3 = document.querySelector(".sessionButtonLongBreak");
 
-sessionCardSessions3.addEventListener("click", () => {
-    remindersForm.style.backgroundColor = "#2980b9";
-    remindersFiled.style.backgroundColor = "#2980b9";
-});
 
-sessionCardShortBreak3.addEventListener("click", () => {
-    remindersForm.style.backgroundColor = "#598f94";
-    remindersFiled.style.backgroundColor = "#598f94";
-});
-
-sessionCardLongBreak3.addEventListener("click", () => {
-    remindersForm.style.backgroundColor = "#5079a1";
-    remindersFiled.style.backgroundColor = "#5079a1";
-});
 
 let reminderId = 1;
 let inputReminderName = 0;

@@ -31,6 +31,7 @@
                             <li><a href = "#" data-slide="2">Home</a></li>
                             <li><a href = "#" data-slide="3">Productivity</a></li>
                             <li><a href = "#" data-slide="4">Reminders</a></li>
+                            <button class="sign-up">Sign up</button>
                         </ul>
                 </header>
             </div>
@@ -41,7 +42,7 @@
         <div>
             <h1>Best Way to Manage your Daily Tasks</h1>
             <p>Hurry up join our community now!</p>
-            <a href = "#" class="hero-btn">Join now</a>
+            <a href = "#" class="hero-btn">Start guide</a>
         </div>
         <div class="row">
             <img src="./media/oie_transparent.png" alt="">
@@ -278,32 +279,42 @@
             <div class="card-content productivity-container"></div>
         </div>
         <div class="swiper-slide">
-            <h2 class="card-title" id ="titleFix">REMINDERS</h2>
-            <div class="card-body">
-                <!-- <div class="js-clock">
-                    <h1>00:00:00</h1>
-                </div> -->
-                <div class="reminderBtnsDiv">
-                    <button class="reminderBtns" id="reminderBtn">Create New Reminder</button>
-                    <button id="deleteReminder" class="reminderBtns">Clear Reminders</button>
-                </div>
+            <div class="card-body-reminders">
                 <div id="AddReminderPopUpContainer">
                     <div class="AddReminderPopUp">
-                        <label for="inputForCreatingReminder">Write reminder:</label>
-                        <input class="reminderInput" id="inputForCreatingReminder" type="text" placeholder="Add User Reminder">
-                        <label for="inputForSettingDateForTask">Enter date:</label>
-                        <input class="reminderInput" id="inputForSettingDateForTask" type="date">
-                        <label for="inputForTimeOfReminder">Set time:</label>
-                        <input type="time" class="reminderInput" id="inputForTimeOfReminder" name="inputForTimeOfReminder" min="00:00" max="23:59" required>
-                        <label for="priorityRem">Choose priority:</label>
-                        <select class="reminderInput" name="priorityRem" id="priorityRem">
-                                <option value="High">High</option>
-                                <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
-                            </select>
+                        <ul>
+                            <li>
+                                <div class="reminderBtnsDiv">
+                                    <button class="reminderBtns" id="reminderBtn">Add</button>
+                                    <button id="deleteReminder" class="reminderBtns">Clear</button>
+                                </div>
+                            </li>
+                            <li>
+                                <label for="inputForCreatingReminder"></label>
+                                <input class="reminderInput" id="inputForCreatingReminder" type="text" placeholder="Title">
+                                <br/>
+                                <hr/>
+                                <textarea class="text-area" maxlength="300" name="Reminder note" cols="30" rows="3" placeholder="Notes"></textarea>
+                            </li>
+                            <li>
+                                <label for="inputForSettingDateForTask">Enter date:</label>
+                                <input class="reminderInput" id="inputForSettingDateForTask" type="date">
+                            </li>
+                            <li>
+                                <label for="inputForTimeOfReminder">Set time:</label>
+                                <input type="time" class="reminderInput" id="inputForTimeOfReminder" name="inputForTimeOfReminder" min="00:00" max="23:59" required>
+                            </li>
+                            <li>
+                                <label for="priorityRem">Choose priority:</label>
+                                <select class="reminderInput" name="priorityRem" id="priorityRem">
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="js-clock" id="savedReminders">Saved Reminders:</div>
                 <div id="remindersContainer">
                     <div class="remindersTable" id="remindersTableId"></div>
                 </div>

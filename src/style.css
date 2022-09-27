@@ -111,6 +111,7 @@ html {
 
 /* WAVE */
 
+
 .custom-shape-divider-bottom-1664270411 {
   position: absolute;
   bottom: 0;
@@ -186,44 +187,6 @@ html {
 .swiper-button-next,
 .swiper-button-prev {
     color: var(--clr-neutral-1000);
-}
-
-
-/* NAVIGATION BAR */
-
-.swiper-pagination {
-    position: absolute;
-    top: 25px;
-    right: auto;
-    width: 80%;
-    left: auto;
-    margin: 0;
-    font-weight: 900;
-    max-height: 40px;
-}
-
-.swiper-pagination-bullet {
-    padding: 5px 10px;
-    border-radius: 1rem;
-    width: 30vh;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 21px;
-    color: var(--clr-neutral-700);
-    opacity: 1;
-    background: var(--clr-neutral-100);
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: transform .2s
-}
-
-.swiper-pagination-bullet:hover {
-    transform: scale(1.03);
-}
-
-.swiper-pagination-bullet-active {
-    color: var(--clr-neutral-100);
-    background: var(--clr-neutral-31000);
 }
 
 
@@ -400,9 +363,6 @@ html {
     border-radius: 25px;
 }
 
-.card-body img:hover {
-    cursor: pointer;
-}
 
 .go-back-button {
     display: none;
@@ -416,47 +376,69 @@ html {
     cursor: pointer;
 }
 
+/* REMINDERS */
+
+.card-body-reminders {
+  position: relative;
+  width: 99.7%;
+  height: 99.4%;
+}
+.AddReminderPopUp ul li:nth-child(1) {
+  padding: 0 5px 0 5px;
+  margin-bottom : 15px;
+}
+
+.AddReminderPopUp ul li:nth-child(2) {
+  border-radius: 0.4rem;
+  padding: 0 5px 0 5px;
+  height: 50%;
+  background: white;
+}
+
+.AddReminderPopUp ul {
+  padding: 10px;
+}
+
 .reminderBtnsDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding-top: 10px; */
-    height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  padding: 0 20px 0 20px;
 }
 
 .reminderBtns {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 10px;
-    margin: 0 5px;
-    border: none;
-    color: #444;
-    border-radius: 10rem;
-    cursor: pointer;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: transform .2s
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  margin: 0 1px;
+  border: none;
+  color: #444;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
 }
 
 .reminderBtns:hover {
-    transform: scale(1.03);
-}
-
-.js-clock {
-    display: flex;
-    justify-content: center;
-    font-size: 1rem;
-    color: black;
-    max-height: fit-content;
-    border-radius: 2%;
-    text-shadow: 2px 2px 5px rgb(146, 144, 144);
+    transform: scale(1.01);
 }
 
 .reminderInput {
+  border: none;
+  margin-top: 10px;
+  border: 0px;
+  outline: 0px;
+  padding-left: 10px;
+}
 
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    border: none;
-
+.text-area {
+  border-style: none; 
+  border-color: Transparent; 
+  overflow: auto;   
+  resize: none;
+  border:0px;
+  outline:0px;
+  padding-left: 10px;
 }
 
 #savedReminders {
@@ -475,7 +457,6 @@ html {
     background-color: #2980b9;
     max-height: 18rem;
     overflow: auto;
-    
     border-radius: 0.8rem;
     box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -490,26 +471,54 @@ html {
 .AddReminderPopUp {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-    border-radius: 0.8rem;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    text-shadow: 2px 2px 5px rgb(146, 144, 144);
-    background-color: #2980b9;
-    width: 90%;
-    height: 2.5rem;
+    border-radius: 0.4rem;
+    background-color: rgb(89, 143, 148);
+    width: 100%;
+    min-height:100%;
     color: aliceblue;
-    padding-inline: 0.5rem;
+    padding: 0px;
+    
+    
 }
 
 #AddReminderPopUpContainer {
-    padding-top: 22px;
-    height: 2rem;
+    position: absolute;
+    padding: 10px;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 10%;
 }
 
+.removeReminderByIdBtn {
+  transition: all 300ms ease-in-out;
+  color: #2980b9;
+  border: 0px solid black;
+  background-color: aliceblue;
+  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-shadow: 2px 2px 5px rgb(146, 144, 144);
+  border-radius: 2rem;
+}
+
+.removeReminderByIdBtn:hover {
+  transform: scale(1.2);
+}
+
+.remindersTd {
+  padding: 1.2rem;
+}
+
+.AddReminderPopUp ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.AddReminderPopUp ul li {
+  padding-top: 2rem;
+}
+
+/* SCROLL */
 
 ::-webkit-scrollbar {
     width: 20px;
@@ -530,40 +539,7 @@ html {
     background-color: #a8bbbf;
 }
 
-.removeReminderByIdBtn {
-    transition: all 300ms ease-in-out;
-    color: #2980b9;
-    border: 0px solid black;
-    background-color: aliceblue;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    text-shadow: 2px 2px 5px rgb(146, 144, 144);
-    border-radius: 2rem;
-}
 
-.removeReminderByIdBtn:hover {
-    transform: scale(1.2);
-}
-
-.remindersTd {
-    padding: 1.2rem;
-}
-
-#productivity {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 15px;
-}
-
-.productivity-images img {
-    
-    /* justify-content: space-between; */
-    align-items: center;
-    height: fit-content;
-    /* width: 23%; */
-    width: 20%;
-    height: 145px;
-}
 
 .calendarReminderDataDay {
     color: red;
@@ -574,22 +550,7 @@ html {
     color: red;
 }
 
-.Productivity-pics {
-    padding-right: 15px;
-    border: 1px solid grey;
-    box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    text-shadow: 2px 2px 5px rgb(146, 144, 144);
-}
-
-.Productivity-pics:hover {
-    gap: 20px;
-    transition: all 300ms ease-in-out;
-    transform: scale(1.12)
-
-}
-
 /* NAVBAR */
-
 
 .header {
   position: fixed;
@@ -609,6 +570,7 @@ html {
   float: left;
   border: 0px solid black;
   animation: none;
+  padding-top: 7px;
 }
 .header .logo-container h1 {
   text-align: center;
@@ -723,11 +685,21 @@ html {
   
 }
 
+.sign-up {
+  border: none;
+  background-color: rgb(255, 205, 0);
+  padding: 10px 20px;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
 .heart {
   font-size: 18px;
   margin: 0 4px;
   color: crimson;
 }
+
 .top-in-basic {
   animation: top-in-basic 1 1s 0s;
 }
@@ -811,6 +783,10 @@ html {
   .toggle-btn {
     display: block;
   }
+
+  .sign-up {
+    display: none;
+  }
   
   
 }
@@ -852,6 +828,8 @@ html {
     object-fit: cover;
     padding: 0 10% 0 10%;
   }
+
+ 
 }
 
 
