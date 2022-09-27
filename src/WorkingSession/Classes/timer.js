@@ -10,16 +10,17 @@ export default class Timer {
 
         let timerButtons = document.querySelectorAll(".timer__btn");
         timerButtons.forEach((button) => { button.style.display = "none" });
-       
+
 
         this.interval = null;
         this.remainingSeconds = 0;
         this.autoClick = autoClickFunction;
+        this.startTimerFunctionality = myFunction;
 
         this.el.control.addEventListener("click", () => {
             if (this.interval === null) {
                 this.start();
-                myFunction();
+                //myFunction();
             } else {
                 this.stop();
             }
@@ -54,6 +55,7 @@ export default class Timer {
 
     start() {
         if (this.remainingSeconds == 0) return;//so 3 ednakvi e bag
+        if (this.startTimerFunctionality !== null) this.startTimerFunctionality();
 
         this.interval = setInterval(() => {
             this.remainingSeconds--;
@@ -61,14 +63,10 @@ export default class Timer {
 
             if (this.remainingSeconds === 0) {
                 this.stop();
-
-                if (this.autoClick != null) this.autoClick();
-
-                if (document.querySelector("#sessionCardButtonTimer")) {
-                    document.querySelector("#sessionCardButtonTimer").click();
-                }
+                if (this.autoClick !== null) this.autoClick();
             }
-        }, 1000);
+        }
+            , 1000);
 
         this.updateInterfaceControls();
     }

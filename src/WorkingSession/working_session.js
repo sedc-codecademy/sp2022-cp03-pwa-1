@@ -70,9 +70,7 @@ function shortBreakDRY() {
 
 shortBreakDiv.style.display = "none";
 
-sessionCardButtonShortBreak.addEventListener("click", () => {
-  shortBreakDRY();
-});
+sessionCardButtonShortBreak.addEventListener("click", shortBreakDRY);
 
 // LONG BREAK BUTTON DRYING countOfDaysAccessed
 
@@ -86,9 +84,7 @@ function longBreakDRY() {
 }
 longBreakDiv.style.display = "none";
 
-sessionCardButtonsLongBreak.addEventListener("click", () => {
-  longBreakDRY();
-});
+sessionCardButtonsLongBreak.addEventListener("click", longBreakDRY);
 
 function sessionTimerDRY() {
   sessionModals.classList.add("hidden");
@@ -229,24 +225,24 @@ document.querySelectorAll(".values").forEach((item) => {
         if (e.target == sessionCardButtonTimer && !document.querySelector("#playButtonDiv")) {
           saveTimer(shortBreakDiv);
           saveTimer(longBreakDiv);
-          saveTimerAndPlay(timerElement, "");
+          saveTimerAndPlay(timerElement);
         }
-        if (e.target == sessionCardButtonShortBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(shortBreakDiv)) {
+        if (e.target == sessionCardButtonShortBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(shortBreakDiv) > 0) {
           saveTimer(timerElement);
           saveTimer(longBreakDiv);
           saveTimerAndPlay(shortBreakDiv);
         }
-        else {
-          setTimeout(autoClick, 5000);
-        }
-        if (e.target == sessionCardButtonsLongBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(longBreakDiv)) {
+        // else if (e.target == sessionCardButtonShortBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(shortBreakDiv) == 0) {
+        //   setTimeout(autoClick, 5000);
+        // }
+        if (e.target == sessionCardButtonsLongBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(longBreakDiv) > 0) {
           saveTimer(timerElement);
           saveTimer(shortBreakDiv);
           saveTimerAndPlay(longBreakDiv);
         }
-        else {
-          setTimeout(autoClick, 5000);
-        }
+        // else if (e.target == sessionCardButtonsLongBreak && !document.querySelector("#playButtonDiv") && isTheTimerZero(longBreakDiv) == 0) {
+        //   setTimeout(autoClick, 5000);
+        // }
 
       })
 
@@ -267,7 +263,6 @@ document.querySelectorAll(".values").forEach((item) => {
         if (!(document.querySelector("#playButtonDiv"))) {
           let startTheSession = createElementFunction("playButtonHolder", "flex", "id", "playButtonDiv", "Start session", cardContainer, "button");
           startTheSession.addEventListener("click", saveTimerAndPlay2);
-          startTimerFunctionality();
         }
       }
     } else alert("You can't have more than 5 tasks at a time!");
@@ -461,8 +456,6 @@ function createTask() {
     //FINISH TASK BUTTON NEW LOGIC (12.09.2022)
     let finishedTaskButton = createElementFunction("finishedTaskButton", "flex", "class", "stopTask", "Finish task", li, "button");
 
-    //finishedTaskButton.addEventListener("click", finishTask);
-
     if (!textAreaOfTask.value == "") {
 
       let noteContainer = createElementFunction("noteHolderDiv", "none", "class", "showNoteDiv", textAreaOfTask.value, li, "div");
@@ -480,7 +473,6 @@ function createTask() {
       // If div note is active change inherit color from active UI - SEt them in functions outside
       styleBackgroundColor(sessionCardButtonsLongBreak, noteContainer, "#5079a1");
       styleBackgroundColor(sessionCardButtonShortBreak, noteContainer, "#598f94");
-
       styleBackgroundColor(sessionCardButtonTimer, noteContainer, "#2980b9");
     }
     let removeTaskButton = createElementFunction("removeTaskButton", "flex", "class", "removeTaskButton", "x", li, "button");
@@ -519,7 +511,6 @@ function createTask() {
 
     arrayOfTasks.push(test);
     test.time.push(parseInt(taskDuration.value * 60));
-    console.log(isSessionActive);
     suma = arrayOfTasks
       .flatMap((parameter) => parameter.time)
       .reduce((sum, current) => sum + current, 0);
@@ -602,26 +593,36 @@ function saveTimer(element) {
     sumOfTimer = arrayOfNumbers[0] * 100 * 60 + arrayOfNumbers[1] * 60 * 10 + arrayOfNumbers[2] * 60 + arrayOfNumbers[3] * 10 + arrayOfNumbers[4];
   }
 
-  new Timer(element, sumOfTimer, startTimerFunctionality);
+  if (element !== timerElement) {
+    console.log("From saveTimer element !== timerElement");
+    new Timer(element, sumOfTimer);
+  }
+  else {
+    console.log("From element == timerElement");
+    new Timer(element, sumOfTimer, startTimerFunctionality);
+  }
   return sumOfTimer;
 }
 
 function saveTimerAndPlay(element) {
   if (arrayOfTasks.length != arrayOfTruths.length && isSessionActive == true) {
     let timerSeconds = saveTimer(element);
-    new Timer(element, timerSeconds, null, autoClick).start();
+    if (element !== timerElement) new Timer(element, timerSeconds, null, autoClick).start();
+    else if (element === timerElement) new Timer(element, timerSeconds).start();
   }
 }
 
 function saveTimerAndPlay2() {
+  autoClick();
   isSessionActive = true;
   let timerSeconds = saveTimer(timerElement);
-  new Timer(timerElement, timerSeconds).start();
+  new Timer(timerElement, timerSeconds, startTimerFunctionality).start();
   document.querySelector("#playButtonDiv").remove();
 }
 
 function autoClick() {
   sessionCardButtonTimer.click();
+  console.log("from auto click");
 }
 
 function isTheTimerZero(element) {
@@ -635,6 +636,5 @@ function isTheTimerZero(element) {
     }
   }
   sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
-  if (sumOfTimer > 0) return true;
-  else return false;
+  return sumOfTimer;
 }
