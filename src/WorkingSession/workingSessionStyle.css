@@ -747,15 +747,15 @@ ol {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffff;
-  border-radius: 0.3rem;
+  background: rgb(89, 143, 148);
+  border-radius: 0.9rem;
   z-index: 10;
   height: 100%;
   width: 50rem;
   block-size: fit-content;
   color: #1E1E1E;
-  -webkit-box-shadow: 0px 0px 2px 2px #ccc;
-  box-shadow: 0px 0px 2px 2px #ccc;
+  box-shadow: 2px 4px 6px rgba(0, 42, 50, 0.1);
+  
 }
 
 .button_field {
@@ -785,7 +785,7 @@ ol {
   text-align: center;
   padding: 0 0 20px 0;
   border-bottom: 1px solid #bababa;
-  color: #1E1E1E;
+  color: white;
   font-family: "Poppins", sans-serif;
   font-size: 20px;
 }
@@ -832,7 +832,7 @@ ol {
   left: 0;
   width: 0%;
   height: 2px;
-  background: #1E1E1E;
+  background: white;
   transition: 0.5s;
 }
  
@@ -887,6 +887,7 @@ ol {
   margin: 30px 0;
   width: 75%;
   background: rgb(240, 240, 240);
+  border-radius: 0.2rem;
 }
 
 .selection_field::after {
@@ -894,7 +895,7 @@ ol {
   content: "▾";
   pointer-events: none;
   position: absolute;
-  right: 10px;
+  right: 5px;
   top: 0;
   font-size: 20px;
   
@@ -907,11 +908,10 @@ ol {
   margin: 0 5px;
   border: none;
   color: #1E1E1E;
-  border-radius: 0.2rem;
   cursor: pointer;
   -moz-appearance: none;
   -webkit-appearance: none;
-  width: 100%;
+  width: 98%;
   background: rgb(240, 240, 240);
 }
  
