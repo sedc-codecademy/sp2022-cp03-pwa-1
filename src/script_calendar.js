@@ -173,7 +173,7 @@ for (let i = 0; i < getDay(firstDay); i++) {
 
 renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 
-// ----------- REMINDERS ARREA CODE BELLOW ------------
+// ----------- REMINDERS CODE BELLOW ------------
 
 let clockContainer = document.querySelector(".js-clock");
 let reminderBtn = document.querySelector("#reminderBtn");
@@ -186,18 +186,16 @@ let reminderTime = document.querySelector('#inputForTimeOfReminder');
 let reminderPriority = document.querySelector('#priorityRem');
 const remindersForm = document.querySelector(".AddReminderPopUp");
 const remindersFiled = document.querySelector("#remindersTableId");
-const sessionCardSettings3 = document.querySelector(".sessionButtonSetting");
-const sessionCardSessions3 = document.querySelector(".sessionButtonTimer");
-const sessionCardShortBreak3 = document.querySelector(".sessionButtonShortBreak");
-const sessionCardLongBreak3 = document.querySelector(".sessionButtonLongBreak");
-
+let notes = document.querySelector("#reminder-note");
 
 
 let reminderId = 1;
 let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
-let inputReminderPriority = 0; 
+let inputReminderPriority = 0;
+let inputReminderNote = 0;
+ 
 
 reminderBtn.addEventListener("click", function() {
     gettingAllReminders();
@@ -218,6 +216,7 @@ clearBtn.addEventListener("click", function() {
     inputReminderTime = 0;
     inputReminderPriority = 0; 
     reminderMockData = [];
+    inputReminderNote = 0;
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 });
 
@@ -232,6 +231,8 @@ function gettingAllReminders() {
     inputReminderDate = gettingReminderInput(reminderDate);
     inputReminderTime = gettingReminderInput(reminderTime);
     inputReminderPriority = gettingReminderInput(reminderPriority);
+    inputReminderNote = gettingReminderInput(notes);
+    
 };
 
 //function for deleting all reminders
@@ -240,12 +241,13 @@ function ClearAllReminders(elem) {
 };
 
 //function for making objects with reminders
-function ReminderObject(id, name, date, time, priority) {
+function ReminderObject(id, name, date, time, priority, note) {
     this.id = id;
     this.name = name;
     this.date = date;
     this.time = time;
     this.priority = priority;
+    this.note = note;
 };
 
 function createReminderObject() {
@@ -254,7 +256,8 @@ function createReminderObject() {
         gettingReminderInput(reminderName),
         gettingReminderInput(reminderDate),
         gettingReminderInput(reminderTime),
-        gettingReminderInput(reminderPriority)
+        gettingReminderInput(reminderPriority),
+        gettingReminderInput(notes)
     );
 
     reminderMockData.push(reminder);
@@ -263,7 +266,7 @@ function createReminderObject() {
 
 //function for rendering the table of reminders
 function renderTable(elem) {
-    let table = '<table><tr><th>#</th><th>Task</th><th>Date</th><th>Time</th><th>Priority</th><th>Remove</th></tr>';
+    let table = '<table><tr><th> </th><th>Title</th><th>Date</th><th>Time</th><th>Priority</th></tr>';
 
     reminderMockData.forEach((reminderItem, index) => {
         table +=` <tr>`
@@ -272,12 +275,15 @@ function renderTable(elem) {
     table += `<td class="remindersTd">${reminderItem.date}</td>`
     table += `<td class="remindersTd">${reminderItem.time}</td>`
     table += `<td class="remindersTd">${reminderItem.priority}</td>`
+    
     table += `<td class="remindersTd"><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
     ">X</button></td>`
     table += `</tr>`
+    if(reminderItem.note) {
+      table += `<tr><td class="remindersTd noteForReminders">${reminderItem.note}</td></tr>`
+    }
     })
-
     table += `</table>`
     elem.innerHTML = table
 };
