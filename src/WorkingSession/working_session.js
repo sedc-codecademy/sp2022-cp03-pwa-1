@@ -262,6 +262,24 @@ document.querySelectorAll(".values").forEach((item) => {
         new Timer(timerElement, updateTimer, startTimerFunctionality);
         if (!(document.querySelector("#playButtonDiv"))) {
           let startTheSession = createElementFunction("playButtonHolder", "flex", "id", "playButtonDiv", "Start session", cardContainer, "button");
+          startTheSession.className = "bubbly-button"
+          animateButton;
+          var animateButton = function (e) {
+            e.preventDefault;
+            //reset animation
+            e.target.classList.remove("animate");
+          
+            e.target.classList.add("animate");
+            setTimeout(function () {
+              e.target.classList.remove("animate");
+            }, 700);
+          };
+          
+          var bubblyButtons = document.getElementsByClassName("bubbly-button");
+          
+          for (var i = 0; i < bubblyButtons.length; i++) {
+            bubblyButtons[i].addEventListener("click", animateButton, false);
+          }
           startTheSession.addEventListener("click", saveTimerAndPlay2);
         }
       }
@@ -419,6 +437,7 @@ function createElementFunction(name, dis, attr, attrName, inner, where, type) {
 }
 
 function createTask() {
+  
   timeStamp();
   endSessionButton.disabled = false;
   if (document.querySelector(".hide")) {
@@ -434,7 +453,7 @@ function createTask() {
   ) {
 
     let number = createId();
-
+    
     let li = document.createElement("li");
     li.setAttribute("class", "liOfTasks"); // option 3
     //li innerHTML - take out in separate function
@@ -443,7 +462,6 @@ function createTask() {
       } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
       }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
       } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
-
     let activeCardMarker = document.createElement("div");
     activeCardMarker.setAttribute("class", "card_timer_container"); //option 2
     li.appendChild(activeCardMarker);
@@ -617,7 +635,10 @@ function saveTimerAndPlay2() {
   isSessionActive = true;
   let timerSeconds = saveTimer(timerElement);
   new Timer(timerElement, timerSeconds, startTimerFunctionality).start();
-  document.querySelector("#playButtonDiv").remove();
+  setTimeout(function() {
+    document.querySelector("#playButtonDiv").remove();
+  },1 * 1000)
+  
 }
 
 function autoClick() {
@@ -638,3 +659,9 @@ function isTheTimerZero(element) {
   sumOfTimer = arrayOfNumbers[0] * 60 * 10 + arrayOfNumbers[1] * 60 + arrayOfNumbers[2] * 10 + arrayOfNumbers[3];
   return sumOfTimer;
 }
+
+
+
+
+
+

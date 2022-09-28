@@ -509,12 +509,18 @@ html {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+.addOpacity {
+  opacity: 0.5;
+}
+
 .header-reminder {
   display: flex;
   position: relative;
   padding-left: 1rem;
-  border-bottom: 2px solid black;
-  
+  background-color: transparent;
+  -webkit-box-shadow: 0 4px 6px -6px #222;
+  -moz-box-shadow: 0 4px 6px -6px #222;
+  box-shadow: 0 4px 6px -6px #222;
 }
 
 .header-reminder h3 {
@@ -533,24 +539,46 @@ html {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  color: rgb(70, 70, 248);
 
 }
 
 .header-reminder button::before {
   content: "✔";
   padding: 0 0.6rem 0 0;
+  color: rgb(70, 70, 248);
 }
 
 .inside-reminders {
   text-align: left;
   font-weight: normal;
   font-size: 15px;
-  padding: 0;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 .inside-reminders b {
   font-weight: normal;
   font-size: 15px;
+  line-height: 3rem;
+}
+
+.inside-reminders b:nth-child(1) {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.inside-reminders b:nth-child(5) {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.inside-reminders b:nth-child(9) {
+  line-height: 1rem;
+}
+
+.cards-reminder button {
+  padding:1rem;
 }
 
 /* SCROLL */
