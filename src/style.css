@@ -111,7 +111,6 @@ html {
 
 /* WAVE */
 
-
 .custom-shape-divider-bottom-1664270411 {
   position: absolute;
   bottom: 0;
@@ -180,15 +179,6 @@ html {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=);
   background-size: contain;
 }
-
-
-/* BUTTONS FOR SLIDER NAVIGATION "LEFT & RIGHT" */
-
-.swiper-button-next,
-.swiper-button-prev {
-    color: var(--clr-neutral-1000);
-}
-
 
 /* CALENDAR */
 .calendar-page {
@@ -378,12 +368,15 @@ html {
 
 /* REMINDERS */
 
+
+
 .card-body-reminders {
   display: inline-flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   height: 99.4%;
   width: 99.7%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  
 }
 
 .flex-direction {
@@ -394,32 +387,26 @@ html {
   background-color: rgb(89, 143, 148);
   border-radius: 0.5rem;
   padding: 10px;
-  height: fit-content;
+  height: 90%;
   align-items: center;
   justify-content: center;
+  margin: 2rem 0 0 2rem;
 }
 
 .div2 {
-  background-color: rgb(89, 143, 148);
+  /* background-color: rgb(89, 143, 148); */
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  height: 99%;
+  height: 93%;
   overflow: auto;
   border-radius: 0.5rem;
+  width: 100%;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  
 }
 
-th {
-  border: 2px solid red;
-}
-
-#remindersTableId {
-  display: flex;
-  justify-content: center;
-  font-size: 1rem;
-  color: white;
-  height: fit-content;
-}
 
 .div1 span, .div2 span {
   font-size: 16px;
@@ -427,11 +414,6 @@ th {
   display: block;
   text-align: center;
 }
-
-/* @media screen and (max-width: 500px) {
-  
-  
-} */
 
 .AddReminderPopUp {
   color: aliceblue;
@@ -446,7 +428,7 @@ th {
 .AddReminderPopUp ul li:nth-child(2) {
   border-radius: 0.4rem;
   padding: 0 5px 0 5px;
-  height: 50%;
+  height: 80%;
   background: white;
 }
 
@@ -480,17 +462,12 @@ th {
   margin-top: 10px;
   border: 0px;
   outline: 0px;
-  padding-left: 10px;
-}
-
-.text-area {
   border-style: none; 
   border-color: Transparent; 
   overflow: auto;   
   resize: none;
   border:0px;
   outline:0px;
-  padding-left: 10px;
 }
 
 #savedReminders {
@@ -499,21 +476,11 @@ th {
 }
 
 .removeReminderByIdBtn {
-  transition: all 300ms ease-in-out;
-  color: #2980b9;
-  border: 0px solid black;
-  background-color: aliceblue;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  text-shadow: 2px 2px 5px rgb(146, 144, 144);
-  border-radius: 2rem;
-}
-
-.removeReminderByIdBtn:hover {
-  transform: scale(1.2);
-}
-
-.remindersTd {
-  padding: 1.2rem;
+  border: transparent;
+  background-color: transparent;
+  width: fit-content;
+  cursor: pointer;
+  color: red;
 }
 
 .AddReminderPopUp ul {
@@ -525,14 +492,66 @@ th {
   padding-top: 2rem;
 }
 
-
-
-.noteForReminders {
-  /* border: 2px solid red; */
- 
+.cards-reminder {
+  background-color: rgb(230, 244, 241);
+  padding: 0.2rem;
+  height: fit-content;
+  font-size: 20px;
+  border-radius: 0.4rem;
+  color: black;
 }
 
+.card-reminder {
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
 
+.header-reminder {
+  display: flex;
+  position: relative;
+  padding-left: 1rem;
+  border-bottom: 2px solid black;
+  
+}
+
+.header-reminder h3 {
+  border-bottom: 2px solid black;
+  width: fit-content;
+  border-top: 5px solid transparent;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.header-reminder button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+}
+
+.header-reminder button::before {
+  content: "✔";
+  padding: 0 0.6rem 0 0;
+}
+
+.inside-reminders {
+  text-align: left;
+  font-weight: normal;
+  font-size: 15px;
+  padding: 0;
+}
+
+.inside-reminders b {
+  font-weight: normal;
+  font-size: 15px;
+}
 
 /* SCROLL */
 
@@ -708,6 +727,7 @@ th {
   border-radius: 1rem;
   color: white;
   cursor: pointer;
+  margin-left: 1rem;
 }
 
 .heart {

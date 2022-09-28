@@ -185,7 +185,6 @@ let reminderDate = document.querySelector('#inputForSettingDateForTask');
 let reminderTime = document.querySelector('#inputForTimeOfReminder');
 let reminderPriority = document.querySelector('#priorityRem');
 const remindersForm = document.querySelector(".AddReminderPopUp");
-const remindersFiled = document.querySelector("#remindersTableId");
 let notes = document.querySelector("#reminder-note");
 
 
@@ -266,26 +265,49 @@ function createReminderObject() {
 
 //function for rendering the table of reminders
 function renderTable(elem) {
-    let table = '<table><tr><th> </th><th>Title</th><th>Date</th><th>Time</th><th>Priority</th></tr>';
-
-    reminderMockData.forEach((reminderItem, index) => {
-        table +=` <tr>`
-        table += `<td class="remindersTd">${index + 1}</td>`
-    table += `<td class="remindersTd">${reminderItem.name}</td>`
-    table += `<td class="remindersTd">${reminderItem.date}</td>`
-    table += `<td class="remindersTd">${reminderItem.time}</td>`
-    table += `<td class="remindersTd">${reminderItem.priority}</td>`
     
-    table += `<td class="remindersTd"><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
+    let cards = "";
+    reminderMockData.forEach((reminderItem) => {
+      cards += `
+    <div class="cards-reminder">
+    <div class="header-reminder">
+      <h3>REMINDER DETAILS</h3>
+      <button>Mark as done</button>
+    </div>
+    <div class="inside-reminders">
+    <b>${reminderItem.name} </b> 
+    <br><b>Remind me: ${reminderItem.date} </b>   
+    <br><b>Time: ${reminderItem.time}</b> 
+    <br><p>${reminderItem.note}</p>
+    
+    </div>
+    <button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-    ">X</button></td>`
-    table += `</tr>`
-    if(reminderItem.note) {
-      table += `<tr><td class="remindersTd noteForReminders">${reminderItem.note}</td></tr>`
-    }
-    })
-    table += `</table>`
-    elem.innerHTML = table
+    ">Delete reminder</button>
+    </div>`;
+    });
+  
+  elem.innerHTML = cards;
+    // let table = '<table><tr><th> </th><th>Title</th><th>Date</th><th>Time</th><th>Priority</th></tr>';
+
+    // reminderMockData.forEach((reminderItem, index) => {
+    //     table +=` <tr>`
+    //     table += `<td class="remindersTd">${index + 1}</td>`
+    // table += `<td class="remindersTd">${reminderItem.name}</td>`
+    // table += `<td class="remindersTd">${reminderItem.date}</td>`
+    // table += `<td class="remindersTd">${reminderItem.time}</td>`
+    // table += `<td class="remindersTd">${reminderItem.time}</td>`
+    
+    // table += `<td class="remindersTd"><button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
+    // renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+    // ">X</button></td>`
+    // table += `</tr>`
+    // if(reminderItem.note) {
+    //   table += `<tr><td class="remindersTd noteForReminders">${reminderItem.note}</td></tr>`
+    // }
+    // })
+    // table += `</table>`
+    // elem.innerHTML = table
 };
 
 //function for deleting reminder by ID from the table
