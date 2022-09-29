@@ -1,6 +1,5 @@
 // Swiper
 
-// const menu = ['CALENDAR', 'STATISTICS', 'HOME', 'PRODUCTIVITY', 'REMINDERS']
 const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
@@ -12,8 +11,6 @@ const swiper = new Swiper('.swiper', {
     allowTouchMove: false,
     speed: 600,
 });
-
-
 
 // Scroll page on refresh
 

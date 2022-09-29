@@ -71,18 +71,24 @@ html {
 .hero a {
   font-weight: 700;
   font-size: 20px;
-  padding: 0.3em 1em;
-  background: white;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  padding: 0.6em 1em;
+  background: rgb(255, 205, 0);
+  color: white;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
   transition: 0.3s ease-in-out;
   -webkit-transition: 0.3s ease-in-out;
   -moz-transition: 0.3s ease-in-out;
   -ms-transition: 0.3s ease-in-out;
   -o-transition: 0.3s ease-in-out;
+  box-shadow: 0 11px 26px 0 rgb(0 0 0 / 23%);
+}
+
+.hero a:hover { 
+  background-color: rgb(240, 192, 2);
 }
 
 .row {
@@ -767,13 +773,21 @@ html {
 }
 
 .sign-up {
-  border: none;
-  background-color: rgb(255, 205, 0);
-  padding: 10px 20px;
+  background-color: transparent;
   border-radius: 1rem;
-  color: white;
+  color: rgb(255, 205, 0);
   cursor: pointer;
   margin-left: 1rem;
+  padding: 0.4rem 1.2rem;
+  border: 2px solid rgb(255, 205, 0);
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+
+.sign-up:hover {
+  background-color: rgb(255, 205, 0);
+  color: white;
 }
 
 .heart {

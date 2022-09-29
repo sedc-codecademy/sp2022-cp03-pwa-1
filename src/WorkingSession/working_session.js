@@ -39,7 +39,9 @@ const closeModalFunction = () => {
 const openModalFunction = () => {
   sessionModals.classList.add("hidden");
   taskForm.classList.remove("hidden");
+  
 };
+
 
 //EVENT LISTENERS FOR BUTTONS
 closeButton.addEventListener("click", closeModalFunction);
@@ -104,9 +106,11 @@ sessionCardButtonTimer.addEventListener("click", () => {
 addTaskButton.addEventListener("click", adjustClasses);
 
 function adjustClasses() {
+  
   taskForm.classList.remove("hidden");
   overlayDiv.classList.remove("hidden");
   addNoteButton.style.display = "flex";
+  
 };
 
 //Arrows up and down
@@ -250,7 +254,7 @@ document.querySelectorAll(".values").forEach((item) => {
       new Timer(longBreakDiv, longBreakDurationInput.value * 60, null, autoClick);
 
       if (e.target === saveTaskButton) {
-
+        
         resetTaskInputs();
         closeModalFunction();
         timerElement.style.display = "flex";
@@ -339,22 +343,28 @@ function clearTasks() {
   if (!listOfTasks.innerHTML.trim() == "") {
     confirmAction = confirm("Are you sure you want to clear the tasks list?");
     if (confirmAction) {
+      setTimeout(() => {
+        listOfTasks.innerHTML = "";
+        new Timer(timerElement, resetTaskDurationValue(), startTimerFunctionality);
+        new Timer(shortBreakDiv, 0);
+        new Timer(longBreakDiv, 0);
+        arrayOfTasks = [];
+        arrayOfFinishedTasks = [];
+        setTimeout(() => {
+          addClearButtonAnimation();
+        }, 100);
+        setTimeout(() => {
+          removeClearButtonCheckAnimation()
+        }, 1500);
+      
+        shortBreakDiv.style.display = "flex";
+        let div = document.createElement("div");
+        div.setAttribute("class", "hide");
+        document.querySelector("#sessionMain").appendChild(div);
 
-      listOfTasks.innerHTML = "";
-      new Timer(timerElement, resetTaskDurationValue(), startTimerFunctionality);
-      new Timer(shortBreakDiv, 0);
-      new Timer(longBreakDiv, 0);
-      arrayOfTasks = [];
-      arrayOfFinishedTasks = [];
-
-      shortBreakDiv.style.display = "flex";
-      let div = document.createElement("div");
-      div.setAttribute("class", "hide");
-      document.querySelector("#sessionMain").appendChild(div);
-
-      console.log("List successfully deleted");
-      console.log(arrayOfTasks);
-
+        console.log("List successfully deleted");
+        console.log(arrayOfTasks);
+        }, 500)
     }
   } else console.log("The list is empty");
 }
@@ -465,12 +475,18 @@ function createTask() {
     let activeCardMarker = document.createElement("div");
     activeCardMarker.setAttribute("class", "card_timer_container"); //option 2
     li.appendChild(activeCardMarker);
-
+    
     //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
     let flagParagraph = createElementFunction("flagParagraph", "none", "contentEditable", "false", '', li, "p");
     flagParagraph.setAttribute("class", "flag_paragraph");
     createElementFunction("paragraphId", "none", "class", "idOfCard", number, li, "p");
-
+    setTimeout(() => {
+      addTaskButtonAnimation();
+    }, 100)
+    setTimeout(() => {
+      removeTaskButtonCheckAnimation();
+    }, 1500)
+    
     //FINISH TASK BUTTON NEW LOGIC (12.09.2022)
     let finishedTaskButton = createElementFunction("finishedTaskButton", "flex", "class", "stopTask", "Finish task", li, "button");
 
@@ -660,21 +676,37 @@ function isTheTimerZero(element) {
   return sumOfTimer;
 }
 
-(function() {
-  var removeSuccess;
 
-  removeSuccess = function() {
-    return $('.buttonTasks').removeClass('success');
-  };
+function addTaskButtonAnimation() {
+  document.querySelector("#addTaskBtn").classList.toggle("success");
+}
+function removeTaskButtonCheckAnimation() {
+  document.querySelector("#addTaskBtn").classList.remove("success");
+}
 
-  $(document).ready(function() {
-    return $('.buttonTasks').click(function() {
-      $(this).addClass('success');
-      return setTimeout(removeSuccess, 3000);
-    });
-  });
+function addClearButtonAnimation() {
+  document.querySelector("#clearTasksBtn").classList.toggle("success");
+}
+function removeClearButtonCheckAnimation() {
+  document.querySelector("#clearTasksBtn").classList.remove("success");
+}
 
-}).call(this);
+  
+
+  
+    
+  
+  
+
+
+
+
+
+
+
+
+
+
 
 
 
