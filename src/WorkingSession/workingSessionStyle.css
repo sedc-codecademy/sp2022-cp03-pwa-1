@@ -531,7 +531,7 @@
   border: 0.5px solid rgba(113, 113, 113, 0.62);
   padding: 5px;
   border-radius: 15px;
-  height: 2rem;
+  height: 3rem;
   background: rgb(89, 143, 148);
   width: 89%;
   top: 40%;
@@ -565,11 +565,106 @@
   cursor: pointer;
   transition: all 300ms ease-in-out;
 }
- 
-#clearTasksBtn:hover,
-#addTaskBtn:hover {
-  transform: scale(1.01);
+
+.buttonTasks {
+  display: block;
+  background-color: rgb(240, 240, 240);
+  color: black;
+  width: 100px;
+  height: 35px;
+  line-height: 45px;
+  margin: auto;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
 }
+.buttonTasks span,
+.buttonTasks .icon {
+  display: block;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  font-size: 15px;
+}
+.buttonTasks span {
+  width: 72%;
+  line-height: inherit;
+  font-size: fit-content;
+  text-transform: uppercase;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+}
+.buttonTasks span:after {
+  content: "";
+  background-color: rgb(240, 240, 240);
+  width: 2px;
+  height: 70%;
+  position: relative;
+  top: 15%;
+  right: -1px;
+  
+}
+.buttonTasks .icon {
+  width: 28%;
+  right: 0;
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+}
+.buttonTasks .icon .fa {
+  font-size: 30px;
+  vertical-align: middle;
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4), height 0.25s ease;
+}
+.fa-remove:before {
+  content: "";
+}
+
+.fa-check:before {
+  content: "";
+}
+
+.buttonTasks .icon .fa-remove {
+  height: 34px;
+}
+.buttonTasks .icon .fa-check {
+  display: none;
+}
+.buttonTasks.success span, .buttonTasks:hover span {
+  left: -72%;
+  opacity: 0;
+}
+.buttonTasks.success .icon, .buttonTasks:hover .icon {
+  width: 100%;
+}
+.buttonTasks.success .icon .fa, .buttonTasks:hover .icon .fa {
+  font-size: 40px;
+}
+.buttonTasks.success {
+  background-color: rgb(240, 240, 240);
+}
+.buttonTasks.success .icon .fa-remove {
+  display: none;
+}
+.buttonTasks.success .icon .fa-check {
+  display: inline-block;
+}
+.buttonTasks:hover {
+  opacity: 0.9;
+}
+.buttonTasks:hover .icon .fa-remove {
+  height: 46px;
+}
+.buttonTasks:active {
+  opacity: 1;
+}
+
  
 /* TASK CARDS*/
  

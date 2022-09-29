@@ -388,9 +388,9 @@ html {
   border-radius: 0.5rem;
   padding: 10px;
   height: 90%;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   margin: 2rem 0 0 2rem;
+  display: flex;
 }
 
 .div2 {
@@ -407,7 +407,6 @@ html {
   
 }
 
-
 .div1 span, .div2 span {
   font-size: 16px;
   font-weight: bold;
@@ -417,28 +416,47 @@ html {
 
 .AddReminderPopUp {
   color: aliceblue;
-  padding: 0px;
+  padding: 0.7rem;
 }
 
-.AddReminderPopUp ul li:nth-child(1) {
-  padding: 0;
-  margin-bottom : 15px;
-}
-
-.AddReminderPopUp ul li:nth-child(2) {
+.textAndNote {
+  width: 100%;
+  height: 10rem;
+  background-color: white;
   border-radius: 0.4rem;
-  padding: 0 5px 0 5px;
-  height: 80%;
-  background: white;
+  
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
-.AddReminderPopUp ul {
-  padding: 10px;
+.textAndNote input {
+  padding: 15px 0 15px 5px;
+  border-bottom: 1px solid black;
+  width: 97.5%;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
 }
+
 
 .reminderBtnsDiv {
   display: flex;
   justify-content: space-between;
+}
+
+.dateForReminder, .timeForReminder, .priorityForReminder {
+  margin-top: 1rem;
+  
+}
+
+.dateForReminder input, .timeForReminder input, .priorityForReminder select {
+  margin-top: 1rem;
+  border-radius: 0.2rem;
+  width:50%;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.dateForReminder label, .timeForReminder label, .priorityForReminder label {
+  display: flex;
 }
 
 .reminderBtns {
@@ -448,9 +466,10 @@ html {
   margin: 0 1px;
   border: none;
   color: #444;
-  border-radius: 0.7rem;
+  border-radius: 0.3rem;
   cursor: pointer;
   transition: all 300ms ease-in-out;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .reminderBtns:hover {
@@ -460,6 +479,7 @@ html {
 .reminderInput {
   border: none;
   margin-top: 10px;
+  padding-left: 5px;
   border: 0px;
   outline: 0px;
   border-style: none; 
@@ -468,6 +488,7 @@ html {
   resize: none;
   border:0px;
   outline:0px;
+  display: flex;
 }
 
 #savedReminders {
@@ -483,14 +504,6 @@ html {
   color: red;
 }
 
-.AddReminderPopUp ul {
-  list-style-type: none;
-  padding-left: 10px;
-}
-
-.AddReminderPopUp ul li {
-  padding-top: 2rem;
-}
 
 .cards-reminder {
   background-color: rgb(230, 244, 241);
@@ -579,6 +592,11 @@ html {
 
 .cards-reminder button {
   padding:1rem;
+}
+
+.removeReminders {
+   margin-top: auto;
+   padding-bottom: 8px;
 }
 
 /* SCROLL */
@@ -896,8 +914,6 @@ html {
  
 }
 
-
-
 /* ===============ARROW BOUNCING INDICATOR=============== */
 
 .bounce {
@@ -918,4 +934,104 @@ html {
   
 
 
+/* REMINDERS */
 
+
+/* Main Styles */
+.button {
+  display: block;
+  background-color: rgb(240, 240, 240);
+  color: black;
+  width: 230px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+}
+.button span,
+.button .icon {
+  display: block;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  line-height: 65px;
+}
+.button span {
+  width: 72%;
+  line-height: inherit;
+  font-size: fit-content;
+  text-transform: uppercase;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+}
+.button span:after {
+  content: "";
+  background-color: rgb(240, 240, 240);
+  width: 2px;
+  height: 70%;
+  position: relative;
+  top: 15%;
+  right: -1px;
+}
+.button .icon {
+  width: 28%;
+  right: 0;
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+}
+.button .icon .fa {
+  font-size: 30px;
+  vertical-align: middle;
+  transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4), height 0.25s ease;
+}
+.fa-remove:before {
+  content: "";
+}
+
+.fa-check:before {
+  content: "";
+}
+
+.button .icon .fa-remove {
+  height: 36px;
+}
+.button .icon .fa-check {
+  display: none;
+}
+.button.success span, .button:hover span {
+  left: -72%;
+  opacity: 0;
+}
+.button.success .icon, .button:hover .icon {
+  width: 100%;
+}
+.button.success .icon .fa, .button:hover .icon .fa {
+  font-size: 45px;
+}
+.button.success {
+  background-color: rgb(240, 240, 240);
+}
+.button.success .icon .fa-remove {
+  display: none;
+}
+.button.success .icon .fa-check {
+  display: inline-block;
+}
+.button:hover {
+  opacity: 0.9;
+}
+.button:hover .icon .fa-remove {
+  height: 46px;
+}
+.button:active {
+  opacity: 1;
+}
