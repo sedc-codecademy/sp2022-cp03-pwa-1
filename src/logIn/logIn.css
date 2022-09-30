@@ -24,7 +24,6 @@
 }
 
 .sliderShow {
-   
    height: 94%;
    position: relative;
    width: 55%;
@@ -34,7 +33,7 @@
 .sliderShow:before {
     content: "";
     position: absolute;
-    border-right: 1px solid rgb(127, 127, 127);
+    border-right: 1px solid rgb(208, 208, 208);
     bottom: 4.5%;
     left: 0;
     height: 90%;
@@ -114,12 +113,12 @@
 .log-in-div {
    height: 94%;
    position: relative;
-   width: 35%;
+   width: 39%;
    padding: 1rem 1rem 1rem 1rem;
    
 }
 
-.log-in-tab {
+.log-in-tab, .sign-up-tab {
    height: 100%;
    position: relative;
 }
@@ -130,53 +129,71 @@
    margin-top: 17%;
 }
 
-.log-in-main-tab-header {
+.sign-up-main-tab {
+  margin-top: 4%;
+  
+}
+
+.log-in-main-tab-header, .sign-up-main-tab-header {
     width: 100%;
     height: 10%;
 }
-.log-in-main-tab-header h2 {
+.log-in-main-tab-header h2, .sign-up-main-tab-header h2 {
     margin-left: 5%;
 }
 
-/* ------------------- log form --------------------*/
+/* ------------------- login form --------------------*/
 
-#login-form p {
+#login-form p, #signUp-form p{
     margin-top: 15px;
 }
 
 .p {
     position: relative;
     
-  }
+}
   
   .login-form a,
   .login-form a:link,
   .login-form a:visited,
-  .login-form a:active {
+  .login-form a:active,
+  .signUp-form a,
+  .signUp-form a:link,
+  .signUp-form a:visited,
+  .signUp-form a:active {
     color: #3ca9e2;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
   }
-  .login-form a:focus,.login-form a:hover,
+  .login-form a:focus,
+  .login-form a:hover,
   .login-form a:link:focus,
   .login-form a:link:hover,
   .login-form a:visited:focus,
   .login-form a:visited:hover,
   .login-form a:active:focus,
-  .login-form a:active:hover {
+  .login-form a:active:hover
+  .signUp-form a:focus,
+  .signUp-form a:hover,
+  .signUp-form a:link:focus,
+  .signUp-form a:link:hover,
+  .signUp-form a:visited:focus,
+  .signUp-form a:visited:hover,
+  .signUp-form a:active:focus,
+  .signUp-form a:active:hover{
     color: #329dd5;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
   }
   
-  #login-form {
+  #login-form , #signUp-form{
     padding: 0 0 0 15px;
   }
   
-  #login-form input {
+  #login-form input, #signUp-form input {
     display: block;
     box-sizing: border-box;
-    width: 100%;
+    width: 98%;
     outline: none;
     height: 60px;
     line-height: 60px;
@@ -186,8 +203,12 @@
   }
   
   #login-form input[type="text"],
-  #login-form input[type="email"] {
-    width: 100%;
+  #login-form input[type="password"],
+  #login-form input[type="email"],
+  #signUp-form input[type="text"],
+  #signUp-form input[type="password"],
+  #signUp-form input[type="email"] {
+    width: 98%;
     padding: 0 0 0 10px;
     margin: 0;
     color: #8a8b8e;
@@ -202,27 +223,47 @@
     background: none;
   }
   #login-form input[type="text"]:focus,
-  #login-form input[type="email"]:focus {
+  #login-form input[type="password"]:focus,
+  #login-form input[type="email"]:focus,
+  #signUp-form input[type="text"]:focus,
+  #signUp-form input[type="password"]:focus,
+  #signUp-form input[type="email"]:focus {
     border-color: #3ca9e2;
   }
   #login-form input[type="text"]:focus:invalid,
-  #login-form input[type="email"]:focus:invalid {
+  #login-form input[type="password"]:focus:invalid,
+  #login-form input[type="email"]:focus:invalid,
+  #signUp-form input[type="text"]:focus:invalid,
+  #signUp-form input[type="password"]:focus:invalid,
+  #signUp-form input[type="email"]:focus:invalid {
     color: #cc1e2b;
     border-color: #cc1e2b;
   }
   #login-form input[type="text"]:valid ~ .validation,
-  #login-form input[type="email"]:valid ~ .validation {
+  #login-form input[type="password"]:valid ~ .validation,
+  #login-form input[type="email"]:valid ~ .validation,
+  #signUp-form input[type="text"]:valid ~ .validation,
+  #signUp-form input[type="password"]:valid ~ .validation,
+  #signUp-form input[type="email"]:valid ~ .validation {
     display: block;
     border-color: #0C0;
   }
   #login-form input[type="text"]:valid ~ .validation span,
-  #login-form input[type="email"]:valid ~ .validation span {
+  #login-form input[type="password"]:valid ~ .validation span,
+  #login-form input[type="email"]:valid ~ .validation span,
+  #signUp-form input[type="text"]:valid ~ .validation span,
+  #signUp-form input[type="password"]:valid ~ .validation span,
+  #signUp-form input[type="email"]:valid ~ .validation span {
     background: #0C0;
     position: absolute;
     border-radius: 6px;
   }
   #login-form input[type="text"]:valid ~ .validation span:first-child,
-  #login-form input[type="email"]:valid ~ .validation span:first-child {
+  #login-form input[type="password"]:valid ~ .validation span:first-child,
+  #login-form input[type="email"]:valid ~ .validation span:first-child,
+  #signUp-form input[type="text"]:valid ~ .validation span:first-child,
+  #signUp-form input[type="password"]:valid ~ .validation span:first-child,
+  #signUp-form input[type="email"]:valid ~ .validation span:first-child {
     top: 30px;
     left: 14px;
     width: 20px;
@@ -231,7 +272,11 @@
             transform: rotate(-45deg);
   }
   #login-form input[type="text"]:valid ~ .validation span:last-child,
-  #login-form input[type="email"]:valid ~ .validation span:last-child {
+  #login-form input[type="password"]:valid ~ .validation span:last-child,
+  #login-form input[type="email"]:valid ~ .validation span:last-child,
+  #signUp-form input[type="text"]:valid ~ .validation span:last-child,
+  #signUp-form input[type="password"]:valid ~ .validation span:last-child,
+  #signUp-form input[type="email"]:valid ~ .validation span:last-child {
     top: 35px;
     left: 8px;
     width: 11px;
@@ -249,8 +294,9 @@
     right: 15px;
     top: 0px;
   }
+
   
-  input[type="submit"] {
+  #login-form input[type="submit"], #signUp-form input[type="submit"] {
     border: none;
     display: block;
     background-color: #3ca9e2;
@@ -266,8 +312,13 @@
     cursor: pointer;
     text-align: center;
     box-shadow: 0 2px 10px 0 rgb(0,0,0,0.1);
-    margin-top: 14rem;
+    margin-top: 15rem;
   }
+
+  #signUp-form input[type="submit"] {
+    margin-top: 9.4rem;
+  }
+
   input[type="submit"]:hover {
     background-color: #329dd5;
     -webkit-transition: all 0.2s ease;
@@ -286,7 +337,21 @@
     text-align: center;
   }
 
+/* right swiper */
 
+.right-swiper {
+  position: relative;
+  display: flex;
+  width: 90%;
+  
+}
 
+.wrapper-right .swiper-slide {
+  height: 38rem;
+  
+}
 
+.back-to-log {
+  padding-left: 10px;
+}
 
