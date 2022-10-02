@@ -35,6 +35,7 @@ body {
 
 html {
   height: 400%;
+  
 }
 
 /* HERO */
@@ -127,12 +128,8 @@ p {
   top: 100%;
 }
 
-
-
 .img-presentation {
   min-width: 40rem;
-  border-radius: 2rem;
-  box-shadow: 0 6px 15px 0 rgb(0 0 0 / 7%);
 }
 
 .img-presentation img {
@@ -140,7 +137,10 @@ p {
   height: 100%;
   margin-left: auto;
   margin-right: auto;
-  display: block
+  display: block;
+  border-radius: 2rem;
+  box-shadow: 0 6px 15px 0 rgb(0 0 0 / 7%);
+  border: 4px solid white;
 }
 
 .text-presentation h2 {
@@ -244,7 +244,7 @@ p {
   height: 92vh;
   top: 290%;
   border: none;
-
+  
 }
 
 .swiper-slide {
