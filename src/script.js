@@ -49,11 +49,10 @@ function header_scroll() {
   var scroll_height = window.pageYOffset;
   if (scroll_height > 0) {
     my_header.className = 'header header-scroll';
-
   }
   else {
     my_header.className = 'header';
-  }
+    }
 }
 
 function toggle_menu() {
@@ -148,3 +147,4 @@ function isScrolledIntoView(elem) {
     }
   }
 }
+

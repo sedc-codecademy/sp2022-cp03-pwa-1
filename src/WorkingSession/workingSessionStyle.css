@@ -754,6 +754,7 @@ ol {
   height: fit-content;
   position: relative;
   transition: all 600ms ease-in-out;
+  box-shadow: 0 6px 15px 0 rgb(0 0 0 / 15%);
 }
 
 .liOfTasks:active {

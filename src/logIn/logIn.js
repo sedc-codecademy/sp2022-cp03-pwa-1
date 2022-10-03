@@ -32,7 +32,8 @@ let imageDiv = [];
 
 getStartedButton.forEach((item) => {
     item.addEventListener("click", function () {
-
+        
+        
         mainPage.classList.toggle("hidden");
         html.classList.toggle("htmlSet");
 
@@ -145,13 +146,15 @@ getStartedButton.forEach((item) => {
             // Optional parameters
             direction: 'horizontal',
             loop: true,
+            slidesPerView: 1,
             keyboardControl: true,
             grabCursor: false,
             centeredSlides: true,
-            slidesPerView: 'auto',
             initialSlide: 0,
+            spaceBetween: 0,
             allowTouchMove: true,
-            speed: 800,
+            speed: 300,
+            loopedSlides: 300,
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -159,7 +162,14 @@ getStartedButton.forEach((item) => {
             autoplay: {
                 delay: 7000,
             },
-            effect: 'fade',
+            effect: 'coverflow',
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 800,
+                depth: 1500,
+                modifier: 1,
+                slideShadows: false,
+            },
 
         });
 

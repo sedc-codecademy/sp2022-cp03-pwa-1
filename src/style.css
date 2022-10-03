@@ -31,18 +31,20 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow: overlay;
+  overflow-x: hidden;
 }
 
 html {
-  height: 400%;
+  height: 550%;
 }
 
 /* HERO */
 
-.row img {
+.row .flip-card{
   max-width: 80%;
   object-fit: cover;
-  padding-left: 20%;
+  margin-left: 30%;
+  
 }
 
 .hero a {
@@ -72,6 +74,7 @@ p {
 
 .row {
   display: flex;
+  
 }
 
 .hero_container {
@@ -163,7 +166,8 @@ p {
   width: 100%;
   background-color: white;
   height: 250vh;
-  top: 100%;
+  top: 85%;
+  padding-top: 5rem;
 }
 
 .img-presentation {
@@ -253,27 +257,25 @@ p {
 
 /* WAVE */
 
-.custom-shape-divider-bottom-1664270411 {
+.custom-shape-divider-top-1664822071 {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
 }
 
-.custom-shape-divider-bottom-1664270411 svg {
+.custom-shape-divider-top-1664822071 svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
-  height: 150px;
-  transform: rotateY(180deg);
+  height: 84px;
 }
 
-.custom-shape-divider-bottom-1664270411 .shape-fill {
-  fill: #FFFFFF;
+.custom-shape-divider-top-1664822071 .shape-fill {
+  fill: rgb(89, 143, 148);
 }
-
 /* CARDS */
 
 .swiper {
@@ -285,7 +287,7 @@ p {
   
 }
 
-.swiper-slide {
+.main-swiper-slide {
   background-size: cover;
   width: 100%;
   height: 92vh;
@@ -1279,13 +1281,305 @@ p {
   width: 0%;
 }
 
-/* TESTIMONIALS */
+/* clock  */
 
-/* .testimonials-wrapper {
+.clock {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	background-color: #fff;
+	border-radius: 100%;
+	border: 10px solid #34626c;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.clock .top {
+	position: absolute;
+	width: 3px;
+	height: 8px;
+	background-color: #262626;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.clock .right {
+	position: absolute;
+	width: 8px;
+	height: 3px;
+	background-color: #262626;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+}
+.clock .bottom {
+	position: absolute;
+	width: 3px;
+	height: 8px;
+	background-color: #262626;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+}
+.clock .left {
+	position: absolute;
+	width: 8px;
+	height: 3px;
+	background-color: #262626;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+}
+.clock .center {
+	height: 6px;
+	width: 6px;
+	background-color: #262626;
+	border-radius: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+.clock .shadow {
+	background:linear-gradient(rgba(0, 0, 0, 0), 
+								rgba(0, 0, 0, 0.1));
+	height: 200px;
+	width: 200px;
+	position: absolute;
+	left: 60px;
+	top: 60px;
+	transform: rotate(135deg);
+}
+.clock .hour {
+	width: 3px;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	animation: time 3600s infinite linear;
+}
+.clock .hour:before {
+	content: "";
+	height: 60px;
+	width: 3px;
+	background-color: #262626;
+	position: absolute;
+	top: 30px;
+}
+
+.clock .minute {
+	width: 1px;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	animation: time 360s infinite linear;
+}
+.clock .minute:before {
+	position: absolute;
+	content: "";
+	background-color: #262626;
+	height: 40px;
+	width: 1px;
+	top: 50px;
+}
+.clock .second {
+	width: 2px;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	animation: time 15s infinite linear;
+}
+.clock .second:before {
+	position: absolute;
+	content: "";
+	background-color: #fd1111;
+	height: 45px;
+	width: 2px;
+	top: 45px;
+}
+
+@keyframes time {
+	to {
+		transform: rotate(360deg);
+	}
+} 
+
+/* flip */
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.flip-card:focus {
+    outline: 0;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.flip-card-inner {  
+  animation: 4s ease-in-out 0s 1 slideInFromLeft;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus .flip-card-inner{
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
   position: absolute;
-  top: 191%;
   width: 100%;
-  height: 40rem;
-  border: 2px solid rgb(0, 0, 0);
-  background-color: white;
-} */
+  height: 100%;
+}
+
+.flip-card-front {
+  background: transparent;
+  color: black;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-back {
+  background: transparent;
+  color: white;
+  transform: rotateY(180deg);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* check animation hero */
+
+.svg-success-hero {
+  display: inline-block;
+  vertical-align: top;
+  height: 200px;
+  width: 200px;
+  opacity: 1;
+  overflow: visible;
+}
+@-webkit-keyframes success-tick {
+  0% {
+    stroke-dashoffset: 16px;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 31px;
+    opacity: 1;
+  }
+}
+@keyframes success-tick {
+  0% {
+    stroke-dashoffset: 16px;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 31px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes success-circle-outline {
+  0% {
+    stroke-dashoffset: 72px;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+    opacity: 1;
+  }
+}
+@keyframes success-circle-outline {
+  0% {
+    stroke-dashoffset: 72px;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes success-circle-fill {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes success-circle-fill {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.svg-success-hero .success-tick-hero {
+  fill: none;
+  stroke-width: 1px;
+  stroke: rgb(255, 205, 0);
+  stroke-dasharray: 15px, 15px;
+  stroke-dashoffset: -14px;
+  -webkit-animation: success-tick 450ms ease 1400ms forwards;
+          animation: success-tick 450ms ease 1400ms forwards;
+  opacity: 0;
+}
+.svg-success-hero .success-circle-outline-hero {
+  fill: none;
+  stroke-width: 1px;
+  stroke: rgb(255, 255, 255);
+  stroke-dasharray: 72px, 72px;
+  stroke-dashoffset: 72px;
+  -webkit-animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+          animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+  opacity: 0;
+}
+.svg-success-hero .success-circle-fill-hero {
+  fill: rgb(255, 255, 255);
+  stroke: none;
+  opacity: 0;
+  -webkit-animation: success-circle-fill 300ms ease-out 1100ms forwards;
+          animation: success-circle-fill 300ms ease-out 1100ms forwards;
+}
+

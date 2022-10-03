@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="stylesheet" href="Statistics/Activity-Summary/ActivitySummary.css" type="text/css" />
     <link rel="stylesheet" href="Statistics/Focus-Hours/FocusHours.css" type="text/css" />
     <link rel="stylesheet" href="WorkingSession/workingSessionStyle.css" type="text/css" />
     <link rel="stylesheet" href="productivity.css" type="text/css" />
     <link rel="stylesheet" href="logIn/logIn.css" type="text/css" />
+    <link rel="stylesheet" href="testimonials/testimonials.css" type="text/css" />
+    
     <title>Productivity Web App</title>
 </head>
 
@@ -55,19 +58,42 @@
                 </div>
             </div>
             <div class="row">
-                <img src="./media/oie_transparent.png" alt="">
+                <div class="flip-card" tabIndex="0">
+                    <div class="flip-card-inner">
+                      <div class="flip-card-front">
+                        <div class="clock">
+                            <div class="top"></div>
+                            <div class="right"></div>
+                            <div class="bottom"></div>
+                            <div class="left"></div>
+                            <div class="center"></div>
+                            <div class="shadow"></div>
+                            <div class="hour"></div>
+                            <div class="minute"></div>
+                            <div class="second"></div>
+                        </div>
+                      </div>
+                      <div class="flip-card-back">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-success-hero" viewBox="0 0 24 24">
+                            <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                              <circle class="success-circle-outline-hero" cx="12" cy="12" r="11.5"/>
+                              <circle class="success-circle-fill-hero" cx="12" cy="12" r="11.5"/>
+                              <polyline class="success-tick-hero" points="17,8.5 9.5,15.5 7,13"/>
+                            </g>
+                          </svg>
+                      </div>
+                    </div>
+                  </div>
+                
             </div>
         </section>
         <div class="arrow bounce"></div>
-        <div class="custom-shape-divider-bottom-1664270411">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-                    class="shape-fill"></path>
-            </svg>
-        </div>
         <section class="presentation">
+            <div class="custom-shape-divider-top-1664822071">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M1200 0L0 0 598.97 114.72 1200 0z" class="shape-fill"></path>
+                </svg>
+            </div>
             <div data-position="left" data-offset="60" class="notViewed animBlock">
                 <div class="block">
                     <div class="img-presentation column">
@@ -107,7 +133,7 @@
                 <!-- Additional wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="swiper-slide">
+                    <div class="swiper-slide main-swiper-slide">
                         <div class="card-content calendar-page">
                             <div class="card-body">
                                 <div class="dateInfo">
@@ -128,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide main-swiper-slide">
                         <div class="card-content" id="card-content-statistics">
                             <div class="card-body" id="card-body-statistics">
                                 <div id="activitySummaryContainer1">
@@ -172,7 +198,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide main-swiper-slide">
                         <div class="card-content" id="sessionMain">
                             <div id="sessionCardButtonsDiv">
                                 <nav class="nav js-nav">
@@ -298,10 +324,10 @@
                             </div>
                         </div> <!-- div of class card-content -->
                     </div> <!-- div of class swiper-slid -->
-                    <div class="swiper-slide">
+                    <div class="swiper-slide main-swiper-slide">
                         <div class="card-content productivity-container"></div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide main-swiper-slide">
                         <div class="card-body-reminders flex-direction">
                             <div id="AddReminderPopUpContainer" class="div1">
                                 <span>
@@ -363,21 +389,9 @@
             </div> extra closing divs? eh :S ?-->
         </main>
         <!--TESTIMONIALS-->
-        <!-- <section class="testimonials-wrapper">
-            <div class="testimonials-container">
-                <div class="section-title">
-                    <h2>Testimonials</h2>
-                    <span class="section-seperator"></span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur error aperiam dolores accusamus nisi iure praesentium, debitis sint, porro doloremque molestiae perferendis, hic dignissimos quisquam rerum alias ullam laboriosam unde.</p>
-                </div>
-            </div>
-            <div class="testimonials-carousel-wrap">
-                <div class="listening-carousel-button listing-carousel-button-next"><i class="fa fa-caret-right"></i></div>
-                <div class="listening-carousel-button listing-carousel-button-prev"><i class="fa fa-caret-left"></i></div>
-            </div>
-        </section> -->
+        <section class="testimonials-wrapper"></section>
     </section>
-
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="jquery-backward-timer.min.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -390,9 +404,11 @@
     <!-- <script type="module" src="WorkingSession/Classes/timer.js"></script> -->
     <!-- <script type="module" src="WorkingSession/Variables/globalVariables.js"></script> -->
     <script type="module" src="WorkingSession/working_session.js"></script>
+    <script src="testimonials/testimonials.js"></script>
     <script src="logIn/logIn.js"></script>
     <!-- <script src="clock.js"></script> -->
     <script src="productivity.js"></script>
+    
 
 
 
