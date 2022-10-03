@@ -136,12 +136,9 @@ for(let i =0; i < testimonialsItem.length; i ++) {
     </div>`
 }
 
-testimonialsParagraph.innerText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur error aperiam dolores accusamus nisi iure praesentium, debitis sint, porro doloremque molestiae perferendis, hic dignissimos quisquam rerum alias ullam laboriosam unde."
-
-
 // Swiper
-//   all ------------------
-function initParadoxWay() {
+
+function testimonialsFunc() {
     "use strict";
    
     if ($(".testimonials-carousel").length > 0) {
@@ -189,5 +186,5 @@ function initParadoxWay() {
 
 //   Init All ------------------
 $(document).ready(function () {
-    initParadoxWay();
+    testimonialsFunc();
 });
