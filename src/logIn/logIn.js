@@ -99,7 +99,7 @@ getStartedButton.forEach((item) => {
                 <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
-                <button type="submit" id="login" class="loginButton">Login</button>
+                <button type="button" id="login" class="loginButton">Login</button>
                 </p>
             </form>
             <div id="create-account-wrap">
