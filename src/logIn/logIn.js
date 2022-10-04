@@ -99,12 +99,14 @@ getStartedButton.forEach((item) => {
                 <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
-                <input type="submit" id="login" value="Login">
+                <button type="submit" id="login" class="loginButton">Login</button>
                 </p>
             </form>
             <div id="create-account-wrap">
                 <p>Not a member? <a href="#" data-slide="2">Create Account</a><p>
             </div>`
+
+            
 
         // sign up tab
 
@@ -119,17 +121,29 @@ getStartedButton.forEach((item) => {
         signUpMainTabForm.innerHTML = `
         <form id="signUp-form">
             <p>
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
             <input type="text" id="signup-username" name="signup-username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
             </p>
             <p>
             <input type="password" id="signup-password" name="signup-password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
             </p>
-             
             <p>
-            <input type="submit" id="signup-login" value="Sign up">
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
+            </p>
+             <p>
+            <button type="button" class="registerButton" id="signup-login">Sign up</button>
             </p>
         </form>`
 
+        let signUpUsername = document.querySelector("#signup-username");
+        let signUpPassword = document.querySelector("#signup-password");
+        let singUpConfirmPassword = document.querySelector("#confirm-password");
+        let fullName = document.querySelector("#fullName");
+        let signUpButton = document.querySelector("#signup-login");
+
+        
         // < p >
         // <input type="email" id="signup-email" name="signup-email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
         // </>
@@ -191,10 +205,6 @@ getStartedButton.forEach((item) => {
 
         });
 
-
-
-
-
         const SignUpSwiper = new Swiper('.right-swiper', {
             // Optional parameters
             direction: 'horizontal',
@@ -231,8 +241,61 @@ getStartedButton.forEach((item) => {
             });
         })(jQuery);
 
-        // Signing up functionality, connection with backend established, gg!
+        
+
+         // Signing up functionality, connection with backend established, gg!
         async function signUpFunction(e) {
+             
+             if(fullName.value == "") {
+                fullName.value = ""
+                fullName.placeholder = "Please enter your full name";
+                return;  
+            }  
+              
+            if(!isNaN(fullName.value)){ 
+                fullName.value = ""
+                fullName.placeholder = "Only characters are allowed";
+                return;  
+            }  
+
+            if(signUpUsername.value == "") {
+                signUpUsername.value = "";
+                signUpUsername.placeholder = "Please enter your username";
+                return;  
+            }  
+          
+            if(signUpPassword.value  == "") {
+                signUpPassword.value = "";
+                signUpPassword.placeholder = "Fill the password please!";
+                return;  
+            }  
+            
+            if(singUpConfirmPassword.value == "") {  
+                singUpConfirmPassword.value = "";
+                singUpConfirmPassword.placeholder = "Enter the password please!"
+                return;  
+            }   
+             
+            if(signUpPassword.value.length < 8) { 
+                signUpPassword.value = "";
+                signUpPassword.placeholder = "Password must be atleast 8 characters" 
+                return;  
+            }  
+          
+            if(signUpPassword.value.length > 15) {
+                signUpPassword.value = ""; 
+                signUpPassword.placeholder = "Password must not exceed 15 characters"
+                return;  
+            }  
+            
+            if(signUpPassword.value != singUpConfirmPassword.value) {
+                signUpPassword.value = "";
+                signUpPassword.placeholder = "Passwords do not match";
+                singUpConfirmPassword.value = "";
+                singUpConfirmPassword.placeholder = "Passwords do not match";
+                return;  
+            } else {  
+              
             e.preventDefault();
             try {
                 let port = 5019;
@@ -262,11 +325,11 @@ getStartedButton.forEach((item) => {
                 console.log(er);
             }
 
+            }
+
         }
 
-        let signUpUsername = document.querySelector("#signup-username");
-        let signUpPassword = document.querySelector("#signup-password");
-        let signUpButton = document.querySelector("#signup-login");
+        
         signUpButton.addEventListener("click", signUpFunction);
 
 
