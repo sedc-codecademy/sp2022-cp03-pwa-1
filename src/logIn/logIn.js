@@ -5,6 +5,8 @@ let getStartedButton = document.querySelectorAll(".activate");
 let mainPage = document.querySelector(".main-page");
 let html = document.querySelector("html");
 
+
+
 // Vars
 
 // Func for creating HTML DOM Elements
@@ -30,10 +32,24 @@ let imageDiv = [];
 
 
 
+
+// let addNote = async () => {
+//     let url = "http://localhost:" + port + "/api/notes";
+//     var response = await fetch(url, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'text/plain'
+//         },
+//         body: addNoteInput.value
+//     });
+//     var data = await response.text();
+//     console.log(data);
+// }
+
 getStartedButton.forEach((item) => {
     item.addEventListener("click", function () {
-        
-        
+
+
         mainPage.classList.toggle("hidden");
         html.classList.toggle("htmlSet");
 
@@ -108,13 +124,15 @@ getStartedButton.forEach((item) => {
             <p>
             <input type="password" id="signup-password" name="signup-password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
             </p>
-            <p>
-            <input type="email" id="signup-email" name="signup-email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
-            </p>
+             
             <p>
             <input type="submit" id="signup-login" value="Sign up">
             </p>
         </form>`
+
+        // < p >
+        // <input type="email" id="signup-email" name="signup-email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+        // </>
 
         // swiper-slide [0]
 
@@ -174,6 +192,9 @@ getStartedButton.forEach((item) => {
         });
 
 
+
+
+
         const SignUpSwiper = new Swiper('.right-swiper', {
             // Optional parameters
             direction: 'horizontal',
@@ -210,7 +231,96 @@ getStartedButton.forEach((item) => {
             });
         })(jQuery);
 
+        // Signing up functionality, connection with backend established, gg!
+        async function signUpFunction(e) {
+            e.preventDefault();
+            try {
+                let port = 5019;
+                let url = "http://localhost:" + port + "/api/users/register";
+                var response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username: signUpUsername.value,
+                        password: signUpPassword.value
+                    }),
+
+                })
+                console.log(response);
+                const res = await response.json();
+                if (response.status == 200) {
+                    signUpUsername.value = "";
+                    signUpPassword.value = "";
+                }
+                else {
+                    setErrorMessage(res.error);
+                }
+            }
+            catch (er) {
+                console.log(er);
+            }
+
+        }
+
+        let signUpUsername = document.querySelector("#signup-username");
+        let signUpPassword = document.querySelector("#signup-password");
+        let signUpButton = document.querySelector("#signup-login");
+        signUpButton.addEventListener("click", signUpFunction);
+
+
+        async function logInFunction(e) {
+            e.preventDefault();
+            try {
+                let port = 5019;
+                let url = "http://localhost:" + port + "/api/users/login";
+                var response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username: logInUsername.value,
+                        password: logInPassword.value
+                    }),
+
+                })
+                console.log(response);
+                const res = await response.json();
+                sessionStorage.setItem("productivityToken", res.token);
+
+                if (response.status == 200) {
+                    logInUsername.value = "";
+                    logInPassword.value = "";
+
+                    mainPage.classList.remove("hidden");
+                    html.classList.remove("htmlSet");
+                    appLogIn.remove()
+                    swiperSlides = [];
+                    headerDiv = [];
+                    messageDiv = [];
+                    imageDiv = [];
+                }
+                else {
+                    setErrorMessage(res.error);
+                }
+            }
+            catch (er) {
+                console.log(er);
+            }
+
+        }
+
+        let logInUsername = document.querySelector("#username");
+        let logInPassword = document.querySelector("#password");
+        let logInButton = document.querySelector("#login");
+        logInButton.addEventListener("click", logInFunction);
+
     })
 
 
+
 })
+
+

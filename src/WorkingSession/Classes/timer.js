@@ -61,7 +61,7 @@ export default class Timer {
             this.remainingSeconds--;
             this.updateInterfaceTime();
 
-            if (this.remainingSeconds === 0) {
+            if (this.remainingSeconds == 0) {
                 this.stop();
                 if (this.autoClick !== null) this.autoClick();
             }

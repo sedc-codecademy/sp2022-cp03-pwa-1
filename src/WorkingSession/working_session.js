@@ -39,7 +39,7 @@ const closeModalFunction = () => {
 const openModalFunction = () => {
   sessionModals.classList.add("hidden");
   taskForm.classList.remove("hidden");
-  
+
 };
 
 
@@ -106,11 +106,11 @@ sessionCardButtonTimer.addEventListener("click", () => {
 addTaskButton.addEventListener("click", adjustClasses);
 
 function adjustClasses() {
-  
+
   taskForm.classList.remove("hidden");
   overlayDiv.classList.remove("hidden");
   addNoteButton.style.display = "flex";
-  
+
 };
 
 //Arrows up and down
@@ -254,7 +254,7 @@ document.querySelectorAll(".values").forEach((item) => {
       new Timer(longBreakDiv, longBreakDurationInput.value * 60, null, autoClick);
 
       if (e.target === saveTaskButton) {
-        
+
         resetTaskInputs();
         closeModalFunction();
         timerElement.style.display = "flex";
@@ -272,15 +272,15 @@ document.querySelectorAll(".values").forEach((item) => {
             e.preventDefault;
             //reset animation
             e.target.classList.remove("animate");
-          
+
             e.target.classList.add("animate");
             setTimeout(function () {
               e.target.classList.remove("animate");
             }, 700);
           };
-          
+
           var bubblyButtons = document.getElementsByClassName("bubbly-button");
-          
+
           for (var i = 0; i < bubblyButtons.length; i++) {
             bubblyButtons[i].addEventListener("click", animateButton, false);
           }
@@ -356,7 +356,7 @@ function clearTasks() {
         setTimeout(() => {
           removeClearButtonCheckAnimation()
         }, 1500);
-      
+
         shortBreakDiv.style.display = "flex";
         let div = document.createElement("div");
         div.setAttribute("class", "hide");
@@ -364,7 +364,7 @@ function clearTasks() {
 
         console.log("List successfully deleted");
         console.log(arrayOfTasks);
-        }, 500)
+      }, 500)
     }
   } else console.log("The list is empty");
 }
@@ -447,7 +447,7 @@ function createElementFunction(name, dis, attr, attrName, inner, where, type) {
 }
 
 function createTask() {
-  
+
   timeStamp();
   endSessionButton.disabled = false;
   if (document.querySelector(".hide")) {
@@ -463,7 +463,7 @@ function createTask() {
   ) {
 
     let number = createId();
-    
+
     let li = document.createElement("li");
     li.setAttribute("class", "liOfTasks"); // option 3
     //li innerHTML - take out in separate function
@@ -475,7 +475,7 @@ function createTask() {
     let activeCardMarker = document.createElement("div");
     activeCardMarker.setAttribute("class", "card_timer_container"); //option 2
     li.appendChild(activeCardMarker);
-    
+
     //set FLAG to the <li> - CHECK THE LOGIC FOR THE FLAG AND ADJUST IF NEEDED
     let flagParagraph = createElementFunction("flagParagraph", "none", "contentEditable", "false", '', li, "p");
     flagParagraph.setAttribute("class", "flag_paragraph");
@@ -486,7 +486,7 @@ function createTask() {
     setTimeout(() => {
       removeTaskButtonCheckAnimation();
     }, 1500)
-    
+
     //FINISH TASK BUTTON NEW LOGIC (12.09.2022)
     let finishedTaskButton = createElementFunction("finishedTaskButton", "flex", "class", "stopTask", "Finish task", li, "button");
 
@@ -651,10 +651,10 @@ function saveTimerAndPlay2() {
   isSessionActive = true;
   let timerSeconds = saveTimer(timerElement);
   new Timer(timerElement, timerSeconds, startTimerFunctionality).start();
-  setTimeout(function() {
+  setTimeout(function () {
     document.querySelector("#playButtonDiv").remove();
-  },1 * 1000)
-  
+  }, 1 * 1000)
+
 }
 
 function autoClick() {
@@ -691,12 +691,12 @@ function removeClearButtonCheckAnimation() {
   document.querySelector("#clearTasksBtn").classList.remove("success");
 }
 
-  
 
-  
-    
-  
-  
+
+
+
+
+
 
 
 
