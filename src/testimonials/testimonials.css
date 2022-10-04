@@ -81,26 +81,26 @@
 	right: -30px;
 	padding-right: 20px;
 	border-radius: 60px 0 0 60px;
-  text-align: center;
-  line-height: 4.5;
+  	text-align: center;
+  	line-height: 4.5;
 }
 
 .listing-carousel-button.listing-carousel-button-prev{
 	left: -30px;
 	padding-left: 20px;
 	border-radius: 0 60px 60px 0;
-  text-align: center;
-  line-height: 4.5;
+  	text-align: center;
+  	line-height: 4.5;
 }
 
 .listing-carousel-button.listing-carousel-button-next:hover{
 	right: -15px;
-	background: rgb(128, 128, 128);
+	background: rgb(100, 141, 145);
 }
 
 .listing-carousel-button.listing-carousel-button-prev:hover{
 	left: -15px;
-	background: rgb(128, 128, 128);
+	background: rgb(100, 141, 145);
 }
 
 .testi-item {

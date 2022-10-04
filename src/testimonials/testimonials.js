@@ -56,7 +56,7 @@ for(let i = 0; i < swiperSlidesTestimonials.length; i ++) {
 
 for(let i =0; i < testimonialsItem.length; i ++) {
     testimonialsItem[0].innerHTML = `
-    <div class="testi-avatar"><img src="/media/testimonials/7.jpg"></div>
+    <div class="testi-avatar"><img src="media/testimonials/7.jpg"></div>
     <div class="testimonials-text-before"></i></div>
     <div class="testimonials-text">
         <div class="listing-rating">
@@ -68,7 +68,7 @@ for(let i =0; i < testimonialsItem.length; i ++) {
         </div>
         <p>As someone who really does a bad job making to do lists, this app really makes making them a breeze. Traditionally I don't make lists, or planners, etc because of the overhead in doing so; I'd rather spend that time doing the things I know I need to do. For a while now I've tried to find an app that would change that, that would make planning a breeze. After trying SEVERAL productivity apps, this one quickly rose to the top. The interface is clean and simple and adding tasks takes no time at all.</p>
         <div class="testimonials-avatar">
-            <h3>Darko Dejanovski</h3>
+            <h3>Darko Dejanoski</h3>
             <h4>Senior Back-end developer</h4>
         </div>
     </div>
@@ -76,7 +76,7 @@ for(let i =0; i < testimonialsItem.length; i ++) {
     </div>`
 
     testimonialsItem[1].innerHTML = `
-    <div class="testi-avatar"><img src="/media/testimonials/4.jpg"></div>
+    <div class="testi-avatar"><img src="media/testimonials/4.jpg"></div>
     <div class="testimonials-text-before"></i></div>
     <div class="testimonials-text">
         <div class="listing-rating">
@@ -96,7 +96,7 @@ for(let i =0; i < testimonialsItem.length; i ++) {
     </div>`
 
     testimonialsItem[2].innerHTML = `
-    <div class="testi-avatar"><img src="/media/testimonials/6.jpg"></div>
+    <div class="testi-avatar"><img src="media/testimonials/6.jpg"></div>
     <div class="testimonials-text-before"></i></div>
     <div class="testimonials-text">
         <div class="listing-rating">
@@ -116,7 +116,7 @@ for(let i =0; i < testimonialsItem.length; i ++) {
     </div>`
 
     testimonialsItem[3].innerHTML = `
-    <div class="testi-avatar"><img src="/media/testimonials/5.jpg"></div>
+    <div class="testi-avatar"><img src="media/testimonials/5.jpg"></div>
     <div class="testimonials-text-before"></i></div>
     <div class="testimonials-text">
         <div class="listing-rating">
@@ -134,6 +134,8 @@ for(let i =0; i < testimonialsItem.length; i ++) {
     </div>
     <div class="testimonials-text-after"></i></div> 
     </div>`
+
+    testimonialsParagraph.innerText = `We love our users`
 }
 
 // Swiper
@@ -167,21 +169,6 @@ function testimonialsFunc() {
             }
         });
     }
-    
-// bubbles -----------------
-    
-    
-    // setInterval(function () {
-    //     var size = randomValue(sArray);
-    //     $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
-    //     $('.individual-bubble').animate({
-    //         'bottom': '100%',
-    //         'opacity': '-=0.7'
-    //     }, 4000, function () {
-    //         $(this).remove()
-    //     });
-    // }, 350);
-    
 }
 
 //   Init All ------------------
