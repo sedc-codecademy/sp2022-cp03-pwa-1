@@ -306,6 +306,7 @@ getStartedButton.forEach((item) => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
+                        FullName: fullName.value,
                         username: signUpUsername.value,
                         password: signUpPassword.value
                     }),
@@ -341,6 +342,7 @@ getStartedButton.forEach((item) => {
                 var response = await fetch(url, {
                     method: 'POST',
                     headers: {
+                        "Authorization": "Bearer" + sessionStorage.getItem("productivityToken"),
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
@@ -351,7 +353,7 @@ getStartedButton.forEach((item) => {
                 })
                 console.log(response);
                 const res = await response.json();
-                sessionStorage.setItem("productivityToken", res.token);
+                sessionStorage.setItem("productivityToken", res.data);
 
                 if (response.status == 200) {
                     logInUsername.value = "";

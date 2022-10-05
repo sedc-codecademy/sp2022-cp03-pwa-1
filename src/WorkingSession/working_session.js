@@ -159,7 +159,48 @@ cancelTaskButton.addEventListener("click", function () {
 
 endSessionButton.style.display = "none";
 
+async function endSessionToDb() {
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Sessions/addSession";
+    var response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        "Authorization": "Bearer" + sessionStorage.getItem("productivityToken"),
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        StartTime: startSessionTime,
+        FinishTime: new Date(),
+        SessionLenght: 4,
+        Tasks: [...arrayOfTasks]
+      }),
+
+    })
+    
+    const res = await response.json();
+    //sessionStorage.setItem("productivityToken", res.token);
+
+    if (response.status == 200) {
+        startSessionTime = "";
+        // finishTime= "";
+        [...arrayOfTasks] = [];
+        // SessionLenght: diffBetweenTimes(object.startTime, object.finishTime);
+      // reminderPriority.options[reminderPriority.selectedIndex].value = "High";
+    }
+    else {
+      setErrorMessage(res.error);
+    }
+  }
+  catch (er) {
+    console.log(er);
+  }
+  resetValues();
+}
+
 function endSessionFunction() {
+  endSessionToDb();
   let confirmEnd;
   confirmEnd = confirm("End the session: Have you marked the tasks you have finished as 'Finished'? If yes, press okay.");
   if (confirmEnd) {

@@ -204,26 +204,26 @@ cancelInput.addEventListener("click", function () {
 reminderBtn.addEventListener("click", function () {
   gettingAllReminders();
   if (inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '') {
-    return alert('Please enter input in all fields!')
+    return alert('Please enter input in all fields!');
   };
 
   createReminderObject();
-  renderTable(remindersTable);
-  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-  resetValues();
+  // renderTable(remindersTable);
+  // renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  // resetValues();
 });
 
-document.querySelector(".button").addEventListener("click", function () {
-  remindersTable.innerHTML = '';
-  reminderId = 1;
-  inputReminderName = 0;
-  inputReminderDate = 0;
-  inputReminderTime = 0;
-  inputReminderPriority = 0;
-  reminderMockData = [];
-  inputReminderNote = 0;
-  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-});
+// document.querySelector(".button").addEventListener("click", function () {
+//   remindersTable.innerHTML = '';
+//   reminderId = 1;
+//   inputReminderName = 0;
+//   inputReminderDate = 0;
+//   inputReminderTime = 0;
+//   inputReminderPriority = 0;
+//   reminderMockData = [];
+//   inputReminderNote = 0;
+//   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+// });
 
 //function for getting inputs for reminder
 function gettingReminderInput(elem) {
@@ -284,28 +284,29 @@ async function reminderToDb(e) {
   console.log("hello")
   e.preventDefault();
   try {
-    let port = 5500;
-    let url = "http://localhost:" + port + "/api/reminders/addReminder";
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/addReminder";
     var response = await fetch(url, {
       method: 'POST',
-      headers: {
+      headers:{
         "Content-Type": "application/json",
-      },
-
+        "Authorization": sessionStorage.getItem("productivityToken"),
+      }, 
       body: JSON.stringify({
-        Title: "reminderName.value",
-        ReminderInfo: "notes.value",
-        ReminderDate: "reminderDate.value",
-        ReminderTime: "reminderTime.value",
+        ReminderTitle: reminderName.value,
+        ReminderNote: notes.value,
+        ReminderDate: reminderDate.value,
+        ReminderTime: reminderTime.value,
         Priority: reminderPriority.options[reminderPriority.selectedIndex]
       }),
-
     })
+    console.log(url);
+    console.log(sessionStorage.getItem("productivityToken"));
     console.log(reminderName.value);
     console.log(reminderName.value, notes.value, reminderDate.value, reminderTime.value, reminderPriority.options[reminderPriority.selectedIndex]);
     console.log(response.body);
     const res = await response.json();
-    //sessionStorage.setItem("productivityToken", res.token);
+    // sessionStorage.setItem("productivityToken", res.token);
 
     if (response.status == 201) {
       reminderName.value = "";
@@ -321,6 +322,7 @@ async function reminderToDb(e) {
   catch (er) {
     console.log(er);
   }
+  resetValues();
 }
 
 reminderBtn.addEventListener("click", reminderToDb);
@@ -352,11 +354,6 @@ function renderTable(elem) {
   });
   elem.innerHTML = cards;
   markAsDone();
-
-
-
-
-
 };
 
 function markAsDone() {
@@ -369,7 +366,6 @@ function markAsDone() {
       e.target.style.cursor = "default";
     });
   });
-
 }
 
 (function () {
