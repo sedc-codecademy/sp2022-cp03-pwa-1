@@ -14,7 +14,6 @@ const sessionCardShortBreak4 = document.querySelector(".sessionButtonShortBreak"
 const sessionCardLongBreak4 = document.querySelector(".sessionButtonLongBreak");
 const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
 
-
 sessionCardSessions4.addEventListener("click", () => {
 
   calendarYear1.style.backgroundColor = "#2980b9";
@@ -195,7 +194,7 @@ let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
 let inputReminderPriority = 0;
-let inputReminderNote = 0;
+// let inputReminderNote = 0;
 
 cancelInput.addEventListener("click", function () {
   resetValues();
@@ -208,22 +207,23 @@ reminderBtn.addEventListener("click", function () {
   };
 
   createReminderObject();
-  // renderTable(remindersTable);
-  // renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  renderTable(remindersTable);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
   // resetValues();
 });
 
-// document.querySelector(".button").addEventListener("click", function () {
-//   remindersTable.innerHTML = '';
-//   reminderId = 1;
-//   inputReminderName = 0;
-//   inputReminderDate = 0;
-//   inputReminderTime = 0;
-//   inputReminderPriority = 0;
-//   reminderMockData = [];
-//   inputReminderNote = 0;
-//   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-// });
+document.querySelector(".button").addEventListener("click", function () {
+  remindersTable.innerHTML = '';
+  // reminderId = 1;
+  // inputReminderName = 0;
+  // reminderNote.value = 0;
+  // inputReminderDate = 0;
+  // inputReminderTime = 0;
+  // inputReminderPriority = 0;
+  // reminderMockData = [];
+  // inputReminderNote = 0;
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+});
 
 //function for getting inputs for reminder
 function gettingReminderInput(elem) {
@@ -246,7 +246,6 @@ function gettingAllReminders() {
   inputReminderTime = gettingReminderInput(reminderTime);
   inputReminderPriority = gettingReminderInput(reminderPriority);
   inputReminderNote = gettingReminderInput(notes);
-
 };
 
 //function for deleting all reminders
@@ -278,8 +277,6 @@ function createReminderObject() {
   reminderId++;
 };
 
-
-
 async function reminderToDb(e) {
   e.preventDefault();
   try {
@@ -296,8 +293,9 @@ async function reminderToDb(e) {
         ReminderNote: notes.value,
         ReminderDate: reminderDate.value,
         ReminderTime: reminderTime.value,
+        Priority: reminderPriority.selectedIndex,
         // Priority: reminderPriority.options[reminderPriority.selectedIndex],
-        Priority: 1
+        // Priority: 1
       }),
     })
     const res = await response.json();
