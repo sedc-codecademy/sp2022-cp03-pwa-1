@@ -281,7 +281,6 @@ function createReminderObject() {
 
 
 async function reminderToDb(e) {
-  console.log("hello")
   e.preventDefault();
   try {
     let port = 5019;
@@ -290,30 +289,25 @@ async function reminderToDb(e) {
       method: 'POST',
       headers:{
         "Content-Type": "application/json",
-        "Authorization": sessionStorage.getItem("productivityToken"),
+        "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
       }, 
       body: JSON.stringify({
         ReminderTitle: reminderName.value,
         ReminderNote: notes.value,
         ReminderDate: reminderDate.value,
         ReminderTime: reminderTime.value,
-        Priority: reminderPriority.options[reminderPriority.selectedIndex]
+        // Priority: reminderPriority.options[reminderPriority.selectedIndex],
+        Priority: 1
       }),
     })
-    console.log(url);
-    console.log(sessionStorage.getItem("productivityToken"));
-    console.log(reminderName.value);
-    console.log(reminderName.value, notes.value, reminderDate.value, reminderTime.value, reminderPriority.options[reminderPriority.selectedIndex]);
-    console.log(response.body);
     const res = await response.json();
-    // sessionStorage.setItem("productivityToken", res.token);
 
     if (response.status == 201) {
       reminderName.value = "";
       notes.value = "";
       reminderDate = "";
       reminderTime = "";
-      reminderPriority.options[reminderPriority.selectedIndex].value = "High";
+      // reminderPriority.options[reminderPriority.selectedIndex].value = "High";
     }
     else {
       setErrorMessage(res.error);
