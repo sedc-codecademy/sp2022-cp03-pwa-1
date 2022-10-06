@@ -12,7 +12,6 @@
   --clr-neutral-1000: rgba(0, 0, 0, 0.332);
 }
 
-
 /* FONTS */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
@@ -92,7 +91,6 @@ p {
 
 .hero>* {
   flex: 1 1 25em;
-
 }
 
 /* GET STARTED BUTTON */ 
@@ -136,8 +134,6 @@ p {
   -ms-transition: 0.3s ease-in-out;
   -o-transition: 0.3s ease-in-out;
   box-shadow: 0 11px 26px 0 rgb(0 0 0 / 23%);
-  
-
 }
 
 .blue-btn:hover{
@@ -166,10 +162,8 @@ p {
   width: 100%;
   background-color: rgb(252, 252, 253);
   height: 250vh;
-  top: 85%;
+  top: 100%;
   padding-top: 5rem;
-  
-  
 }
 
 .img-presentation {
@@ -259,25 +253,40 @@ p {
 
 /* WAVE */
 
-.custom-shape-divider-top-1664822071 {
+.custom-shape-divider-bottom-1665005886 {
   position: absolute;
-  top: 0;
+  top: 82%;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
 }
 
-.custom-shape-divider-top-1664822071 svg {
+.custom-shape-divider-bottom-1665005886 svg {
   position: relative;
   display: block;
-  width: calc(100% + 1.3px);
-  height: 84px;
+  width: calc(189% + 1.3px);
+  height: 219px;
 }
 
-.custom-shape-divider-top-1664822071 .shape-fill {
-  fill: rgb(89, 143, 148);
+.custom-shape-divider-bottom-1665005886 .shape-fill {
+  fill: rgb(252, 252, 253);
 }
+
+
+body .svg-top {
+  position: absolute;
+  top: -800px;
+  right: -300px;
+  z-index: -1;
+  
+}
+
+use {
+  fill :rgb(252, 252, 253);
+}
+
+
 /* CARDS */
 
 .swiper {
@@ -318,7 +327,7 @@ p {
 
 .arrow {
   position: fixed;
-  bottom: 20%;
+  top: 85%;
   left: 49%;
   display: flex;
   margin-left: -8px;
@@ -836,7 +845,7 @@ p {
   display: inline-block;
   text-decoration: none;
   padding: 30px 15px;
-  color: white;
+  color: #1e1e1e;
   border-top: 5px solid transparent;
   transition: padding 0.4s linear 0s;
   font-size: 16px;
@@ -1570,7 +1579,7 @@ p {
 .svg-success-hero .success-circle-outline-hero {
   fill: none;
   stroke-width: 1px;
-  stroke: rgb(255, 255, 255);
+  stroke: rgb(89, 143, 148);
   stroke-dasharray: 72px, 72px;
   stroke-dashoffset: 72px;
   -webkit-animation: success-circle-outline 300ms ease-in-out 800ms forwards;
@@ -1578,7 +1587,7 @@ p {
   opacity: 0;
 }
 .svg-success-hero .success-circle-fill-hero {
-  fill: rgb(255, 255, 255);
+  fill: rgb(89, 143, 148);
   stroke: none;
   opacity: 0;
   -webkit-animation: success-circle-fill 300ms ease-out 1100ms forwards;

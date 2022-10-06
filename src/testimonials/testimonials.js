@@ -135,7 +135,7 @@ for(let i =0; i < testimonialsItem.length; i ++) {
     <div class="testimonials-text-after"></i></div> 
     </div>`
 
-    testimonialsParagraph.innerText = `We love our users`
+    
 }
 
 // Swiper
