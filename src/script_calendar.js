@@ -232,7 +232,6 @@ function gettingReminderInput(elem) {
 };
 
 //function for resetting values
-
 function resetValues() {
   reminderName.value = "";
   reminderDate.value = "";
@@ -242,6 +241,7 @@ function resetValues() {
 
 //function for getting all inputs for reminder
 function gettingAllReminders() {
+  inputReminderId = gettingReminderInput(reminderId);
   inputReminderName = gettingReminderInput(reminderName);
   inputReminderDate = gettingReminderInput(reminderDate);
   inputReminderTime = gettingReminderInput(reminderTime);
@@ -256,7 +256,7 @@ function ClearAllReminders(elem) {
 
 //function for making objects with reminders
 function ReminderObject(id, name, date, time, priority, note) {
-  // this.id = id;
+  this.ReminderId = id;
   this.ReminderTitle = name;
   this.ReminderDate = date;
   this.ReminderTime = time;
@@ -266,14 +266,13 @@ function ReminderObject(id, name, date, time, priority, note) {
 
 function createReminderObject() {
     let reminder = { 
-    // id: reminderId,
+    reminderId: gettingReminderInput(reminderId),
     reminderTitle: gettingReminderInput(reminderName),
     reminderDate: gettingReminderInput(reminderDate),
     reminderTime: gettingReminderInput(reminderTime),
     priority: gettingReminderInput(reminderPriority),
-    reminderNote: gettingReminderInput(notes)} 
-  
-
+    reminderNote: gettingReminderInput(notes)
+  } 
   reminderMockData.push(reminder);
   reminderId++;
 };
@@ -319,7 +318,6 @@ reminderBtn.addEventListener("click", reminderToDb);
 
 //function for rendering the table of reminders
 function renderTable(elem) {
-
   let cards = "";
   reminderMockData.forEach((reminderItem) => {
     cards += `
@@ -337,7 +335,10 @@ function renderTable(elem) {
     <br><b>NOTES</b>
     <br><p>${reminderItem.reminderNote}</p>
     </div>
-    <button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
+    <button class="removeReminderByIdBtn" onclick="
+    deleteReminderFromDb(${reminderItem.reminderId})
+    deleteReminderById(${reminderItem.id}); 
+    
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
     ">Delete reminder</button>
     </div>`;
@@ -360,59 +361,37 @@ async function getAllRemindersFromDb() {
     });
     var items = await response.json();
     items.forEach((item) => reminderMockData.push(item));
-    console.log(reminderMockData);
     renderTable(remindersTable);
-
-
-    // console.log(items)
   } 
   catch (er) {
     console.log(er);
   }
-  // {
-  
-  //     method: 'GET',
-  //     headers:{
-  //       "Content-Type": "application/json",
-  //       "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
-  //     }, 
-  //     // body: JSON.stringify({
-  //     //   ReminderTitle: reminderName.value,
-  //     //   ReminderNote: notes.value,
-  //     //   ReminderDate: reminderDate.value,
-  //     //   ReminderTime: reminderTime.value,
-  //     //   Priority: reminderPriority.selectedIndex,
-  //     // }),
-  //   })
-  //   const res = await response.json();
-  //   if(res.status == 200) {
-  //     var parseJSON = JSON.parse(res);
-  //     console.log(parseJSON);
-  //   }
-
-  //   // if (response.status == 201) {
-  //   //   reminderName.value = "";
-  //   //   notes.value = "";
-  //   //   reminderDate = "";
-  //   //   reminderTime = "";
-  //   // }
-  //   // else {
-  //   //   setErrorMessage(res.error);
-  //   // }
-  // }
-  // catch (er) {
-  //   console.log(er);
-  // }
-  // resetValues();
 }
 
 showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
 
-
+async function deleteReminderFromDb(reminderId) {
+  reminderMockData = [];
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/" + reminderId;
+    var response = await fetch(url, {
+      method: 'DELETE',
+           headers:{
+             "Content-Type": "application/json",
+             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+           }
+    });
+    var items = await response.json();
+    console.log(items);
+  } 
+  catch (er) {
+    console.log(er);
+  }
+}
 
 function markAsDone() {
   let button = document.querySelectorAll(".mark-done");
-
   button.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.target.closest(".cards-reminder").classList.add("addOpacity");
@@ -435,12 +414,11 @@ function markAsDone() {
       return setTimeout(removeSuccess, 3000);
     });
   });
-
 }).call(this);
 
 //function for deleting reminder by ID from the table
 function deleteReminderById(reminderId) {
-  const newData = reminderMockData.filter(x => x.id !== reminderId);
+  const newData = reminderMockData.filter(x => x.ReminderId == reminderId);
   reminderMockData = [...newData];
   renderTable(remindersTable);
 };
