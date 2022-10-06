@@ -188,6 +188,7 @@ let reminderPriority = document.querySelector('#priorityRem');
 const remindersForm = document.querySelector(".AddReminderPopUp");
 let notes = document.querySelector("#reminder-note");
 let reminderContainer = document.querySelector(".AddReminderPopUp");
+let showAllRemindersBtn = document.querySelector(".showAllRemindersBtn");
 
 let reminderId = 1;
 let inputReminderName = 0;
@@ -206,9 +207,13 @@ reminderBtn.addEventListener("click", function () {
     return alert('Please enter input in all fields!');
   };
 
+  reminderToDb();
+  // reminderMockData = [];
   createReminderObject();
+  getAllRemindersFromDb();
+  // showAllRemindersBtn.click();
   renderTable(remindersTable);
-  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  // renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
   // resetValues();
 });
 
@@ -231,7 +236,6 @@ function gettingReminderInput(elem) {
 };
 
 //function for resetting values
-
 function resetValues() {
   reminderName.value = "";
   reminderDate.value = "";
@@ -256,11 +260,11 @@ function ClearAllReminders(elem) {
 //function for making objects with reminders
 function ReminderObject(id, name, date, time, priority, note) {
   this.id = id;
-  this.name = name;
-  this.date = date;
-  this.time = time;
+  this.ReminderTitle = name;
+  this.ReminderDate = date;
+  this.ReminderTime = time;
   this.priority = priority;
-  this.note = note;
+  this.ReminderNote = note;
 };
 
 function createReminderObject() {
@@ -277,8 +281,7 @@ function createReminderObject() {
   reminderId++;
 };
 
-async function reminderToDb(e) {
-  e.preventDefault();
+async function reminderToDb() {
   try {
     let port = 5019;
     let url = "http://localhost:" + port + "/api/Reminders/addReminder";
@@ -294,8 +297,6 @@ async function reminderToDb(e) {
         ReminderDate: reminderDate.value,
         ReminderTime: reminderTime.value,
         Priority: reminderPriority.selectedIndex,
-        // Priority: reminderPriority.options[reminderPriority.selectedIndex],
-        // Priority: 1
       }),
     })
     const res = await response.json();
@@ -305,7 +306,6 @@ async function reminderToDb(e) {
       notes.value = "";
       reminderDate = "";
       reminderTime = "";
-      // reminderPriority.options[reminderPriority.selectedIndex].value = "High";
     }
     else {
       setErrorMessage(res.error);
@@ -315,9 +315,10 @@ async function reminderToDb(e) {
     console.log(er);
   }
   resetValues();
+  renderTable(remindersTable);
 }
 
-reminderBtn.addEventListener("click", reminderToDb);
+// reminderBtn.addEventListener("click", reminderToDb);
 
 //function for rendering the table of reminders
 function renderTable(elem) {
@@ -331,13 +332,13 @@ function renderTable(elem) {
       <button class="mark-done">Mark as done</button>
     </div>
     <div class="inside-reminders">
-    <b>${reminderItem.name} </b> 
+    <b>${reminderItem.reminderTitle} </b> 
     <br><b>REMIND ME </b> 
-    <br><b>${reminderItem.date}, ${reminderItem.time}</b> 
+    <br><b>${reminderItem.reminderDate}, ${reminderItem.reminderTime}</b> 
     <br><b>PRIORITY</b>
     <br><b>${reminderItem.priority}</b>
     <br><b>NOTES</b>
-    <br><p>${reminderItem.note}</p>
+    <br><p>${reminderItem.reminderNote}</p>
     </div>
     <button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
@@ -347,6 +348,30 @@ function renderTable(elem) {
   elem.innerHTML = cards;
   markAsDone();
 };
+
+async function getAllRemindersFromDb() {
+  reminderMockData = [];
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/getAllReminders";
+    var response = await fetch(url, {
+      method: 'GET',
+           headers:{
+             "Content-Type": "application/json",
+             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+           }
+    });
+    var items = await response.json();
+    items.forEach((item) => reminderMockData.push(item));
+    console.log(reminderMockData);
+    renderTable(remindersTable);
+  } 
+  catch (er) {
+    console.log(er);
+  }
+}
+
+// showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
 
 function markAsDone() {
   let button = document.querySelectorAll(".mark-done");
