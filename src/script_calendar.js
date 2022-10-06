@@ -207,13 +207,9 @@ reminderBtn.addEventListener("click", function () {
     return alert('Please enter input in all fields!');
   };
 
-  reminderToDb();
-  // reminderMockData = [];
   createReminderObject();
-  getAllRemindersFromDb();
-  // showAllRemindersBtn.click();
   renderTable(remindersTable);
-  // renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
   // resetValues();
 });
 
@@ -236,6 +232,7 @@ function gettingReminderInput(elem) {
 };
 
 //function for resetting values
+
 function resetValues() {
   reminderName.value = "";
   reminderDate.value = "";
@@ -259,7 +256,7 @@ function ClearAllReminders(elem) {
 
 //function for making objects with reminders
 function ReminderObject(id, name, date, time, priority, note) {
-  this.id = id;
+  // this.id = id;
   this.ReminderTitle = name;
   this.ReminderDate = date;
   this.ReminderTime = time;
@@ -268,20 +265,21 @@ function ReminderObject(id, name, date, time, priority, note) {
 };
 
 function createReminderObject() {
-  let reminder = new ReminderObject(
-    id = reminderId,
-    gettingReminderInput(reminderName),
-    gettingReminderInput(reminderDate),
-    gettingReminderInput(reminderTime),
-    gettingReminderInput(reminderPriority),
-    gettingReminderInput(notes)
-  );
+    let reminder = { 
+    // id: reminderId,
+    reminderTitle: gettingReminderInput(reminderName),
+    reminderDate: gettingReminderInput(reminderDate),
+    reminderTime: gettingReminderInput(reminderTime),
+    priority: gettingReminderInput(reminderPriority),
+    reminderNote: gettingReminderInput(notes)} 
+  
 
   reminderMockData.push(reminder);
   reminderId++;
 };
 
-async function reminderToDb() {
+async function reminderToDb(e) {
+  e.preventDefault();
   try {
     let port = 5019;
     let url = "http://localhost:" + port + "/api/Reminders/addReminder";
@@ -315,10 +313,9 @@ async function reminderToDb() {
     console.log(er);
   }
   resetValues();
-  renderTable(remindersTable);
 }
 
-// reminderBtn.addEventListener("click", reminderToDb);
+reminderBtn.addEventListener("click", reminderToDb);
 
 //function for rendering the table of reminders
 function renderTable(elem) {
@@ -365,13 +362,53 @@ async function getAllRemindersFromDb() {
     items.forEach((item) => reminderMockData.push(item));
     console.log(reminderMockData);
     renderTable(remindersTable);
+
+
+    // console.log(items)
   } 
   catch (er) {
     console.log(er);
   }
+  // {
+  
+  //     method: 'GET',
+  //     headers:{
+  //       "Content-Type": "application/json",
+  //       "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+  //     }, 
+  //     // body: JSON.stringify({
+  //     //   ReminderTitle: reminderName.value,
+  //     //   ReminderNote: notes.value,
+  //     //   ReminderDate: reminderDate.value,
+  //     //   ReminderTime: reminderTime.value,
+  //     //   Priority: reminderPriority.selectedIndex,
+  //     // }),
+  //   })
+  //   const res = await response.json();
+  //   if(res.status == 200) {
+  //     var parseJSON = JSON.parse(res);
+  //     console.log(parseJSON);
+  //   }
+
+  //   // if (response.status == 201) {
+  //   //   reminderName.value = "";
+  //   //   notes.value = "";
+  //   //   reminderDate = "";
+  //   //   reminderTime = "";
+  //   // }
+  //   // else {
+  //   //   setErrorMessage(res.error);
+  //   // }
+  // }
+  // catch (er) {
+  //   console.log(er);
+  // }
+  // resetValues();
 }
 
-// showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
+showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
+
+
 
 function markAsDone() {
   let button = document.querySelectorAll(".mark-done");
