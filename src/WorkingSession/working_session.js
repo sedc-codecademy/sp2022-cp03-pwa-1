@@ -166,17 +166,16 @@ async function endSessionToDb() {
     var response = await fetch(url, {
       method: 'POST',
       headers: {
-        "Authorization": "Bearer" + sessionStorage.getItem("productivityToken"),
+        "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
         "Content-Type": "application/json",
       },
 
       body: JSON.stringify({
         StartTime: startSessionTime,
         FinishTime: new Date(),
-        SessionLenght: 4,
+        SessionLength: diffBetweenTimes(startSessionTime, new Date()),
         Tasks: [...arrayOfTasks]
       }),
-
     })
     
     const res = await response.json();
@@ -242,11 +241,10 @@ const fillSession = (object) => {
   object.finishTime = new Date();
   object.sessionTasks = [...arrayOfTasks];
   object.sessionLength = diffBetweenTimes(object.startTime, object.finishTime);
-  console.log(object);
 };
 
 const diffBetweenTimes = (date1, date2) => {
-  return Math.abs(date2 - date1) / 1000;
+  return parseInt(Math.abs(date2 - date1) / 1000);
 }
 
 const clearAll = () => {
@@ -409,8 +407,6 @@ function clearTasks() {
     }
   } else console.log("The list is empty");
 }
-
-
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot
 function buttonsRemoveEvents() {
@@ -669,11 +665,9 @@ function saveTimer(element) {
   }
 
   if (element !== timerElement) {
-    console.log("From saveTimer element !== timerElement");
     new Timer(element, sumOfTimer);
   }
   else {
-    console.log("From element == timerElement");
     new Timer(element, sumOfTimer, startTimerFunctionality);
   }
   return sumOfTimer;
