@@ -617,7 +617,7 @@ body .svg-top {
 }
 
 .box-out {
-  position: fixed;
+  /* position: fixed; */
   left: 0px;
   margin: 0;
   -webkit-transition: .5s ease-out;
@@ -626,6 +626,9 @@ body .svg-top {
   -ms-transition: .5s ease-out;
   transition: .5s ease-out;
   height: 100%;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
 }
 
 .box-in {
@@ -651,6 +654,7 @@ body .svg-top {
 
 .menu-btn-left {
   background: url(media/right.png) no-repeat;
+  left: 10px;
   
   content: url(media/right.png)
 }
@@ -666,6 +670,8 @@ body .svg-top {
   width: 100%;
   padding: 0 2rem;
   margin-top: 2rem;
+  border: 2px solid red;
+  
 }
 
 .div1 span,
