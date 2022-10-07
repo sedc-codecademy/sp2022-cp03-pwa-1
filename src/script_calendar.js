@@ -314,6 +314,7 @@ async function reminderToDb(e) {
     console.log(er);
   }
   resetValues();
+  console.log("edna linija");
 }
 
 reminderBtn.addEventListener("click", reminderToDb);
