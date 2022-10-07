@@ -141,7 +141,7 @@ function getDay(date) {
 function renderCalendar(elem, daysInMonthCallback, dataArr) {
 
   const parsedReminderData = dataArr.map((item) => {
-    const parsedData = item.date.split('-')
+    const parsedData = item.reminderDate.split('-')
     const newObj = {
       year: parseInt(parsedData[0]),
       month: parseInt(parsedData[1]),
@@ -271,7 +271,7 @@ function createReminderObject() {
     reminderNote: gettingReminderInput(notes)
   } 
   reminderMockData.push(reminder);
-  reminderId++;
+  // reminderId++;
 };
 
 async function reminderToDb(e) {
@@ -294,7 +294,7 @@ async function reminderToDb(e) {
       }),
     })
     const res = await response.json();
-
+    
     if (response.status == 201) {
       reminderName.value = "";
       notes.value = "";
@@ -304,12 +304,13 @@ async function reminderToDb(e) {
     else {
       setErrorMessage(res.error);
     }
+    console.log(res);
   }
   catch (er) {
     console.log(er);
   }
+  getAllRemindersFromDb();
   resetValues();
-  console.log("edna linija");
 }
 
 reminderBtn.addEventListener("click", reminderToDb);
@@ -332,6 +333,8 @@ function renderTable(elem) {
     <br><b>${reminderItem.priority}</b>
     <br><b>NOTES</b>
     <br><p>${reminderItem.reminderNote}</p>
+    <br><b>ID</b>
+    <br><p>${reminderItem.reminderId}</p>
     </div>
     <button class="removeReminderByIdBtn" onclick="
     deleteReminderFromDb(${reminderItem.reminderId})
@@ -369,7 +372,7 @@ async function getAllRemindersFromDb() {
 showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
 
 async function deleteReminderFromDb(reminderId) {
-  reminderMockData = [];
+  // reminderMockData = [];
   try {
     let port = 5019;
     let url = "http://localhost:" + port + "/api/Reminders/" + reminderId;
@@ -381,11 +384,15 @@ async function deleteReminderFromDb(reminderId) {
            }
     });
     var items = await response.json();
+    getAllRemindersFromDb();
     console.log(items);
   } 
   catch (er) {
     console.log(er);
   }
+  getAllRemindersFromDb();
+  renderTable(remindersTable);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 }
 
 function markAsDone() {
