@@ -571,7 +571,7 @@ function createTask() {
     //Take the object creation out in function
     let test = {
       title: taskTitle.value,
-      assignedTaskDuration: taskDuration.value,
+      assignedTimeDuration: taskDuration.value * 60,
       timeNow: timeStamp,
       time: [],
       id: number,

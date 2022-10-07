@@ -63,9 +63,108 @@
 //       }
 //     });
 
-let startingDate = document.getElementById("startDate");
-let endingDate = document.getElementById("endDate");
-startingDate.value = new Date(new Date().getTime() - 60 * 60 * 24 * 1000 * 6).toISOString().slice(0, 10);
+let activityHoursMockData = [];
+
+async function getAllSessionsFromDb() {
+    // statisticsMockData = [];
+    try {
+      let port = 5019;
+      let url = "http://localhost:" + port + "/api/Sessions/getAllSessions";
+      var response = await fetch(url, {
+        method: 'GET',
+             headers:{
+               "Content-Type": "application/json",
+               "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+             }
+      });
+      var items = await response.json();
+      items.forEach((item) => activityHoursMockData.push(item));
+
+    //   console.log(items);
+    //   const startTime = items[0].startTime;
+    //   const finishTime = items[0].finishTime;
+    //   console.log(startTime);
+    //   console.log(finishTime);
+
+    
+    //   items.forEach((item) => reminderMockData.push(item));
+} 
+catch (er) {
+    console.log(er);
+}
+};
+
+getAllSessionsFromDb();
+console.log(activityHoursMockData);
+
+let session1 = [];
+setTimeout(() => {
+    for (let i = 0; i <= activityHoursMockData.length; i++) {
+        console.log(activityHoursMockData[i])
+} 1000
+})
+// for (let i = 0; i <= activityHoursMockData.length; i++) {
+//             console.log(activityHoursMockData[i]);
+// }
+
+activityHoursMockData.forEach(element => {
+    element.startTime = element.startTime
+    console.log(element.startTime);
+});
+console.log(typeof(smth1));
+
+
+
+
+// let arrayOfSessionDates = activityHoursMockData.flatMap((item) => item.finishTime);
+
+// const smth = [
+//     {
+//         key: "1",
+//         value: "blabla"
+//     }, 
+//     {
+//         key: "2",
+//         value: "blabla"
+//     },
+//     {
+//         key: "3",
+//         value: "blabla"
+//     }
+// ];
+// console.log(smth);
+
+// let smth1 = [...smth];
+// console.log(smth1);
+
+
+
+// activityHoursMockData.map((item) => arrayOfSessionDates.push(item.finishTime));
+// console.log(arrayOfSessionDates);
+// console.log(activityHoursMockData);
+// activityHoursMockData.forEach(mobile => {
+//     for (let key in mobile) {
+//       console.log(`${key}: ${mobile[key]}`)
+//     }
+//   })
+//   console.log(typeof(activityHoursMockData));
+// function blabla() {
+//     getAllSessionsFromDb();
+//     for (let i = 0; i <= activityHoursMockData.length; i++) {
+//         console.log(activityHoursMockData[i]);
+//         // arrayOfSessionDates.push(activityHoursMockData[i].finishTime.value)
+//     }
+// }
+
+// blabla();
+// for (let i = 0; i <= activityHoursMockData.length; i++) {
+//     console.log(activityHoursMockData[i]);
+    // arrayOfSessionDates.push(activityHoursMockData[i].finishTime.value)
+// }
+  
+  let startingDate = document.getElementById("startDate");
+  let endingDate = document.getElementById("endDate");
+  startingDate.value = new Date(new Date().getTime() - 60 * 60 * 24 * 1000 * 6).toISOString().slice(0, 10);
 endingDate.value = new Date().toISOString().slice(0, 10);
 
 function startingArrayOfChartDates() {
@@ -89,12 +188,10 @@ function startingArrayOfChartDates() {
 // } 
 
 
-const allSessions1 = JSON.parse(localStorage.getItem("sessions"));
+const allSessions1 = [...activityHoursMockData];
+// console.log(allSessions1);
 //console.log(allSessions1);
-let arrayOfSessionDates = [];
-for (let i = 0; i < allSessions1?.length; i++) {
-    arrayOfSessionDates.push(allSessions1[i].sessionDate)
-}
+// console.log(arrayOfSessionDates);
 //console.log(arrayOfSessionDates); // se dobiva niza od datumite na sekoja oddelna sesija// NO, datumite se povtoruvaat
 
 let arrayOfHours = [];

@@ -362,6 +362,7 @@ async function getAllRemindersFromDb() {
     });
     var items = await response.json();
     items.forEach((item) => reminderMockData.push(item));
+    console.log(reminderMockData);
     renderTable(remindersTable);
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
   } 
