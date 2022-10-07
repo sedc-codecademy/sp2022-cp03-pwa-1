@@ -39,20 +39,25 @@
   display:flex;
   justify-content: center;
   align-items:center;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
   
   
 }
 
 .text-headline {
  
-  width: 100%;
+  width: 95.5%;
   height: 35%;
   padding: 10px;
   display:flex;
   justify-content:flex-start;
   align-items:flex-start;
-  background-color: rgb(2, 34, 50);
+  background-color: rgb(54, 57, 59);
   cursor: pointer;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  
 }
 
 .text-headline h2, .text-headline-new-article h2 {

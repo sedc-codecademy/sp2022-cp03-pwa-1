@@ -38,6 +38,32 @@
                   <use xlink:href="#path-1" fill="white" fill-opacity="1"/>
                 </g>
               </svg>
+                <div class="flip-card" tabIndex="0">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="clock">
+                        <div class="top"></div>
+                        <div class="right"></div>
+                        <div class="bottom"></div>
+                        <div class="left"></div>
+                        <div class="center"></div>
+                        <div class="shadow"></div>
+                        <div class="hour"></div>
+                        <div class="minute"></div>
+                        <div class="second"></div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-success-hero" viewBox="0 0 24 24">
+                        <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                          <circle class="success-circle-outline-hero" cx="12" cy="12" r="11.5"/>
+                          <circle class="success-circle-fill-hero" cx="12" cy="12" r="11.5"/>
+                          <polyline class="success-tick-hero" points="17,8.5 9.5,15.5 7,13"/>
+                        </g>
+                      </svg>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="row">
                 <div>
@@ -47,11 +73,11 @@
                             <span class="toggle-btn">&#9776;</span>
                         </div>
                         <ul class="display-none-mobile">
-                            <li><a href="#" data-slide="0">Calendar</a></li>
-                            <li><a href="#" data-slide="1">Statistics</a></li>
-                            <li><a href="#" data-slide="2">Home</a></li>
-                            <li><a href="#" data-slide="3">Productivity</a></li>
-                            <li><a href="#" data-slide="4">Reminders</a></li>
+                            <li><a class="scrollTo" href="#" data-slide="0">Calendar</a></li>
+                            <li><a class="scrollTo" href="#" data-slide="1">Statistics</a></li>
+                            <li><a class="scrollTo" href="#" data-slide="2">Home</a></li>
+                            <li><a class="scrollTo" href="#" data-slide="3">Productivity</a></li>
+                            <li><a class="scrollTo" href="#" data-slide="4">Reminders</a></li>
                             <button class="sign-up activate">Log in</button>
                         </ul>
                     </header>
@@ -67,39 +93,12 @@
                     <a class="first-link hero-btn activate">
                       Get Started
                     </a>
-                    <a class="activate">
+                    <a class="activate sign-up-button">
                     Sign Up
                     </a>
                 </div>
             </div>
-            <div class="row">
-                <div class="flip-card" tabIndex="0">
-                    <div class="flip-card-inner">
-                      <div class="flip-card-front">
-                        <div class="clock">
-                            <div class="top"></div>
-                            <div class="right"></div>
-                            <div class="bottom"></div>
-                            <div class="left"></div>
-                            <div class="center"></div>
-                            <div class="shadow"></div>
-                            <div class="hour"></div>
-                            <div class="minute"></div>
-                            <div class="second"></div>
-                        </div>
-                      </div>
-                      <div class="flip-card-back">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-success-hero" viewBox="0 0 24 24">
-                            <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
-                              <circle class="success-circle-outline-hero" cx="12" cy="12" r="11.5"/>
-                              <circle class="success-circle-fill-hero" cx="12" cy="12" r="11.5"/>
-                              <polyline class="success-tick-hero" points="17,8.5 9.5,15.5 7,13"/>
-                            </g>
-                          </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="row"></div>
         </section>
         <div class="arrow bounce"></div>
         <div class="custom-shape-divider-bottom-1665005886">
@@ -107,41 +106,45 @@
                 <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
             </svg>
         </div>
-        <section class="presentation">
-            <div data-position="left" data-offset="60" class="notViewed animBlock">
-                <div class="block">
-                    <div class="img-presentation column">
-                        <img src="media/hero/IMG-7041.jpg">
+        <section class="hero-banner" style="overflow: hidden">
+            
+            <div class="container-hero-banner">
+                <div class="card-hero-banner">
+                  <div class="imgBx-hero-banner">
+                    <img src="media/hero/IMG-7041.jpg" alt="">
+                  </div>
+                  <div class="details-hero-banner">
+                    <div class="content-hero-banner">
+                      <h2>A calendar you won’t be able to live without<br>
+                        <h3>Keep track of your progress. Add smart reminders so you never forget a thing. With beautiful themes and turbo-charging powers, you’re guaranteed to save time and achieve great things.</h3>
+                      </h2>
+                      
                     </div>
-                    <div class="text-presentation column">
-                        <h2>SIMPLE</h2>
-                        <h1>A calendar you won’t be able to live without</h1>
-                        <p>Add smart reminders so you never forget a thing.The Productivity app makes it easier than
-                            ever to remember the things you need to do. You can use it for all of life's to-dos,
-                            including grocery lists, projects at work, or anything else you want to track.
-
-                        </p>
-                    </div>
+                  </div>
                 </div>
-            </div>
-            <div data-position="right" data-offset="60" class="notViewed animBlock">
-                <div class="block">
-                    <div class="text-presentation column">
-                        <h2>RELIABLE</h2>
-                        <h1>The best way to organize your daily tasks</h1>
-                        <p>Organize your tasks, and reminders in one easy to use app. Simple, fast and reliable. Plan
-                            and organize any project with powerful task management that can be customized for every
-                            need.</p>
+                <div class="card-hero-banner">
+                  <div class="imgBx-hero-banner">
+                    <img src="media/hero/Screenshot_2.png" alt="">
+                  </div>
+                  <div class="details-hero-banner">
+                    <div class="content-hero-banner">
+                      <h2>The best way to organize your life<br>
+                        <h3>Organize your tasks, lists and reminders in one easy to use app. Any.do syncs seamlessly across all your devices.</g3>
+                      </h2>
+                      
                     </div>
-                    <div class="img-presentation column">
-                        <img src="media/hero/Screenshot_2.png">
-                    </div>
+                  </div>
                 </div>
-            </div>
-        </section>
+                
+                
+              </div>
+            </section>
+        
         <!--MAIN-->
         <main>
             <!-- Slider main container -->
+            <div id="scrollToDivWithPadding"></div>
+            
             <div class="swiper" id="swiper">
                 <!--z-index class was here to work with modal-->
                 <!-- Additional wrapper -->
@@ -341,66 +344,72 @@
                     <div class="swiper-slide main-swiper-slide">
                         <div class="card-content productivity-container"></div>
                     </div>
+
                     <div class="swiper-slide main-swiper-slide">
                         <div class="card-body-reminders flex-direction">
-                            <div id="AddReminderPopUpContainer" class="div1">
-                                <span>
-                                    <div class="AddReminderPopUp">
-                                        <div class="reminderBtnsDiv">
-                                            <button class="reminderBtns" id="reminderBtn">Add</button>
-                                            <button id="cancelInput" class="reminderBtns">Cancel</button>
+                            <div class="box-out">
+                                <div class="menu-btn"></div>
+                                <div id="AddReminderPopUpContainer" class="div1">
+                                    <span>
+                                        <div class="AddReminderPopUp">
+                                            <div class="textAndNote">
+                                                <input class="reminderInput" id="inputForCreatingReminder" type="text" placeholder="Title">
+                                                <br />
+                                                <textarea id="reminder-note" class="reminderInput" maxlength="300" name="Reminder note" cols="30" rows="3" placeholder="Notes"></textarea>
+                                            </div>
+                                            <div class="dateForReminder">
+                                                <label for="inputForSettingDateForTask">Enter date:</label>
+                                                <input class="reminderInput" id="inputForSettingDateForTask" type="date">
+                                            </div>
+                                                <div class="timeForReminder">
+                                                <label for="inputForTimeOfReminder">Set time:</label>
+                                                <input type="time" class="reminderInput" id="inputForTimeOfReminder" name="inputForTimeOfReminder" min="00:00" max="23:59" required>
+                                            </div>
+                                            <div class="priorityForReminder">
+                                                <label for="priorityRem">Choose priority:</label>
+                                                <select class="reminderInput" name="priorityRem" id="priorityRem">
+                                                    <option value="High">High</option>
+                                                    <option value="Medium">Medium</option>
+                                                    <option value="Low">Low</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="textAndNote">
-                                            <input class="reminderInput" id="inputForCreatingReminder" type="text"
-                                                placeholder="Title">
-                                            <br />
-                                            <textarea id="reminder-note" class="reminderInput" maxlength="300"
-                                                name="Reminder note" cols="30" rows="3" placeholder="Notes"></textarea>
-                                        </div>
-                                        <div class="dateForReminder">
-                                            <label for="inputForSettingDateForTask">Enter date:</label>
-                                            <input class="reminderInput" id="inputForSettingDateForTask" type="date">
-                                        </div>
-                                        <div class="timeForReminder">
-                                            <label for="inputForTimeOfReminder">Set time:</label>
-                                            <input type="time" class="reminderInput" id="inputForTimeOfReminder"
-                                                name="inputForTimeOfReminder" min="00:00" max="23:59" required>
-                                        </div>
-                                        <div class="priorityForReminder">
-                                            <label for="priorityRem">Choose priority:</label>
-                                            <select class="reminderInput" name="priorityRem" id="priorityRem">
-                                                <option value="High">High</option>
-                                                <option value="Medium">Medium</option>
-                                                <option value="Low">Low</option>
-                                            </select>
-                                        </div>
+                                    </span>
+                                    <div class="showReminders">
+                                        <button class="showAllRemindersBtn">Show reminders</button>
                                     </div>
-                                </span>
-                                <div class="showReminders">
-                                    <button class="showAllRemindersBtn">Show reminders</button>
+                                    <div class="reminderBtnsDiv">
+                                        <a class="reminderBtns buttonTasks" id="reminderBtn" role="button">
+                                            <span>Add</span>
+                                            <div class="icon">
+                                                <i class="fa fa-remove">&#x2b;</i>
+                                                <i class="fa fa-check">
+                                                    <img src="media/logIn-media/done_FILL0_wght400_GRAD0_opsz48.png">
+                                                </i>
+                                            </div>
+                                        </a>
+                                        <a class="reminderBtns buttonTasks button" role="button">
+                                            <span>Clear</span>
+                                            <div class="icon">
+                                                <i class="fa fa-remove">&#xd7;</i>
+                                                <i class="fa fa-check">
+                                                    <img src="media/logIn-media/done_FILL0_wght400_GRAD0_opsz48.png">
+                                                </i>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="removeReminders">
-                                    <a class="button" role="button">
-                                        <span>Clear</span>
-                                        <div class="icon">
-                                            <i class="fa fa-remove">&#xd7;</i>
-                                            <i class="fa fa-check">
-                                                <img src="media/logIn-media/done_FILL0_wght400_GRAD0_opsz48.png">
-                                            </i>
-                                        </div>
-                                    </a>
-                                </div>
-
                             </div>
                             <div id="remindersContainer" class="div2">
                                 <span>
-                                    <div class="remindersTable card-reminder" id="remindersTableId"></div>
+                                <div class="remindersTable card-reminder" id="remindersTableId"></div>
                                 </span>
                             </div>
                         </div>
                     </div> <!-- swiper slide reminders -->
                 </div> <!-- swiper wrapper -->
             </div> <!-- swiper -->
+         
             <!-- </div>
             </div>
             </div>

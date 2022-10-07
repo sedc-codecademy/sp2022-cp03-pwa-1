@@ -14,9 +14,11 @@ const swiper = new Swiper('.swiper', {
 
 // Scroll page on refresh
 
-window.onbeforeunload = () => {
-  window.scrollTo(0, 0);
-};
+history.scrollRestoration = "manual";
+
+$(window).on('beforeunload', function(){
+      $(window).scrollTop(0);
+});
 
 $(document).ready(function () {
   $(window).scroll(function () {
@@ -147,4 +149,21 @@ function isScrolledIntoView(elem) {
     }
   }
 }
+
+// scroll to swiper
+
+$(".scrollTo").click(function() {
+  $('html,body').animate({
+      scrollTop: $("#scrollToDivWithPadding").offset().top},
+      'slow');
+});
+
+// slide tab
+
+$('.menu-btn').click(function() {
+  $(this).toggleClass("menu-btn-left");
+  $('.box-out').toggleClass('box-in');
+});
+
+
 
