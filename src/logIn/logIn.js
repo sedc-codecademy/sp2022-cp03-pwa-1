@@ -49,6 +49,8 @@ let imageDiv = [];
 getStartedButton.forEach((item) => {
     item.addEventListener("click", function () {
 
+       
+
 
         mainPage.classList.toggle("hidden");
         html.classList.toggle("htmlSet");
@@ -220,6 +222,10 @@ getStartedButton.forEach((item) => {
 
         });
 
+        // if(item.classList.contains("sign-up-button")) {
+        //     SignUpSwiper.slideTo(1);
+            
+        // }
         document.onkeydown = function (evt) {
             evt = evt || window.event;
             if (evt.key == "Escape") {

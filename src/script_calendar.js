@@ -179,7 +179,6 @@ renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 
 let clockContainer = document.querySelector(".js-clock");
 let reminderBtn = document.querySelector("#reminderBtn");
-let cancelInput = document.querySelector('#cancelInput');
 let reminderWrapper = document.querySelector('#remindersWrapper');
 let remindersTable = document.querySelector(`#remindersTableId`);
 let reminderName = document.querySelector(`#inputForCreatingReminder`);
@@ -197,9 +196,7 @@ let inputReminderTime = 0;
 let inputReminderPriority = 0;
 let inputReminderNote = 0;
 
-cancelInput.addEventListener("click", function () {
-  resetValues();
-})
+
 
 reminderBtn.addEventListener("click", function () {
   gettingAllReminders();
