@@ -106,10 +106,10 @@ for(let i =0; i < testimonialsItem.length; i ++) {
             <i>&#x1F7CA;</i>
             <i>&#x1F7CA;</i>
         </div>
-        <p>Fantastic app for planning your day and future tasks. A very useful project management app. I love it!</p>
+        <p>Having enormous load of daily tasks? Having problems with time management? Keep forgetting half of the things that need to be done trouoght the day? Well, that was me for sure untill a friend enlightened me and told me about this fantastic app for planning your day and future tasks. A very useful project management app. I love it and highly reccomend it to everyone! Thumbs up for the devs ggwp!</p>
         <div class="testimonials-avatar">
             <h3>Todor Pelivanov</h3>
-            <h4>Tennis Player</h4>
+            <h4>Active Advanced HTML Party Animal</h4>
         </div>
     </div>
     <div class="testimonials-text-after"></i></div> 

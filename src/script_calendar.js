@@ -203,7 +203,7 @@ reminderBtn.addEventListener("click", function () {
   if (inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '') {
     return alert('Please enter input in all fields!');
   };
-
+  
   createReminderObject();
   renderTable(remindersTable);
   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
@@ -363,13 +363,20 @@ async function getAllRemindersFromDb() {
     var items = await response.json();
     items.forEach((item) => reminderMockData.push(item));
     renderTable(remindersTable);
+    renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
   } 
   catch (er) {
     console.log(er);
   }
 }
 
-showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
+showAllRemindersBtn.addEventListener('click', function() {
+  console.log(reminderMockData);
+  getAllRemindersFromDb();
+  console.log(reminderMockData);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  console.log(reminderMockData);
+});
 
 async function deleteReminderFromDb(reminderId) {
   // reminderMockData = [];
