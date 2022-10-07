@@ -5,36 +5,74 @@ let prevYearBtn = document.getElementById('prevYearBtn');
 let nextYearBtn = document.getElementById('nextYearBtn');
 let prevMonthBtn = document.getElementById('prevMonthbtn');
 let nextMonthBtn = document.getElementById('nextMonthbtn');
+let reminderMockData = [];
+const calendarYear1 = document.querySelector(".calendarYear");
+const calendarMonth1 = document.querySelector(".calendarMonth");
+const sessionCardSettings4 = document.querySelector(".sessionButtonSetting");
+const sessionCardSessions4 = document.querySelector(".sessionButtonTimer");
+const sessionCardShortBreak4 = document.querySelector(".sessionButtonShortBreak");
+const sessionCardLongBreak4 = document.querySelector(".sessionButtonLongBreak");
+const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
+
+sessionCardSessions4.addEventListener("click", () => {
+
+  calendarYear1.style.backgroundColor = "#2980b9";
+  calendarMonth1.style.backgroundColor = "#2980b9";
+  calendarMain.style.backgroundColor = "#2980b9";
+  calendarOuterWrapper.style.backgroundColor = "#2980b9";
+});
+
+sessionCardShortBreak4.addEventListener("click", () => {
+
+  calendarYear1.style.backgroundColor = "#598f94";
+  calendarMonth1.style.backgroundColor = "#598f94";
+  calendarMain.style.backgroundColor = "#598f94";
+  calendarOuterWrapper.style.backgroundColor = "#598f94";
+});
+
+sessionCardLongBreak4.addEventListener("click", () => {
+
+  calendarYear1.style.backgroundColor = "#5079a1";
+  calendarMonth1.style.backgroundColor = "#5079a1";
+  calendarMain.style.backgroundColor = "#5079a1";
+  calendarOuterWrapper.style.backgroundColor = "#5079a1";
+});
 
 prevYearBtn.addEventListener('click', function () {
-  year -= 1;
+  year--;
+  firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 });
 
 nextYearBtn.addEventListener('click', function () {
-  year += 1;
+  year++;
+  firstDay = new Date(year, month - 1, 1)
   renderYear(year);
   getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
-})
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+});
 
 prevMonthBtn.addEventListener('click', function () {
-if(month > 1) {
-  month -= 1;
-  renderMonth(monthsNames, month, renderedMonth);
-  getDaysInMonthFunc(year, month)
-  renderCalendar(calendarMain, year, month, getDaysInMonth);
-}})
-
-nextMonthBtn.addEventListener('click', function () {
-  if(month <= 11) {
-    month += 1;
+  if (month > 1) {
+    month--;
+    firstDay = new Date(year, month - 1, 1)
     renderMonth(monthsNames, month, renderedMonth);
     getDaysInMonthFunc(year, month)
-    renderCalendar(calendarMain, year, month, getDaysInMonth);
-  }})
+    renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  }
+});
+
+nextMonthBtn.addEventListener('click', function () {
+  if (month <= 11) {
+    month++;
+    firstDay = new Date(year, month - 1, 1)
+    renderMonth(monthsNames, month, renderedMonth);
+    getDaysInMonthFunc(year, month)
+    renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  }
+});
 
 //-----------getting current year-----------
 let year;
@@ -50,141 +88,334 @@ let month;
 
 function getMonth() {
   month = new Date().getMonth() + 1;
-}
+};
 
 getMonth();
 
 //-----------getting days in month-----------
-
 let getDaysInMonth = 0;
 
 function getDaysInMonthFunc(year, month) {
-   getDaysInMonth = new Date(year, month, 0).getDate();
-}
+  getDaysInMonth = new Date(year, month, 0).getDate();
+};
 
 getDaysInMonthFunc(year, month);
 
-// let getDaysInMonth = function (year, month) {
-//   return new Date(year, month, 0).getDate();
-// }
+//-----------Getting first day in month-----------
+let date = new Date();
+let firstDay = new Date(date.getFullYear(), date.getMonth(), 1)
 
 //-----------adding year between buttons-----------
 function renderYear(year) {
   renderedYear.innerText = (year);
-}
+};
+
 renderYear(year);
 
 //-----------adding month name between buttons-----------
 const monthsNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
 let currentMonth;
 
 function renderMonth(monthsArray, monthNum, elem) {
   let currentMonth = monthsArray[monthNum - 1]
-  
-  if(monthNum === 13) {
+
+  if (monthNum === 13) {
     month = 0;
   }
-  if(monthNum === 0) {
+  if (monthNum === 0) {
     month = 12;
   }
   elem.innerText = (currentMonth);
-}
+};
+
 renderMonth(monthsNames, month, renderedMonth);
 
 // --------Helper Function for getting day as number-----------
-
-function getDay(date) { 
+function getDay(date) {
   let day = date.getDay();
-  if (day == 0) day = 7; 
+  if (day === 0) day = 7;
   return day - 1;
-}
+};
 
 // --------rendering the calendar-----------
-function renderCalendar(elem, year, month, daysInMonthCallback) {
+function renderCalendar(elem, daysInMonthCallback, dataArr) {
 
-  let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+  const parsedReminderData = dataArr.map((item) => {
+    const parsedData = item.date.split('-')
+    const newObj = {
+      year: parseInt(parsedData[0]),
+      month: parseInt(parsedData[1]),
+      day: parsedData[2],
+    };
+    return newObj.year === year && newObj.month === month ? newObj : null;
+  }).filter(item => item !== null).map(x => parseInt(x.day));
+
+  let table = '<table id="calendarTable"><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr class="testTr2">';
   let daysInMonth = daysInMonthCallback;
-  let d = new Date();
-  console.log(d);
+  let EmptySpacesNum = getDay(firstDay);
+  let totalTds = daysInMonth + EmptySpacesNum;
 
-console.log(getDay(d));
+  for (let i = 0; i < getDay(firstDay); i++) {
+    table += '<td></td>';
+  };
 
-for (let i = 0; i < getDay(d); i++) {
-      table += '<td></td>';
-    }
-
-  for (let j = 0; j < daysInMonth; j++) {
-
-    if ((j) % 7 === 0 || j === 0) {
-      table += `<td>${j + 1}</td>`
-    } else if ((j) % 7 === 6) {
-      table += `<td>${j + 1}</td></tr>`
+  for (let i = 0; i <= totalTds - (EmptySpacesNum + 1); i++) {
+    if ((i + EmptySpacesNum) % 7 === 0) {
+      table += '</tr><tr class="testTr2">'
+      table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
     } else {
-      table += `<td>${j + 1}</td>`
+      table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
     }
+  };
 
-    if (getDay(d) % 6 === 7) { 
-            table += '</tr><tr>';
-    }
-  }
-  table += `</table>`
-
+  table += `</tr></table>`
   elem.innerHTML = table
+};
+
+renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+
+// ----------- REMINDERS CODE BELLOW ------------
+
+let clockContainer = document.querySelector(".js-clock");
+let reminderBtn = document.querySelector("#reminderBtn");
+let reminderWrapper = document.querySelector('#remindersWrapper');
+let remindersTable = document.querySelector(`#remindersTableId`);
+let reminderName = document.querySelector(`#inputForCreatingReminder`);
+let reminderDate = document.querySelector('#inputForSettingDateForTask');
+let reminderTime = document.querySelector('#inputForTimeOfReminder');
+let reminderPriority = document.querySelector('#priorityRem');
+const remindersForm = document.querySelector(".AddReminderPopUp");
+let notes = document.querySelector("#reminder-note");
+let reminderContainer = document.querySelector(".AddReminderPopUp");
+let showAllRemindersBtn = document.querySelector(".showAllRemindersBtn");
+
+let reminderId = 1;
+let inputReminderName = 0;
+let inputReminderDate = 0;
+let inputReminderTime = 0;
+let inputReminderPriority = 0;
+// let inputReminderNote = 0;
+
+
+
+reminderBtn.addEventListener("click", function () {
+  gettingAllReminders();
+  if (inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '') {
+    return alert('Please enter input in all fields!');
+  };
+
+  createReminderObject();
+  renderTable(remindersTable);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  // resetValues();
+});
+
+document.querySelector(".button").addEventListener("click", function () {
+  remindersTable.innerHTML = '';
+  // reminderId = 1;
+  // inputReminderName = 0;
+  // reminderNote.value = 0;
+  // inputReminderDate = 0;
+  // inputReminderTime = 0;
+  // inputReminderPriority = 0;
+  // reminderMockData = [];
+  // inputReminderNote = 0;
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+});
+
+//function for getting inputs for reminder
+function gettingReminderInput(elem) {
+  return elem.value;
+};
+
+//function for resetting values
+function resetValues() {
+  reminderName.value = "";
+  reminderDate.value = "";
+  reminderTime.value = "";
+  notes.value = "";
 }
 
+//function for getting all inputs for reminder
+function gettingAllReminders() {
+  inputReminderId = gettingReminderInput(reminderId);
+  inputReminderName = gettingReminderInput(reminderName);
+  inputReminderDate = gettingReminderInput(reminderDate);
+  inputReminderTime = gettingReminderInput(reminderTime);
+  inputReminderPriority = gettingReminderInput(reminderPriority);
+  inputReminderNote = gettingReminderInput(notes);
+};
 
+//function for deleting all reminders
+function ClearAllReminders(elem) {
+  elem.innerHTML = "";
+};
 
-renderCalendar(calendarMain, year, month, getDaysInMonth);
+//function for making objects with reminders
+function ReminderObject(id, name, date, time, priority, note) {
+  this.ReminderId = id;
+  this.ReminderTitle = name;
+  this.ReminderDate = date;
+  this.ReminderTime = time;
+  this.priority = priority;
+  this.ReminderNote = note;
+};
 
-// function createCalendar(elem, year, month) {
+function createReminderObject() {
+    let reminder = { 
+    reminderId: gettingReminderInput(reminderId),
+    reminderTitle: gettingReminderInput(reminderName),
+    reminderDate: gettingReminderInput(reminderDate),
+    reminderTime: gettingReminderInput(reminderTime),
+    priority: gettingReminderInput(reminderPriority),
+    reminderNote: gettingReminderInput(notes)
+  } 
+  reminderMockData.push(reminder);
+  reminderId++;
+};
 
-//   let mon = month - 1; // months in JS are 0..11, not 1..12
-//   let d = new Date(year, mon);
+async function reminderToDb(e) {
+  e.preventDefault();
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/addReminder";
+    var response = await fetch(url, {
+      method: 'POST',
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+      }, 
+      body: JSON.stringify({
+        ReminderTitle: reminderName.value,
+        ReminderNote: notes.value,
+        ReminderDate: reminderDate.value,
+        ReminderTime: reminderTime.value,
+        Priority: reminderPriority.selectedIndex,
+      }),
+    })
+    const res = await response.json();
 
-//   let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+    if (response.status == 201) {
+      reminderName.value = "";
+      notes.value = "";
+      reminderDate = "";
+      reminderTime = "";
+    }
+    else {
+      setErrorMessage(res.error);
+    }
+  }
+  catch (er) {
+    console.log(er);
+  }
+  resetValues();
+}
 
-//   // spaces for the first row
-//   // from Monday till the first day of the month
-//   // * * * 1  2  3  4
-//   for (let i = 0; i < getDay(d); i++) {
-//     table += '<td></td>';
-//   }
+reminderBtn.addEventListener("click", reminderToDb);
 
-//   // <td> with actual dates
-//   while (d.getMonth() == mon) {
-//     table += '<td>' + d.getDate() + '</td>';
+//function for rendering the table of reminders
+function renderTable(elem) {
+  let cards = "";
+  reminderMockData.forEach((reminderItem) => {
+    cards += `
+    <div class="cards-reminder">
+    <div class="header-reminder">
+      <h3>REMINDER DETAILS</h3>
+      <button class="mark-done">Mark as done</button>
+    </div>
+    <div class="inside-reminders">
+    <b>${reminderItem.reminderTitle} </b> 
+    <br><b>REMIND ME </b> 
+    <br><b>${reminderItem.reminderDate}, ${reminderItem.reminderTime}</b> 
+    <br><b>PRIORITY</b>
+    <br><b>${reminderItem.priority}</b>
+    <br><b>NOTES</b>
+    <br><p>${reminderItem.reminderNote}</p>
+    </div>
+    <button class="removeReminderByIdBtn" onclick="
+    deleteReminderFromDb(${reminderItem.reminderId})
+    deleteReminderById(${reminderItem.id}); 
+    
+    renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+    ">Delete reminder</button>
+    </div>`;
+  });
+  elem.innerHTML = cards;
+  markAsDone();
+};
 
-//     if (getDay(d) % 7 == 6) { // sunday, last day of week - newline
-//       table += '</tr><tr>';
-//     }
+async function getAllRemindersFromDb() {
+  reminderMockData = [];
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/getAllReminders";
+    var response = await fetch(url, {
+      method: 'GET',
+           headers:{
+             "Content-Type": "application/json",
+             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+           }
+    });
+    var items = await response.json();
+    items.forEach((item) => reminderMockData.push(item));
+    renderTable(remindersTable);
+  } 
+  catch (er) {
+    console.log(er);
+  }
+}
 
-//     d.setDate(d.getDate() + 1);
-//   }
+showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
 
-//   // add spaces after last days of month for the last row
-//   // 29 30 31 * * * *
-//   if (getDay(d) != 0) {
-//     for (let i = getDay(d); i < 7; i++) {
-//       table += '<td></td>';
-//     }
-//   }
+async function deleteReminderFromDb(reminderId) {
+  reminderMockData = [];
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/" + reminderId;
+    var response = await fetch(url, {
+      method: 'DELETE',
+           headers:{
+             "Content-Type": "application/json",
+             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+           }
+    });
+    var items = await response.json();
+    console.log(items);
+  } 
+  catch (er) {
+    console.log(er);
+  }
+}
 
-//   // close the table
-//   table += '</tr></table>';
+function markAsDone() {
+  let button = document.querySelectorAll(".mark-done");
+  button.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.target.closest(".cards-reminder").classList.add("addOpacity");
+      e.target.disabled = true;
+      e.target.style.cursor = "default";
+    });
+  });
+}
 
-//   elem.innerHTML = table;
-// }
+(function () {
+  var removeSuccess;
 
-// let d = new Date();
-// console.log(d);
+  removeSuccess = function () {
+    return $('.button').removeClass('success');
+  };
 
-// function getDay(date) { 
-//   let day = date.getDay();
-//   if (day == 0) day = 7; 
-//   return day - 1;
-// }
+  $(document).ready(function () {
+    return $('.button').click(function () {
+      $(this).addClass('success');
+      return setTimeout(removeSuccess, 3000);
+    });
+  });
+}).call(this);
 
-// console.log(getDay(d));
-
-// createCalendar(calendarMain, year, month);
+//function for deleting reminder by ID from the table
+function deleteReminderById(reminderId) {
+  const newData = reminderMockData.filter(x => x.ReminderId == reminderId);
+  reminderMockData = [...newData];
+  renderTable(remindersTable);
+};
