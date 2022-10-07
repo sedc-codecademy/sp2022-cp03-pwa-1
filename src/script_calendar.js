@@ -14,7 +14,6 @@ const sessionCardShortBreak4 = document.querySelector(".sessionButtonShortBreak"
 const sessionCardLongBreak4 = document.querySelector(".sessionButtonLongBreak");
 const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
 
-
 sessionCardSessions4.addEventListener("click", () => {
 
   calendarYear1.style.backgroundColor = "#2980b9";
@@ -188,13 +187,14 @@ let reminderPriority = document.querySelector('#priorityRem');
 const remindersForm = document.querySelector(".AddReminderPopUp");
 let notes = document.querySelector("#reminder-note");
 let reminderContainer = document.querySelector(".AddReminderPopUp");
+let showAllRemindersBtn = document.querySelector(".showAllRemindersBtn");
 
 let reminderId = 1;
 let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
 let inputReminderPriority = 0;
-let inputReminderNote = 0;
+// let inputReminderNote = 0;
 
 
 
@@ -205,22 +205,23 @@ reminderBtn.addEventListener("click", function () {
   };
 
   createReminderObject();
-  // renderTable(remindersTable);
-  // renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+  renderTable(remindersTable);
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
   // resetValues();
 });
 
-// document.querySelector(".button").addEventListener("click", function () {
-//   remindersTable.innerHTML = '';
-//   reminderId = 1;
-//   inputReminderName = 0;
-//   inputReminderDate = 0;
-//   inputReminderTime = 0;
-//   inputReminderPriority = 0;
-//   reminderMockData = [];
-//   inputReminderNote = 0;
-//   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-// });
+document.querySelector(".button").addEventListener("click", function () {
+  remindersTable.innerHTML = '';
+  // reminderId = 1;
+  // inputReminderName = 0;
+  // reminderNote.value = 0;
+  // inputReminderDate = 0;
+  // inputReminderTime = 0;
+  // inputReminderPriority = 0;
+  // reminderMockData = [];
+  // inputReminderNote = 0;
+  renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
+});
 
 //function for getting inputs for reminder
 function gettingReminderInput(elem) {
@@ -228,7 +229,6 @@ function gettingReminderInput(elem) {
 };
 
 //function for resetting values
-
 function resetValues() {
   reminderName.value = "";
   reminderDate.value = "";
@@ -238,12 +238,12 @@ function resetValues() {
 
 //function for getting all inputs for reminder
 function gettingAllReminders() {
+  inputReminderId = gettingReminderInput(reminderId);
   inputReminderName = gettingReminderInput(reminderName);
   inputReminderDate = gettingReminderInput(reminderDate);
   inputReminderTime = gettingReminderInput(reminderTime);
   inputReminderPriority = gettingReminderInput(reminderPriority);
   inputReminderNote = gettingReminderInput(notes);
-
 };
 
 //function for deleting all reminders
@@ -253,29 +253,26 @@ function ClearAllReminders(elem) {
 
 //function for making objects with reminders
 function ReminderObject(id, name, date, time, priority, note) {
-  this.id = id;
-  this.name = name;
-  this.date = date;
-  this.time = time;
+  this.ReminderId = id;
+  this.ReminderTitle = name;
+  this.ReminderDate = date;
+  this.ReminderTime = time;
   this.priority = priority;
-  this.note = note;
+  this.ReminderNote = note;
 };
 
 function createReminderObject() {
-  let reminder = new ReminderObject(
-    id = reminderId,
-    gettingReminderInput(reminderName),
-    gettingReminderInput(reminderDate),
-    gettingReminderInput(reminderTime),
-    gettingReminderInput(reminderPriority),
-    gettingReminderInput(notes)
-  );
-
+    let reminder = { 
+    reminderId: gettingReminderInput(reminderId),
+    reminderTitle: gettingReminderInput(reminderName),
+    reminderDate: gettingReminderInput(reminderDate),
+    reminderTime: gettingReminderInput(reminderTime),
+    priority: gettingReminderInput(reminderPriority),
+    reminderNote: gettingReminderInput(notes)
+  } 
   reminderMockData.push(reminder);
   reminderId++;
 };
-
-
 
 async function reminderToDb(e) {
   e.preventDefault();
@@ -293,8 +290,7 @@ async function reminderToDb(e) {
         ReminderNote: notes.value,
         ReminderDate: reminderDate.value,
         ReminderTime: reminderTime.value,
-        // Priority: reminderPriority.options[reminderPriority.selectedIndex],
-        Priority: 1
+        Priority: reminderPriority.selectedIndex,
       }),
     })
     const res = await response.json();
@@ -304,7 +300,6 @@ async function reminderToDb(e) {
       notes.value = "";
       reminderDate = "";
       reminderTime = "";
-      // reminderPriority.options[reminderPriority.selectedIndex].value = "High";
     }
     else {
       setErrorMessage(res.error);
@@ -321,7 +316,6 @@ reminderBtn.addEventListener("click", reminderToDb);
 
 //function for rendering the table of reminders
 function renderTable(elem) {
-
   let cards = "";
   reminderMockData.forEach((reminderItem) => {
     cards += `
@@ -331,15 +325,18 @@ function renderTable(elem) {
       <button class="mark-done">Mark as done</button>
     </div>
     <div class="inside-reminders">
-    <b>${reminderItem.name} </b> 
+    <b>${reminderItem.reminderTitle} </b> 
     <br><b>REMIND ME </b> 
-    <br><b>${reminderItem.date}, ${reminderItem.time}</b> 
+    <br><b>${reminderItem.reminderDate}, ${reminderItem.reminderTime}</b> 
     <br><b>PRIORITY</b>
     <br><b>${reminderItem.priority}</b>
     <br><b>NOTES</b>
-    <br><p>${reminderItem.note}</p>
+    <br><p>${reminderItem.reminderNote}</p>
     </div>
-    <button class="removeReminderByIdBtn" onclick="deleteReminderById(${reminderItem.id}); 
+    <button class="removeReminderByIdBtn" onclick="
+    deleteReminderFromDb(${reminderItem.reminderId})
+    deleteReminderById(${reminderItem.id}); 
+    
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
     ">Delete reminder</button>
     </div>`;
@@ -348,9 +345,51 @@ function renderTable(elem) {
   markAsDone();
 };
 
+async function getAllRemindersFromDb() {
+  reminderMockData = [];
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/getAllReminders";
+    var response = await fetch(url, {
+      method: 'GET',
+           headers:{
+             "Content-Type": "application/json",
+             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+           }
+    });
+    var items = await response.json();
+    items.forEach((item) => reminderMockData.push(item));
+    renderTable(remindersTable);
+  } 
+  catch (er) {
+    console.log(er);
+  }
+}
+
+showAllRemindersBtn.addEventListener('click', getAllRemindersFromDb);
+
+async function deleteReminderFromDb(reminderId) {
+  reminderMockData = [];
+  try {
+    let port = 5019;
+    let url = "http://localhost:" + port + "/api/Reminders/" + reminderId;
+    var response = await fetch(url, {
+      method: 'DELETE',
+           headers:{
+             "Content-Type": "application/json",
+             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+           }
+    });
+    var items = await response.json();
+    console.log(items);
+  } 
+  catch (er) {
+    console.log(er);
+  }
+}
+
 function markAsDone() {
   let button = document.querySelectorAll(".mark-done");
-
   button.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.target.closest(".cards-reminder").classList.add("addOpacity");
@@ -373,12 +412,11 @@ function markAsDone() {
       return setTimeout(removeSuccess, 3000);
     });
   });
-
 }).call(this);
 
 //function for deleting reminder by ID from the table
 function deleteReminderById(reminderId) {
-  const newData = reminderMockData.filter(x => x.id !== reminderId);
+  const newData = reminderMockData.filter(x => x.ReminderId == reminderId);
   reminderMockData = [...newData];
   renderTable(remindersTable);
 };
