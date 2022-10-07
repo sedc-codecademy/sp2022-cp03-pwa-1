@@ -612,8 +612,6 @@ body .svg-top {
   flex-direction: column;
   display: flex;
   box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.1);
-  
-  
 }
 
 .box-out {
@@ -626,7 +624,6 @@ body .svg-top {
   -ms-transition: .5s ease-out;
   transition: .5s ease-out;
   height: 100%;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
 }
@@ -670,7 +667,7 @@ body .svg-top {
   width: 100%;
   padding: 0 2rem;
   margin-top: 2rem;
-  border: 2px solid red;
+  
   
 }
 
