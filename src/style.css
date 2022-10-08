@@ -182,7 +182,7 @@ body .svg-bottom {
   background-color: rgb(252, 252, 253);
   top: 100%;
   width: 100%;
-  height: 250vh;
+  height: 150vh;
   margin: 0;
   padding: 0;
   display: flex;
@@ -198,7 +198,8 @@ body .svg-bottom {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  top: 5%;
+  top: 2%;
+  gap: 3rem;
 }
 .card-hero-banner {
   position: relative;
@@ -234,7 +235,7 @@ body .svg-bottom {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   
 }
 .card-hero-banner .details-hero-banner .content-hero-banner {
@@ -248,19 +249,16 @@ body .svg-bottom {
   line-height: 0.85em;
   font-weight: 600;
   color: rgb(0, 0, 0);
-  -webkit-text-stroke: 0.6px rgb(89, 143, 148);
-  
-  
 }
-.card-hero-banner .details-hero-banner .content-hero-banner h2 span {
+.card-hero-banner .details-hero-banner .content-hero-banner h2 h3 {
   font-size: 1.5rem;
-  -webkit-text-stroke: 0.6px rgb(89, 143, 148);
   line-height: 1;
   color: rgb(81, 81, 81);
-  
-  
-  /* mix-blend-mode: difference; */
-  
+}
+
+.content-hero-banner h1 {
+  font-size: 1.5rem;
+  color:rgb(255, 205, 0)
 }
 
 @media (max-width: 1200px) {
@@ -279,6 +277,10 @@ body .svg-bottom {
     width: calc(70% - 20px);
     margin: 10px auto;
   }
+
+  .container-hero-banner {
+    gap: 8rem;
+  }
   .card-hero-banner .imgBx-hero-banner {
     position: relative;
     width: 100%;
@@ -290,7 +292,7 @@ body .svg-bottom {
     height: 200px;
   }
 
-  .card-hero-banner .details-hero-banner .content-hero-banner h2 span {
+  .card-hero-banner .details-hero-banner .content-hero-banner h2 h3 {
     font-size: 12px;
     line-height: 1.2;
     
@@ -358,7 +360,7 @@ body .svg-top {
   position: absolute;
   width: 100%;
   height: 92vh;
-  top: 290%;
+  top: 250%;
   border: none;
   
 }
@@ -635,12 +637,19 @@ body .svg-top {
 .menu-btn {
   position: absolute;
   top: 50%;
-  left: 330px;
+  left: 315px;
   width: 30px;
   height: 30px;
-  background: url(media/left.png) no-repeat;
+  background: url(media/right.png) no-repeat;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
   background-size: cover;
   cursor: pointer;
+  transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
   
 }
 
@@ -652,7 +661,8 @@ body .svg-top {
 .menu-btn-left {
   background: url(media/right.png) no-repeat;
   left: 10px;
-  
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
   content: url(media/right.png)
 }
 
@@ -802,6 +812,11 @@ body .svg-top {
   font-size: 20px;
   border-radius: 0.4rem;
   color: black;
+  transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
 }
 
 .card-reminder {

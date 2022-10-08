@@ -119,7 +119,8 @@
 }
 
 .log-in-tab,
-.sign-up-tab {
+.sign-up-tab,
+.forgot-password-tab {
   height: 100%;
   position: relative;
 }
@@ -132,24 +133,30 @@
 
 .sign-up-main-tab {
   margin-top: 4%;
+}
 
+.forgot-password-main-tab {
+  padding-top: 4rem;
 }
 
 .log-in-main-tab-header,
-.sign-up-main-tab-header {
+.sign-up-main-tab-header,
+.forgot-password-main-tab-header {
   width: 100%;
   height: 10%;
 }
 
 .log-in-main-tab-header h2,
-.sign-up-main-tab-header h2 {
+.sign-up-main-tab-header h2,
+.forgot-password-main-tab-header h2 {
   margin-left: 5%;
 }
 
 /* ------------------- login form --------------------*/
 
 #login-form p,
-#signUp-form p {
+#signUp-form p,
+#forgot-password-form p {
   margin-top: 15px;
 }
 
@@ -165,7 +172,11 @@
 .signUp-form a,
 .signUp-form a:link,
 .signUp-form a:visited,
-.signUp-form a:active {
+.signUp-form a:active,
+.forgot-password-form a,
+.forgot-password-form a:link,
+.forgot-password-form a:visited,
+.forgot-password-form a:active {
   color: #3ca9e2;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -178,26 +189,36 @@
 .login-form a:visited:focus,
 .login-form a:visited:hover,
 .login-form a:active:focus,
-.login-form a:active:hover .signUp-form a:focus,
+.login-form a:active:hover,
 .signUp-form a:hover,
 .signUp-form a:link:focus,
 .signUp-form a:link:hover,
 .signUp-form a:visited:focus,
 .signUp-form a:visited:hover,
 .signUp-form a:active:focus,
-.signUp-form a:active:hover {
+.signUp-form a:active:hover,
+.forgot-password-form a:focus,
+.forgot-password-form a:hover,
+.forgot-password-form a:link:focus,
+.forgot-password-form a:link:hover,
+.forgot-password-form a:visited:focus,
+.forgot-password-form a:visited:hover,
+.forgot-password-form a:active:focus,
+.forgot-password-form a:active:hover {
   color: #329dd5;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
 #login-form,
-#signUp-form {
+#signUp-form,
+#forgot-password-form {
   padding: 0 0 0 15px;
 }
 
 #login-form input,
-#signUp-form input {
+#signUp-form input,
+#forgot-password-form input {
   display: block;
   box-sizing: border-box;
   width: 98%;
@@ -214,7 +235,8 @@
 #login-form input[type="email"],
 #signUp-form input[type="text"],
 #signUp-form input[type="password"],
-#signUp-form input[type="email"] {
+#signUp-form input[type="email"],
+#forgot-password-form input[type="email"] {
   width: 98%;
   padding: 0 0 0 10px;
   margin: 0;
@@ -235,7 +257,8 @@
 #login-form input[type="email"]:focus,
 #signUp-form input[type="text"]:focus,
 #signUp-form input[type="password"]:focus,
-#signUp-form input[type="email"]:focus {
+#signUp-form input[type="email"]:focus,
+#forgot-password-form input[type="email"]:focus {
   border-color: #3ca9e2;
 }
 
@@ -244,7 +267,8 @@
 #login-form input[type="email"]:focus:invalid,
 #signUp-form input[type="text"]:focus:invalid,
 #signUp-form input[type="password"]:focus:invalid,
-#signUp-form input[type="email"]:focus:invalid {
+#signUp-form input[type="email"]:focus:invalid,
+#forgot-password-form input[type="email"]:focus:invalid {
   color: #cc1e2b;
   border-color: #cc1e2b;
 }
@@ -254,7 +278,8 @@
 #login-form input[type="email"]:valid~.validation,
 #signUp-form input[type="text"]:valid~.validation,
 #signUp-form input[type="password"]:valid~.validation,
-#signUp-form input[type="email"]:valid~.validation {
+#signUp-form input[type="email"]:valid~.validation,
+#forgot-password-form input[type="email"]:valid~.validation {
   display: block;
   border-color: #0C0;
 }
@@ -264,7 +289,8 @@
 #login-form input[type="email"]:valid~.validation span,
 #signUp-form input[type="text"]:valid~.validation span,
 #signUp-form input[type="password"]:valid~.validation span,
-#signUp-form input[type="email"]:valid~.validation span {
+#signUp-form input[type="email"]:valid~.validation span,
+#forgot-password-form input[type="email"]:valid~.validation span {
   background: #0C0;
   position: absolute;
   border-radius: 6px;
@@ -275,7 +301,8 @@
 #login-form input[type="email"]:valid~.validation span:first-child,
 #signUp-form input[type="text"]:valid~.validation span:first-child,
 #signUp-form input[type="password"]:valid~.validation span:first-child,
-#signUp-form input[type="email"]:valid~.validation span:first-child {
+#signUp-form input[type="email"]:valid~.validation span:first-child,
+#forgot-password-form input[type="email"]:valid~.validation span:first-child {
   top: 30px;
   left: 14px;
   width: 20px;
@@ -289,7 +316,8 @@
 #login-form input[type="email"]:valid~.validation span:last-child,
 #signUp-form input[type="text"]:valid~.validation span:last-child,
 #signUp-form input[type="password"]:valid~.validation span:last-child,
-#signUp-form input[type="email"]:valid~.validation span:last-child {
+#signUp-form input[type="email"]:valid~.validation span:last-child,
+#forgot-password-form input[type="email"]:valid~.validation span:last-child {
   top: 35px;
   left: 8px;
   width: 11px;
@@ -308,7 +336,7 @@
   top: 0px;
 }
 
-.registerButton, .loginButton {
+.registerButton, .loginButton, .forgotPasswordButton {
   border: none;
   display: block;
   background-color: #3ca9e2;
@@ -334,20 +362,26 @@
   box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.1);
   border: thin solid transparent;
   margin-top: 5rem;
+}
 
+.registerButton {
+  margin-top: 1rem;
 }
 
 .loginButton {
-  margin-top: 15rem;
+  margin-top: 13rem;
+}
+.forgotPasswordButton {
+  margin-top: 1rem;
 }
 
-input[type="submit"]:hover {
+input[type="button"]:hover {
   background-color: #329dd5;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
-#create-account-wrap {
+#create-account-wrap, #forgot-password-form {
   color: #8a8b8e;
   font-size: 14px;
   width: 100%;
@@ -355,8 +389,63 @@ input[type="submit"]:hover {
 
 }
 
-#create-account-wrap p {
+#create-account-wrap p, #forgot-password-form{
   text-align: center;
+}
+
+#create-account-wrap p a {
+  text-decoration: none;
+  color: rgb(50, 157, 213);
+}
+
+.forgotPass {
+  text-decoration: none;
+  margin:0 auto;
+  display:inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.forgot-password-form a {
+  text-decoration: none;
+}
+
+.forgot-password-form h2:before {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: rgb(138, 139, 142);
+  left: 7%;
+  top: 50%;
+  position: absolute;
+}
+
+.forgot-password-form h2:after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: rgb(138, 139, 142);
+  right: 7%;
+  top: 50%;
+  position: absolute;
+}
+
+.forgot-password-form h2 {
+  font-family: sans-serif;
+  margin: 50px auto;
+  color: rgb(138, 139, 142);
+  text-align: center;
+  font-size: 15px;
+  max-width: 600px;
+  position: relative;
+  
+}
+
+.back-to-log-from-forgot-password {
+  position: absolute;
+  top: 2%;
 }
 
 /* right swiper */

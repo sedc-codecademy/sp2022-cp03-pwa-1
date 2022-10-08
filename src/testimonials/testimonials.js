@@ -106,10 +106,10 @@ for(let i =0; i < testimonialsItem.length; i ++) {
             <i>&#x1F7CA;</i>
             <i>&#x1F7CA;</i>
         </div>
-        <p>Having enormous load of daily tasks? Having problems with time management? Keep forgetting half of the things that need to be done trouoght the day? Well, that was me for sure untill a friend enlightened me and told me about this fantastic app for planning your day and future tasks. A very useful project management app. I love it and highly reccomend it to everyone! Thumbs up for the devs ggwp!</p>
+        <p>Fantastic app for planning your day and future tasks. A very useful project management app. I love it!</p>
         <div class="testimonials-avatar">
             <h3>Todor Pelivanov</h3>
-            <h4>Active Advanced HTML Party Animal</h4>
+            <h4>Tennis Player</h4>
         </div>
     </div>
     <div class="testimonials-text-after"></i></div> 
@@ -129,7 +129,7 @@ for(let i =0; i < testimonialsItem.length; i ++) {
         <p>A great app for keeping things straight! This is the only app I've ever paid for the premium, and it's worth it. It's great even without premium, but it makes remembering daily repetitive tasks much easier. I have trouble remembering things like that, or knowing if I've already done it.</p>
         <div class="testimonials-avatar">
             <h3>Gregori Bavaro</h3>
-            <h4>Bartender</h4>
+            <h4>Front-end developer, UX/UI designer</h4>
         </div>
     </div>
     <div class="testimonials-text-after"></i></div> 
