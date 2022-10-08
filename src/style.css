@@ -635,12 +635,19 @@ body .svg-top {
 .menu-btn {
   position: absolute;
   top: 50%;
-  left: 330px;
+  left: 315px;
   width: 30px;
   height: 30px;
-  background: url(media/left.png) no-repeat;
+  background: url(media/right.png) no-repeat;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
   background-size: cover;
   cursor: pointer;
+  transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
   
 }
 
@@ -652,7 +659,8 @@ body .svg-top {
 .menu-btn-left {
   background: url(media/right.png) no-repeat;
   left: 10px;
-  
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
   content: url(media/right.png)
 }
 
@@ -802,6 +810,11 @@ body .svg-top {
   font-size: 20px;
   border-radius: 0.4rem;
   color: black;
+  transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
 }
 
 .card-reminder {
