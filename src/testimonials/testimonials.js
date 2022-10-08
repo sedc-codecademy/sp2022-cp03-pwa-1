@@ -106,10 +106,10 @@ for(let i =0; i < testimonialsItem.length; i ++) {
             <i>&#x1F7CA;</i>
             <i>&#x1F7CA;</i>
         </div>
-        <p>Fantastic app for planning your day and future tasks. A very useful project management app. I love it!</p>
+        <p>"It'll make you want to stare at your tasks all day -Beautiful table interface, fantastic app for planning your day and future tasks.I love it!</p>
         <div class="testimonials-avatar">
             <h3>Todor Pelivanov</h3>
-            <h4>Tennis Player</h4>
+            <h4>.NET Developer</h4>
         </div>
     </div>
     <div class="testimonials-text-after"></i></div> 
@@ -129,7 +129,7 @@ for(let i =0; i < testimonialsItem.length; i ++) {
         <p>A great app for keeping things straight! This is the only app I've ever paid for the premium, and it's worth it. It's great even without premium, but it makes remembering daily repetitive tasks much easier. I have trouble remembering things like that, or knowing if I've already done it.</p>
         <div class="testimonials-avatar">
             <h3>Gregori Bavaro</h3>
-            <h4>Bartender</h4>
+            <h4>Front-end developer, UX/UI designer</h4>
         </div>
     </div>
     <div class="testimonials-text-after"></i></div> 

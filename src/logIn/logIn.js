@@ -82,9 +82,7 @@ getStartedButton.forEach((item) => {
 
         let swiperSlidesRightAtZero = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight] });
         let swiperSlidesRightAtOne = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight] });
-
-
-
+        let swiperSlidesRightAtTwo = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight] });
 
         let logInTab = createElements({ Tag: "div", classList: "log-in-tab", childNodes: [swiperSlidesRightAtZero] });
         let logInMainTab = createElements({ Tag: "div", classList: "log-in-main-tab", childNodes: [logInTab] });
@@ -93,19 +91,20 @@ getStartedButton.forEach((item) => {
 
         logInMainTabHeader.innerHTML = `<h2>Sign in<h2/>`
         logInMainTabForm.innerHTML = `
-            <form id="login-form">
+            <form id="login-form" class="login-form">
                 <p>
                 <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
                 <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
                 </p>
+                <p><a class="forgotPass" href="#" data-slide="3">Forgot password?</a><p>
                 <p>
                 <button type="button" id="login" class="loginButton">Login</button>
                 </p>
             </form>
             <div id="create-account-wrap">
-                <p>Not a member? <a href="#" data-slide="2">Create Account</a><p>
+                <p>Not a member? <a href="#" data-slide="1">Create Account</a><p>
             </div>`
 
             
@@ -121,13 +120,16 @@ getStartedButton.forEach((item) => {
         backToLogIn.innerHTML = `<a href="#" data-slide="0"><img src="./media/logIn-media/icons8-left-50.png"></a>`
         signUpMainTabHeader.innerHTML = `<h2>Sign up<h2/>`
         signUpMainTabForm.innerHTML = `
-        <form id="signUp-form">
+        <form id="signUp-form" class="signUp-form">
             <p>
-            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required><i class="validation"><span></span><span></span></i>
+            <input type="text" id="fullName" name="fullName" placeholder="Full name" required><i class="validation"><span></span><span></span></i>
             </p>
             <p>
             <input type="text" id="signup-username" name="signup-username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
             </p>
+            <p>
+            <input type="email" id="signup-email" name="signup-email" placeholder="Email address" required><i class="validation"><span></span><span></span></i>
+            <p/>
             <p>
             <input type="password" id="signup-password" name="signup-password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
             </p>
@@ -145,10 +147,29 @@ getStartedButton.forEach((item) => {
         let fullName = document.querySelector("#fullName");
         let signUpButton = document.querySelector("#signup-login");
 
-        
-        // < p >
-        // <input type="email" id="signup-email" name="signup-email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
-        // </>
+        // forgot password tab
+
+        let forgotPasswordTab = createElements({ Tag: "div", classList: "forgot-password-tab", childNodes: [swiperSlidesRightAtTwo] });
+        let forgotPasswordMainTab = createElements({ Tag: "div", classList: "forgot-password-main-tab", childNodes: [forgotPasswordTab] });
+        let forgotPasswordMainTabHeader = createElements({ Tag: "div", classList: "forgot-password-main-tab-header", childNodes: [forgotPasswordMainTab] });
+        let forgotPasswordMainTabForm = createElements({ Tag: "div", classList: "forgot-password-main-tab-form", childNodes: [forgotPasswordMainTab] });
+        let backToLogInFromForgotPassword = createElements({ Tag: "div", classList: "back-to-log-from-forgot-password", childNodes: [forgotPasswordMainTab] });
+        backToLogInFromForgotPassword.innerHTML = `<a href="#" data-slide="0"><img src="./media/logIn-media/icons8-left-50.png"></a>`
+
+        forgotPasswordMainTabHeader.innerHTML = `<h2>Forgot password<h2/>`;
+        forgotPasswordMainTabForm.innerHTML = `
+        <form id="forgot-password-form" class="forgot-password-form">
+        <p>
+        <input type="email" id="forgot-password-email" name="forgot-password-email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+        <p/>
+        <p>
+        <button type="button" class="forgotPasswordButton" id="forgot-password-button">Send password</button>
+        </p>
+        <p>
+        <h2>OR</h2>
+        </p>
+        <p><a href="#" data-slide="1">Create New Account</a><p>
+        </form>`
 
         // swiper-slide [0]
 
@@ -217,7 +238,7 @@ getStartedButton.forEach((item) => {
             slidesPerView: 'auto',
             initialSlide: 0,
             allowTouchMove: false,
-            speed: 800,
+            speed: 1000,
             effect: 'flip',
 
         });
