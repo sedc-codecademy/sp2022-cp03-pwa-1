@@ -3,7 +3,7 @@ let activityHoursMockData = [];
 let allSessions1 = [];
 
 async function getAllSessionsFromDb() {
-
+    allSessions1 = [];
     try {
         let port = 5019;
         let url = "http://localhost:" + port + "/api/Sessions/getAllSessions";
@@ -108,7 +108,7 @@ function refresh() {
             }]
         };
         const config = {
-            type: 'radar',
+            type: 'bar',
             data,
             options: {
                 scales: {
