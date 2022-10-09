@@ -49,9 +49,6 @@ let imageDiv = [];
 getStartedButton.forEach((item) => {
     item.addEventListener("click", function () {
 
-       
-
-
         mainPage.classList.toggle("hidden");
         html.classList.toggle("htmlSet");
 
