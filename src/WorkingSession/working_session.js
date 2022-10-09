@@ -21,7 +21,7 @@ function startTimerFunctionality() {
   isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
   buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
   document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
-  startSessionTime = new Date();
+  startSessionTime = new Date().toLocaleDateString();
   endSessionButton.addEventListener("click", endSessionFunction);
 };
 
@@ -172,20 +172,20 @@ async function endSessionToDb() {
 
       body: JSON.stringify({
         StartTime: startSessionTime,
-        FinishTime: new Date(),
+        FinishTime: new Date().toLocaleDateString(),
         SessionLength: diffBetweenTimes(startSessionTime, new Date()),
         Tasks: [...arrayOfTasks]
       }),
     })
-    
+
     const res = await response.json();
     //sessionStorage.setItem("productivityToken", res.token);
 
     if (response.status == 200) {
-        startSessionTime = "";
-        // finishTime= "";
-        [...arrayOfTasks] = [];
-        // SessionLenght: diffBetweenTimes(object.startTime, object.finishTime);
+      startSessionTime = "";
+      // finishTime= "";
+      [...arrayOfTasks] = [];
+      // SessionLenght: diffBetweenTimes(object.startTime, object.finishTime);
       // reminderPriority.options[reminderPriority.selectedIndex].value = "High";
     }
     else {
@@ -571,7 +571,7 @@ function createTask() {
     //Take the object creation out in function
     let test = {
       title: taskTitle.value,
-      assignedTimeDuration: taskDuration.value * 60,
+      assignedTimeDuration: taskDuration.value,
       timeNow: timeStamp,
       time: [],
       id: number,
