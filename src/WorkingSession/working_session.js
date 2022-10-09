@@ -21,7 +21,7 @@ function startTimerFunctionality() {
   isSessionActive = true; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
   buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
   document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
-  startSessionTime = new Date().toLocaleDateString();
+  startSessionTime = new Date();
   endSessionButton.addEventListener("click", endSessionFunction);
 };
 
@@ -172,7 +172,7 @@ async function endSessionToDb() {
 
       body: JSON.stringify({
         StartTime: startSessionTime,
-        FinishTime: new Date().toLocaleDateString(),
+        FinishTime: new Date(),
         SessionLength: diffBetweenTimes(startSessionTime, new Date()),
         Tasks: [...arrayOfTasks]
       }),
@@ -231,6 +231,7 @@ function endSessionFunction() {
     shortBreakDiv.style.display = "none";
     longBreakDiv.style.display = "none";
     buttonsAddEvents();
+    getAllSessionsFromDb();
     //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
   }
 }

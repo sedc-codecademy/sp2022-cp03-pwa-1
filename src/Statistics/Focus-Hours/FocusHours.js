@@ -1,73 +1,9 @@
-// let myChart = document.getElementById('dynamicChart').getContext('2d');
-
-//     // Global Options
-//     Chart.defaults.global.defaultFontFamily = '"Barlow", sans-serif';
-//     Chart.defaults.global.defaultFontSize = 16;
-//     Chart.defaults.global.defaultFontColor = '#777';
-
-//     let massPopChart = new Chart(myChart, {
-//       type:'horizontalBar', // other possible forms: bar, horizontalBar, pie, line, doughnut, radar, polarArea
-//       data:{
-//         labels:['6-Jun', '7-Jun', '8-Jun', '9-Jun', '10-Jun', '11-Jun', '12-Jun'],
-//         datasets:[{
-//         //   label:'Hours per Day', //refers to label in the legend
-//           data:[
-//             5,
-//             4,
-//             6.5,
-//             2,
-//             1,
-//             0.5,
-//             3.5,
-//           ],
-//           backgroundColor:[
-//             'rgb(191,206,226)',
-//             'rgb(191,206,226)',
-//             'rgb(191,206,226)',
-//             'rgb(191,206,226)',
-//             'rgb(191,206,226)',
-//             'rgb(191,206,226)',
-//             'rgb(191,206,226)'
-//           ],
-
-//           borderWidth:1,
-//           borderColor:'rgb(12, 106, 143)',
-//           hoverBorderWidth:3,
-//           hoverBorderColor:'rgb(12, 106, 143)'
-//         }]
-//       },
-//       options:{
-//         title:{
-//           display:false,// if true -> title of the chart will be displayed
-//           text:'Hours per Day',
-//           fontSize:16,
-//         },
-//         legend:{
-//           display:false,//if true -> legend of the chart will be displayed
-//           position:'right',
-//           labels:{
-//             fontColor:'#000'
-//           }
-//         },
-//         layout:{
-//           padding:{
-//             left:50,
-//             right:0,
-//             bottom:0,
-//             top:0
-//           }
-//         },
-//         tooltips:{
-//           enabled:true
-//         }
-//       }
-//     });
 
 let activityHoursMockData = [];
 let allSessions1 = [];
 
 async function getAllSessionsFromDb() {
-    // statisticsMockData = [];
+
     try {
         let port = 5019;
         let url = "http://localhost:" + port + "/api/Sessions/getAllSessions";
@@ -82,14 +18,6 @@ async function getAllSessionsFromDb() {
         items.forEach((item) => activityHoursMockData.push(item));
         items.forEach((item) => allSessions1.push(item));
 
-        //   console.log(items);
-        //   const startTime = items[0].startTime;
-        //   const finishTime = items[0].finishTime;
-        //   console.log(startTime);
-        //   console.log(finishTime);
-
-
-        //   items.forEach((item) => reminderMockData.push(item));
     }
     catch (er) {
         console.log(er);
@@ -99,70 +27,8 @@ async function getAllSessionsFromDb() {
 getAllSessionsFromDb();
 console.log(activityHoursMockData);
 
-//let session1 = [];
-// setTimeout(() => {
-//     for (let i = 0; i < activityHoursMockData.length; i++) {
-//         console.log(activityHoursMockData[i])
-//     } 1000
-// })
-// for (let i = 0; i <= activityHoursMockData.length; i++) {
-//             console.log(activityHoursMockData[i]);
-// }
+window.setTimeout(() => { console.log("after 1 second") }, 1000);
 
-// activityHoursMockData.forEach(element => {
-//     element.startTime = element.startTime
-//     console.log(element.startTime);
-// });
-//console.log(typeof (smth1));
-
-
-
-
-// let arrayOfSessionDates = activityHoursMockData.flatMap((item) => item.finishTime);
-
-// const smth = [
-//     {
-//         key: "1",
-//         value: "blabla"
-//     }, 
-//     {
-//         key: "2",
-//         value: "blabla"
-//     },
-//     {
-//         key: "3",
-//         value: "blabla"
-//     }
-// ];
-// console.log(smth);
-
-// let smth1 = [...smth];
-// console.log(smth1);
-
-
-
-// activityHoursMockData.map((item) => arrayOfSessionDates.push(item.finishTime));
-// console.log(arrayOfSessionDates);
-// console.log(activityHoursMockData);
-// activityHoursMockData.forEach(mobile => {
-//     for (let key in mobile) {
-//       console.log(`${key}: ${mobile[key]}`)
-//     }
-//   })
-//   console.log(typeof(activityHoursMockData));
-// function blabla() {
-//     getAllSessionsFromDb();
-//     for (let i = 0; i <= activityHoursMockData.length; i++) {
-//         console.log(activityHoursMockData[i]);
-//         // arrayOfSessionDates.push(activityHoursMockData[i].finishTime.value)
-//     }
-// }
-
-// blabla();
-// for (let i = 0; i <= activityHoursMockData.length; i++) {
-//     console.log(activityHoursMockData[i]);
-// arrayOfSessionDates.push(activityHoursMockData[i].finishTime.value)
-// }
 function refresh() {
     setTimeout(() => {
 
@@ -182,31 +48,10 @@ function refresh() {
             return arrayOfDates;
         }
 
-        // function numberOfDailyHours(){ //temporary solution
-        //     let arrayOfHoursPerDay =[];
-        //     for (let i=1; i<32; i++){
-        //         let randomNumber = Math.floor(Math.random() * 16);
-        //         arrayOfHoursPerDay.push(randomNumber)
-        //     }
-        //     return arrayOfHoursPerDay;
-        // } 
-
-
-        //let allSessions1 = [...activityHoursMockData];
-        console.log(allSessions1);
-        console.log(activityHoursMockData);
-        //console.log(allSessions1);
-        // console.log(arrayOfSessionDates);
-        //console.log(arrayOfSessionDates); // se dobiva niza od datumite na sekoja oddelna sesija// NO, datumite se povtoruvaat
-
         let arrayOfSessionDates = [];
         for (let i = 0; i < allSessions1.length; i++) {
-            console.log("hi");
             arrayOfSessionDates.push(new Date(allSessions1[i].finishTime).toISOString().slice(0, 10));
             console.log(new Date(allSessions1[i].finishTime).toISOString().slice(0, 10));
-            // if (i == allSessions1.length - 1) {
-            //     arrayOfSessionDates.push("2022-10-09");
-            // }
         }
         console.log(arrayOfSessionDates);
         let arrayOfHours = [];
@@ -214,14 +59,12 @@ function refresh() {
             arrayOfHours.push((allSessions1[i].tasks).flatMap((parameter) => Math.round(parameter.assignedTimeDuration / 60 * 100) / 100).reduce((sum, current) => sum + current, 0));
             //zaokruzuvanje na brojot na casovi na 2 decimali...
         }
-        //console.log(arrayOfHours); // se dobiva niza od casovi za sekoja sesija// NO, casovite se odnesuvaat na sekoja oddelna sesija a oddelnite sesii moze da se na ist datum
+
 
         const objectOfDatesHoursPairs = arrayOfHours.reduce((acc, e, i, arr) => {
             acc[arrayOfSessionDates[i]] = (acc[arrayOfSessionDates[i]] || 0) + e;
             return acc;
         }, {});
-
-        //console.log(objectOfDatesHoursPairs); // objekt kade datumite se keys, a casovite se values// datumite ne se povtoruvaat, a casovite se sobrani vo ramki na sekoj datum
 
         var finalArrayOfDates = [],
             finalArrayOfHours = [];
@@ -235,8 +78,6 @@ function refresh() {
             finalArrayOfDates.push(property);
             finalArrayOfHours.push(objectOfDatesHoursPairs[property]);
         }
-        //console.log(finalArrayOfDates); // niza od datumite// bez da se povtoruvaat
-        //console.log(finalArrayOfHours); //niza od casovite za soodvetnite datumi
 
         const dates = startingArrayOfChartDates();
         function genDataArrayChart() {
@@ -267,7 +108,7 @@ function refresh() {
             }]
         };
         const config = {
-            type: 'bar',
+            type: 'radar',
             data,
             options: {
                 scales: {
@@ -279,47 +120,12 @@ function refresh() {
             }
         };
 
-        // let canvas = document.getElementById('myChart');
-        // var context = canvas.getContext('2d');
-        // context.clearRect(0, 0, canvas.width, canvas.height);
-
-        // if (window.myChart instanceof Chart) {
-        //     window.myChart.destroy();
-        // }
-        // var ctx = document.getElementById('myChart').getContext("2d");
-
         const myChart = new Chart(
             document.getElementById('myChart'),
             config
         );
 
-
-        //myChart.reset();
-
-        //myChart.update("active");
-
         let focusHours = document.getElementById("dynamicFocusHours");
-        // let accessDays = document.getElementById("dynamicAccessedDays");
-        // let streakDays = document.getElementById("dynamicStreakDays");
-
-        // let count=0;
-        // for (let i=0; i < 7; i++){
-        //      if(datepoints[i] != 0){
-        //      count++
-        //      };
-        //      }
-        //  accessDays.innerHTML = count;
-
-        //  let count2=0;
-        //  let arrStreakDays = [];
-        //  for (let i=0; i < 7; i++){ 
-        //      count2++;
-        //      if(datepoints[i] == 0){
-        //      count2=0;   
-        //          }
-        //          arrStreakDays.push(count2);
-        //      }
-        //  streakDays.innerHTML = Math.max(...arrStreakDays);
 
         let sum = 0;
         for (let i = 0; i < 7; i++) {
@@ -383,24 +189,7 @@ function refresh() {
             const numberOfDates2 = (newEndeDate2.getTime() - newStartDate2.getTime()) / (1000 * 3600 * 24);
 
             let sum = 0;
-            // let count = 0;
-            // let count2 = 0;
-            // let arrStreakDays =[];
 
-            // for (let i=0; i < numberOfDates2+1; i++){
-            // if(myChart.config.data.datasets[0].data[i]=0 != 0){
-            // count++
-            // };
-            // }
-            // accessDays.innerHTML = count;
-            // for (let i=0; i < numberOfDates2+1; i++){ 
-            // count2++;
-            // if(myChart.config.data.datasets[0].data[i]=0){
-            // count2=0;   
-            // }
-            // arrStreakDays.push(count2);
-            // }
-            // streakDays.innerHTML = Math.max(...arrStreakDays);
             for (let i = 0; i <= numberOfDates2; i++) {
                 if (isNaN(myChart.config.data.datasets[0].data[i])) {
                     myChart.config.data.datasets[0].data[i] = 0;
@@ -410,16 +199,30 @@ function refresh() {
             focusHours.innerHTML = `${Math.floor(sum)} h ${(((sum - Math.floor(sum)) * 60)).toFixed(0)} min`;
             if (numberOfDates2 > 31) {
                 focusHours.innerHTML = null;
-                //streakDays.innerHTML=null;
-                //accessDays.innerHTML=null;
             };
         };
 
-        document.getElementById("startDate").addEventListener("change", () => { filterDate(), updateSummary(), getAllSessionsFromDb(), refresh() });
-        document.getElementById("endDate").addEventListener("change", () => { filterDate(), updateSummary(), getAllSessionsFromDb(), refresh() });
+        // document.getElementById("startDate").addEventListener("change", () => {
+        //     getAllSessionsFromDb();
+        //     setTimeout(() => {
+        //         filterDate();
+        //     }, 1000);
+        // });
+        // document.getElementById("endDate").addEventListener("change", () => {
+        //     getAllSessionsFromDb();
+        //     setTimeout(() => {
+        //         filterDate();
+        //     }, 1000);
+        // });
 
+        document.getElementById("startDate").addEventListener("change", filterDate);
+        document.getElementById("endDate").addEventListener("change", filterDate);
 
-    }, 3000);
+        clearTimeoutFunction();
+    }, 1000);
 }
 
 refresh();
+function clearTimeoutFunction() {
+    clearTimeout(this);
+}
