@@ -19,6 +19,14 @@ let createElement= (initObj)=> {
 
 // Search Box CreateElements
 
+
+
+container.innerHTML = `
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+`
+
 let searchBoxWrap = createElement({Tag: "div", classList: "wrap", childNodes: [container]});
 let inputTextFieldDiv = createElement({Tag: "div", classList: "search", childNodes: [searchBoxWrap]});
 let inputTextField = createElement({Tag: "input", classList: "searchTerm", placeholder: "Search articles", attributes: [{key: "type", value: "text"}], childNodes: [inputTextFieldDiv]});
@@ -36,10 +44,11 @@ let pngWrapper =[];
 let textHeadline =[];
 
 
+
 // Loop for CreateElements swiper-slides
 
 for(let i = 0; i < 12; i++) {
-    swiperSlideProductivity.push(createElement({Tag: "div", classList: "swiper-slide swiper-slides-productivity", childNodes: [swiperWrapperProductivity]}));
+    swiperSlideProductivity.push(createElement({Tag: "div", classList: "swiper-slide swiper-slides-productivity scrollToArticles", childNodes: [swiperWrapperProductivity]}));
 };
 
 for(let i = 0; i < swiperSlideProductivity.length; i++) {
@@ -47,7 +56,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
         <img src="vectorsProductivity/newArticles/img (13).png  ">
         <h2>Maintaining healthy habits-in five simple steps</h2>
-        <div class="line"></div>
+        
 		<p class="modal-content">
         Many people have excessive levels of stress in their lives and it often affects their health, happiness, and other areas of their lives. (In fact, it’s been estimated that more than 90% of ​health problems that bring people into the doctor’s office are stress-related!) But while virtually all of us could benefit from adding healthy habits to our lifestyle, it’s harder to begin a new habit than it seems, especially when you’re already overscheduled and overstressed! The following steps can help you navigate a clear path from your good intentions to the reality of a healthier, happier lifestyle that includes less stress. Ready? Here we go!
         </br>
@@ -86,7 +95,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (2).png  ">
         <h2>3 Brain Exercises to Strengthen Your Mind</h2>
-        <div class="line"></div>
+        
 		<p class="modal-content">
         While you might know that you need to exercise your body, did you know that it might also be important to exercise your mind? You've probably heard the old adage "use it or lose it." Many researchers do believe that this maxim applies to your brain health.
         Brain training is all the rage these days, often touted as a way to sharpen your mind and even boost intelligence. While many cognitive scientists suggest that the claims surrounding brain training are both exaggerated and misleading, there is an abundance of research suggesting that certain types of activities can be beneficial for your brain's health.
@@ -119,7 +128,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (3).png  ">
     <h2>How to build a healthy habits</h2>
-    <div class="line"></div>
+    
     <p class="modal-content">
     We know that making healthy choices can help us feel better and live longer. Maybe you’ve already tried to eat better, get more exercise or sleep, quit smoking, or reduce stress. It’s not easy. But research shows how you can boost your ability to create and sustain a healthy lifestyle.
     “It’s frustrating to experience setbacks when you’re trying to make healthy changes and reach a goal,” says NIH behavior change expert Dr. Susan Czajkowski. “The good news is that decades of research show that change is possible, and there are proven strategies you can use to set yourself up for success.”
@@ -178,7 +187,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (4).png  ">
     <h2>10 Foods to Energize Your Afternoon</h2>
-    <div class="line"></div>
+    
 		<p class="modal-content">
         Fatigue happens to the best of us. Whether it’s after a restless night’s sleep, or a mid-afternoon slump, coffee, sugar and energy drinks can feel like the easy answer. Unfortunately, that quick fix is also the quick way to crash. The good news is there are plenty of healthy options to amplify your energy.
         Focus on foods with protein, fiber, complex carbohydrates and magnesium that will take longer to digest and therefore extend your energy. Mix and match energizing snacks – like Greek yogurt and berries, or grapefruit and cottage cheese – for a more powerful punch. Drinking lots of water can also help – even mild dehydration can leave you feeling weary.
@@ -248,7 +257,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (5).png  ">
     <h2>10 tips to help you gain healthy office habits</h2>
-    <div class="line"></div>
+    
 		<p class="modal-content">
         Keeping in mind the main reasons to lead a healthy life, also at work, requires some effort on our part, enhancing our well-being at work is not easy and is not always in our hands. However, here are ten suggestions that can be easily within your reach so you can lead a healthy life while working.
         </br>
@@ -319,7 +328,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (6).png  ">
     <h2>Working outdoors can boost your productivity</h2>
-    <div class="line"></div>
+    
 		<p class="modal-content">
         How do you feel when you step outside? Refreshed? Calm? Happy? That feeling of bliss isn’t just in your head.
         At our core, humans have a biological connection to nature. This phenomenon is called biophilia. First introduced by Edward O. Wilson in 1984, the term describes how humans possess an innate tendency to seek connections with nature and other living things. It helps explain why we enjoy a sunny spot at the windowsill, a lush garden, or an ocean breeze.
@@ -360,21 +369,21 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (7).png  ">
     <h2>How Junk Food Impacts your Productivity!</h2>
-    <div class="line"></div>
+    
     <p class="modal-content">
     The WHO reports that “adequate nutrition can raise your productivity levels by 20 percent on average.” You’ll be better able to focus and accomplish tasks when you’ve eaten properly.
 
     These are just some of the 3 reasons why FAST food may be negatively impacting your success:
     </br>
     </br>
-    1.Weight Gain 👎🏼
+    1.Weight Gain 
     </br>
     </br>
     FAST foods are packed full of toxins, exceedingly high in trans fats, sugars and bad carbohydrates which are prime drivers of weight gain and obesity.
     Weight gain left unchecked leads to negatively impacting your productivity in general.
     </br>
     </br>
-    2.Lower Energy Levels😴
+    2.Lower Energy Levels
     </br>
     </br>
     Digestion breaks down the foods you eat and converts them into energy that can either be readily used or stored for later.
@@ -382,7 +391,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     This is why you feel a short burst of energy after having fast foods, however a crash shortly follows as these levels are not sustainable and you’re back to JUNK FOOD for more.😞
     </br>
     </br>
-    3.Risk of Heart Disease and other conditions 👨‍⚕️
+    3.Risk of Heart Disease and other conditions 
     </br>
     </br>
     Because fast foods are usually packed with fat, sugar and lots sodium. This will increase your risk for type 2 diabetes and heart disease.
@@ -395,7 +404,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (8).png  ">
     <h2>Manage stress at work</h2>
-    <div class="line"></div>
+    
 		<p class="modal-content">
         Research has indicated that the percentage of Americans who are stressed at work is high—and it’s only getting higher. According to a survey of more than 2,000 full-time U.S. employees, ages 18-79, more than half of employees find themselves stressed during at least 60 percent of the workweek.
         Work stress has significant health consequences that range from relatively benign (like getting more colds and flus) to potentially serious (such as heart disease and metabolic syndrome).
@@ -418,7 +427,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (9).png  ">
     <h2>8 Strategies for Dealing With a Difficult Boss</h2>
-    <div class="line"></div>
+    
 		<p class="modal-content">
         A difficult boss can present a significant challenge in the workplace. In fact, the relationship with your supervisor can be the single most important relationship within the workplace, and a negative relationship with your boss can sometimes negatively impact nearly every aspect of your work life. While your first instinct may be to resign from your position, working through a difficult situation can often be the most productive option.
         There are several benefits that can come from addressing a difficult boss. A few of these benefits might include:
@@ -448,7 +457,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (10).png  ">
     <h2>Staying hydrated to boost productivity</h2>
-    <div class="line"></div>
+    
 		<p class="modal-content">
         Everyone talks about that morning cup of coffee as a way to jumpstart the day and be productive, but what about the rest of the workday? Any grogginess you may feel right before lunch or mid-afternoon most likely is due to lack of hydration. When your total body water decreases, your body doesn’t have enough water to perform its healthy functions. It’s at this point dehydration sets in from fluid loss. Water dehydration symptoms include dry mouth, dry skin, muscle cramps, fatigue, dizziness, and confusion, among others. How do you prevent this? Drink water! It’s recommended by healthcare professionals to drink a minimum of eight glasses of water every day. A great alternative to plastic water bottles is drinking water from aluminum water bottles as this reduces plastic waste in the environment while providing fresh and clean tasting water.
         With the chaos of a jam-packed workday or weekend filled with physical activity, the goal of drinking more water may be easier said than done. However, being intentional about your water intake can have a positive impact on productivity. Intaking water throughout the day will help to keep you alert and be more focused while you work. Learn more about how hydration contributes to your health and functioning at work and ways to ensure you’re getting enough water throughout the day. 
@@ -498,7 +507,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (11).png  ">
     <h2>11 tips for organization and productivity</h2>
-    <div class="line"></div>
+    
     <p class="modal-content">
     Staying organized and productive at work helps you stay focused and complete tasks on time.
     When you are organized and productive, you can prioritize work and excel, which aids your career progress and success. There are several options for organizing your responsibilities and tasks, depending on your work style.
@@ -581,7 +590,7 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     <div class="fsm pied">
     <img src="vectorsProductivity/newArticles/img (12).png  ">
     <h2>7 Tips for a Stress-Free Work Day</h2>
-    <div class="line"></div>
+    
 		<p class="modal-content">
         The COVID-19 pandemic caused tremendous stress to everyone around the world. If you are one of the few people working in a remote setup, our mental and physical health would be a toll. It gets more stressful at home, and some don’t know how to handle it.
         It’s essential to relieving your stress. But how can you manage it during these times? Read more to find out how to avoid a super stressful workday.
@@ -629,24 +638,35 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
         But when the situation gets worse and you frequently feel anxious or depressed, maybe it’s high time to consult a mental health professional. Remember that taking care of your mental health has to be the same as taking care of your physical health.
         </p>
 	</div>`
-}
+
+    
+}   
 
 // Initializing Swiper
+
+document.querySelector('.swiper-popular-articles').addEventListener('wheel', preventScroll, {passive: false});
+
+function preventScroll(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    return false;
+}
 
 var galleryArticles = new Swiper('.gallery-articles' , 
 { 
     direction: 'horizontal',
     loop:  true,
-   
-    // loopedSlides: 12,
+   loopedSlides: 12,
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
     initialSlide: 3,
     allowTouchMove: true,
     keyboardControl: true,
-    speed: 600,
+    speed: 400,
     spaceBetween: 13,
+    cssMode: true,
 
     on: {
 
@@ -665,7 +685,17 @@ var galleryArticles = new Swiper('.gallery-articles' ,
         }
 
 
-    }
+    },
+
+    pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+        
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
 });
 
 
@@ -737,11 +767,27 @@ var closeFSM = function(event){
 			 classList.remove(classList.item(0));
 		}
 		$this.style = '';;
-	}, 500);
+	});
 };
 
 for (var i = 0; i < $fsm.length; i++) {
 	$fsm[i].addEventListener("click", openFSM);
 }
 $fsmActual.addEventListener("click", closeFSM);
+
+
+
+$(".scrollToArticles").click(function() {
+
+    setTimeout(() => {
+        $('html,body').animate({
+        scrollTop: $("#scrollToDivWithPadding").offset().top},
+        'slow');
+      }, "1600")
+    
+  });
+
+
+
+
 
