@@ -188,6 +188,7 @@ const remindersForm = document.querySelector(".AddReminderPopUp");
 let notes = document.querySelector("#reminder-note");
 let reminderContainer = document.querySelector(".AddReminderPopUp");
 let showAllRemindersBtn = document.querySelector(".showAllRemindersBtn");
+let loginButton = document.getElementById("#login");
 
 let reminderId = 1;
 let inputReminderName = 0;

@@ -404,10 +404,18 @@ getStartedButton.forEach((item) => {
         let logInUsername = document.querySelector("#username");
         let logInPassword = document.querySelector("#password");
         let logInButton = document.querySelector("#login");
-        logInButton.addEventListener("click", logInFunction);
+
+        logInButton.addEventListener("click", logInFunction)
+        // logInButton.addEventListener("click", logInFunction)
+
+        logInButton.addEventListener("click", function() {
+            setTimeout( () => {
+                getAllRemindersFromDb()
+            }, 2000)
+
+        });
 
     })
-
 
 
 })
