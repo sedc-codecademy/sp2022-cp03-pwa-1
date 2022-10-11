@@ -23,7 +23,7 @@
 }
 
 body {
-  background: linear-gradient(120deg, rgba(89, 143, 148, 1) 42%, rgba(68, 144, 173, 1) 100%);
+  background: rgb(252, 252, 253);
   font-size: 14px;
   color: var(--clr-neutral-700);
   margin: 0;
@@ -37,7 +37,7 @@ body {
 html {
   height: 550%;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 #scrollToDivWithPadding {
@@ -68,29 +68,25 @@ p {
 
 }
 
-.hero h1 {
-  font-weight: 700;
-  font-size: clamp(40px, 5vw, 70px);
-  line-height: 1;
-  color: white;
-}
 
-.hero p {
+.hurry {
   font-weight: 500;
-  font-size: 30px;
+  font-size: 20px;
   padding: 1em 0;
-  color: white;
+  color: black;
+  max-width: 15cm;
 }
 
 .row {
   display: flex;
-  
+  justify-content: flex-end;
 }
 
 .hero_container {
   max-width: 90%;
   margin: 0 auto;
-  margin-top: 7vh;
+  margin-top: 20vh;
+  position: relative;
 }
 
 .hero {
@@ -103,6 +99,59 @@ p {
 .hero>* {
   flex: 1 1 25em;
 }
+
+.hero-title-container {
+  position: relative;
+  margin-block: 3rem;
+}
+
+.hero-title {
+  color: rgb(133, 133, 133);
+  mix-blend-mode: color-burn;
+  font-weight: 700;
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 1;
+  margin: 0;
+}
+
+.hero-title[data-overlay] {
+  mix-blend-mode: revert;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: -2;
+  color: #111;
+}
+
+.image{
+  width: 18rem;
+  height: 25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 15px 0 rgb(0 0 0 / 7%);
+  display: block;
+  z-index: 5;
+  position: absolute;
+  top: 16%;
+}
+
+.image-back {
+  width: 35rem;
+  height: 27rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 15px 0 rgb(0 0 0 / 7%);
+  display: block;
+  position: absolute;
+  right: 0;
+}
+
+.img-container {
+  width: 40rem;
+  height: 70vh;
+  position: relative;
+  
+}
+
+
 
 /* GET STARTED BUTTON */ 
 
@@ -166,16 +215,6 @@ p {
 
 /* HERO PRESENTATION 2 */
 
-body .svg-bottom {
-  position: absolute;
-  top: 10px;
-  right: -250px;
-  
-}
-
-.svg-bottom use {
-  fill :rgb(89, 143, 148);
-}
 
 .hero-banner {
   padding-top: 5rem;
@@ -262,6 +301,15 @@ body .svg-bottom {
   color:rgb(255, 205, 0)
 }
 
+@media (max-width: 1135px) {
+  .img-container {
+    display: none;
+  }
+  /* .hero-title {
+    width: calc(170% - 10px);
+  } */
+}
+
 @media (max-width: 1200px) {
   .container-hero-banner {
     width: 100%;
@@ -273,6 +321,7 @@ body .svg-bottom {
     margin: 10px auto;
   }
 }
+
 @media (max-width: 768px) {
   .card-hero-banner {
     width: calc(70% - 20px);
@@ -308,9 +357,6 @@ body .svg-bottom {
     font-size: 20px;
     line-height: 0.85em;
     font-weight: 600;
-    
-    
-    
   }
 }
 @media (max-width: 480px) {
@@ -319,26 +365,31 @@ body .svg-bottom {
     margin: 10px auto;
   }
 }
-/* WAVE */
 
-.custom-shape-divider-bottom-1665005886 {
-  position: absolute;
-  top: 82%;
-  left: 0;
+.addPolygon {
+  clip-path: polygon(0 0, 100% 0, 100% 36%, 0 65%);
+}
+
+.canvas-hero {
   width: 100%;
-  overflow: hidden;
-  line-height: 0;
+  height: 100%;
+  
 }
 
-.custom-shape-divider-bottom-1665005886 svg {
-  position: relative;
-  display: block;
-  width: calc(189% + 1.3px);
-  height: 219px;
+.canvas-container {
+  position: absolute;
+  inset: 0;
+  
 }
 
-.custom-shape-divider-bottom-1665005886 .shape-fill {
-  fill: rgb(252, 252, 253);
+#gradient-canvas {
+  width:100%;
+  height:100%;
+  --gradient-color-1: #598f94; 
+  --gradient-color-2: #9baaa7; 
+  --gradient-color-3: #2f848c;  
+  --gradient-color-4: #beac32;
+  z-index:0;
 }
 
 
@@ -951,6 +1002,8 @@ body .svg-top {
   transition: all 0.4s linear 0s;
   -webkit-perspective: 1000px;
   perspective: 1000px;
+  left: 0;
+  
 }
 
 .header .logo-container {
@@ -986,7 +1039,7 @@ body .svg-top {
   display: inline-block;
   text-decoration: none;
   padding: 30px 15px;
-  color: #1e1e1e;
+  color: white;
   border-top: 5px solid transparent;
   transition: padding 0.4s linear 0s;
   font-size: 16px;

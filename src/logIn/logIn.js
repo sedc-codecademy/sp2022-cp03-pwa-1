@@ -51,6 +51,7 @@ getStartedButton.forEach((item) => {
 
         mainPage.classList.toggle("hidden");
         html.classList.toggle("htmlSet");
+        document.querySelector('.canvas-hero').classList.remove("addPolygon");
 
         //left div
 
@@ -249,6 +250,7 @@ getStartedButton.forEach((item) => {
             if (evt.key == "Escape") {
                 mainPage.classList.remove("hidden");
                 html.classList.remove("htmlSet");
+                document.querySelector('.canvas-hero').classList.toggle("addPolygon");
                 appLogIn.remove()
                 swiperSlides = [];
                 headerDiv = [];
