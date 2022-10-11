@@ -29,15 +29,17 @@ container.innerHTML = `
 
 let searchBoxWrap = createElement({Tag: "div", classList: "wrap", childNodes: [container]});
 let inputTextFieldDiv = createElement({Tag: "div", classList: "search", childNodes: [searchBoxWrap]});
-let inputTextField = createElement({Tag: "input", classList: "searchTerm", placeholder: "Search articles", attributes: [{key: "type", value: "text"}], childNodes: [inputTextFieldDiv]});
+let inputTextField = createElement({Tag: "input", classList: "searchTerm", attributes: [{key: "type", value: "text"}], placeholder: "Search articles", attributes: [{key: "type", value: "text"}], childNodes: [inputTextFieldDiv]});
 let submitButton = createElement({Tag: "button", classList: "searchButton", attributes: [{key: "type", value: "submit"}], innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg>`, childNodes: [inputTextFieldDiv]});
 
+
+
 // Swiper CreateElements
 
 let swiperForArticles = createElement({Tag: "div", classList: "swiper-popular-articles gallery-articles", childNodes: [container]});
-let swiperWrapperProductivity = createElement({Tag: "div", classList: "swiper-wrapper fsm-container", childNodes: [swiperForArticles]});
+let swiperWrapperProductivity = createElement({Tag: "div", classList: "swiper-wrapper fsm-container justify-swiper", childNodes: [swiperForArticles]});
 swiperWrapperProductivity.setAttribute("id", "fms-container")
 let swiperSlideProductivity =[];
 let pngWrapper =[];
@@ -54,10 +56,9 @@ for(let i = 0; i < 12; i++) {
 for(let i = 0; i < swiperSlideProductivity.length; i++) {
     swiperSlideProductivity[0].innerHTML = `
     <div class="fsm pied">
-        <img src="vectorsProductivity/newArticles/img (13).png  ">
+    <img src="vectorsProductivity/newArticles/img (13).png  ">
         <h2>Maintaining healthy habits-in five simple steps</h2>
-        
-		<p class="modal-content">
+        <p class="modal-content">
         Many people have excessive levels of stress in their lives and it often affects their health, happiness, and other areas of their lives. (In fact, it’s been estimated that more than 90% of ​health problems that bring people into the doctor’s office are stress-related!) But while virtually all of us could benefit from adding healthy habits to our lifestyle, it’s harder to begin a new habit than it seems, especially when you’re already overscheduled and overstressed! The following steps can help you navigate a clear path from your good intentions to the reality of a healthier, happier lifestyle that includes less stress. Ready? Here we go!
         </br>
         </br>
@@ -640,10 +641,42 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
 	</div>`
 
     
-}   
+};
+
+function searchKeyStrokes() {
+    
+    var input, filter, p, txtValue;
+    input = inputTextField;
+    filter = input.value.toUpperCase();
+    
+    p = document.querySelectorAll(".modal-content");
+    for (i = 0; i < p.length; i++) {
+        txtValue = p[i].textContent || p[i].innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            
+            p[i].closest(".swiper-slides-productivity").style.display = "";
+            galleryArticles.update();
+            
+            
+        } else {
+           p[i].closest(".swiper-slides-productivity").style.display = "none";
+           galleryArticles.update();
+        }
+    }
+
+}
+
+
+
+submitButton.addEventListener("click", function() {
+    searchKeyStrokes();
+});
 
 // Initializing Swiper
 
+
+// prevent scroll on swiper-articles for handling bugs on full screen article, and adding overflow to full screen article so the user wont scroll over the main page and only on the article itself
 document.querySelector('.swiper-popular-articles').addEventListener('wheel', preventScroll, {passive: false});
 
 function preventScroll(e){
@@ -656,17 +689,17 @@ function preventScroll(e){
 var galleryArticles = new Swiper('.gallery-articles' , 
 { 
     direction: 'horizontal',
-    loop:  true,
-   loopedSlides: 12,
+    loop:  false,
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
     initialSlide: 3,
     allowTouchMove: true,
-    keyboardControl: true,
+    keyboardControl: false,
     speed: 400,
     spaceBetween: 13,
     cssMode: true,
+    centeredSlidesBounds: true,
 
     on: {
 
@@ -778,14 +811,12 @@ $fsmActual.addEventListener("click", closeFSM);
 
 
 $(".scrollToArticles").click(function() {
-
     setTimeout(() => {
         $('html,body').animate({
         scrollTop: $("#scrollToDivWithPadding").offset().top},
         'slow');
       }, "1600")
-    
-  });
+});
 
 
 

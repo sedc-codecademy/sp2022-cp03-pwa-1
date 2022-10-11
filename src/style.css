@@ -37,6 +37,7 @@ body {
 html {
   height: 550%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 #scrollToDivWithPadding {
