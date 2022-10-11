@@ -21,50 +21,15 @@
 </head>
 
 <body>
+    <div class="canvas-container">
+        <canvas id="gradient-canvas" class="canvas-hero" width="32" height="32"></canvas>
+    </div>
+    
     <!-- NAVIGATION -->
     <section class="main-page">
+        
         <section>
-            <div class="svg-top">
-                <?xml version="1.0" encoding="utf-8"?>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="1337" width="1337">
-                <defs>
-                  <path id="path-1" opacity="1" fill-rule="evenodd" d="M1337,668.5 C1337,1037.455193874239 1037.455193874239,1337 668.5,1337 C523.6725684305388,1337 337,1236 370.50000000000006,1094 C434.03835568300906,824.6732385973953 6.906089672974592e-14,892.6277623047779 0,668.5000000000001 C0,299.5448061257611 299.5448061257609,1.1368683772161603e-13 668.4999999999999,0 C1037.455193874239,0 1337,299.544806125761 1337,668.5Z"/>
-                  <linearGradient id="linearGradient-2" x1="0.79" y1="0.62" x2="0.21" y2="0.86">
-                    <stop offset="0" stop-color="rgb(88,62,213)" stop-opacity="1"/>
-                    <stop offset="1" stop-color="rgb(23,215,250)" stop-opacity="1"/>
-                  </linearGradient>
-                </defs>
-                <g opacity="1">
-                  <use xlink:href="#path-1" fill="white" fill-opacity="1"/>
-                </g>
-              </svg>
-                <div class="flip-card" tabIndex="0">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="clock">
-                        <div class="top"></div>
-                        <div class="right"></div>
-                        <div class="bottom"></div>
-                        <div class="left"></div>
-                        <div class="center"></div>
-                        <div class="shadow"></div>
-                        <div class="hour"></div>
-                        <div class="minute"></div>
-                        <div class="second"></div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-success-hero" viewBox="0 0 24 24">
-                        <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
-                          <circle class="success-circle-outline-hero" cx="12" cy="12" r="11.5"/>
-                          <circle class="success-circle-fill-hero" cx="12" cy="12" r="11.5"/>
-                          <polyline class="success-tick-hero" points="17,8.5 9.5,15.5 7,13"/>
-                        </g>
-                      </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             <div class="row">
                 <div>
                     <header class="header">
@@ -87,8 +52,11 @@
         <!-- HERO Top-->
         <section class="hero row hero_container">
             <div>
-                <h1>Best Way to Manage your Daily Tasks</h1>
-                <p>Hurry up join our community now!</p>
+                <div class="hero-title-container">
+                <h1 class="hero-title">Best Way to Manage your Daily Tasks</h1>
+                <p class="hero-title" data-overlay aria-hidden="true"></p>
+            </div>
+                <p class="hurry" >Hurry up join our community now!</p>
                 <div class="blue-btn">
                     <a class="first-link hero-btn activate">
                       Get Started
@@ -98,16 +66,16 @@
                     </a>
                 </div>
             </div>
-            <div class="row"></div>
-        </section>
+            <div class="row">
+                <div class="img-container">
+                    <img class="image-back" src="/media/hero/loginscreen.png">
+                    <img class="image" src="media/hero/Screenshot_1.png">
+                </div>
+                
+            </div>
+            </section>
         <div class="arrow bounce"></div>
-        <div class="custom-shape-divider-bottom-1665005886">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-            </svg>
-        </div>
         <section class="hero-banner" style="overflow: hidden">
-            
             <div class="container-hero-banner">
                 <div class="card-hero-banner">
                   <div class="imgBx-hero-banner">

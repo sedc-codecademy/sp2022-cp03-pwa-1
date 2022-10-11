@@ -334,8 +334,7 @@ function renderTable(elem) {
     <br><b>${reminderItem.priority}</b>
     <br><b>NOTES</b>
     <br><p>${reminderItem.reminderNote}</p>
-    <br><b>ID</b>
-    <br><p>${reminderItem.reminderId}</p>
+    <br><p style="display: none">${reminderItem.reminderId}</p>
     </div>
     <button class="removeReminderByIdBtn" onclick="
     deleteReminderFromDb(${reminderItem.reminderId})

@@ -673,6 +673,10 @@ submitButton.addEventListener("click", function() {
     searchKeyStrokes();
 });
 
+inputTextField.addEventListener("keyup", function() {
+    searchKeyStrokes();
+})
+
 // Initializing Swiper
 
 
@@ -693,7 +697,7 @@ var galleryArticles = new Swiper('.gallery-articles' ,
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
-    initialSlide: 3,
+    initialSlide: 1,
     allowTouchMove: true,
     keyboardControl: false,
     speed: 400,
@@ -792,6 +796,7 @@ var closeFSM = function(event){
 	$this.classList.remove('full-screen');
 	$this.classList.add('shrinking');
     document.querySelector("body").style.overflow = "overlay";
+    document.querySelector("body").style.overflowX = "hidden";
 	
 	setTimeout(function(){
 		while($this.firstChild) $this.removeChild($this.firstChild);
