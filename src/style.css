@@ -106,8 +106,8 @@ p {
 }
 
 .hero-title {
-  color: rgb(133, 133, 133);
-  mix-blend-mode: color-burn;
+  color: rgb(183, 183, 183);
+  mix-blend-mode: hard-light;
   font-weight: 700;
   font-size: clamp(40px, 5vw, 70px);
   line-height: 1;
@@ -120,7 +120,8 @@ p {
   left: 0;
   top: 0px;
   z-index: -2;
-  color: #111;
+  color: rgb(134, 134, 134);
+  opacity: 1;
 }
 
 .image{
