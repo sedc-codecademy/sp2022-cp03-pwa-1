@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="productivity.css" type="text/css" />
     <link rel="stylesheet" href="logIn/logIn.css" type="text/css" />
     <link rel="stylesheet" href="testimonials/testimonials.css" type="text/css" />
+    <link rel="stylesheet" href="footer/footer.css" type="text/css" />
     
     <title>Productivity Web App</title>
 </head>
@@ -74,7 +75,7 @@
                 
             </div>
             </section>
-        <div class="arrow bounce"></div>
+        <!-- <div class="arrow bounce"></div> -->
         <section class="hero-banner" style="overflow: hidden">
             <div class="container-hero-banner">
                 <div class="card-hero-banner">
@@ -114,6 +115,7 @@
         <!--MAIN-->
         <main>
             <!-- Slider main container -->
+            <div id="scrollToDivWithPaddingForMobile"></div>
             <div id="scrollToDivWithPadding"></div>
             
             <div class="swiper" id="swiper">
@@ -387,18 +389,89 @@
             </div> extra closing divs? eh :S ?-->
         </main>
         <!--TESTIMONIALS-->
+        
         <section class="testimonials-wrapper"></section>
-        <footer class="footer">
-            <div class="">
-
-            </div>
-            <div class="">
-
-            </div>
-            <div class="">
-
-            </div>
-        </footer>
+        
+        <div class="pg-footer">
+            <footer class="footer">
+                  <div class="footer-content">
+                    <div class="footer-content-column">
+                      <div class="footer-logo">
+                        <a class="footer-logo-link" href="#">
+                          <span class="hidden-link-text">LOGO</span>
+                          <h1>Productivity</h1>
+                        </a>
+                      </div>
+                      <div class="footer-menu">
+                        <h2 class="footer-menu-name"> Get Started</h2>
+                        <ul id="menu-get-started" class="footer-menu-list">
+                          <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                            <a href="#">Start</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                            <a href="#">Documentation</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                            <a href="#">Installation</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="footer-content-column">
+                      <div class="footer-menu">
+                        <h2 class="footer-menu-name"> Company</h2>
+                        <ul id="menu-company" class="footer-menu-list">
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="#">Contact</a>
+                          </li>
+                          <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                            <a href="#">News</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="#">Careers</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="footer-menu">
+                        <h2 class="footer-menu-name"> Legal</h2>
+                        <ul id="menu-legal" class="footer-menu-list">
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
+                            <a href="#">Privacy Notice</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="#">Terms of Use</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="footer-content-column">
+                      <div class="footer-menu">
+                        <h2 class="footer-menu-name"> Quick Links</h2>
+                        <ul id="menu-quick-links" class="footer-menu-list">
+                          <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a target="_blank" rel="noopener noreferrer" href="#">Support Center</a>
+                          </li>
+                          <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a target="_blank" rel="noopener noreferrer" href="#">Service Status</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="#">Security</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="#">Blog</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type_archive menu-item-object-customer">
+                            <a href="#">Customers</a></li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="#">Reviews</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    </div>
+                  </footer>
+              </div>
+        
     </section>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -418,9 +491,6 @@
     <!-- <script src="clock.js"></script> -->
     <script src="productivity.js"></script>
     
-
-
-
 </body>
 
 </html>

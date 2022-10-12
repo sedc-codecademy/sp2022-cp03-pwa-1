@@ -817,9 +817,23 @@ $fsmActual.addEventListener("click", closeFSM);
 
 $(".scrollToArticles").click(function() {
     setTimeout(() => {
-        $('html,body').animate({
+
+        var viewport_height = window.innerWidth; 
+        if (viewport_height < 1130) {
+            $('html,body').animate({
+                scrollTop: $("#scrollToDivWithPaddingForMobile").offset().top},
+                'slow');
+        }
+        else {
+            $('html,body').animate({
         scrollTop: $("#scrollToDivWithPadding").offset().top},
         'slow');
+        }
+        
+        
+
+        
+
       }, "1600")
 });
 

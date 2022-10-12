@@ -62,7 +62,7 @@ function toggle_menu() {
   var menu_bar = document.querySelector('.header ul');
   var btn = document.getElementsByClassName('toggle-btn')[0];
   //btn.innerHTML = '×';
-  if (document.documentElement.clientWidth <= 768) {
+  if (document.documentElement.clientWidth <= 820) {
     //if(menu_bar.style.display == 'none'){
     if (menu_bar.className == 'display-none-mobile') {
       menu_bar.className = 'display-block';
