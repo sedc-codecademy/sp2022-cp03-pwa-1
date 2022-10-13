@@ -202,39 +202,62 @@ async function endSessionToDb() {
 function endSessionFunction() {
   endSessionToDb();
   let confirmEnd;
-  confirmEnd = confirm("End the session: Have you marked the tasks you have finished as 'Finished'? If yes, press okay.");
-  if (confirmEnd) {
+  confirmEnd = 
+      swal({
+        title: "Are you sure?",
+        text: "Have you marked the tasks you have finished as 'Finished'?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+      if (willDelete) {
+        swal("All tasks have been removed, session is over", {
+          icon: "success",
+        });
+        if (arrayOfTasks.length > 0) {
 
-    if (arrayOfTasks.length > 0) {
+          fillSession(session);
+          arrayOfTasks = [];
+          arrayOfTruths = [];
+          new Timer(timerElement, 0, startTimerFunctionality);
+          new Timer(shortBreakDiv, 0);
+          new Timer(longBreakDiv, 0);
+    
+          let div = document.createElement("div");
+          div.setAttribute("class", "hide");
+          document.querySelector("#sessionMain").appendChild(div);
+    
+          document.querySelectorAll(".liOfTasks").forEach((item) => item.remove());
+          if (document.querySelector(".message")) {
+            document.querySelector(".message").remove();
+          }
+          //saveSession();
+          //window.location.reload(); // deletes the local storage data after - fixed      
+        }
+        isSessionActive = false; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
+        startSessionTime = "";
+        endSessionButton.disabled = true;
+        timerElement.style.display = "flex";
+        shortBreakDiv.style.display = "none";
+        longBreakDiv.style.display = "none";
+        buttonsAddEvents();
+        getAllSessionsFromDb();
+        //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
 
-      fillSession(session);
-      arrayOfTasks = [];
-      arrayOfTruths = [];
-      new Timer(timerElement, 0, startTimerFunctionality);
-      new Timer(shortBreakDiv, 0);
-      new Timer(longBreakDiv, 0);
-
-      let div = document.createElement("div");
-      div.setAttribute("class", "hide");
-      document.querySelector("#sessionMain").appendChild(div);
-
-      document.querySelectorAll(".liOfTasks").forEach((item) => item.remove());
-      if (document.querySelector(".message")) {
-        document.querySelector(".message").remove();
+        } else {
+        swal("Continue with your session");
       }
-      //saveSession();
-      //window.location.reload(); // deletes the local storage data after - fixed      
-    }
-    isSessionActive = false; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
-    startSessionTime = "";
-    endSessionButton.disabled = true;
-    timerElement.style.display = "flex";
-    shortBreakDiv.style.display = "none";
-    longBreakDiv.style.display = "none";
-    buttonsAddEvents();
-    getAllSessionsFromDb();
-    //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
-  }
+  });
+  
+  
+  
+  
+  // confirm("End the session: Have you marked the tasks you have finished as 'Finished'? If yes, press okay.");
+  // if (confirmEnd) {
+
+    
+  // }
 }
 
 //Fill the session with date and the tasks
@@ -328,27 +351,9 @@ document.querySelectorAll(".values").forEach((item) => {
           startTheSession.addEventListener("click", saveTimerAndPlay2);
         }
       }
-    } else alert("You can't have more than 5 tasks at a time!");
+    } else swal("You can't have more than 5 tasks at a time!");
   });
 });
-
-// Setting each note window color based on priority
-// function getPriority(element) {
-//   switch (taskPriority.options[taskPriority.selectedIndex].value) {
-//     case "Low":
-//       element.style.background =
-//         "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,208,48,1) 100%)";
-//       break;
-//     case "Medium":
-//       element.style.background =
-//         "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,105,48,1) 100%)";
-//       break;
-//     case "High":
-//       element.style.background =
-//         "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,48,48,1) 100%)";
-//       break;
-//   }
-// }
 
 function resetTaskInputs() {
   taskTitle.value = "";
@@ -358,12 +363,6 @@ function resetTaskInputs() {
   textAreaOfTask.style.display = "none";
   textAreaOfTask.innerText = "";
 }
-
-// function setColor(element) {
-//   if (element.classList.contains("red")) element.style.backgroundColor = "red";
-//   if (element.classList.contains("yellow")) element.style.backgroundColor = "yellow";
-//   if (element.classList.contains("orange")) element.style.backgroundColor = "orange";
-// }
 
 function Priority(title, priority, color, description, pace) {
   this.title = title;
@@ -382,32 +381,45 @@ function resetTaskDurationValue() {
 function clearTasks() {
   let confirmAction;
   if (!listOfTasks.innerHTML.trim() == "") {
-    confirmAction = confirm("Are you sure you want to clear the tasks list?");
-    if (confirmAction) {
-      setTimeout(() => {
-        listOfTasks.innerHTML = "";
-        new Timer(timerElement, resetTaskDurationValue(), startTimerFunctionality);
-        new Timer(shortBreakDiv, 0);
-        new Timer(longBreakDiv, 0);
-        arrayOfTasks = [];
-        arrayOfFinishedTasks = [];
+    confirmAction = swal({
+      title: "Are you sure you want to clear the tasks list?",
+      text: "Once deleted, you will not be able to recover the created tasks!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Tasks have been deleted!", {
+          icon: "success",
+        });
         setTimeout(() => {
-          addClearButtonAnimation();
-        }, 100);
-        setTimeout(() => {
-          removeClearButtonCheckAnimation()
-        }, 1500);
-
-        shortBreakDiv.style.display = "flex";
-        let div = document.createElement("div");
-        div.setAttribute("class", "hide");
-        document.querySelector("#sessionMain").appendChild(div);
-
-        console.log("List successfully deleted");
-        console.log(arrayOfTasks);
-      }, 500)
-    }
-  } else console.log("The list is empty");
+          listOfTasks.innerHTML = "";
+          new Timer(timerElement, resetTaskDurationValue(), startTimerFunctionality);
+          new Timer(shortBreakDiv, 0);
+          new Timer(longBreakDiv, 0);
+          arrayOfTasks = [];
+          arrayOfFinishedTasks = [];
+          setTimeout(() => {
+            addClearButtonAnimation();
+          }, 100);
+          setTimeout(() => {
+            removeClearButtonCheckAnimation()
+          }, 1500);
+  
+          shortBreakDiv.style.display = "flex";
+          let div = document.createElement("div");
+          div.setAttribute("class", "hide");
+          document.querySelector("#sessionMain").appendChild(div);
+  
+          console.log("List successfully deleted");
+          console.log(arrayOfTasks);
+        }, 500)
+      } else {
+        swal("Successfully deleted");
+      }
+    });
+  } 
 }
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot

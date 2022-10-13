@@ -174,7 +174,7 @@ function refresh() {
             };
             myChart.config.data.datasets[0].data = genDataArrayChart1();
             if (numberOfDates > 31) {
-                alert("For better visibility of your chart, we highly recommend you to choose a time period that does not exceed 31 days! Please try again!");
+                swal("For better visibility of your chart, we highly recommend you to choose a time period that does not exceed 31 days! Please try again!");
             }
             else {
                 myChart.update()

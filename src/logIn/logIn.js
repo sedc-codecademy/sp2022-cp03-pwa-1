@@ -107,7 +107,7 @@ getStartedButton.forEach((item) => {
       childNodes: [logInMainTab],
     });
 
-    logInMainTabHeader.innerHTML = `<h2>Sign in <a class="resetPass" href="#" data-slide="3">Onlyfans?</a><h2/>`;
+    logInMainTabHeader.innerHTML = `<h2>Sign in <a class="resetPass" href="#" data-slide="3"></a><h2/>`;
     logInMainTabForm.innerHTML = `
             <form id="login-form" class="login-form">
                 <p>

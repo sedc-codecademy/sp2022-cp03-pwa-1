@@ -2,7 +2,7 @@
 
 .pg-footer {
     position: absolute;
-    top: 470%;
+    top: 460%;
     width: 100%;
 }
 
@@ -15,18 +15,6 @@
     color: #fff;
 }
 
-.footer-wave-svg {
-    background-color: transparent;
-    display: block;
-    height: 30px;
-    position: relative;
-    top: -1px;
-    width: 100%;
-}
-
-.footer-wave-path {
-    fill: #fffff2;
-}
   
 .footer-content {
     margin-left: auto;

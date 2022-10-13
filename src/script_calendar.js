@@ -202,7 +202,7 @@ let inputReminderPriority = 0;
 reminderBtn.addEventListener("click", function () {
   gettingAllReminders();
   if (inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '') {
-    return alert('Please enter input in all fields!');
+    return swal('Please input all the fields!');
   };
   
   createReminderObject();
