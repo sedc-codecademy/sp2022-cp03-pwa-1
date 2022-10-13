@@ -44,7 +44,7 @@
   position: absolute;
   text-align:center;
   border-radius: 1rem;
-  background-color: white;
+  background-color: transparent;
   
 }
 
@@ -233,6 +233,7 @@
   box-shadow: inset -5px -5px 9px 
   rgba(255,255,255,0.45), inset 5px 5px 9px 
   rgba(94,104,121,0.3);
+  width: 5rem;
 }
 
 /* #saveTaskButton:hover,
@@ -492,6 +493,7 @@
   /* background-color: rgb(165, 178, 233); */
   backdrop-filter: blur(3px);
   z-index: 5;
+  
 }
  
 .closeSessionModals {
@@ -693,13 +695,13 @@ ol {
 /* OVA */
  
 .listOfTasksDiv li {
-  max-width: 13vh;
+  width: fit-content;
   list-style-type: none;
   flex-basis: 14%;
   padding: 15px;
   text-align: left;
-  min-height: 14rem;
-  border-radius: 1rem;
+  height: 37vh;
+  border-radius: 0.5rem;
   color: black;
   min-width: 12%;
   font-size: 0.8rem;
@@ -708,6 +710,7 @@ ol {
  
 .orderedListOfTasks {
   width: 100%;
+  height: 47vh;
   margin-left: -1.4rem;
 }
  
@@ -765,13 +768,13 @@ ol {
   position: absolute;
   font-size: 0.9em;
   font-weight: 300;
-  background: #2980b9;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  background: rgb(89, 143, 148) !important;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   min-width: 85%;
-  min-height: 79%;
-  top: 36px;
+  min-height: 81%;
+  bottom: 0;
   z-index: 2;
   word-wrap: break-word;
   color: white;
@@ -783,8 +786,7 @@ ol {
  
 .showNoteButton {
   position: absolute;
-  /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   border: none;
   cursor: pointer;
   transition: all 300ms ease-in-out;
@@ -793,8 +795,6 @@ ol {
   font-weight: 700;
   color: rgb(80, 80, 80);
   height: 1.5rem;
-  /* left: 50%;
-        transform: translateX(-50%); */
   justify-content: center;
   top: 75%;
   left: 0;
@@ -808,8 +808,7 @@ ol {
  
 .hideNoteButton {
   position: absolute;
-  /* box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   border: none;
   cursor: pointer;
   transition: all 300ms ease-in-out;
@@ -818,8 +817,6 @@ ol {
   font-weight: 700;
   color: rgb(80, 80, 80);
   height: 1.5rem;
-  /* left: 50%;
-        transform: translateX(-50%); */
   justify-content: center;
   top: 85%;
   left: 0;
@@ -839,15 +836,14 @@ ol {
   height: 1.2rem;
   line-height: 1.2;
   border: 0;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 10rem;
+  border-radius: 0.4rem;
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: all 300ms ease-in-out;
 }
  
 .removeTaskButton:hover {
-  transform: scale(1.1);
+  transform: scale(0.7);
 }
  
 /* TASK FORM */
@@ -1181,9 +1177,9 @@ ol {
   transform: scale(1.03);
 }
 
-.stopTask, #resumeBtn {
+.stopTask {
   position: absolute;
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   border: none;
   cursor: pointer;
   transition: all 300ms ease-in-out;
@@ -1225,12 +1221,15 @@ ol {
   display: inline-block;
   vertical-align: top;
   height: 80%;
-  width: 100%;
+  width: 80%;
   opacity: 1;
   overflow: visible;
-  margin-top: 5vh;
+  margin-top: 0vh;
   margin-inline: auto;
- 
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0%;
 }
   @keyframes success-tick {
     0% {
@@ -1314,3 +1313,377 @@ ol {
       opacity: 1;
     }
   }
+
+  @media (max-width:821px) {
+
+    .nav {
+      border-radius: 0.4rem;
+    }
+
+    .nav__slider-rect {
+      border-radius: 0.4rem;
+      
+    }
+
+    .taskFormDiv {
+      position: absolute;
+      top: 51%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgb(89, 143, 148);
+      border-radius: 0;
+      z-index: 10;
+      height: 100% !important;
+      width: 101%;
+      block-size: fit-content;
+      z-index: 100 !important;
+    }
+  
+    .taskContainer {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0px;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      
+    }
+
+    #addTaskBtn, #clearTasksBtn {
+      border-radius: 0.3rem;
+    }
+
+    #sessionMain {
+      position: relative;
+      margin: auto;
+      width: 99%;
+      padding: 0;
+      height: 99.7%;
+      
+    }
+
+    #taskButtons {
+      display: flex;
+      position: absolute;
+      justify-content: space-between;
+      align-items: center;
+      height: fit-content;
+      border: 0.5px solid rgba(113, 113, 113, 0.62);
+      padding: 5px;
+      border-radius: 0.4rem;
+      width: 91%;
+      top: 91%;
+      left: -4px;
+      right: 0;
+      margin: auto;
+      z-index: 100;
+    }
+
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      block-size: fit-content;
+    }
+     
+    .listOfTasksDiv {
+      display: table;
+      position: absolute;
+      width: 99%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 22%;
+      
+    }
+     
+      .listOfTasksDiv li {
+      max-width: 15vh;
+      list-style-type: none;
+      flex-basis: 14%;
+      padding: 15px;
+      text-align: left;
+      min-height: 17rem;
+      border-radius: 0.5rem;
+      color: black;
+      min-width: 12%;
+      font-size: 0.8rem;
+      display: inline;
+    }
+     
+    .orderedListOfTasks {
+      width: 100%;
+      margin-left: -1.3rem;
+      
+    }
+
+    .breaksDiv {
+      position: absolute;
+      top: 35%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+      padding: 3rem;
+      border-radius: 0;
+      z-index: 10;
+      width: 20rem;
+      height: 10rem;
+    }
+
+    #endSessionButton {
+      display: inline-block;
+      position: absolute;
+      color: #1E1E1E;
+      right: -3%;
+      z-index: 100;
+    }
+
+    .bubbly-button {
+      top: 13%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: fit-content;
+      margin-inline: auto;
+      position: absolute;
+      
+    }
+
+    .svg-success {
+      display: inline-block;
+      vertical-align: top;
+      height: 100%;
+      width: 70%;
+      top: 70%;
+      opacity: 1;
+      overflow: visible;
+      position: absolute;
+      margin-inline: auto;
+      left: 50%;
+      right: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .markerContainer {
+      width: 30px;
+      margin: 50px auto;
+      opacity: 111;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .showNoteDiv {
+      min-height: 82%;
+      top: 36px;
+      z-index: 2;
+      word-wrap: break-word;
+      color: white;
+      left: 0;
+      right: 0;
+      padding: 10px;
+    
+    }
+}
+
+  @media (max-width:650px) {
+    .breaksDiv {
+      position: absolute;
+      top: 77%;
+      left: 50%;
+      right: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0;
+      border-radius: 0;
+      z-index: 10;
+      width: 80%;
+      height: 4rem;
+    }
+
+    .form {
+      padding: 0;
+      box-sizing: border-box;
+      width: 80%;
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      transform: translate(-50%, -50%);
+      top: 30%;
+      
+    }
+
+    #noteForTaskBtn {
+      margin: 30px 8px;
+      border-radius: 0.3rem;
+      border: none;
+      cursor: pointer;
+      width: 16vh;
+      font-size: 1rem;
+      font-weight: 700;
+      color: gray;
+      height: 1.5rem;
+      justify-content: center;
+      transition: all 300ms ease-in-out;
+      position: absolute;
+      
+    }
+
+    #taskText {
+      display: none;
+      -webkit-box-shadow: 0px 0px 2px 2px #ccc;
+      box-shadow: 0px 0px 2px 2px #ccc;
+      border-radius: 0.5rem;
+      max-width: 30vh;
+      max-height: 5vh;
+      padding: 20px;
+      margin-bottom: 2vh;
+      border: none;
+      position: absolute;
+      top: 93%;
+      left: 0;
+    }
+
+    .button_field {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      bottom: 0;
+      width: fit-content;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .timer_break_field label {
+      line-height: 0.5em;
+    }
+}
+
+@media (max-width:378px) {
+    .timer_break_field label {
+      font-size: 15px;
+      line-height: 0.5em;
+    }
+}
+
+@media only screen and (max-width:680px) {
+  
+   ol {
+    flex-direction: column;
+    list-style:none;
+    flex-wrap: nowrap;
+    /* flex-direction: column; */
+    /* align-content: space-around; */
+    align-items: center;
+    width: 100%;
+    
+  }
+
+  .listOfTasksDiv li {
+    min-width: 93%;
+    min-height: 1rem !important;
+    list-style-type: none;
+    flex-basis: auto;
+    padding: 15px;
+    text-align: center;
+    border-radius: 0.5rem;
+    color: black;
+    font-size: 0.8rem;
+    /* flex-direction: column; */
+    
+  }
+
+  .listOfTasksDiv li b:nth-child(7), li b:nth-child(8), li b:nth-child(10), li b:nth-child(11) {
+    display: none;
+  }
+
+  .listOfTasksDiv li b {
+    float: left;
+    line-height: 0.5;
+  }
+
+  .liOfTasks {
+    width: 100%;
+    max-height: 2.2rem !important;
+    margin: 5px auto;
+    padding: 0 auto;
+    background-color: white;
+    /* flex-direction: row; */
+    position: relative;
+    transition: all 600ms ease-in-out;
+   }
+
+   .listOfTasksDiv {
+    top: 24%;
+    
+  }
+
+  .stopTask {
+    top: 6%;
+    left: 0;
+    right: 0;
+  }
+
+  .showNoteButton {
+    top: 54%;
+    left: 0;
+    right: 0;
+  }
+
+  .hideNoteButton {
+    top: 57%;
+  }
+
+  .showNoteDiv {
+    top: 0;
+    min-height: 70%;
+    border-radius: 0.5rem;
+  }
+
+  .svg-success {
+    display: inline-block;
+    vertical-align: top;
+    height: 80%;
+    width: 80%;
+    opacity: 1;
+    overflow: visible;
+    margin-top: 0;
+    margin-inline: auto;
+    position: absolute;
+    left: 93%;
+    bottom: 50%;
+    top: 50%;
+    transform: translateY(-50%, -50%);
+  }
+
+}
+
+@media  (max-width: 610px) {
+  #endSessionButton {
+    right: -5%;
+  }
+}
+
+@media  (max-width: 550px) {
+  #endSessionButton {
+    right: -5%;
+    top: 3rem;
+  }
+}
+
+@media  (max-width: 391px) {
+  #endSessionButton {
+    right: -12%;
+    top: 3rem;
+  }
+}
+  
+
+
+

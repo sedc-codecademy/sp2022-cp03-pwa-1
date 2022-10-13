@@ -22,6 +22,7 @@ function startTimerFunctionality() {
   buttonsRemoveEvents(); //blokiranje na funkcionalnosta na addTask i removeTask kopchinjata
   document.querySelectorAll(".liOfTasks").forEach(li => li.querySelector(".stopTask").addEventListener("click", finishTask));
   startSessionTime = new Date();
+  document.querySelectorAll(".removeTaskButton").forEach(button => button.style.display = "none")
   endSessionButton.addEventListener("click", endSessionFunction);
 };
 
@@ -505,11 +506,11 @@ function createTask() {
     let li = document.createElement("li");
     li.setAttribute("class", "liOfTasks"); // option 3
     //li innerHTML - take out in separate function
-    li.innerHTML += `<b>Title</b>: ${taskTitle.value
-      } <br><b>Duration</b>: ${taskDuration.value
-      } min <br> <b>Priority</b>: ${taskPriority.options[taskPriority.selectedIndex].value
-      }<br> <b>Pace</b>: ${taskPace.options[taskPace.selectedIndex].value
-      } <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
+    li.innerHTML += `<b>Title</b> <b>: ${taskTitle.value
+      }</b> <br><b>Duration</b> <b>: ${taskDuration.value
+      }min </b>  <br> <b>Priority</b> <b>: ${taskPriority.options[taskPriority.selectedIndex].value
+      }</b><br> <b>Pace</b> <b>: ${taskPace.options[taskPace.selectedIndex].value
+      }</b> <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
     let activeCardMarker = document.createElement("div");
     activeCardMarker.setAttribute("class", "card_timer_container"); //option 2
     li.appendChild(activeCardMarker);
