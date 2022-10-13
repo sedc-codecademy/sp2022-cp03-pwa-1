@@ -1,7 +1,7 @@
 // DOM Elements
 
 let getStartedButton = document.querySelectorAll(".activate");
-
+let logInButtonFromHome = document.querySelector(".sign-up");
 let mainPage = document.querySelector(".main-page");
 let html = document.querySelector("html");
 
@@ -45,6 +45,10 @@ let imageDiv = [];
 //     var data = await response.text();
 //     console.log(data);
 // }
+
+logInButtonFromHome.addEventListener("click", () => {
+    logInButtonFromHome.innerText = "Log out"
+})
 
 getStartedButton.forEach((item) => {
     item.addEventListener("click", function () {

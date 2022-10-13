@@ -497,14 +497,19 @@ body .svg-top {
 
 /* CALENDAR */
 .calendar-page {
-  top: 10%;
-  position: relative;
+  top: 5%;
+  left: 50%;
+  right: 50%;
+  position: absolute;
+  z-index: 1000;
 }
 
 #calendarOuterWrapper {
-  background-color: #2980b9;
-  border-radius: 20%;
+  /* background-color: #2980b9; */
+  /* border-radius: 2rem; */
   /* width: 100%; */
+  z-index: 1000;
+  
 }
 
 #calendarMain {
@@ -512,9 +517,9 @@ body .svg-top {
   justify-content: center;
   font-size: 2.3rem;
   color: white;
-  background-color: #2980b9;
+  /* background-color: #2980b9; */
   max-height: fit-content;
-  border-radius: 2%;
+  /* border-radius: 2%; */
   transform: scale(0.85);
   /* width: 100%; */
 }
@@ -529,35 +534,53 @@ body .svg-top {
   margin-bottom: 10px;
   gap: 30px;
   color: black;
-  text-shadow: 2px 2px 5px rgb(146, 144, 144);
+  /* text-shadow: 2px 2px 5px rgb(146, 144, 144); */
+  
+}
+
+#blobSvg {
+  z-index: -100;
 }
 
 .calendarMonth {
   display: flex;
   gap: 30px;
-  color: aliceblue;
-  border-radius: 2rem;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background: #2980b9;
+  color: rgb(71, 71, 71);
+  border-radius: 0.4rem;
+  box-shadow: 0 6px 15px 0 rgb(0 0 0 / 7%);
+  /* background: #2980b9; */
 }
+
 
 .calendarYear {
   color: #2980b9;
   display: flex;
   gap: 30px;
-  color: aliceblue;
-  border-radius: 2rem;
-  box-shadow: -3px 9px 20px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background: #2980b9;
+  color: rgb(71, 71, 71);
+  border-radius: 0.4rem;
+  box-shadow: 0 6px 15px 0 rgb(0 0 0 / 7%);
+  /* background: #2980b9; */
+}
+
+.testTd {
+  color: rgb(71, 71, 71);
+  padding: 0.5rem;
+  text-align: center;
+}
+
+th {
+  color: rgb(71, 71, 71);
+  
 }
 
 .callendarButton {
-  color: aliceblue;
+  color: rgb(71, 71, 71);
   background-color: transparent;
   font-size: 15px;
   border-radius: 20%;
   text-align: center;
   border: transparent;
+  cursor: pointer;
 }
 
 .createdReminder {
@@ -577,6 +600,8 @@ body .svg-top {
   justify-content: center;
   height: 100vh;
 }
+
+
 
 .container a {
   padding: 30px;
@@ -705,6 +730,7 @@ body .svg-top {
   flex-direction: column;
   display: flex;
   box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.1);
+  
 }
 
 .box-out {
@@ -719,6 +745,7 @@ body .svg-top {
   height: 100%;
   display: flex;
   flex-direction: column;
+  
 }
 
 .box-in {
@@ -1021,13 +1048,17 @@ body .svg-top {
 
 
 .calendarReminderDataDay {
-  color: red;
+  color: white;
   font-weight: bold;
+  background-color: red;
+  padding: auto;
+  border-radius: 1rem;
+  cursor: pointer;
 }
 
-.calendarReminderDataDay :hover {
+/* .calendarReminderDataDay :hover {
   color: red;
-}
+} */
 
 /* NAVBAR */
 
@@ -1188,10 +1219,10 @@ body .svg-top {
 .sign-up {
   background-color: transparent;
   border-radius: 1rem;
-  color: rgb(255, 205, 0);
+  color: rgb(255, 255, 255);
   cursor: pointer;
   padding: 0.4rem 1.2rem;
-  border: 2px solid rgb(255, 205, 0);
+  border: 2px solid rgb(255, 255, 255);
   font-size: 18px;
   font-weight: normal;
   letter-spacing: 0.5px;
@@ -1203,8 +1234,18 @@ body .svg-top {
 }
 
 .sign-up:hover {
+  background-color: white;
+  color: rgb(255, 205, 0);
+}
+
+.sign-up-scroll {
+  border: 2px solid rgb(255, 205, 0);
+  color: rgb(255, 205, 0);
+}
+
+.sign-up-scroll:hover {
   background-color: rgb(255, 205, 0);
-  color: white;
+  color: rgb(246, 246, 246);
 }
 
 .heart {
@@ -1265,6 +1306,8 @@ body .svg-top {
   }
 }
 
+
+
 @media (max-width:821px) {
   .header {
     height: auto;
@@ -1278,8 +1321,10 @@ body .svg-top {
     margin: 0;
     padding: 0 0 10px;
     z-index: 10;
-    border-bottom: 5px solid #ccc;
+    /* border-bottom: 5px solid rgb(253, 253, 253); */
+    box-shadow: 0px 0px 2px 2px #ccc;
     background-color: white;
+    
   }
 
   .header .logo-container h1 {
@@ -1292,6 +1337,8 @@ body .svg-top {
   .header-scroll .logo-container {
     animation: none;
   }
+
+  
 
   .header ul {
     float: none;
@@ -1326,7 +1373,7 @@ body .svg-top {
   }
 
   .header ul li a:hover {
-    background-color: rgb(138, 138, 138);
+    background-color: rgb(89, 143, 148);
     color: white;
   }
 
@@ -1358,18 +1405,6 @@ body .svg-top {
     display: none;
   }
 
-  /* .arrow {
-    position: fixed;
-    bottom: 0%;
-    left: 49%;
-    display: flex;
-    margin-left: -8px;
-    width: 52px;
-    height: 68px;
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=);
-    background-size: contain;
-  } */
-
   .row img {
     max-width: 80%;
     object-fit: cover;
@@ -1379,336 +1414,3 @@ body .svg-top {
 
 }
 
-
-
-/* ===============ARROW BOUNCING INDICATOR=============== */
-
-/* .bounce {
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-7px);
-  }
-
-  60% {
-    transform: translateY(-3px);
-  }
-} */
-
-
-
-/* REMINDERS */
-
-/* clock  */
-
-/* .clock {
-	position: relative;
-	height: 200px;
-	width: 200px;
-	background-color: #fff;
-	border-radius: 100%;
-	border: 10px solid #34626c;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-}
-.clock .top {
-	position: absolute;
-	width: 3px;
-	height: 8px;
-	background-color: #262626;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-}
-.clock .right {
-	position: absolute;
-	width: 8px;
-	height: 3px;
-	background-color: #262626;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	margin: auto;
-}
-.clock .bottom {
-	position: absolute;
-	width: 3px;
-	height: 8px;
-	background-color: #262626;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: 0 auto;
-}
-.clock .left {
-	position: absolute;
-	width: 8px;
-	height: 3px;
-	background-color: #262626;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	margin: auto;
-}
-.clock .center {
-	height: 6px;
-	width: 6px;
-	background-color: #262626;
-	border-radius: 100%;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-}
-.clock .shadow {
-	background:linear-gradient(rgba(0, 0, 0, 0), 
-								rgba(0, 0, 0, 0.1));
-	height: 200px;
-	width: 200px;
-	position: absolute;
-	left: 60px;
-	top: 60px;
-	transform: rotate(135deg);
-}
-.clock .hour {
-	width: 3px;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-	animation: time 3600s infinite linear;
-}
-.clock .hour:before {
-	content: "";
-	height: 60px;
-	width: 3px;
-	background-color: #262626;
-	position: absolute;
-	top: 30px;
-}
-
-.clock .minute {
-	width: 1px;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-	animation: time 360s infinite linear;
-}
-.clock .minute:before {
-	position: absolute;
-	content: "";
-	background-color: #262626;
-	height: 40px;
-	width: 1px;
-	top: 50px;
-}
-.clock .second {
-	width: 2px;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-	animation: time 15s infinite linear;
-}
-.clock .second:before {
-	position: absolute;
-	content: "";
-	background-color: #fd1111;
-	height: 45px;
-	width: 2px;
-	top: 45px;
-}
-
-@keyframes time {
-	to {
-		transform: rotate(360deg);
-	}
-}  */
-
-/* flip */
-
-/* .flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px;
-  
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 80%;
-  height: 80%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-}
-
-.flip-card:focus {
-    outline: 0;
-}
-
-@keyframes slideInFromLeft {
-  0% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-
-.flip-card-inner {  
-  animation: 4s ease-in-out 0s 1 slideInFromLeft;
-}
-
-.flip-card:hover .flip-card-inner,
-.flip-card:focus .flip-card-inner{
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.flip-card-front {
-  background: transparent;
-  color: black;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flip-card-back {
-  background: transparent;
-  color: white;
-  transform: rotateY(180deg);
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-
-/* check animation hero */
-
-/* .svg-success-hero {
-  display: inline-block;
-  vertical-align: top;
-  height: 200px;
-  width: 200px;
-  opacity: 1;
-  overflow: visible;
-}
-@-webkit-keyframes success-tick {
-  0% {
-    stroke-dashoffset: 16px;
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: 31px;
-    opacity: 1;
-  }
-}
-@keyframes success-tick {
-  0% {
-    stroke-dashoffset: 16px;
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: 31px;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes success-circle-outline {
-  0% {
-    stroke-dashoffset: 72px;
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: 0px;
-    opacity: 1;
-  }
-}
-@keyframes success-circle-outline {
-  0% {
-    stroke-dashoffset: 72px;
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: 0px;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes success-circle-fill {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes success-circle-fill {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.svg-success-hero .success-tick-hero {
-  fill: none;
-  stroke-width: 1px;
-  stroke: rgb(255, 205, 0);
-  stroke-dasharray: 15px, 15px;
-  stroke-dashoffset: -14px;
-  -webkit-animation: success-tick 450ms ease 1400ms forwards;
-          animation: success-tick 450ms ease 1400ms forwards;
-  opacity: 0;
-}
-.svg-success-hero .success-circle-outline-hero {
-  fill: none;
-  stroke-width: 1px;
-  stroke: rgb(89, 143, 148);
-  stroke-dasharray: 72px, 72px;
-  stroke-dashoffset: 72px;
-  -webkit-animation: success-circle-outline 300ms ease-in-out 800ms forwards;
-          animation: success-circle-outline 300ms ease-in-out 800ms forwards;
-  opacity: 0;
-}
-.svg-success-hero .success-circle-fill-hero {
-  fill: rgb(89, 143, 148);
-  stroke: none;
-  opacity: 0;
-  -webkit-animation: success-circle-fill 300ms ease-out 1100ms forwards;
-          animation: success-circle-fill 300ms ease-out 1100ms forwards;
-}
- */

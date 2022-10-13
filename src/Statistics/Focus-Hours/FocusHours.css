@@ -28,11 +28,23 @@
     height: 85%;
     padding: 2rem;
     border-radius: 2rem;
-    border: solid 3px rgba(69, 68, 173, 1);
     background: rgb(245, 242, 228);
     margin-top: 4%;
 }
 
 #dynamicFocusHours {
     font-size:1.4rem;
+}
+
+#startDate, #endDate {
+    border-radius: 0.3rem;
+    border: none;
+    height: 1.5rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border: 0px;
+    outline: 0px;
+    border-style: none;
+    border-color: Transparent;
+    
 }

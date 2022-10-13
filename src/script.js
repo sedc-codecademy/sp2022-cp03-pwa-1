@@ -49,12 +49,15 @@ window.addEventListener('scroll', function () {
 
 function header_scroll() {
   var my_header = document.getElementsByTagName('header')[0];
+  var my_singUp = document.querySelector('.sign-up');
   var scroll_height = window.pageYOffset;
   if (scroll_height > 0) {
     my_header.className = 'header header-scroll';
+    my_singUp.className = 'sign-up sign-up-scroll'
   }
   else {
     my_header.className = 'header';
+    my_singUp.className = 'sign-up'
     }
 }
 
