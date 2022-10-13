@@ -55,99 +55,36 @@ getStartedButton.forEach((item) => {
 
     //left div
 
-    let appLogIn = createElements({
-      Tag: "div",
-      classList: "appLogIn",
-      childNodes: [html],
-    });
-    let leftDiv = createElements({
-      Tag: "div",
-      classList: "sliderShow",
-      childNodes: [appLogIn],
-    });
-    let swiperForLogIn = createElements({
-      Tag: "div",
-      classList: "swiper-log-in",
-      childNodes: [leftDiv],
-    });
-    let swiperWrapper = createElements({
-      Tag: "div",
-      classList: "swiper-wrapper log-in-wrapper",
-      childNodes: [swiperForLogIn],
-    });
-    const swiperPagination = createElements({
-      Tag: "div",
-      classList: "swiper-pagination",
-      childNodes: [leftDiv],
-    });
+    let appLogIn = createElements({Tag: "div", classList: "appLogIn", childNodes: [html],});
+    let leftDiv = createElements({Tag: "div", classList: "sliderShow", childNodes: [appLogIn],});
+    let swiperForLogIn = createElements({Tag: "div",classList: "swiper-log-in", childNodes: [leftDiv],});
+    let swiperWrapper = createElements({Tag: "div",classList: "swiper-wrapper log-in-wrapper",childNodes: [swiperForLogIn],});
+    const swiperPagination = createElements({Tag: "div",classList: "swiper-pagination",childNodes: [leftDiv],});
 
     for (let i = 0; i < 4; i++) {
-      swiperSlides.push(
-        createElements({
-          Tag: "div",
-          classList: "swiper-slide slides-log-in",
-          childNodes: [swiperWrapper],
-        })
+      swiperSlides.push(createElements({Tag: "div",classList: "swiper-slide slides-log-in",childNodes: [swiperWrapper],})
       );
     }
 
     for (let i = 0; i < swiperSlides.length; i++) {
-      headerDiv.push(
-        createElements({
-          Tag: "div",
-          classList: "logIn-header-div gap",
-          childNodes: [swiperSlides[i]],
-        })
+      headerDiv.push(createElements({Tag: "div", classList: "logIn-header-div gap", childNodes: [swiperSlides[i]], })
       );
-      messageDiv.push(
-        createElements({
-          Tag: "div",
-          classList: "logIn-message-div gap",
-          childNodes: [swiperSlides[i]],
-        })
+      messageDiv.push( createElements({ Tag: "div", classList: "logIn-message-div gap", childNodes: [swiperSlides[i]], })
       );
-      imageDiv.push(
-        createElements({
-          Tag: "div",
-          classList: "logIn-image-div gap",
-          childNodes: [swiperSlides[i]],
-        })
+      imageDiv.push(createElements({ Tag: "div", classList: "logIn-image-div gap", childNodes: [swiperSlides[i]], })
       );
     }
 
     // main log in & sign up tab right div
-    let rightDiv = createElements({
-      Tag: "div",
-      classList: "log-in-div",
-      childNodes: [appLogIn],
-    });
+    let rightDiv = createElements({ Tag: "div", classList: "log-in-div", childNodes: [appLogIn],});
 
-    let swiperRight = createElements({
-      Tag: "div",
-      classList: "right-swiper",
-      childNodes: [rightDiv],
-    });
-    let swiperWrapperRight = createElements({
-      Tag: "div",
-      classList: "swiper-wrapper wrapper-right",
-      childNodes: [swiperRight],
-    });
+    let swiperRight = createElements({ Tag: "div", classList: "right-swiper", childNodes: [rightDiv],});
+    let swiperWrapperRight = createElements({ Tag: "div",classList: "swiper-wrapper wrapper-right", childNodes: [swiperRight],});
 
-    let swiperSlidesRightAtZero = createElements({
-      Tag: "div",
-      classList: "swiper-slide slides-other",
-      childNodes: [swiperWrapperRight],
-    });
-    let swiperSlidesRightAtOne = createElements({
-      Tag: "div",
-      classList: "swiper-slide slides-other",
-      childNodes: [swiperWrapperRight],
-    });
-    let swiperSlidesRightAtTwo = createElements({
-      Tag: "div",
-      classList: "swiper-slide slides-other",
-      childNodes: [swiperWrapperRight],
-    });
+    let swiperSlidesRightAtZero = createElements({ Tag: "div",classList: "swiper-slide slides-other",childNodes: [swiperWrapperRight],});
+    let swiperSlidesRightAtOne = createElements({Tag: "div",classList: "swiper-slide slides-other",childNodes: [swiperWrapperRight],});
+    let swiperSlidesRightAtTwo = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
+    let swiperSlidesRightAtThree = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
 
     let logInTab = createElements({
       Tag: "div",
@@ -170,7 +107,7 @@ getStartedButton.forEach((item) => {
       childNodes: [logInMainTab],
     });
 
-    logInMainTabHeader.innerHTML = `<h2>Sign in<h2/>`;
+    logInMainTabHeader.innerHTML = `<h2>Sign in <a class="resetPass" href="#" data-slide="3">Onlyfans?</a><h2/>`;
     logInMainTabForm.innerHTML = `
             <form id="login-form" class="login-form">
                 <p>
@@ -179,7 +116,7 @@ getStartedButton.forEach((item) => {
                 <p>
                 <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
                 </p>
-                <p><a class="forgotPass" href="#" data-slide="3">Forgot password?</a><p>
+                <p><a class="forgotPass" href="#" data-slide="2">Forgot password?</a><p>
                 <p>
                 <button type="button" id="login" class="loginButton">Login</button>
                 </p>
@@ -294,6 +231,45 @@ getStartedButton.forEach((item) => {
         <h2>OR</h2>
         </p>
         <p><a href="#" data-slide="1">Create New Account</a><p>
+        </form>`;
+
+
+
+    // reset pass 
+
+    let resetPasswordTab = createElements({
+      Tag: "div",
+      classList: "reset-password-tab",
+      childNodes: [swiperSlidesRightAtThree],
+    });
+    let resetPasswordMainTab = createElements({
+      Tag: "div",
+      classList: "reset-password-main-tab",
+      childNodes: [resetPasswordTab],
+    });
+    let resetPasswordMainTabHeader = createElements({
+      Tag: "div",
+      classList: "reset-password-main-tab-header",
+      childNodes: [resetPasswordMainTab],
+    });
+    let resetPasswordMainTabForm = createElements({
+      Tag: "div",
+      classList: "reset-password-main-tab-form",
+      childNodes: [resetPasswordMainTab],
+    });
+    
+    resetPasswordMainTabHeader.innerHTML = `<h2>Reset password<h2/>`;
+    resetPasswordMainTabForm.innerHTML = `
+        <form id="reset-password-form" class="reset-password-form">
+        <p>
+        <input type="password" id="reset-password" name="reset-password" placeholder="New password" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="password" id="confirm-reset-password" name="confirm-reset-password" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <button type="button" class="resetPasswordButton" id="reset-password-button">Reset password</button>
+        </p>
         </form>`;
 
     // swiper-slide [0]
