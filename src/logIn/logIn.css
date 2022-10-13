@@ -120,7 +120,8 @@
 
 .log-in-tab,
 .sign-up-tab,
-.forgot-password-tab {
+.forgot-password-tab,
+.reset-password-tab {
   height: 100%;
   position: relative;
 }
@@ -141,14 +142,16 @@
 
 .log-in-main-tab-header,
 .sign-up-main-tab-header,
-.forgot-password-main-tab-header {
+.forgot-password-main-tab-header,
+.reset-password-main-tab-header {
   width: 100%;
   height: 10%;
 }
 
 .log-in-main-tab-header h2,
 .sign-up-main-tab-header h2,
-.forgot-password-main-tab-header h2 {
+.forgot-password-main-tab-header h2,
+.reset-password-main-tab-header h2 {
   margin-left: 5%;
 }
 
@@ -156,7 +159,8 @@
 
 #login-form p,
 #signUp-form p,
-#forgot-password-form p {
+#forgot-password-form p,
+#reset-password-form p{
   margin-top: 15px;
 }
 
@@ -204,7 +208,14 @@
 .forgot-password-form a:visited:focus,
 .forgot-password-form a:visited:hover,
 .forgot-password-form a:active:focus,
-.forgot-password-form a:active:hover {
+.forgot-password-form a:active:hover,
+.reset-password-form a:hover,
+.reset-password-form a:link:focus,
+.reset-password-form a:link:hover,
+.reset-password-form a:visited:focus,
+.reset-password-form a:visited:hover,
+.reset-password-form a:active:focus,
+.reset-password-form a:active:hover {
   color: #329dd5;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -212,13 +223,15 @@
 
 #login-form,
 #signUp-form,
-#forgot-password-form {
+#forgot-password-form,
+#reset-password-form {
   padding: 0 0 0 15px;
 }
 
 #login-form input,
 #signUp-form input,
-#forgot-password-form input {
+#forgot-password-form input,
+#reset-password-form input {
   display: block;
   box-sizing: border-box;
   width: 98%;
@@ -236,7 +249,8 @@
 #signUp-form input[type="text"],
 #signUp-form input[type="password"],
 #signUp-form input[type="email"],
-#forgot-password-form input[type="email"] {
+#forgot-password-form input[type="email"],
+#reset-password-form input[type="password"] {
   width: 98%;
   padding: 0 0 0 10px;
   margin: 0;
@@ -258,7 +272,9 @@
 #signUp-form input[type="text"]:focus,
 #signUp-form input[type="password"]:focus,
 #signUp-form input[type="email"]:focus,
-#forgot-password-form input[type="email"]:focus {
+#forgot-password-form input[type="email"]:focus,
+#reset-password-form input[type="password"]:focus
+ {
   border-color: #3ca9e2;
 }
 
@@ -268,7 +284,8 @@
 #signUp-form input[type="text"]:focus:invalid,
 #signUp-form input[type="password"]:focus:invalid,
 #signUp-form input[type="email"]:focus:invalid,
-#forgot-password-form input[type="email"]:focus:invalid {
+#forgot-password-form input[type="email"]:focus:invalid,
+#reset-password-form input[type="password"]:focus:invalid {
   color: #cc1e2b;
   border-color: #cc1e2b;
 }
@@ -279,7 +296,9 @@
 #signUp-form input[type="text"]:valid~.validation,
 #signUp-form input[type="password"]:valid~.validation,
 #signUp-form input[type="email"]:valid~.validation,
-#forgot-password-form input[type="email"]:valid~.validation {
+#forgot-password-form input[type="email"]:valid~.validation,
+#reset-password-form input[type="password"]:valid~.validation
+ {
   display: block;
   border-color: #0C0;
 }
@@ -290,7 +309,8 @@
 #signUp-form input[type="text"]:valid~.validation span,
 #signUp-form input[type="password"]:valid~.validation span,
 #signUp-form input[type="email"]:valid~.validation span,
-#forgot-password-form input[type="email"]:valid~.validation span {
+#forgot-password-form input[type="email"]:valid~.validation span,
+#reset-password-form input[type="password"]:valid~.validation span {
   background: #0C0;
   position: absolute;
   border-radius: 6px;
@@ -302,7 +322,8 @@
 #signUp-form input[type="text"]:valid~.validation span:first-child,
 #signUp-form input[type="password"]:valid~.validation span:first-child,
 #signUp-form input[type="email"]:valid~.validation span:first-child,
-#forgot-password-form input[type="email"]:valid~.validation span:first-child {
+#forgot-password-form input[type="email"]:valid~.validation span:first-child,
+#reset-password-form input[type="password"]:valid~.validation span:first-child {
   top: 30px;
   left: 14px;
   width: 20px;
@@ -317,7 +338,8 @@
 #signUp-form input[type="text"]:valid~.validation span:last-child,
 #signUp-form input[type="password"]:valid~.validation span:last-child,
 #signUp-form input[type="email"]:valid~.validation span:last-child,
-#forgot-password-form input[type="email"]:valid~.validation span:last-child {
+#forgot-password-form input[type="email"]:valid~.validation span:last-child,
+#reset-password-form input[type="password"]:valid~.validation span:last-child {
   top: 35px;
   left: 8px;
   width: 11px;
@@ -336,7 +358,7 @@
   top: 0px;
 }
 
-.registerButton, .loginButton, .forgotPasswordButton {
+.registerButton, .loginButton, .forgotPasswordButton, .resetPasswordButton {
   border: none;
   display: block;
   background-color: #3ca9e2;
@@ -373,6 +395,10 @@
 }
 .forgotPasswordButton {
   margin-top: 1rem;
+}
+
+.resetPasswordButton {
+  margin-top: 19rem;
 }
 
 input[type="button"]:hover {
