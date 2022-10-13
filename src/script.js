@@ -1,4 +1,6 @@
 // Swiper
+
+
 document.querySelector('.canvas-hero').classList.toggle("addPolygon");
 
 const swiper = new Swiper('.swiper', {
