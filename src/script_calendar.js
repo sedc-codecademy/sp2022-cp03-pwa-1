@@ -14,29 +14,29 @@ const sessionCardShortBreak4 = document.querySelector(".sessionButtonShortBreak"
 const sessionCardLongBreak4 = document.querySelector(".sessionButtonLongBreak");
 const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
 
-sessionCardSessions4.addEventListener("click", () => {
+// sessionCardSessions4.addEventListener("click", () => {
 
-  calendarYear1.style.backgroundColor = "#2980b9";
-  calendarMonth1.style.backgroundColor = "#2980b9";
-  calendarMain.style.backgroundColor = "#2980b9";
-  calendarOuterWrapper.style.backgroundColor = "#2980b9";
-});
+//   calendarYear1.style.backgroundColor = "#2980b9";
+//   calendarMonth1.style.backgroundColor = "#2980b9";
+//   calendarMain.style.backgroundColor = "#2980b9";
+//   calendarOuterWrapper.style.backgroundColor = "#2980b9";
+// });
 
-sessionCardShortBreak4.addEventListener("click", () => {
+// sessionCardShortBreak4.addEventListener("click", () => {
 
-  calendarYear1.style.backgroundColor = "#598f94";
-  calendarMonth1.style.backgroundColor = "#598f94";
-  calendarMain.style.backgroundColor = "#598f94";
-  calendarOuterWrapper.style.backgroundColor = "#598f94";
-});
+//   calendarYear1.style.backgroundColor = "#598f94";
+//   calendarMonth1.style.backgroundColor = "#598f94";
+//   calendarMain.style.backgroundColor = "#598f94";
+//   calendarOuterWrapper.style.backgroundColor = "#598f94";
+// });
 
-sessionCardLongBreak4.addEventListener("click", () => {
+// sessionCardLongBreak4.addEventListener("click", () => {
 
-  calendarYear1.style.backgroundColor = "#5079a1";
-  calendarMonth1.style.backgroundColor = "#5079a1";
-  calendarMain.style.backgroundColor = "#5079a1";
-  calendarOuterWrapper.style.backgroundColor = "#5079a1";
-});
+//   calendarYear1.style.backgroundColor = "#5079a1";
+//   calendarMonth1.style.backgroundColor = "#5079a1";
+//   calendarMain.style.backgroundColor = "#5079a1";
+//   calendarOuterWrapper.style.backgroundColor = "#5079a1";
+// });
 
 prevYearBtn.addEventListener('click', function () {
   year--;
