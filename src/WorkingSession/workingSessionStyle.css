@@ -43,7 +43,6 @@
   margin: auto;
   position: absolute;
   text-align:center;
-  border-radius: 1rem;
   background-color: transparent;
   
 }
@@ -65,6 +64,7 @@
   margin:auto;
   line-height:51px;
   vertical-align:middle;
+  font-weight: 200;
 }
 
 /* SESSION BUTTONS  */
@@ -1233,7 +1233,8 @@ ol {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0%;
+  bottom: 0;
+  
 }
   @keyframes success-tick {
     0% {
@@ -1287,10 +1288,11 @@ ol {
     stroke-dashoffset: 72px;
     animation: success-circle-outline 300ms ease-in-out 400ms forwards;
     opacity: 0;
+    
   }
 
   .success-circle-fill {
-    fill: rgb(240, 240, 240);
+    fill: rgb(245, 245, 245);
     stroke: none;
     opacity: 0;
     animation: success-circle-fill 300ms ease-out 400ms forwards;
@@ -1577,6 +1579,18 @@ ol {
 }
 
 @media only screen and (max-width:680px) {
+  .message {
+    width: 100%;
+  }
+
+  .message h1 {
+    color: rgb(68, 68, 68);
+    font-size: 1rem;
+    margin:auto;
+    line-height: 2;
+    vertical-align:middle;
+    
+  }
   
    ol {
     flex-direction: column;
