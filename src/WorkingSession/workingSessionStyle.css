@@ -752,7 +752,7 @@ ol {
   height: fit-content;
   margin: 10px auto;
   padding: 0 auto;
-  background-color: white;
+  background-color: rgb(230, 244, 241);
   display: inline-block;
   height: fit-content;
   position: relative;
@@ -800,6 +800,8 @@ ol {
   left: 0;
   right: 0;
   margin-inline: auto;
+  border: 1px solid grey;
+  background: transparent;
 }
  
 .showNoteButton:hover {
@@ -1194,6 +1196,8 @@ ol {
   right: 0;
   margin-inline: auto;
   line-height: 1.7;
+  border: 1px solid grey;
+  background: transparent;
 }
  
 .stopTask:hover {
@@ -1613,7 +1617,7 @@ ol {
     max-height: 2.2rem !important;
     margin: 5px auto;
     padding: 0 auto;
-    background-color: white;
+    
     /* flex-direction: row; */
     position: relative;
     transition: all 600ms ease-in-out;

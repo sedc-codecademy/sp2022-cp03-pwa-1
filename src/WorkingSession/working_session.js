@@ -333,22 +333,22 @@ document.querySelectorAll(".values").forEach((item) => {
 });
 
 // Setting each note window color based on priority
-function getPriority(element) {
-  switch (taskPriority.options[taskPriority.selectedIndex].value) {
-    case "Low":
-      element.style.background =
-        "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,208,48,1) 100%)";
-      break;
-    case "Medium":
-      element.style.background =
-        "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,105,48,1) 100%)";
-      break;
-    case "High":
-      element.style.background =
-        "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,48,48,1) 100%)";
-      break;
-  }
-}
+// function getPriority(element) {
+//   switch (taskPriority.options[taskPriority.selectedIndex].value) {
+//     case "Low":
+//       element.style.background =
+//         "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,208,48,1) 100%)";
+//       break;
+//     case "Medium":
+//       element.style.background =
+//         "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,105,48,1) 100%)";
+//       break;
+//     case "High":
+//       element.style.background =
+//         "linear-gradient(180deg, rgba(236,202,202,0.8763655975085347) 0%, rgba(246,48,48,1) 100%)";
+//       break;
+//   }
+// }
 
 function resetTaskInputs() {
   taskTitle.value = "";
@@ -359,11 +359,11 @@ function resetTaskInputs() {
   textAreaOfTask.innerText = "";
 }
 
-function setColor(element) {
-  if (element.classList.contains("red")) element.style.backgroundColor = "red";
-  if (element.classList.contains("yellow")) element.style.backgroundColor = "yellow";
-  if (element.classList.contains("orange")) element.style.backgroundColor = "orange";
-}
+// function setColor(element) {
+//   if (element.classList.contains("red")) element.style.backgroundColor = "red";
+//   if (element.classList.contains("yellow")) element.style.backgroundColor = "yellow";
+//   if (element.classList.contains("orange")) element.style.backgroundColor = "orange";
+// }
 
 function Priority(title, priority, color, description, pace) {
   this.title = title;
@@ -568,8 +568,8 @@ function createTask() {
       activeCardMarker.classList.remove("hidden");
     })
 
-    setColor(li);
-    getPriority(li);
+    // setColor(li);
+    // getPriority(li);
     //Take the object creation out in function
     let test = {
       title: taskTitle.value,
