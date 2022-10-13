@@ -291,7 +291,19 @@
 	
   
 	
-  }
+}
+
+@media (max-width: 821px) {
+	.testimonials-wrapper {
+		float: left;
+		position: absolute;
+		padding: 30px 0;
+		background: #fcfcfd;
+		z-index: 1;
+		width: 100%;
+		top: 380%;
+	  }
+}
 
 
 
