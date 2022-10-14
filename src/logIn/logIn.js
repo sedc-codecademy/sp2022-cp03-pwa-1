@@ -84,7 +84,7 @@ getStartedButton.forEach((item) => {
     let swiperSlidesRightAtZero = createElements({ Tag: "div",classList: "swiper-slide slides-other",childNodes: [swiperWrapperRight],});
     let swiperSlidesRightAtOne = createElements({Tag: "div",classList: "swiper-slide slides-other",childNodes: [swiperWrapperRight],});
     let swiperSlidesRightAtTwo = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
-    let swiperSlidesRightAtThree = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
+    // let swiperSlidesRightAtThree = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
 
     let logInTab = createElements({
       Tag: "div",
@@ -111,7 +111,7 @@ getStartedButton.forEach((item) => {
     logInMainTabForm.innerHTML = `
             <form id="login-form" class="login-form">
                 <p>
-                <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+                <input type="text" id="username" name="username" placeholder="Email" required><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
                 <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
@@ -237,40 +237,40 @@ getStartedButton.forEach((item) => {
 
     // reset pass 
 
-    let resetPasswordTab = createElements({
-      Tag: "div",
-      classList: "reset-password-tab",
-      childNodes: [swiperSlidesRightAtThree],
-    });
-    let resetPasswordMainTab = createElements({
-      Tag: "div",
-      classList: "reset-password-main-tab",
-      childNodes: [resetPasswordTab],
-    });
-    let resetPasswordMainTabHeader = createElements({
-      Tag: "div",
-      classList: "reset-password-main-tab-header",
-      childNodes: [resetPasswordMainTab],
-    });
-    let resetPasswordMainTabForm = createElements({
-      Tag: "div",
-      classList: "reset-password-main-tab-form",
-      childNodes: [resetPasswordMainTab],
-    });
+    // let resetPasswordTab = createElements({
+    //   Tag: "div",
+    //   classList: "reset-password-tab",
+    //   childNodes: [swiperSlidesRightAtThree],
+    // });
+    // let resetPasswordMainTab = createElements({
+    //   Tag: "div",
+    //   classList: "reset-password-main-tab",
+    //   childNodes: [resetPasswordTab],
+    // });
+    // let resetPasswordMainTabHeader = createElements({
+    //   Tag: "div",
+    //   classList: "reset-password-main-tab-header",
+    //   childNodes: [resetPasswordMainTab],
+    // });
+    // let resetPasswordMainTabForm = createElements({
+    //   Tag: "div",
+    //   classList: "reset-password-main-tab-form",
+    //   childNodes: [resetPasswordMainTab],
+    // });
     
-    resetPasswordMainTabHeader.innerHTML = `<h2>Reset password<h2/>`;
-    resetPasswordMainTabForm.innerHTML = `
-        <form id="reset-password-form" class="reset-password-form">
-        <p>
-        <input type="password" id="reset-password" name="reset-password" placeholder="New password" required><i class="validation"><span></span><span></span></i>
-        </p>
-        <p>
-        <input type="password" id="confirm-reset-password" name="confirm-reset-password" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
-        </p>
-        <p>
-        <button type="button" class="resetPasswordButton" id="reset-password-button">Reset password</button>
-        </p>
-        </form>`;
+    // resetPasswordMainTabHeader.innerHTML = `<h2>Reset password<h2/>`;
+    // resetPasswordMainTabForm.innerHTML = `
+    //     <form id="reset-password-form" class="reset-password-form">
+    //     <p>
+    //     <input type="password" id="reset-password" name="reset-password" placeholder="New password" required><i class="validation"><span></span><span></span></i>
+    //     </p>
+    //     <p>
+    //     <input type="password" id="confirm-reset-password" name="confirm-reset-password" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
+    //     </p>
+    //     <p>
+    //     <button type="button" class="resetPasswordButton" id="reset-password-button">Reset password</button>
+    //     </p>
+    //     </form>`;
 
     // swiper-slide [0]
 
