@@ -2,6 +2,8 @@
 
 const testimonialsWrapper = document.querySelector(".testimonials-wrapper");
 
+
+
 // vars 
 
 let swiperSlidesTestimonials = [];
@@ -135,6 +137,11 @@ for(let i =0; i < testimonialsItem.length; i ++) {
     <div class="testimonials-text-after"></i></div> 
     </div>`
 
+   
+
+    
+    
+    
     
 }
 
