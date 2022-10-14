@@ -21,7 +21,7 @@ body {
 }
 
 html {
-  height: 400%;
+  height: 500%;
   scroll-behavior: smooth;
   /* overflow-x: hidden; */
 }
@@ -296,7 +296,7 @@ p {
 @media (max-width: 1130px) {
   
   html {
-    height: 550%;
+    height: 500%;
   }
 
   .swiper {

@@ -164,6 +164,12 @@ $(".scrollTo").click(function() {
       'slow');
 });
 
+$(".scrollToTop").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#gradient-canvas").offset().top},
+        'slow');
+  });
+
 // slide tab
 
 $('.menu-btn').click(function() {
