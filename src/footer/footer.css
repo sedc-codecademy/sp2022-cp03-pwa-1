@@ -2,7 +2,7 @@
 
 .pg-footer {
     position: absolute;
-    top: 460%;
+    top: 450%;
     width: 100%;
 }
 
@@ -13,6 +13,7 @@
 .footer {
     background-color: rgb(89, 143, 148);
     color: #fff;
+    
 }
 
   
@@ -20,8 +21,9 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 1230px;
-    padding: 40px 15px 45px;
+    padding: 10px 15px 15px;
     position: relative;
+    margin-top: 5rem;
 }
   
 .footer-content-column {
@@ -269,7 +271,7 @@
     
     .pg-footer {
         position: absolute;
-        top: 500%;
+        top: 485%;
         width: 100%;
     }
     

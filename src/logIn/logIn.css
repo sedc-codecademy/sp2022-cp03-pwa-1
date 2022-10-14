@@ -469,6 +469,12 @@ input[type="button"]:hover {
   
 }
 
+#forgot-password-email {
+  padding: 0 0 0 10px;
+  font-size: 16px;
+  font-style: normal;
+}
+
 .back-to-log-from-forgot-password {
   position: absolute;
   top: 2%;
@@ -491,3 +497,67 @@ input[type="button"]:hover {
 .back-to-log {
   padding-left: 10px;
 }
+
+@media  (max-width: 970px) {
+  .sliderShow {
+    display: none;
+  }
+
+  .appLogIn {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .log-in-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #login-form,
+  #signUp-form,
+  #forgot-password-form,
+  #reset-password-form {
+  padding: 0 0 0 0;
+  }
+
+  .log-in-main-tab ,
+  .sign-up-main-tab ,
+  .forgot-password-main-tab ,
+  .reset-password-main-tab  {
+  margin-inline: auto;
+  margin-left: 1px;
+  
+  }
+
+  #login-form p,
+  #signUp-form p,
+  #forgot-password-form p,
+  #reset-password-form p{
+   text-align: center;
+  }
+
+  .registerButton, .loginButton, .forgotPasswordButton, .resetPasswordButton { 
+    margin-inline: auto;
+  }
+}
+
+@media  (max-width: 600px) { 
+  .appLogIn {
+    height: 100%;
+    width: 100%;
+  }
+
+  .htmlSet {
+    padding: 0;
+    height: 100%;
+  }
+
+  .appLogIn {
+    margin-top: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 0 rgb(0, 0, 0, 0.1);
+  }
+}
+  
