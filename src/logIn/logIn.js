@@ -55,35 +55,99 @@ getStartedButton.forEach((item) => {
 
     //left div
 
-    let appLogIn = createElements({Tag: "div", classList: "appLogIn", childNodes: [html],});
-    let leftDiv = createElements({Tag: "div", classList: "sliderShow", childNodes: [appLogIn],});
-    let swiperForLogIn = createElements({Tag: "div",classList: "swiper-log-in", childNodes: [leftDiv],});
-    let swiperWrapper = createElements({Tag: "div",classList: "swiper-wrapper log-in-wrapper",childNodes: [swiperForLogIn],});
-    const swiperPagination = createElements({Tag: "div",classList: "swiper-pagination",childNodes: [leftDiv],});
+    let appLogIn = createElements({
+      Tag: "div",
+      classList: "appLogIn",
+      childNodes: [html],
+    });
+    let leftDiv = createElements({
+      Tag: "div",
+      classList: "sliderShow",
+      childNodes: [appLogIn],
+    });
+    let swiperForLogIn = createElements({
+      Tag: "div",
+      classList: "swiper-log-in",
+      childNodes: [leftDiv],
+    });
+    let swiperWrapper = createElements({
+      Tag: "div",
+      classList: "swiper-wrapper log-in-wrapper",
+      childNodes: [swiperForLogIn],
+    });
+    const swiperPagination = createElements({
+      Tag: "div",
+      classList: "swiper-pagination",
+      childNodes: [leftDiv],
+    });
 
     for (let i = 0; i < 4; i++) {
-      swiperSlides.push(createElements({Tag: "div",classList: "swiper-slide slides-log-in",childNodes: [swiperWrapper],})
+      swiperSlides.push(
+        createElements({
+          Tag: "div",
+          classList: "swiper-slide slides-log-in",
+          childNodes: [swiperWrapper],
+        })
       );
     }
 
     for (let i = 0; i < swiperSlides.length; i++) {
-      headerDiv.push(createElements({Tag: "div", classList: "logIn-header-div gap", childNodes: [swiperSlides[i]], })
+      headerDiv.push(
+        createElements({
+          Tag: "div",
+          classList: "logIn-header-div gap",
+          childNodes: [swiperSlides[i]],
+        })
       );
-      messageDiv.push( createElements({ Tag: "div", classList: "logIn-message-div gap", childNodes: [swiperSlides[i]], })
+      messageDiv.push(
+        createElements({
+          Tag: "div",
+          classList: "logIn-message-div gap",
+          childNodes: [swiperSlides[i]],
+        })
       );
-      imageDiv.push(createElements({ Tag: "div", classList: "logIn-image-div gap", childNodes: [swiperSlides[i]], })
+      imageDiv.push(
+        createElements({
+          Tag: "div",
+          classList: "logIn-image-div gap",
+          childNodes: [swiperSlides[i]],
+        })
       );
     }
 
     // main log in & sign up tab right div
-    let rightDiv = createElements({ Tag: "div", classList: "log-in-div", childNodes: [appLogIn],});
+    let rightDiv = createElements({
+      Tag: "div",
+      classList: "log-in-div",
+      childNodes: [appLogIn],
+    });
 
-    let swiperRight = createElements({ Tag: "div", classList: "right-swiper", childNodes: [rightDiv],});
-    let swiperWrapperRight = createElements({ Tag: "div",classList: "swiper-wrapper wrapper-right", childNodes: [swiperRight],});
+    let swiperRight = createElements({
+      Tag: "div",
+      classList: "right-swiper",
+      childNodes: [rightDiv],
+    });
+    let swiperWrapperRight = createElements({
+      Tag: "div",
+      classList: "swiper-wrapper wrapper-right",
+      childNodes: [swiperRight],
+    });
 
-    let swiperSlidesRightAtZero = createElements({ Tag: "div",classList: "swiper-slide slides-other",childNodes: [swiperWrapperRight],});
-    let swiperSlidesRightAtOne = createElements({Tag: "div",classList: "swiper-slide slides-other",childNodes: [swiperWrapperRight],});
-    let swiperSlidesRightAtTwo = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
+    let swiperSlidesRightAtZero = createElements({
+      Tag: "div",
+      classList: "swiper-slide slides-other",
+      childNodes: [swiperWrapperRight],
+    });
+    let swiperSlidesRightAtOne = createElements({
+      Tag: "div",
+      classList: "swiper-slide slides-other",
+      childNodes: [swiperWrapperRight],
+    });
+    let swiperSlidesRightAtTwo = createElements({
+      Tag: "div",
+      classList: "swiper-slide slides-other",
+      childNodes: [swiperWrapperRight],
+    });
     // let swiperSlidesRightAtThree = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
 
     let logInTab = createElements({
@@ -233,9 +297,7 @@ getStartedButton.forEach((item) => {
         <p><a href="#" data-slide="1">Create New Account</a><p>
         </form>`;
 
-
-
-    // reset pass 
+    // reset pass
 
     // let resetPasswordTab = createElements({
     //   Tag: "div",
@@ -257,7 +319,7 @@ getStartedButton.forEach((item) => {
     //   classList: "reset-password-main-tab-form",
     //   childNodes: [resetPasswordMainTab],
     // });
-    
+
     // resetPasswordMainTabHeader.innerHTML = `<h2>Reset password<h2/>`;
     // resetPasswordMainTabForm.innerHTML = `
     //     <form id="reset-password-form" class="reset-password-form">
@@ -463,7 +525,6 @@ getStartedButton.forEach((item) => {
         var response = await fetch(url, {
           method: "POST",
           headers: {
-            Authentication: sessionStorage.getItem("VerificationToken"),
             Authorization:
               "Bearer" + sessionStorage.getItem("productivityToken"),
             "Content-Type": "application/json",
@@ -475,6 +536,7 @@ getStartedButton.forEach((item) => {
         });
         console.log(response);
         const res = await response.json();
+
         sessionStorage.setItem("productivityToken", res.data);
 
         if (response.status == 200) {
@@ -497,7 +559,13 @@ getStartedButton.forEach((item) => {
     }
     let forgotPassBtn = document.querySelector("#forgot-password-button");
     let forgotPassInput = document.querySelector("#forgot-password-email");
-    forgotPassBtn.addEventListener("click", forgotPass);
+    forgotPassBtn.addEventListener("click", () => {
+      if (!forgotPass()) {
+        return;
+      } else {
+        getPasswordResetToken();
+      }
+    });
 
     async function forgotPass() {
       let input = forgotPassInput.value;
@@ -505,10 +573,52 @@ getStartedButton.forEach((item) => {
       let url =
         "http://localhost:" + port + `/api/users/forgotPassword?email=${input}`;
       var response = await fetch(url, { method: "POST" });
-
-      var data = await response.text();
-      console.log(data);
+      var res = await response.text();
+      console.log(res);
     }
+
+    //Country 1
+    //   fetch(`https://restcountries.com/v3.1/name/${country}`)
+    //     .then(response => {
+    //       console.log(response);
+    //       if (!response.ok) {
+    //         throw new Error(`Country not found.${response.status}`);
+    //       }
+    //       return response.json();
+    //     })
+    // function getDocuments() {
+    //   return new Promise((resolve, reject) => {
+    //     $.ajax({
+    //       url: "https://raw.githubusercontent.com/sedc-codecademy/skwd9-04-ajs/main/Samples/documents.json",
+    //       success: (response) => {
+    //         resolve(JSON.parse(response));
+    //       },
+    //       error: (err) => {
+    //         reject(err);
+    //       },
+    //     });
+    //   });
+    // }
+    //
+    function getPasswordResetToken() {
+      console.log("before fetch");
+      let input = forgotPassInput.value;
+      $.ajax({
+        dataType: "json",
+        timeout: 1000,
+        url: `http://localhost:5019/api/users/getPasswordResetToken?email=${input}`,
+        data: $(this).serialize(),
+
+        success: (data) => {
+          console.log(data);
+          sessionStorage.setItem("passwordResetToken", data.data);
+        },
+        error: (err) => {
+          reject(err);
+        },
+      });
+    }
+
     let logInUsername = document.querySelector("#username");
     let logInPassword = document.querySelector("#password");
     let logInButton = document.querySelector("#login");
