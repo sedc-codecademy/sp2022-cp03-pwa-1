@@ -560,11 +560,10 @@ getStartedButton.forEach((item) => {
     let forgotPassBtn = document.querySelector("#forgot-password-button");
     let forgotPassInput = document.querySelector("#forgot-password-email");
     forgotPassBtn.addEventListener("click", () => {
-      if (!forgotPass()) {
-        return;
-      } else {
+      forgotPass();
+      setTimeout(() => {
         getPasswordResetToken();
-      }
+      }, 5000);
     });
 
     async function forgotPass() {
@@ -575,6 +574,30 @@ getStartedButton.forEach((item) => {
       var response = await fetch(url, { method: "POST" });
       var res = await response.text();
       console.log(res);
+    }
+
+    async function getPasswordResetToken() {
+      try {
+        let port = 5019;
+        let input = forgotPassInput.value;
+        let url = "http://localhost:" + port + `/api/users/getPasswordResetToken?email=${input}`;
+        var response = await fetch(url, {
+          method: "GET",
+        });
+        console.log(response);
+        const res = await response.json();
+        console.log(res);
+
+        if (response.status == 200) {
+          console.log("from getPasswordResetToken if");
+          sessionStorage.setItem("PasswordResetToken", res.data);
+          localStorage.setItem("PasswordResetToken", res.data);
+        } else {
+          setErrorMessage(res.error);
+        }
+      } catch (er) {
+        console.log(er);
+      }
     }
 
     //Country 1
@@ -600,24 +623,24 @@ getStartedButton.forEach((item) => {
     //   });
     // }
     //
-    function getPasswordResetToken() {
-      console.log("before fetch");
-      let input = forgotPassInput.value;
-      $.ajax({
-        dataType: "json",
-        timeout: 1000,
-        url: `http://localhost:5019/api/users/getPasswordResetToken?email=${input}`,
-        data: $(this).serialize(),
+    // function getPasswordResetToken() {
+    //   console.log("before fetch");
+    //   let input = forgotPassInput.value;
+    //   $.ajax({
+    //     dataType: "json",
+    //     timeout: 1000,
+    //     url: `http://localhost:5019/api/users/getPasswordResetToken?email=${input}`,
+    //     data: $(this).serialize(),
 
-        success: (data) => {
-          console.log(data);
-          sessionStorage.setItem("passwordResetToken", data.data);
-        },
-        error: (err) => {
-          reject(err);
-        },
-      });
-    }
+    //     success: (data) => {
+    //       console.log(data);
+    //       sessionStorage.setItem("passwordResetToken", data.data);
+    //     },
+    //     error: (err) => {
+    //       reject(err);
+    //     },
+    //   });
+    // }
 
     let logInUsername = document.querySelector("#username");
     let logInPassword = document.querySelector("#password");
