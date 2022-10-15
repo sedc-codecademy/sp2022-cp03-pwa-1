@@ -21,7 +21,7 @@ body {
 }
 
 html {
-  height: 500%;
+  height: 480%;
   scroll-behavior: smooth;
   /* overflow-x: hidden; */
 }

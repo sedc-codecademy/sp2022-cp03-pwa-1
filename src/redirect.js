@@ -4,6 +4,7 @@ let resetPasswordInput = document.querySelector("#reset-password");
 let confirmResetPasswordInput = document.querySelector("#confirm-reset-password");
 let resetPasswordButton = document.querySelector("#reset-password-button");
 
+
 resetPasswordButton.addEventListener("click", function () {
   comparePasswords();
 })
@@ -43,9 +44,13 @@ async function resetPassword() {
     console.log(res);
 
     if (response.status == 200) {
+      fireAlertRedirect();
       resetPasswordInput.value = "";
       confirmResetPasswordInput.value = "";
       localStorage.removeItem("PasswordResetToken");
+      setInterval(() => {
+        window.open("http://127.0.0.1:5501/src/index.html", '_self');
+      }, 4000);
     }
     else {
       setErrorMessage(res.error);
@@ -55,6 +60,16 @@ async function resetPassword() {
   }
 }
 
+
+function fireAlertRedirect() {
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Your password has been reset',
+    showConfirmButton: false,
+    timer: 3500
+  })
+}
 
 
 

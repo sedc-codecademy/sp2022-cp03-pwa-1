@@ -10,7 +10,7 @@ let sessionButton = document.getElementById("timer");
 let statisticsMockData = [];
 
 async function getAllSessionsFromDb() {
-
+    if (!(sessionStorage['productivityToken'])) return;
     try {
         let port = 5019;
         let url = "http://localhost:" + port + "/api/Sessions/getAllSessions";
@@ -30,8 +30,10 @@ async function getAllSessionsFromDb() {
     }
 };
 
+
+
 getAllSessionsFromDb();
-console.log(statisticsMockData);
+//console.log(statisticsMockData);
 
 let datesAccessed = [];
 let filteredDatesArray = [];

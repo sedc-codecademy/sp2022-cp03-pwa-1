@@ -202,61 +202,61 @@ async function endSessionToDb() {
 function endSessionFunction() {
   endSessionToDb();
   let confirmEnd;
-  confirmEnd = 
-      swal({
-        title: "Are you sure?",
-        text: "Have you marked the tasks you have finished as 'Finished'?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
+  confirmEnd =
+    swal({
+      title: "Are you sure?",
+      text: "Have you marked the tasks you have finished as 'Finished'?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
       .then((willDelete) => {
-      if (willDelete) {
-        swal("All tasks have been removed, session is over", {
-          icon: "success",
-        });
-        if (arrayOfTasks.length > 0) {
+        if (willDelete) {
+          swal("All tasks have been removed, session is over", {
+            icon: "success",
+          });
+          if (arrayOfTasks.length > 0) {
 
-          fillSession(session);
-          arrayOfTasks = [];
-          arrayOfTruths = [];
-          new Timer(timerElement, 0, startTimerFunctionality);
-          new Timer(shortBreakDiv, 0);
-          new Timer(longBreakDiv, 0);
-    
-          let div = document.createElement("div");
-          div.setAttribute("class", "hide");
-          document.querySelector("#sessionMain").appendChild(div);
-    
-          document.querySelectorAll(".liOfTasks").forEach((item) => item.remove());
-          if (document.querySelector(".message")) {
-            document.querySelector(".message").remove();
+            fillSession(session);
+            arrayOfTasks = [];
+            arrayOfTruths = [];
+            new Timer(timerElement, 0, startTimerFunctionality);
+            new Timer(shortBreakDiv, 0);
+            new Timer(longBreakDiv, 0);
+
+            let div = document.createElement("div");
+            div.setAttribute("class", "hide");
+            document.querySelector("#sessionMain").appendChild(div);
+
+            document.querySelectorAll(".liOfTasks").forEach((item) => item.remove());
+            if (document.querySelector(".message")) {
+              document.querySelector(".message").remove();
+            }
+            //saveSession();
+            //window.location.reload(); // deletes the local storage data after - fixed      
           }
-          //saveSession();
-          //window.location.reload(); // deletes the local storage data after - fixed      
-        }
-        isSessionActive = false; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
-        startSessionTime = "";
-        endSessionButton.disabled = true;
-        timerElement.style.display = "flex";
-        shortBreakDiv.style.display = "none";
-        longBreakDiv.style.display = "none";
-        buttonsAddEvents();
-        getAllSessionsFromDb();
-        //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
+          isSessionActive = false; // Flag za aktivna sesija (koga e true, da ne se aktivni addTask i removeTask)
+          startSessionTime = "";
+          endSessionButton.disabled = true;
+          timerElement.style.display = "flex";
+          shortBreakDiv.style.display = "none";
+          longBreakDiv.style.display = "none";
+          buttonsAddEvents();
+          getAllSessionsFromDb();
+          //vrakjanje na funkcionalnosta na addTask i removeTask kopchinjata
 
         } else {
-        swal("Continue with your session");
-      }
-  });
-  
-  
-  
-  
+          swal("Continue with your session");
+        }
+      });
+
+
+
+
   // confirm("End the session: Have you marked the tasks you have finished as 'Finished'? If yes, press okay.");
   // if (confirmEnd) {
 
-    
+
   // }
 }
 
@@ -372,6 +372,15 @@ function Priority(title, priority, color, description, pace) {
   this.pace = pace;
 }
 
+
+window.addEventListener("load", function () {
+  if ((sessionStorage['productivityToken'])) {
+    document.querySelector(".sign-up").innerText = "Log out";
+    //return;
+  }
+  else document.querySelector(".sign-up").innerText = "Log in";
+})
+
 // ============================ CLEAR TASKS BUTTON
 function resetTaskDurationValue() {
   taskDuration.value = 0;
@@ -388,38 +397,38 @@ function clearTasks() {
       buttons: true,
       dangerMode: true,
     })
-    .then((willDelete) => {
-      if (willDelete) {
-        swal("Tasks have been deleted!", {
-          icon: "success",
-        });
-        setTimeout(() => {
-          listOfTasks.innerHTML = "";
-          new Timer(timerElement, resetTaskDurationValue(), startTimerFunctionality);
-          new Timer(shortBreakDiv, 0);
-          new Timer(longBreakDiv, 0);
-          arrayOfTasks = [];
-          arrayOfFinishedTasks = [];
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Tasks have been deleted!", {
+            icon: "success",
+          });
           setTimeout(() => {
-            addClearButtonAnimation();
-          }, 100);
-          setTimeout(() => {
-            removeClearButtonCheckAnimation()
-          }, 1500);
-  
-          shortBreakDiv.style.display = "flex";
-          let div = document.createElement("div");
-          div.setAttribute("class", "hide");
-          document.querySelector("#sessionMain").appendChild(div);
-  
-          console.log("List successfully deleted");
-          console.log(arrayOfTasks);
-        }, 500)
-      } else {
-        swal("Successfully deleted");
-      }
-    });
-  } 
+            listOfTasks.innerHTML = "";
+            new Timer(timerElement, resetTaskDurationValue(), startTimerFunctionality);
+            new Timer(shortBreakDiv, 0);
+            new Timer(longBreakDiv, 0);
+            arrayOfTasks = [];
+            arrayOfFinishedTasks = [];
+            setTimeout(() => {
+              addClearButtonAnimation();
+            }, 100);
+            setTimeout(() => {
+              removeClearButtonCheckAnimation()
+            }, 1500);
+
+            shortBreakDiv.style.display = "flex";
+            let div = document.createElement("div");
+            div.setAttribute("class", "hide");
+            document.querySelector("#sessionMain").appendChild(div);
+
+            console.log("List successfully deleted");
+            console.log(arrayOfTasks);
+          }, 500)
+        } else {
+          //swal("");
+        }
+      });
+  }
 }
 
 //funkcija za trganje eventListeneri od addTask i removeTask kopchinjata koga kje se pochne sesijata i se povikuva vo samata klasa na tajmerot

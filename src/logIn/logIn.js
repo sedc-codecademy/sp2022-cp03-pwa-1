@@ -4,6 +4,7 @@ let getStartedButton = document.querySelectorAll(".activate");
 let logInButtonFromHome = document.querySelector(".sign-up");
 let mainPage = document.querySelector(".main-page");
 let html = document.querySelector("html");
+let isUserLoggedIn = false;
 
 // Vars
 
@@ -43,12 +44,15 @@ let imageDiv = [];
 //     console.log(data);
 // }
 
-logInButtonFromHome.addEventListener("click", () => {
-  logInButtonFromHome.innerText = "Log out";
-});
-
 getStartedButton.forEach((item) => {
   item.addEventListener("click", function () {
+    if (logInButtonFromHome.innerText == "Log out") {
+      logInButtonFromHome.innerText = "Log in";
+      isUserLoggedIn = false;
+      sessionStorage.removeItem("productivityToken");
+
+    }
+
     mainPage.classList.toggle("hidden");
     html.classList.toggle("htmlSet");
     document.querySelector(".canvas-hero").classList.remove("addPolygon");
@@ -550,6 +554,13 @@ getStartedButton.forEach((item) => {
           headerDiv = [];
           messageDiv = [];
           imageDiv = [];
+          logInButtonFromHome.innerText = "Log out";
+          mainPage.classList.remove("hidden");
+          html.classList.remove("htmlSet");
+          document.querySelector(".canvas-hero").classList.toggle("addPolygon");
+          console.log(isUserLoggedIn);
+          isUserLoggedIn = true;
+          console.log(isUserLoggedIn);
         } else {
           setErrorMessage(res.error);
         }
@@ -572,8 +583,8 @@ getStartedButton.forEach((item) => {
       let url =
         "http://localhost:" + port + `/api/users/forgotPassword?email=${input}`;
       var response = await fetch(url, { method: "POST" });
-      var res = await response.text();
-      console.log(res);
+      //var res = await response.text();
+      //console.log(res);
     }
 
     async function getPasswordResetToken() {
@@ -584,12 +595,23 @@ getStartedButton.forEach((item) => {
         var response = await fetch(url, {
           method: "GET",
         });
-        console.log(response);
+        //console.log(response);
         const res = await response.json();
-        console.log(res);
+        //console.log(res);
+
+        if (response.status == 400) {
+          swal({
+            title: "Invalid",
+            text: "Wrong email or password",
+            icon: "warning",
+            timer: 5000,
+            button: null
+          });
+        }
 
         if (response.status == 200) {
-          console.log("from getPasswordResetToken if");
+          fireAlert();
+          //console.log("from getPasswordResetToken if");
           sessionStorage.setItem("PasswordResetToken", res.data);
           localStorage.setItem("PasswordResetToken", res.data);
         } else {
@@ -600,6 +622,28 @@ getStartedButton.forEach((item) => {
       }
     }
 
+    // function fireAlert() {
+    //   Swal.fire({
+    //     title: 'Success!',
+    //     html: 'Email has been sent. Check your<b></b> inbox or spam folder',
+    //     timer: 5000,
+    //     timerProgressBar: true,
+    //   }).then((result) => {
+    //     if (result.dismiss === Swal.DismissReason.timer) {
+    //       console.log('I was closed by the timer')
+    //     }
+    //   })
+    // }
+
+    function fireAlert() {
+      swal({
+        title: "Success",
+        text: "Email has been sent. Check your inbox or spam folder",
+        icon: "success",
+        timer: 5000,
+        button: null
+      });
+    }
     //Country 1
     //   fetch(`https://restcountries.com/v3.1/name/${country}`)
     //     .then(response => {

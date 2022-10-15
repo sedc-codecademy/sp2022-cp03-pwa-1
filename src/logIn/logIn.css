@@ -391,6 +391,10 @@
   margin-top: 5rem;
 }
 
+.registerButton:active,.loginButton:active,.forgotPasswordButton:active,.resetPasswordButton:active {
+  transform: translateY(4px);
+}
+
 .registerButton {
   margin-top: 1rem;
 }
@@ -544,7 +548,7 @@ input[type="button"]:hover {
   }
 
   .registerButton, .loginButton, .forgotPasswordButton, .resetPasswordButton { 
-    margin-inline: auto;
+    margin-inline: auto;    
   }
 }
 

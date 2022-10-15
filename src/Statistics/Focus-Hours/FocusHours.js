@@ -3,6 +3,7 @@ let activityHoursMockData = [];
 let allSessions1 = [];
 
 async function getAllSessionsFromDb() {
+    if (!(sessionStorage['productivityToken'])) return;
     allSessions1 = [];
     try {
         let port = 5019;
@@ -25,9 +26,9 @@ async function getAllSessionsFromDb() {
 };
 
 getAllSessionsFromDb();
-console.log(activityHoursMockData);
+//console.log(activityHoursMockData);
 
-window.setTimeout(() => { console.log("after 1 second") }, 1000);
+//window.setTimeout(() => { console.log("after 1 second") }, 1000);
 
 function refresh() {
     setTimeout(() => {
@@ -53,7 +54,7 @@ function refresh() {
             arrayOfSessionDates.push(new Date(allSessions1[i].finishTime).toISOString().slice(0, 10));
             console.log(new Date(allSessions1[i].finishTime).toISOString().slice(0, 10));
         }
-        console.log(arrayOfSessionDates);
+        //console.log(arrayOfSessionDates);
         let arrayOfHours = [];
         for (let i = 0; i < allSessions1.length; i++) {
             arrayOfHours.push((allSessions1[i].tasks).flatMap((parameter) => Math.round(parameter.assignedTimeDuration / 60 * 100) / 100).reduce((sum, current) => sum + current, 0));
