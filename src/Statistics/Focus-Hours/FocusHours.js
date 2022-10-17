@@ -3,7 +3,7 @@ let activityHoursMockData = [];
 let allSessions1 = [];
 
 async function getAllSessionsFromDb() {
-    if (!(sessionStorage['productivityToken'])) return;
+    //if (!(sessionStorage['productivityToken'])) return;
     allSessions1 = [];
     try {
         let port = 5019;

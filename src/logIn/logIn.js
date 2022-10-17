@@ -340,7 +340,7 @@ getStartedButton.forEach((item) => {
 
     // swiper-slide [0]
 
-    headerDiv[0].innerHTML = `<h1>Mange your day</h1>`;
+    headerDiv[0].innerHTML = `<h1>Manage your day</h1>`;
     messageDiv[0].innerHTML = `<p>From groceries to picking up the kids, we help you remember it all, anytime, anywhere.</p>`;
     imageDiv[0].innerHTML = `<img src="./media/logIn-media/4703428.jpg">`;
 
@@ -359,7 +359,7 @@ getStartedButton.forEach((item) => {
     // swiper-slide [2]
 
     headerDiv[3].innerHTML = `<h1>Live Strategically</h1>`;
-    messageDiv[3].innerHTML = `<p>Focus on the things that matter to you unlock your true potential</p>`;
+    messageDiv[3].innerHTML = `<p>Focus on the things that matter to you, unlock your true potential</p>`;
     imageDiv[3].innerHTML = `<img src="./media/logIn-media/5243332.jpg">`;
 
     const logInSwiper = new Swiper(".swiper-log-in", {
@@ -510,6 +510,14 @@ getStartedButton.forEach((item) => {
             signUpEmail.value = "";
             confirmPassword.value = "";
             fullName.value = "";
+            swal({
+              title: "Get ready to become more productive!",
+              text: "You have successfully registered!",
+              icon: "success",
+              timer: 5000,
+              button: null
+            });
+
           } else {
             setErrorMessage(res.error);
           }
@@ -542,6 +550,16 @@ getStartedButton.forEach((item) => {
         const res = await response.json();
 
         sessionStorage.setItem("productivityToken", res.data);
+
+        if (response.status == 400) {
+          swal({
+            title: "Incorrect credentials",
+            text: "Wrong email or password",
+            icon: "warning",
+            timer: 5000,
+            button: null
+          });
+        }
 
         if (response.status == 200) {
           logInUsername.value = "";
@@ -599,15 +617,7 @@ getStartedButton.forEach((item) => {
         const res = await response.json();
         //console.log(res);
 
-        if (response.status == 400) {
-          swal({
-            title: "Invalid",
-            text: "Wrong email or password",
-            icon: "warning",
-            timer: 5000,
-            button: null
-          });
-        }
+
 
         if (response.status == 200) {
           fireAlert();

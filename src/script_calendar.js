@@ -204,7 +204,7 @@ reminderBtn.addEventListener("click", function () {
   if (inputReminderName === '' || inputReminderDate === '' || inputReminderTime === '') {
     return swal('Please input all the fields!');
   };
-  
+
   createReminderObject();
   renderTable(remindersTable);
   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
@@ -263,14 +263,14 @@ function ReminderObject(id, name, date, time, priority, note) {
 };
 
 function createReminderObject() {
-    let reminder = { 
+  let reminder = {
     reminderId: gettingReminderInput(reminderId),
     reminderTitle: gettingReminderInput(reminderName),
     reminderDate: gettingReminderInput(reminderDate),
     reminderTime: gettingReminderInput(reminderTime),
     priority: gettingReminderInput(reminderPriority),
     reminderNote: gettingReminderInput(notes)
-  } 
+  }
   reminderMockData.push(reminder);
   // reminderId++;
 };
@@ -282,10 +282,10 @@ async function reminderToDb(e) {
     let url = "http://localhost:" + port + "/api/Reminders/addReminder";
     var response = await fetch(url, {
       method: 'POST',
-      headers:{
+      headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
-      }, 
+      },
       body: JSON.stringify({
         ReminderTitle: reminderName.value,
         ReminderNote: notes.value,
@@ -295,7 +295,7 @@ async function reminderToDb(e) {
       }),
     })
     const res = await response.json();
-    
+
     if (response.status == 201) {
       reminderName.value = "";
       notes.value = "";
@@ -308,7 +308,7 @@ async function reminderToDb(e) {
     console.log(res);
   }
   catch (er) {
-    console.log(er);
+    //console.log(er);
   }
   getAllRemindersFromDb();
   resetValues();
@@ -355,23 +355,23 @@ async function getAllRemindersFromDb() {
     let url = "http://localhost:" + port + "/api/Reminders/getAllReminders";
     var response = await fetch(url, {
       method: 'GET',
-           headers:{
-             "Content-Type": "application/json",
-             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
-           }
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+      }
     });
     var items = await response.json();
     items.forEach((item) => reminderMockData.push(item));
-    console.log(reminderMockData);
+    //console.log(reminderMockData);
     renderTable(remindersTable);
     renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-  } 
+  }
   catch (er) {
     console.log(er);
   }
 }
 
-showAllRemindersBtn.addEventListener('click', function() {
+showAllRemindersBtn.addEventListener('click', function () {
   console.log(reminderMockData);
   getAllRemindersFromDb();
   console.log(reminderMockData);
@@ -386,17 +386,17 @@ async function deleteReminderFromDb(reminderId) {
     let url = "http://localhost:" + port + "/api/Reminders/" + reminderId;
     var response = await fetch(url, {
       method: 'DELETE',
-           headers:{
-             "Content-Type": "application/json",
-             "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
-           }
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + sessionStorage.getItem("productivityToken"),
+      }
     });
     var items = await response.json();
     getAllRemindersFromDb();
     console.log(items);
-  } 
+  }
   catch (er) {
-    console.log(er);
+    // console.log(er);
   }
   getAllRemindersFromDb();
   renderTable(remindersTable);
