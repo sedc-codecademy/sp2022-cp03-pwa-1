@@ -3,15 +3,7 @@
     filter: url("#shadowed-goo");
   }
 
-  .backToTop {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 8rem;
-    height: 8rem;
-    padding: 1rem;
-    
-  }
+  
   
   .menu-item-menu, .menu-open-button {
     background: #e8f4f1;
@@ -80,13 +72,9 @@
   
   .menu {
     position: absolute;
-    left: 50%;
-    margin-left: -80px;
-    padding-top: 20px;
-    padding-left: 80px;
-    width: 650px;
-    height: 150px;
-    box-sizing: border-box;
+    right: 0;
+    top: 90%;
+    width: 5rem;
     font-size: 20px;
     text-align: left;
   }

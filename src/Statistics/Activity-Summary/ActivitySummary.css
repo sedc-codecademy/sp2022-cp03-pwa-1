@@ -4,6 +4,8 @@
 #card-body-statistics {
     min-height: 80%;
     display: flex;
+    justify-content:center;
+    align-items: center;
 }
 
 #activitySummaryContainer1 {
@@ -13,6 +15,7 @@
     align-items: center;
     width: 20%;
     min-height: 90%;
+    gap: 20px;
 }
 
 .activityCard {
@@ -21,7 +24,7 @@
     justify-content: center;
     border-radius: 3%;
     width: 80%;
-    height: 18%;
+    height: 15vh;
     font-size: 1.4rem;
     padding: 1%;
     text-align: center;

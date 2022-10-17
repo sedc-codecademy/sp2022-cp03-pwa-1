@@ -14,13 +14,15 @@
 } */
 
 #focusHoursContainer{
-    width: 80%;
+    width: 60rem;
+   
 }
 
 .chartCard {
     display: flex;
     align-items: center;
     justify-content: center;
+   
 }
 
 .chartBox {
@@ -30,6 +32,7 @@
     border-radius: 2rem;
     background: rgb(245, 242, 228);
     margin-top: 4%;
+    
 }
 
 #dynamicFocusHours {

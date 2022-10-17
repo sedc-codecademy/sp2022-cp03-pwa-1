@@ -45,7 +45,7 @@ let iPrev = createTestimonialsElements({ Tag: "i", classList: "prev", childNodes
 <span class="material-symbols-outlined">
 arrow_back_ios
 </span>`;
-let swiperContainer = createTestimonialsElements({ Tag: "div", classList: "swiper-container", childNodes: [testimonialsCarousel]});
+let swiperContainer = createTestimonialsElements({ Tag: "div", classList: "swiper-container polygon", childNodes: [testimonialsCarousel]});
 let swiperWrapperTestimonials = createTestimonialsElements({ Tag: "div", classList: "swiper-wrapper", childNodes: [swiperContainer]});
 
 for(let i = 0; i < 4; i++) {
