@@ -771,9 +771,9 @@ var openFSM = function(event) {
 			$fsmActual.classList.add(classes[i]);
 		}
 		$fsmActual.classList.add('growing');
-		$fsmActual.style.height = '92vh';
+		$fsmActual.style.height = '95vh';
 		$fsmActual.style.width = '100vw';
-		$fsmActual.style.top = '250%';
+		$fsmActual.style.top = '280%';
 		$fsmActual.style.left = '0';
 		$fsmActual.style.margin = '0';
         document.querySelector("body").style.overflow = "hidden";
@@ -819,7 +819,7 @@ $(".scrollToArticles").click(function() {
     setTimeout(() => {
 
         var viewport_height = window.innerWidth; 
-        if (viewport_height < 1130) {
+        if (viewport_height < 810) {
             $('html,body').animate({
                 scrollTop: $("#scrollToDivWithPaddingForMobile").offset().top},
                 'slow');
@@ -830,14 +830,7 @@ $(".scrollToArticles").click(function() {
         'slow');
         }
         
-        
-
-        
-
-      }, "1600")
+    }, "1600")
 });
-
-
-
 
 

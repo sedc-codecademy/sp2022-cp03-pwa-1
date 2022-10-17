@@ -23,23 +23,20 @@
 </head>
 
 <body>
-
+    
     <div class="canvas-container">
         <canvas id="gradient-canvas" class="canvas-hero" width="32" height="32"></canvas>
     </div>
     
     <!-- NAVIGATION -->
-    <section class="main-page">
-        
-        
-        <section>
-            
+    
+        <section class="navigation-bar main-page">
             <div class="row">
                 <div>
                     <header class="header">
                         <div class="logo-container">
                             <h1>Productivity</h1>
-                            <span class="toggle-btn">&#9776;</span>
+                            <span type="button"class="toggle-btn">&#9776;</span>
                         </div>
                         <ul class="display-none-mobile">
                             <li><a class="scrollTo" href="#" data-slide="0">Calendar</a></li>
@@ -52,34 +49,52 @@
                     </header>
                 </div>
             </div>
-        </section>
+        </section >
         <!-- HERO Top-->
-        <section class="hero row hero_container">
-            <div>
-                <div class="hero-title-container">
-                <h1 class="hero-title">Best Way to Manage your Daily Tasks</h1>
-                <p class="hero-title" data-overlay aria-hidden="true"></p>
-            </div>
-                <p class="hurry" >Hurry up join our community now!</p>
-                <div class="blue-btn">
-                    <a class="first-link hero-btn activate">
-                      Get Started
-                    </a>
-                    <a class="activate sign-up-button">
-                    Sign Up
-                    </a>
+        <section class="hero-section-top main-page">
+            <div class="hero row hero_container">
+                <div>
+                    <div class="hero-title-container">
+                        <h1 class="hero-title">Best Way to Manage your Daily Tasks</h1>
+                        <p class="hero-title" data-overlay aria-hidden="true"></p>
+                    </div>
+                    <p class="hurry" >Hurry up join our community now!</p>
+                    <div class="blue-btn">
+                        <a class="first-link hero-btn activate">
+                          Get Started
+                        </a>
+                        <a class="activate sign-up-button">
+                        Sign Up
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="img-container">
+                        <img class="image-back" src="media/hero/loginscreen.png">
+                        <img class="image" src="media/hero/Screenshot_1.png">
+                    </div>
+                    
                 </div>
             </div>
-            <div class="row">
-                <div class="img-container">
-                    <img class="image-back" src="media/hero/loginscreen.png">
-                    <img class="image" src="media/hero/Screenshot_1.png">
+        </section>
+
+        <section class="customers-section main-page">
+            <div class="delivered-meals">
+                <div class="delivered-imgs">
+                    <img src="media/users/ana-de-armas.jpg" alt="Customer photo" />
+                    <img src="media/users/batence2.png" alt="Customer photo" />
+                    <img src="media/users/bozanka.png" alt="Customer photo" />
+                    <img src="media/users/dadicka1.png" alt="Customer photo" />
+                    <img src="media/users/maldini.png" alt="Customer photo" />
+                    <img src="media/users/Metalist-Inter_(2).jpg" alt="Customer photo" />
                 </div>
-                
+                <p class="delivered-text">
+                    <span>10,000+</span> optimized lifestyles!
+                </p>
             </div>
-            </section>
-        <!-- <div class="arrow bounce"></div> -->
-        <section class="hero-banner" style="overflow: hidden">
+        </section>
+       
+        <section class="hero-banner main-page" style="overflow: hidden">
             <div class="container-hero-banner">
                 <div class="card-hero-banner">
                   <div class="imgBx-hero-banner">
@@ -90,8 +105,6 @@
                         <h1>SIMPLE</h1>
                       <h2>A calendar you won’t be able to live without</h2><br>
                         <h3>Keep track of your progress. Add smart reminders so you never forget a thing. With beautiful themes and turbo-charging powers, you’re guaranteed to save time and achieve great things.</h3>
-                      
-                      
                     </div>
                   </div>
                 </div>
@@ -105,18 +118,15 @@
                       <h2>The best way to organize your life</h2>
                       <br>
                         <h3>Organize your tasks, lists and reminders in one easy to use app.</h3>
-                      
-                      
                     </div>
                   </div>
                 </div>
-                
-                
-              </div>
-            </section>
+            </div>
+        </section>
         
         <!--MAIN-->
-        <main>
+        
+        <section class="swiper-section main-page">
             <!-- Slider main container -->
             <div id="scrollToDivWithPaddingForMobile"></div>
             <div id="scrollToDivWithPadding"></div>
@@ -405,151 +415,127 @@
                     </div> <!-- swiper slide reminders -->
                 </div> <!-- swiper wrapper -->
             </div> <!-- swiper -->
-         
-            <!-- </div>
-            </div>
-            </div>
-            </div> extra closing divs? eh :S ?-->
-        </main>
+        </section>
+        
         <!--TESTIMONIALS-->
         
-        <section class="testimonials-wrapper"></section>
-        
-        <div class="pg-footer">
-            <footer class="footer">
-                  <div class="footer-content">
-                    <div class="footer-content-column">
-                      <div class="footer-logo">
-                        <a class="footer-logo-link" href="#">
-                          <span class="hidden-link-text">LOGO</span>
-                          <h1>Productivity</h1>
-                        </a>
-                      </div>
-                      <div class="footer-menu">
-                        <h2 class="footer-menu-name"> Get Started</h2>
-                        <ul id="menu-get-started" class="footer-menu-list">
-                          <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                            <a href="#">Start</a>
-                          </li>
-                          <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                            <a href="#">Documentation</a>
-                          </li>
-                          <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                            <a href="#">Installation</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="footer-content-column">
-                      <div class="footer-menu">
-                        <h2 class="footer-menu-name"> Company</h2>
-                        <ul id="menu-company" class="footer-menu-list">
-                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                            <a href="#">Contact</a>
-                          </li>
-                          <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-                            <a href="#">News</a>
-                          </li>
-                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                            <a href="#">Careers</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="footer-menu">
-                        <h2 class="footer-menu-name"> Legal</h2>
-                        <ul id="menu-legal" class="footer-menu-list">
-                          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
-                            <a href="#">Privacy Notice</a>
-                          </li>
-                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                            <a href="#">Terms of Use</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="footer-content-column">
-                      <div class="footer-menu">
-                        <h2 class="footer-menu-name"> Quick Links</h2>
-                        <ul id="menu-quick-links" class="footer-menu-list">
-                          <li class="menu-item menu-item-type-custom menu-item-object-custom">
-                            <a target="_blank" rel="noopener noreferrer" href="#">Support Center</a>
-                          </li>
-                          <li class="menu-item menu-item-type-custom menu-item-object-custom">
-                            <a target="_blank" rel="noopener noreferrer" href="#">Service Status</a>
-                          </li>
-                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                            <a href="#">Security</a>
-                          </li>
-                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                            <a href="#">Blog</a>
-                          </li>
-                          <li class="menu-item menu-item-type-post_type_archive menu-item-object-customer">
-                            <a href="#">Customers</a></li>
-                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                            <a href="#">Reviews</a>
-                          </li>
-                        </ul>
-                      </div>
-                      </div>
-                    </div>
-                    <div class="backToTop">
-                        <nav class="menu">
-                            <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-                            <label class="menu-open-button" for="menu-open">
-                              <span><img src="media/186407_arrow_up_icon.png"></span>
-                            </label>
-                            
-                            <button class="menu-item-menu scrollToTop"> TOP </button>
-                            <button class="menu-item-menu scrollTo"> HOME </button>
-                          
-                            
-                            
-                          </nav>
-                          
-                          
-                          <!-- filters -->
-                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                              <defs>
-                                <filter id="shadowed-goo">
-                                    
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                                    <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-                                    <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-                                    <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-                                    <feComposite in2="shadow" in="goo" result="goo" />
-                                    <feComposite in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                                    <feComposite in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                              </defs>
-                          </svg>
-                      </div>
-                  </footer>
-              </div>
-              <section class="customers-section">
-                <div class="delivered-meals">
-                    <div class="delivered-imgs">
-                      <img src="media/users/ana-de-armas.jpg" alt="Customer photo" />
-                      <img src="media/users/batence2.png" alt="Customer photo" />
-                      <img src="media/users/bozanka.png" alt="Customer photo" />
-                      <img src="media/users/dadicka1.png" alt="Customer photo" />
-                      <img src="media/users/maldini.png" alt="Customer photo" />
-                      <img src="media/users/Metalist-Inter_(2).jpg" alt="Customer photo" />
-                    </div>
-                    <p class="delivered-text">
-                      <span>10,000+</span> optimized lifestyles!
-                    </p>
-                  </div>
-              </section>
-             
-            </div>
-              
+        <section class="testimonials-wrapper  main-page">
 
-    </section>
+            <div class="custom-shape-divider-bottom-1666015626">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+        <section class="section-footer main-page">
+            <div class="pg-footer">
+                <footer class="footer">
+                    <div class="footer-content">
+                        <div class="footer-content-column">
+                            <div class="footer-logo">
+                                <a class="footer-logo-link" href="#">
+                                    <h1>Productivity</h1>
+                                </a>
+                            </div>
+                            <div class="footer-menu">
+                                <h2 class="footer-menu-name"> Get Started</h2>
+                                    <ul id="menu-get-started" class="footer-menu-list">
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                                            <a href="#">Start</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                                            <a href="#">Documentation</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                                            <a href="#">Installation</a>
+                                        </li>
+                                    </ul>
+                            </div>
+                        </div>
+                        <div class="footer-content-column">
+                            <div class="footer-menu">
+                                <h2 class="footer-menu-name"> Company</h2>
+                                    <ul id="menu-company" class="footer-menu-list">
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#">Contact</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="#">News</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#">Careers</a>
+                                        </li>
+                                    </ul>
+                            </div>
+                            <div class="footer-menu">
+                                <h2 class="footer-menu-name"> Legal</h2>
+                                    <ul id="menu-legal" class="footer-menu-list">
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
+                                            <a href="#">Privacy Notice</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#">Terms of Use</a>
+                                        </li>
+                                    </ul>
+                            </div>
+                        </div>
+                        <div class="footer-content-column">
+                            <div class="footer-menu">
+                                    <h2 class="footer-menu-name"> Quick Links</h2>
+                                    <ul id="menu-quick-links" class="footer-menu-list">
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                            <a target="_blank" rel="noopener noreferrer" href="#">Support Center</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                            <a target="_blank" rel="noopener noreferrer" href="#">Service Status</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#">Security</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#">Blog</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-post_type_archive menu-item-object-customer">
+                                            <a href="#">Customers</a></li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#">Reviews</a>
+                                        </li>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="menu">
+                        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+                        <label class="menu-open-button" for="menu-open">
+                            <span><img src="media/186407_arrow_up_icon.png"></span>
+                        </label>
+                        <button class="menu-item-menu scrollToTop"> TOP </button>
+                        <button class="menu-item-menu scrollTo"> HOME </button>
+                    </nav>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                            <filter id="shadowed-goo">
+                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+                                <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+                                <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+                                <feComposite in2="shadow" in="goo" result="goo" />
+                                <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                            </filter>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                            </filter>
+                        </defs>
+                    </svg>
+                </footer>
+            </div>
+        </section>
+    <!-- </div> -->
+    
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

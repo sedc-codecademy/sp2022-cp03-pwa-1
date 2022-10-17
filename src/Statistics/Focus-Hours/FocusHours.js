@@ -3,7 +3,7 @@ let activityHoursMockData = [];
 let allSessions1 = [];
 
 async function getAllSessionsFromDb() {
-    //if (!(sessionStorage['productivityToken'])) return;
+    if (!(sessionStorage['productivityToken'])) return;
     allSessions1 = [];
     try {
         let port = 5019;
@@ -121,6 +121,7 @@ function refresh() {
             }
         };
 
+       
         const myChart = new Chart(
             document.getElementById('myChart'),
             config

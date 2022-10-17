@@ -2,7 +2,7 @@
 
 let getStartedButton = document.querySelectorAll(".activate");
 let logInButtonFromHome = document.querySelector(".sign-up");
-let mainPage = document.querySelector(".main-page");
+let mainPage = document.querySelectorAll(".main-page");
 let html = document.querySelector("html");
 let isUserLoggedIn = false;
 
@@ -52,8 +52,10 @@ getStartedButton.forEach((item) => {
       sessionStorage.removeItem("productivityToken");
 
     }
-
-    mainPage.classList.toggle("hidden");
+    for(i = 0; i < mainPage.length; i++) {
+      mainPage[i].classList.toggle("hidden");
+    }
+    
     html.classList.toggle("htmlSet");
     document.querySelector(".canvas-hero").classList.remove("addPolygon");
 
@@ -152,7 +154,7 @@ getStartedButton.forEach((item) => {
       classList: "swiper-slide slides-other",
       childNodes: [swiperWrapperRight],
     });
-    // let swiperSlidesRightAtThree = createElements({ Tag: "div", classList: "swiper-slide slides-other", childNodes: [swiperWrapperRight],});
+    
 
     let logInTab = createElements({
       Tag: "div",
@@ -301,43 +303,7 @@ getStartedButton.forEach((item) => {
         <p><a href="#" data-slide="1">Create New Account</a><p>
         </form>`;
 
-    // reset pass
-
-    // let resetPasswordTab = createElements({
-    //   Tag: "div",
-    //   classList: "reset-password-tab",
-    //   childNodes: [swiperSlidesRightAtThree],
-    // });
-    // let resetPasswordMainTab = createElements({
-    //   Tag: "div",
-    //   classList: "reset-password-main-tab",
-    //   childNodes: [resetPasswordTab],
-    // });
-    // let resetPasswordMainTabHeader = createElements({
-    //   Tag: "div",
-    //   classList: "reset-password-main-tab-header",
-    //   childNodes: [resetPasswordMainTab],
-    // });
-    // let resetPasswordMainTabForm = createElements({
-    //   Tag: "div",
-    //   classList: "reset-password-main-tab-form",
-    //   childNodes: [resetPasswordMainTab],
-    // });
-
-    // resetPasswordMainTabHeader.innerHTML = `<h2>Reset password<h2/>`;
-    // resetPasswordMainTabForm.innerHTML = `
-    //     <form id="reset-password-form" class="reset-password-form">
-    //     <p>
-    //     <input type="password" id="reset-password" name="reset-password" placeholder="New password" required><i class="validation"><span></span><span></span></i>
-    //     </p>
-    //     <p>
-    //     <input type="password" id="confirm-reset-password" name="confirm-reset-password" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
-    //     </p>
-    //     <p>
-    //     <button type="button" class="resetPasswordButton" id="reset-password-button">Reset password</button>
-    //     </p>
-    //     </form>`;
-
+  
     // swiper-slide [0]
 
     headerDiv[0].innerHTML = `<h1>Manage your day</h1>`;
@@ -413,7 +379,9 @@ getStartedButton.forEach((item) => {
     document.onkeydown = function (evt) {
       evt = evt || window.event;
       if (evt.key == "Escape") {
-        mainPage.classList.remove("hidden");
+        for(i = 0; i < mainPage.length; i++) {
+          mainPage[i].classList.remove("hidden");
+        }
         html.classList.remove("htmlSet");
         document.querySelector(".canvas-hero").classList.toggle("addPolygon");
         appLogIn.remove();
@@ -517,6 +485,8 @@ getStartedButton.forEach((item) => {
               timer: 5000,
               button: null
             });
+            SignUpSwiper.slideTo(0, 0 );
+
 
           } else {
             setErrorMessage(res.error);
@@ -565,7 +535,9 @@ getStartedButton.forEach((item) => {
           logInUsername.value = "";
           logInPassword.value = "";
 
-          mainPage.classList.remove("hidden");
+          for(i = 0; i < mainPage.length; i++) {
+            mainPage[i].classList.remove("hidden");
+          }
           html.classList.remove("htmlSet");
           appLogIn.remove();
           swiperSlides = [];
@@ -573,8 +545,6 @@ getStartedButton.forEach((item) => {
           messageDiv = [];
           imageDiv = [];
           logInButtonFromHome.innerText = "Log out";
-          mainPage.classList.remove("hidden");
-          html.classList.remove("htmlSet");
           document.querySelector(".canvas-hero").classList.toggle("addPolygon");
           console.log(isUserLoggedIn);
           isUserLoggedIn = true;
@@ -632,19 +602,7 @@ getStartedButton.forEach((item) => {
       }
     }
 
-    // function fireAlert() {
-    //   Swal.fire({
-    //     title: 'Success!',
-    //     html: 'Email has been sent. Check your<b></b> inbox or spam folder',
-    //     timer: 5000,
-    //     timerProgressBar: true,
-    //   }).then((result) => {
-    //     if (result.dismiss === Swal.DismissReason.timer) {
-    //       console.log('I was closed by the timer')
-    //     }
-    //   })
-    // }
-
+   
     function fireAlert() {
       swal({
         title: "Success",
