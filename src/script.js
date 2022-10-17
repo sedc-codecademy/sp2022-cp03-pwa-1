@@ -161,10 +161,28 @@ function isScrolledIntoView(elem) {
 // scroll to swiper
 
 $(".scrollTo").click(function() {
-  $('html,body').animate({
-      scrollTop: $("#scrollToDivWithPadding").offset().top},
-      'slow');
+    setTimeout(() => {
+
+        var viewport_height = window.innerWidth; 
+        if (viewport_height < 810) {
+            $('html,body').animate({
+                scrollTop: $("#scrollToDivWithPadding").offset().top},
+                'slow');
+        }
+        else {
+            $('html,body').animate({
+        scrollTop: $("#scrollToDivWithPadding").offset().top},
+        'slow');
+        }
+        
+    }, "600")
 });
+
+// $(".scrollTo").click(function() {
+//   $('html,body').animate({
+//       scrollTop: $("#scrollToDivWithPadding").offset().top},
+//       'slow');
+// });
 
 $(".scrollToTop").click(function() {
     $('html,body').animate({
