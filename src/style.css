@@ -47,7 +47,8 @@ html {
 /* HERO */
 
 .hero-section-top {
-  height: 100vh;
+  height: 90vh;
+  
 }
 
 .hero a {
@@ -238,7 +239,7 @@ p {
   height: 150vh;
   margin: 0;
   padding: 0;
-  display: flex;
+  display: table;
   justify-content: center;
   align-items: center;
 }
@@ -252,15 +253,22 @@ p {
   flex-wrap: wrap;
   /* position: absolute; */
   top: 2%;
-  gap: 3rem;
+  display: table-cell;
+  vertical-align: middle;
   
 }
+
+.container-hero-banner .card-hero-banner:nth-child(1) {
+  margin-bottom: 4rem;
+}
+
 .card-hero-banner {
   position: relative;
   width: calc(100% - 20px);
   min-height: 400px;
   margin: 10px;
   box-sizing: border-box;
+  display: table;
 }
 .card-hero-banner .imgBx-hero-banner {
   position: absolute;
@@ -273,6 +281,7 @@ p {
   box-shadow: 0 6px 15px 0 rgb(0 0 0 / 7%);
   border: 4px solid white;
 }
+
 .card-hero-banner .imgBx-hero-banner img {
   position: absolute;
   top: 0;
@@ -281,32 +290,41 @@ p {
   height: 100%;
   object-fit: cover;
 }
+
 .card-hero-banner .details-hero-banner {
   position: absolute;
   right: 0;
   width: 50%;
-  height: 100%;
+  height: max-content;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   /* align-items: center; */
-  
+  display: table;
+  border-spacing: 30px;
 }
+
 .card-hero-banner .details-hero-banner .content-hero-banner {
   padding: 20px;
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: table-row;
 }
+
 .card-hero-banner .details-hero-banner .content-hero-banner h2 {
   margin: 0;
   padding: 0;
   font-size: 2rem;
-  line-height: 0.85em;
+  line-height: 1.2em;
   font-weight: 600;
   color: rgb(90, 90, 90);
 }
-.card-hero-banner .details-hero-banner .content-hero-banner h2 h3 {
+
+.card-hero-banner .details-hero-banner .content-hero-banner h3 {
   font-size: 1.5rem;
   line-height: 1;
+  font-weight: normal;
   color: rgb(81, 81, 81);
 }
 
@@ -321,26 +339,13 @@ p {
     margin-top: 1vh;
   }
 
-  
 }
-
-@media (max-width: 1130px) {
-
- .hero-banner {
-    /* top: 150%; */
-  }
-
- 
-
-}
-
-
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .container-hero-banner {
     width: 100%;
   }
-}
-@media (max-width: 991px) {
+} */
+@media (min-width: 900px) {
   .card-hero-banner {
     width: calc(70% - 20px);
     margin: 10px auto;
@@ -354,7 +359,6 @@ p {
 
   .hero-banner {
     /* top: 120%; */
-
   }
   #scrollToDivWithPadding {
     top: 263%;
@@ -433,6 +437,7 @@ p {
   width: 200%;
   height: 100vh;
   z-index: -200;
+  
 }
 
 #gradient-canvas {
@@ -1031,6 +1036,7 @@ th {
   perspective: 1000px;
   left: 0;
   
+  
 }
 
 .header .logo-container {
@@ -1269,9 +1275,24 @@ th {
   }
 }
 
+@media (max-width: 1107px) {
+  .hero-section-top {
+    height: fit-content;
+    padding-bottom: 4rem;
+    
+  }
+}
+
+/* @media ( max-width: 810px) {
+  .hero-section-top {
+    height: 100vh;
+    
+  }
+} */
 
 
-@media (max-width:930px) {
+
+@media (max-width:930px ) {
   .header {
     
     height: auto;
@@ -1394,14 +1415,12 @@ th {
 .customers-section {
   width: 80%;
   height: 10vh;
-  /* position: absolute; */
-  /* top: 90%; */
   padding: 0 3rem 0 3rem;
 }
 
 .delivered-meals {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: center;
   gap: 1.6rem;
 }
@@ -1423,8 +1442,9 @@ th {
 }
 
 .delivered-text {
-  flex-direction: column;
-  font-size: 1.8rem;
+  /* flex-direction: column; */
+  font-size: 1.8vw;
+  color: rgb(187, 187, 187);
   font-weight: 600;
 }
 
