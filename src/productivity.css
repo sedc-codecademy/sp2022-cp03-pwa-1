@@ -212,7 +212,6 @@ body.no-scroll {
   font-size: 20px;
 }
 
-
 .wrap{
   width: 30%;
   position: absolute;
@@ -220,3 +219,17 @@ body.no-scroll {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.swiper-button-next, .swiper-button-prev {
+  right:35%;
+  top: 87vh;
+  color: #000 !important;
+  fill: black !important;
+  stroke: black !important;
+}
+
+.swiper-button-prev {
+  left: 35%;
+}
+
+

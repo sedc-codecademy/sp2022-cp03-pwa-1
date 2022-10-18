@@ -67,7 +67,7 @@ function toggle_menu() {
   var menu_bar = document.querySelector('.header ul');
   var btn = document.getElementsByClassName('toggle-btn')[0];
   //btn.innerHTML = '×';
-  if (document.documentElement.clientWidth <= 820) {
+  if (document.documentElement.clientWidth <= 944) {
     //if(menu_bar.style.display == 'none'){
     if (menu_bar.className == 'display-none-mobile') {
       menu_bar.className = 'display-block';
@@ -160,29 +160,25 @@ function isScrolledIntoView(elem) {
 
 // scroll to swiper
 
-$(".scrollTo").click(function() {
-    setTimeout(() => {
-
+document.querySelectorAll(".scrollTo").forEach((button) => { 
+    button.addEventListener("click", () => {
+        var topOfElement; 
         var viewport_height = window.innerWidth; 
-        if (viewport_height < 810) {
-            $('html,body').animate({
-                scrollTop: $("#scrollToDivWithPadding").offset().top},
-                'slow');
+        if (viewport_height < 929) {
+            setTimeout(() => {
+                console.log("small");
+                topOfElement = document.querySelector('#swiper').offsetTop - 50;
+                window.scroll({ top: topOfElement, behavior: "smooth" }); 
+            }, 300)
+        } else {
+            setTimeout(() => {
+                topOfElement = document.querySelector('#swiper').offsetTop - 50;
+                window.scroll({ top: topOfElement, behavior: "smooth" }); 
+            }, 600)
         }
-        else {
-            $('html,body').animate({
-        scrollTop: $("#scrollToDivWithPadding").offset().top},
-        'slow');
-        }
-        
-    }, "600")
-});
 
-// $(".scrollTo").click(function() {
-//   $('html,body').animate({
-//       scrollTop: $("#scrollToDivWithPadding").offset().top},
-//       'slow');
-// });
+    })
+})
 
 $(".scrollToTop").click(function() {
     $('html,body').animate({

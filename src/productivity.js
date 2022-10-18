@@ -654,11 +654,8 @@ function searchKeyStrokes() {
         txtValue = p[i].textContent || p[i].innerText;
         
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            
             p[i].closest(".swiper-slides-productivity").style.display = "";
             galleryArticles.update();
-            
-            
         } else {
            p[i].closest(".swiper-slides-productivity").style.display = "none";
            galleryArticles.update();
@@ -666,8 +663,6 @@ function searchKeyStrokes() {
     }
 
 }
-
-
 
 submitButton.addEventListener("click", function() {
     searchKeyStrokes();
@@ -771,12 +766,13 @@ var openFSM = function(event) {
 			$fsmActual.classList.add(classes[i]);
 		}
 		$fsmActual.classList.add('growing');
-		$fsmActual.style.height = '95vh';
+		$fsmActual.style.height = '100vh';
 		$fsmActual.style.width = '100vw';
-		$fsmActual.style.top = '280%';
+		$fsmActual.style.top = '0';
 		$fsmActual.style.left = '0';
 		$fsmActual.style.margin = '0';
         document.querySelector("body").style.overflow = "hidden";
+        document.querySelector(".header").style.zIndex = "-200"
 	}, 1);
 	
 	setTimeout(function(){
@@ -797,6 +793,9 @@ var closeFSM = function(event){
 	$this.classList.add('shrinking');
     document.querySelector("body").style.overflow = "overlay";
     document.querySelector("body").style.overflowX = "hidden";
+    document.querySelector(".header").style.zIndex = "200"
+    topOfElement = document.querySelector('#swiper').offsetTop - 50;
+    window.scroll({ top: topOfElement, behavior: "smooth" }); 
 	
 	setTimeout(function(){
 		while($this.firstChild) $this.removeChild($this.firstChild);
@@ -815,22 +814,17 @@ $fsmActual.addEventListener("click", closeFSM);
 
 
 
-$(".scrollToArticles").click(function() {
-    setTimeout(() => {
-
-        var viewport_height = window.innerWidth; 
-        if (viewport_height < 810) {
-            $('html,body').animate({
-                scrollTop: $("#scrollToDivWithPaddingForMobile").offset().top},
-                'slow');
-        }
-        else {
-            $('html,body').animate({
-        scrollTop: $("#scrollToDivWithPadding").offset().top},
-        'slow');
-        }
+document.querySelectorAll(".scrollToArticles").forEach((button) => { 
+    button.addEventListener("click", () => {
+        setTimeout(() => {
+            console.log("small");
+            topOfElement = document.querySelector('body').offsetTop;
+            window.scroll({ top: topOfElement, behavior: "smooth" }); 
+        }, 300)
         
-    }, "1600")
-});
+    })
+})
+
+
 
 
