@@ -512,18 +512,12 @@
 /* Tasks div */
  
 .taskContainer {
-  position: relative;
   display: flex;
-/* flex-direction: row; */
   justify-content: center;
   align-items: center;
-  justify-content: space-between;
   margin: 0;
-  /* width: 100%; */
   padding: 0px;
-  top: 50%;
-  
-  
+  height: 90vh;
 }
  
 #taskButtons {
@@ -719,18 +713,19 @@ ol {
 
  
 #noteForTaskBtn {
-  margin: 30px 8px;
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
   transition: all 300ms ease-in-out;
-  width: 16vh;
+  width: fit-content;
+  padding: 0 1rem;
   font-size: 1rem;
   font-weight: 700;
   color: gray;
   height: 1.5rem;
   justify-content: center;
   transition: all 300ms ease-in-out;
+  
 }
  
 #noteForTaskBtn:hover {
@@ -853,19 +848,44 @@ ol {
 /* TASK FORM */
  
 .taskFormDiv {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background: rgb(89, 143, 148);
-  border-radius: 0.9rem;
+  border-radius: 0.3rem;
   z-index: 10;
-  height: 100%;
-  width: 50rem;
-  block-size: fit-content;
+  height: 80vh !important;
+  width: 70rem;
   color: #1E1E1E;
   box-shadow: 2px 4px 6px rgba(0, 42, 50, 0.1);
   
+}
+
+.taskWrapper {
+  display: flex;
+}
+
+.breaksDiv {
+  padding: 3rem;
+  z-index: 10;
+  height: 10rem;
+  float: left; 
+  width: 50%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.breaksDiv label {
+  margin: -1rem 0 0 0;
+}
+
+.form {
+  padding: 0 3rem;
+  float: left; 
+  width: 50%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .button_field {
@@ -877,20 +897,6 @@ ol {
   
 }
 
-.breaksDiv {
-  position: absolute;
-  top: 50%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  padding: 3rem;
-  border-radius: 1rem;
-  z-index: 10;
-  width: 20rem;
-  height: 10rem;
-}
-
-
- 
 .taskFormDiv h3 {
   text-align: center;
   padding: 0 0 20px 0;
@@ -900,17 +906,13 @@ ol {
   font-size: 20px;
 }
  
-.form {
-  padding: 0 40px;
-  box-sizing: border-box;
-  width: 50%;
-}
+
  
 .txt_field {
   position: relative;
   border-bottom: 2px solid #adadad;
-  margin: 30px 0;
-  width: 75%;
+  margin: 1rem 0;
+  width: 80%;
 }
  
 .txt_field input {
@@ -959,8 +961,8 @@ ol {
  
 .timer_field {
   position: relative;
-  margin-top: 50px;
-  margin-bottom: 30px 0;
+  margin: 2.5rem 0 3rem 0;
+  width: 80%;
   
 }
  
@@ -970,10 +972,8 @@ ol {
   padding: 0 10px;
   margin: 0 5px;
   color: #1E1E1E;
-  border: none;
   border-radius: 0.2rem;
   cursor: pointer;
-  /* transition: all 300ms ease-in-out; */
   width: 70px;
   border: none;
   border-radius: 0.2rem;
@@ -1001,8 +1001,8 @@ ol {
   position: relative;
   padding: 2px;
   width: 100%;
-  margin: 30px 0;
-  width: 75%;
+  margin: 0 0 3rem 0;
+  width: 80%;
   background: rgb(240, 240, 240);
   border-radius: 0.2rem;
 }
@@ -1038,14 +1038,7 @@ ol {
   outline:0px;
 }
  
-.selection_field label {
-  position: absolute;
-  top: -100%;
-  left: 5px;
-  color: #adadad;
-  font-size: 16px;
-  pointer-events: none;
-}
+
 
 
  
@@ -1080,7 +1073,8 @@ ol {
  
 .timer_break_field {
   position: relative;
-  margin-bottom: 40px;
+  width: 80%;
+  margin: 1.5rem;
 }
  
 .timer_break_field label {
@@ -1334,13 +1328,7 @@ ol {
     }
 
     .taskFormDiv {
-      position: absolute;
-      top: 51%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgb(89, 143, 148);
       border-radius: 0;
-      z-index: 10;
       height: 100% !important;
       width: 101%;
       block-size: fit-content;
@@ -1348,17 +1336,8 @@ ol {
     }
   
     .taskContainer {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      justify-content: space-between;
-      margin: 0;
-      padding: 0px;
-      top: 0;
       width: 100%;
       height: 100%;
-      
     }
 
     #addTaskBtn, #clearTasksBtn {
@@ -1433,18 +1412,6 @@ ol {
       
     }
 
-    .breaksDiv {
-      position: absolute;
-      top: 35%;
-      left: 70%;
-      transform: translate(-50%, -50%);
-      padding: 3rem;
-      border-radius: 0;
-      z-index: 10;
-      width: 20rem;
-      height: 10rem;
-    }
-
     #endSessionButton {
       display: inline-block;
       position: absolute;
@@ -1500,47 +1467,58 @@ ol {
     
     }
 }
+  @media (max-width: 780px) {
+    .taskWrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
 
-  @media (max-width:650px) {
     .breaksDiv {
-      position: absolute;
-      top: 77%;
-      left: 50%;
-      right: 50%;
-      transform: translate(-50%, -50%);
-      padding: 0;
-      border-radius: 0;
-      z-index: 10;
-      width: 80%;
+      padding: 1rem;
       height: 4rem;
+      width: 100%; 
+      display: flex;
+      flex-direction: column;
+      margin-top: -1.5rem;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgb(190, 190, 190)
+    }
+
+    
+
+    .timer_break_field {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: fit-content;
+      padding: 0;
+      margin: 5px;
+    }
+
+    .timer_break_field label {
+      position: static !important;
+      margin-top: 2px;
+    }
+
+    #startingShortBreakValueInput, #startingLongBreakValueInput {
+      width: 10%;
     }
 
     .form {
+      margin-bottom: 30vh;
       padding: 0;
-      box-sizing: border-box;
-      width: 80%;
-      position: absolute;
-      left: 50%;
-      right: 50%;
-      transform: translate(-50%, -50%);
-      top: 30%;
-      
-    }
-
-    #noteForTaskBtn {
-      margin: 30px 8px;
-      border-radius: 0.3rem;
-      border: none;
-      cursor: pointer;
-      width: 16vh;
-      font-size: 1rem;
-      font-weight: 700;
-      color: gray;
-      height: 1.5rem;
+      width: 60%; 
+      height: 60%;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      transition: all 300ms ease-in-out;
-      position: absolute;
-      
+      align-items: center;
     }
 
     #taskText {
@@ -1554,9 +1532,20 @@ ol {
       margin-bottom: 2vh;
       border: none;
       position: absolute;
-      top: 93%;
-      left: 0;
+      top: 73%;
+      left: 50;
     }
+}
+
+  @media (max-width: 428px) {
+    .form {
+      width: 100%;
+    }
+  }
+
+  @media (max-width:650px) {
+    
+   
 
     .button_field {
       position: absolute;
@@ -1701,6 +1690,12 @@ ol {
   #endSessionButton {
     right: -12%;
     top: 3rem;
+  }
+}
+
+@media (max-width: 333px) {
+  .timer_break_field label {
+    font-size: 4vw;
   }
 }
   

@@ -130,12 +130,7 @@
         <!--MAIN-->
         
         <section class="swiper-section main-page">
-            <!-- Slider main container -->
-            <div id="scrollToDivWithPaddingForMobile"></div>
-            <div id="scrollToDivWithPadding"></div>
-            
             <div class="swiper" id="swiper">
-                <!--z-index class was here to work with modal-->
                 <!-- Additional wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
@@ -284,60 +279,63 @@
                                 </a>
                             </div>
                             <div class="taskContainer">
+                                
                                 <div class="taskFormDiv hidden">
                                     <h3>Add task</h3>
-                                    <div class="form">
-                                        <div class="txt_field">
-                                            <input id="inputForTaskTitle" maxlength="20" type="text" required>
-                                            <span></span>
-                                            <label>Title</label>
-                                        </div>
-                                        <div class="timer_field">
-                                            <label>Task time duration (minutes):</label>
-                                            <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
-                                            <button id="arrowUp" class="upAndDown">▲</button>
-                                            <button id="arrowDown" class="upAndDown">▼</button>
-                                            <label>Task time duration (minutes):</label>
-                                        </div>
-                                        <div class="selection_field">
-                                            <select id="priority" required class="select">
-                                                <option value="">Select priority</option>
-                                                <option value="High">High</option>
-                                                <option value="Medium">Medium</option>
-                                                <option value="Low">Low</option>
-                                            </select>
-                                            <label for="priority">Priority:</label>
-                                        </div>
-                                        <div class="selection_field">
-                                            <select id="pace" required class="select">
-                                                <option value="">Select pace </option>
-                                                <option value="High">High</option>
-                                                <option value="Medium">Medium</option>
-                                                <option value="Low">Low</option>
-                                            </select>
-                                            <label for="Pace">Pace:</label>
-                                        </div>
-                                        <button id="noteForTaskBtn">+ Add note</button>
-                                        <textarea maxlength="300" name="Task description" class="reminderInput" id="taskText" cols="30"
-                                            rows="3" placeholder=""></textarea>
-                                    </div> <!-- div of class form -->
-                                    <div class="breaksDiv">
-                                        <div class="timer_break_field">
-                                            <input id="startingShortBreakValueInput" placeholder="00" type="number"
-                                                min="1" max="120" step="1" value="0">
-                                            <button id="arrowUpShortBreak" class="upAndDown">▲</button>
-                                            <button id="arrowDownShortBreak" class="upAndDown">▼</button>
-                                            <label for="starting shortBreak">Short break duration
-                                                (minutes):<label>
-                                        </div>
-                                        <div class="timer_break_field">
-                                            <input id="startingLongBreakValueInput" placeholder="00" type="number"
-                                                min="1" max="60" step="1" value="0">
-                                            <button id="arrowUpLongBreak" class="upAndDown">▲</button>
-                                            <button id="arrowDownLongBreak" class="upAndDown">▼</button>
-                                            <label for="starting longBreak">Long break duration (minutes):<label>
+                                    <div class="taskWrapper">
+                                        <div class="form">
+                                            <div class="txt_field">
+                                                <input id="inputForTaskTitle" maxlength="20" type="text" required>
+                                                <span></span>
+                                                <label>Title</label>
+                                            </div>
+                                            <div class="timer_field">
+                                                <label>Task time duration:</label>
+                                                <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
+                                                <button id="arrowUp" class="upAndDown">▲</button>
+                                                <button id="arrowDown" class="upAndDown">▼</button>
+                                                <label>Task time duration:</label>
+                                            </div>
+                                            <div class="selection_field">
+                                                <select id="priority" required class="select">
+                                                    <option value="">Select priority</option>
+                                                    <option value="High">High</option>
+                                                    <option value="Medium">Medium</option>
+                                                    <option value="Low">Low</option>
+                                                </select>
+                                                
+                                            </div>
+                                            <div class="selection_field">
+                                                <select id="pace" required class="select">
+                                                    <option value="">Select pace </option>
+                                                    <option value="High">High</option>
+                                                    <option value="Medium">Medium</option>
+                                                    <option value="Low">Low</option>
+                                                </select>
+                                                
+                                            </div>
+                                            <button id="noteForTaskBtn">+ Add note</button>
+                                            <textarea maxlength="300" name="Task description" class="reminderInput" id="taskText" cols="30"
+                                                rows="3" placeholder=""></textarea>
+                                        </div> <!-- div of class form -->
+                                        <div class="breaksDiv">
+                                            <div class="timer_break_field">
+                                                <input id="startingShortBreakValueInput" placeholder="00" type="number"
+                                                    min="1" max="120" step="1" value="0">
+                                                <button id="arrowUpShortBreak" class="upAndDown">▲</button>
+                                                <button id="arrowDownShortBreak" class="upAndDown">▼</button>
+                                                <label for="starting shortBreak">Short break duration :<label>
+                                            </div>
+                                            <div class="timer_break_field right">
+                                                <input id="startingLongBreakValueInput" placeholder="00" type="number"
+                                                    min="1" max="60" step="1" value="0">
+                                                <button id="arrowUpLongBreak" class="upAndDown">▲</button>
+                                                <button id="arrowDownLongBreak" class="upAndDown">▼</button>
+                                                <label for="starting longBreak">Long break duration :<label>
+                                            </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="button_field">
                                         <button id="cancelTaskButton">Cancel</button>
                                         <button class="values" id="saveTaskButton">Save</button>
