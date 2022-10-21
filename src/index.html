@@ -159,17 +159,24 @@
                             <div class="card-body">
                                 <div class="dateInfo">
                                     <div class="calendarYear">
-                                        <button class="callendarButton" id="prevYearBtn">←</button> Year: <span
+                                        <button class="callendarButton" id="prevYearBtn"><a class="arrow arrow-left" title="Previous" href="javascript:;"></a></button> Year: <span
                                             id="year"></span>
-                                        <button class="callendarButton" id="nextYearBtn">→</button>
+                                        <button class="callendarButton" id="nextYearBtn"><a class="arrow arrow-right" title="Next" href="javascript:;"></a></button>
                                     </div>
                                     <div class="calendarMonth">
-                                        <button class="callendarButton" id="prevMonthbtn">←</button> Month: <span
+                                        <button class="callendarButton" id="prevMonthbtn"><a class="arrow arrow-left" title="Previous" href="javascript:;"></a></button> Month: <span
                                             id="monthName"></span>
-                                        <button class="callendarButton" id="nextMonthbtn">→</button>
+                                        <button class="callendarButton" id="nextMonthbtn"><a class="arrow arrow-right" title="Next" href="javascript:;"></a></button>
                                     </div>
-                                    <div id="calendarOuterWrapper">
-                                        <div id="calendarMain"></div>
+                                    <div class="calendarContainer">
+                                        <div class="calendarPresentation">
+                                            <div class="showMeToday"></div>
+                                            <div class="showMeMonthAndDay"></div>
+                                            <div class="showMeLargeDate"></div>
+                                        </div>
+                                        <div id="calendarOuterWrapper">
+                                            <div id="calendarMain"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
