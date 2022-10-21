@@ -8,35 +8,8 @@ let nextMonthBtn = document.getElementById('nextMonthbtn');
 let reminderMockData = [];
 const calendarYear1 = document.querySelector(".calendarYear");
 const calendarMonth1 = document.querySelector(".calendarMonth");
-const sessionCardSettings4 = document.querySelector(".sessionButtonSetting");
-const sessionCardSessions4 = document.querySelector(".sessionButtonTimer");
-const sessionCardShortBreak4 = document.querySelector(".sessionButtonShortBreak");
-const sessionCardLongBreak4 = document.querySelector(".sessionButtonLongBreak");
 const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
 
-// sessionCardSessions4.addEventListener("click", () => {
-
-//   calendarYear1.style.backgroundColor = "#2980b9";
-//   calendarMonth1.style.backgroundColor = "#2980b9";
-//   calendarMain.style.backgroundColor = "#2980b9";
-//   calendarOuterWrapper.style.backgroundColor = "#2980b9";
-// });
-
-// sessionCardShortBreak4.addEventListener("click", () => {
-
-//   calendarYear1.style.backgroundColor = "#598f94";
-//   calendarMonth1.style.backgroundColor = "#598f94";
-//   calendarMain.style.backgroundColor = "#598f94";
-//   calendarOuterWrapper.style.backgroundColor = "#598f94";
-// });
-
-// sessionCardLongBreak4.addEventListener("click", () => {
-
-//   calendarYear1.style.backgroundColor = "#5079a1";
-//   calendarMonth1.style.backgroundColor = "#5079a1";
-//   calendarMain.style.backgroundColor = "#5079a1";
-//   calendarOuterWrapper.style.backgroundColor = "#5079a1";
-// });
 
 prevYearBtn.addEventListener('click', function () {
   year--;
@@ -113,7 +86,7 @@ function renderYear(year) {
 renderYear(year);
 
 //-----------adding month name between buttons-----------
-const monthsNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const monthsNames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 let currentMonth;
 
 function renderMonth(monthsArray, monthNum, elem) {
@@ -139,7 +112,7 @@ function getDay(date) {
 
 // --------rendering the calendar-----------
 function renderCalendar(elem, daysInMonthCallback, dataArr) {
-
+  
   const parsedReminderData = dataArr.map((item) => {
     const parsedData = item.reminderDate.split('-')
     const newObj = {
@@ -150,7 +123,7 @@ function renderCalendar(elem, daysInMonthCallback, dataArr) {
     return newObj.year === year && newObj.month === month ? newObj : null;
   }).filter(item => item !== null).map(x => parseInt(x.day));
 
-  let table = '<table id="calendarTable"><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr class="testTr2">';
+  let table = '<table id="calendarTable"><tr><div class="tableHead"><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></div></tr><tr class="testTr2">';
   let daysInMonth = daysInMonthCallback;
   let EmptySpacesNum = getDay(firstDay);
   let totalTds = daysInMonth + EmptySpacesNum;
@@ -160,17 +133,95 @@ function renderCalendar(elem, daysInMonthCallback, dataArr) {
   };
 
   for (let i = 0; i <= totalTds - (EmptySpacesNum + 1); i++) {
-    if ((i + EmptySpacesNum) % 7 === 0) {
-      table += '</tr><tr class="testTr2">'
-      table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
-    } else {
-      table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
-    }
+
+  if ((i + EmptySpacesNum) % 7 === 0) {
+    table += '</tr><tr class="testTr2">'
+    table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
+  } else {
+    table += `<td class=" testTd ${parsedReminderData.includes(i + 1) ? "calendarReminderDataDay" : ""}">${i + 1}</td>`
+  }
+    
   };
 
   table += `</tr></table>`
   elem.innerHTML = table
+
+   // get todays date 
+
+   const date = new Date();
+
+   const thisYear = date.getFullYear();
+   const thisMonth = date.getMonth() + 1;
+   const thisDay = date.getDate();
+
+   let tdOfTable = document.querySelectorAll('.testTd').forEach((tableRow) => {
+      if (parseInt(renderedMonth.innerText) < thisMonth && thisYear == parseInt(renderedYear.innerText)) {
+        tableRow.style.color = "rgb(188, 188, 188)"
+      }
+      if (parseInt(renderedMonth.innerText) == thisMonth && thisYear == parseInt(renderedYear.innerText) && thisDay > parseInt(tableRow.innerText)) {
+        tableRow.classList.toggle('pastDays');
+      }
+      else {
+        tableRow.classList.remove('pastDays');
+      }
+      if (parseInt(renderedMonth.innerText) == thisMonth && thisDay == parseInt(tableRow.innerText) && thisYear == parseInt(renderedYear.innerText)) {
+        tableRow.classList.toggle('today');
+      }
+      else {
+        tableRow.classList.remove('today');
+      }
+      
+   })
+
+    // Hover calendar to get reminders
+
+    let elements = document.querySelectorAll(".calendarReminderDataDay");
+
+     
+    for(var i = 0 ; i < elements.length ; i++){
+    
+      reminderMockData.forEach((reminderItem) => {
+
+      const parsedData = reminderItem.reminderDate.split('-')
+      const newObj = {
+      year: parseInt(parsedData[0]),
+      month: parseInt(parsedData[1]),
+      day: parsedData[2],
+      };
+
+      let myDate = new Date(reminderItem.reminderDate);
+      
+      if ((parseInt(elements[i].innerText) === parseInt(parsedData[2]) 
+      && (parseInt(parsedData[1]) === parseInt(renderedMonth.innerText)) 
+      && (parseInt(parsedData[0]) === parseInt(renderedYear.innerText)))) 
+      {
+        elements[i].innerHTML += `
+        <div class="hoverme">
+          <div class="pop">
+            <h1>${reminderItem.reminderTitle}</h1>              
+            <p class="reminder-calendar">
+              <h3>${(myDate.toLocaleDateString('en-us', { weekday:"long", month:"long", day:"numeric"}))}, ${reminderItem.reminderTime} </h3>
+              ${!reminderItem.reminderNote ? `<h4></h4>` : `<h4>Notes</h4>`}
+              <h2>${reminderItem.reminderNote}</h2>
+            </p>
+          </div>
+        </div>`
+      }
+    })
+  }
 };
+
+// calendar left
+
+const showMeToday = document.querySelector(".showMeToday");
+const showMeMonthAndDay = document.querySelector(".showMeMonthAndDay");
+const showMeLargeDate = document.querySelector(".showMeLargeDate");
+
+let todayToShow = new Date()
+showMeToday.innerHTML += `<h3>${todayToShow.toLocaleDateString('en-us', {weekday:"long"})},</h3>`
+showMeMonthAndDay.innerHTML += `<h3>${todayToShow.toLocaleDateString('en-us', {month:"long", year:"numeric"})}</h3>`
+showMeLargeDate.innerHTML += `<h1>${todayToShow.toLocaleDateString('en-us', {day:"numeric"})}</h1>`
+
 
 renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
 
@@ -334,7 +385,7 @@ function renderTable(elem) {
     <br><b>${reminderItem.priority}</b>
     <br><b>NOTES</b>
     <br><p>${reminderItem.reminderNote}</p>
-    <br><p style="display: none">${reminderItem.reminderId}</p>
+    <br><p >${reminderItem.reminderId}</p>
     </div>
     <button class="removeReminderByIdBtn" onclick="
     deleteReminderFromDb(${reminderItem.reminderId})
@@ -372,11 +423,8 @@ async function getAllRemindersFromDb() {
 }
 
 showAllRemindersBtn.addEventListener('click', function () {
-  console.log(reminderMockData);
   getAllRemindersFromDb();
-  console.log(reminderMockData);
   renderCalendar(calendarMain, getDaysInMonth, reminderMockData);
-  console.log(reminderMockData);
 });
 
 async function deleteReminderFromDb(reminderId) {

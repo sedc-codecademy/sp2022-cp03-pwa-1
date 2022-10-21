@@ -194,7 +194,6 @@ $('.menu-btn').click(function() {
 });
 
 
- 
 
 const heroTitle = document.querySelector('.hero-title');
 const heroTitleOverlay = document.querySelector('.hero-title[data-overlay]');
