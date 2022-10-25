@@ -643,6 +643,8 @@ for(let i = 0; i < swiperSlideProductivity.length; i++) {
     
 };
 
+// Search
+
 function searchKeyStrokes() {
     
     var input, filter, p, txtValue;

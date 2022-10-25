@@ -15,6 +15,26 @@ let isSessionActive = false;
 let startSessionTime;
 let suma;
 
+let selectedPriorityLi;
+let selectedPriority = document.querySelectorAll(".selected-priority");
+
+selectedPriority.forEach((selected) => {
+  selected.addEventListener("click", () => {
+    selectedPriorityLi = selected.innerText;
+    $('#priorityClose').trigger("click")
+  })
+})
+
+let selectedPaceLi;
+let selectedPace = document.querySelectorAll(".selected-pace");
+
+selectedPace.forEach((selected) => {
+  selected.addEventListener("click", () => {
+    selectedPaceLi = selected.innerText;
+    $('#paceClose').trigger("click")
+  })
+})
+
 import Timer from "./Classes/timer.js"
 
 function startTimerFunctionality() {
@@ -279,6 +299,8 @@ const clearAll = () => {
 
 let clearHelper = clearTaskButton.addEventListener("click", clearTasks);
 
+let taskContainer = document.querySelector(".taskContainer");
+
 document.querySelectorAll(".values").forEach((item) => {
   item.addEventListener("click", function (e) {
     endSessionButton.style.display = "flex";
@@ -329,25 +351,8 @@ document.querySelectorAll(".values").forEach((item) => {
           .reduce((sum, current) => sum + current.time[0], 0);
         new Timer(timerElement, updateTimer, startTimerFunctionality);
         if (!(document.querySelector("#playButtonDiv"))) {
-          let startTheSession = createElementFunction("playButtonHolder", "flex", "id", "playButtonDiv", "Start session", cardContainer, "button");
-          startTheSession.className = "bubbly-button"
-          animateButton;
-          var animateButton = function (e) {
-            e.preventDefault;
-            //reset animation
-            e.target.classList.remove("animate");
-
-            e.target.classList.add("animate");
-            setTimeout(function () {
-              e.target.classList.remove("animate");
-            }, 700);
-          };
-
-          var bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-          for (var i = 0; i < bubblyButtons.length; i++) {
-            bubblyButtons[i].addEventListener("click", animateButton, false);
-          }
+          let startTheSession = createElementFunction("playButtonHolder", "flex", "id", "playButtonDiv", "Start session", taskContainer, "button");
+          
           startTheSession.addEventListener("click", saveTimerAndPlay2);
         }
       }
@@ -357,8 +362,8 @@ document.querySelectorAll(".values").forEach((item) => {
 
 function resetTaskInputs() {
   taskTitle.value = "";
-  taskPriority.selectedIndex = "";
-  taskPace.selectedIndex = "";
+  selectedPriorityLi = "";
+  selectedPaceLi = "";
   textAreaOfTask.value = "";
   textAreaOfTask.style.display = "none";
   textAreaOfTask.innerText = "";
@@ -506,6 +511,11 @@ function createElementFunction(name, dis, attr, attrName, inner, where, type) {
   return returnVar;
 }
 
+
+
+
+
+
 function createTask() {
 
   timeStamp();
@@ -518,8 +528,8 @@ function createTask() {
   if (
     taskTitle.value &&
     taskDuration.value &&
-    taskPriority.options[taskPriority.selectedIndex].value &&
-    taskPace.options[taskPace.selectedIndex].value
+    selectedPriorityLi &&
+    selectedPaceLi
   ) {
 
     let number = createId();
@@ -529,8 +539,8 @@ function createTask() {
     //li innerHTML - take out in separate function
     li.innerHTML += `<b>Title</b> <b>: ${taskTitle.value
       }</b> <br><b>Duration</b> <b>: ${taskDuration.value
-      }min </b>  <br> <b>Priority</b> <b>: ${taskPriority.options[taskPriority.selectedIndex].value
-      }</b><br> <b>Pace</b> <b>: ${taskPace.options[taskPace.selectedIndex].value
+      }min </b>  <br> <b>Priority</b> <b>: ${selectedPriorityLi
+      }</b><br> <b>Pace</b> <b>: ${selectedPaceLi
       }</b> <br> <div id="timeStampValue" style="display: none">${timeStamp}</div>`;
     let activeCardMarker = document.createElement("div");
     activeCardMarker.setAttribute("class", "card_timer_container"); //option 2
@@ -599,8 +609,8 @@ function createTask() {
       time: [],
       id: number,
       finished: flagParagraph.contentEditable,
-      priority: taskPriority.value,
-      pace: taskPace.value
+      priority: selectedPriorityLi,
+      pace: selectedPaceLi
     };
 
     arrayOfTasks.push(test);
