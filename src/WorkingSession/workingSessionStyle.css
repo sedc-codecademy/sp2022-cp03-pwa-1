@@ -292,92 +292,26 @@
 }
  
 /* Start button  */
- 
-.bubbly-button {
-  top: 8%;
-  margin-inline: auto;
-  font-family: "Helvetica", "Arial", sans-serif;
-  display: inline-block;
-  font-size: 1em;
-  padding: 1em 2em;
-  margin-top: 100px;
-  margin-bottom: 60px;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: rgb(89, 143, 148);
-  color: #fff;
-  border-radius: 2rem;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-  
-  
-}
-.bubbly-button:focus {
-  outline: 0;
-}
-.bubbly-button:before, .bubbly-button:after {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 140%;
-  height: 100%;
-  left: -20%;
-  z-index: -1000;
-  transition: all ease-in-out 0.5s;
-  background-repeat: no-repeat;
-}
-.bubbly-button:before {
-  display: none;
-  top: -75%;
-  background-image: radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, transparent 20%, rgb(89, 143, 148) 20%, transparent 30%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, transparent 10%, rgb(89, 143, 148) 15%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%);
-  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
-}
-.bubbly-button:after {
-  display: none;
-  bottom: -75%;
-  background-image: radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, transparent 10%, rgb(89, 143, 148) 15%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%), radial-gradient(circle, rgb(89, 143, 148) 20%, transparent 20%);
-  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
-}
-.bubbly-button:active {
-  transform: scale(0.9);
-  background-color: rgb(89, 143, 148);
-  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
-}
-.bubbly-button.animate:before {
-  display: block;
-  animation: topBubbles ease-in-out 0.75s forwards;
-}
-.bubbly-button.animate:after {
-  display: block;
-  animation: bottomBubbles ease-in-out 0.75s forwards;
-}
 
-@keyframes topBubbles {
-  0% {
-    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-  }
-  50% {
-    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
-  }
-  100% {
-    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
+#playButtonDiv {
+  position: absolute;
+  top: 28%;
+  background-color: rgb(89, 143, 148);
+  color: white;
+  width: 150px;
+  height: 45px;
+  margin: auto;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 0.4rem 1rem;
 }
-@keyframes bottomBubbles {
-  0% {
-    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
-  }
-  50% {
-    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
-  }
-  100% {
-    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
-}
+ 
 
 .tryingHard {
   width: 20rem;
@@ -709,9 +643,13 @@ ol {
   height: 47vh;
   margin-left: -1.4rem;
 }
+
+.right-column {
+  margin-bottom: auto;
+  padding: 3rem 0;
+}
  
 
- 
 #noteForTaskBtn {
   border-radius: 0.3rem;
   border: none;
@@ -721,7 +659,7 @@ ol {
   padding: 0 1rem;
   font-size: 1rem;
   font-weight: 700;
-  color: gray;
+  color: rgb(71, 71, 71);
   height: 1.5rem;
   justify-content: center;
   transition: all 300ms ease-in-out;
@@ -734,10 +672,9 @@ ol {
  
 #taskText {
   display: none;
-  -webkit-box-shadow: 0px 0px 2px 2px #ccc;
-  box-shadow: 0px 0px 2px 2px #ccc;
-  border-radius: 0.5rem;
-  max-width: 30vh;
+  box-shadow: 0 1em 2em -0.9em rgba(0, 0, 0, 0.7);
+  border-radius: 0.3rem;
+  max-width: 100%;
   max-height: 20vh;
   padding: 20px;
   margin-bottom: 2vh;
@@ -855,37 +792,30 @@ ol {
   width: 70rem;
   color: #1E1E1E;
   box-shadow: 2px 4px 6px rgba(0, 42, 50, 0.1);
-  
 }
 
 .taskWrapper {
   display: flex;
 }
 
-.breaksDiv {
-  padding: 3rem;
-  z-index: 10;
-  height: 10rem;
-  float: left; 
-  width: 50%; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.breaksDiv label {
-  margin: -1rem 0 0 0;
-}
 
 .form {
   padding: 0 3rem;
-  float: left; 
-  width: 50%; 
+  width: 100%; 
+  display: flex;
+  margin-top: 4rem;
+  
+}
+
+.task-column {
+  flex-grow: 1; /* fill parent space based on child content */
+  flex: 1 1 0; /* fill parent space equally regardless of child content*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+  
 }
 
 .button_field {
@@ -900,73 +830,48 @@ ol {
 .taskFormDiv h3 {
   text-align: center;
   padding: 0 0 20px 0;
-  border-bottom: 1px solid #bababa;
+  border-bottom: 1px solid #e6e6e62f;
   color: white;
   font-family: "Poppins", sans-serif;
   font-size: 20px;
+  box-shadow: 0 1em 2em -0.9em rgba(0, 0, 0, 0.7);
 }
  
 
  
 .txt_field {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 1rem 0;
-  width: 80%;
-}
- 
-.txt_field input {
-  width: 100%;
-  padding: 0 5px;
-  height: 30px;
-  font-size: 14px;
-  border: none;
-  background: none;
-  color: rgb(203, 203, 203);
-  outline: none;
-}
- 
-.txt_field label {
   position: absolute;
-  top: 50%;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-50%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.5s;
-}
- 
-.txt_field span::before {
-  content: "";
-  position: absolute;
-  top: 30px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: white;
-  transition: 0.5s;
-}
- 
-.txt_field input:focus ~ label,
-.txt_field input:valid ~ label {
-  top: -5px;
-  color: white;
-}
- 
-.txt_field input:focus ~ span::before,
-.txt_field input:valid ~ span::before {
-  width: 100%;
-}
- 
-.timer_field {
-  position: relative;
-  margin: 2.5rem 0 3rem 0;
-  width: 80%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 0;
+  margin: 0;
   
 }
- 
-.timer_field input {
+
+.txt_field input {
+  background: whitesmoke;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	padding: 10px 20px;
+	height: 20px;
+	font-weight: bold;
+	font-size: large;
+	list-style: none;
+  box-shadow: 0 1em 2em -0.9em rgba(0, 0, 0, 0.7);
+  border: none;
+  width: 15rem;
+}
+
+.txt_field input:focus {
+  outline: none;
+}
+
+.timer_field h4, .timer_field_short h4, .timer_field_long h4 {
+  margin-left: -2.6rem;
+}
+
+
+.timer_field input, .timer_field_short input, .timer_field_long input {
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0 10px;
@@ -987,140 +892,12 @@ ol {
   border:0px;
   outline:0px;
 }
- 
-.timer_field label {
-  position: absolute;
-  top: -120%;
-  left: 5px;
-  color: #adadad;
-  font-size: 16px;
-  pointer-events: none;
-}
- 
-.selection_field {
-  position: relative;
-  padding: 2px;
-  width: 100%;
-  margin: 0 0 3rem 0;
-  width: 80%;
-  background: rgb(240, 240, 240);
-  border-radius: 0.2rem;
+
+.timer_field h4, .timer_field_short h4, .timer_field_long h4 {
+  color: white;
 }
 
-.selection_field::after {
-  color: black;
-  content: "▾";
-  pointer-events: none;
-  position: absolute;
-  right: 5px;
-  top: 0;
-  font-size: 20px;
-  
-}
- 
-.selection_field select {
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0 10px;
-  margin: 0 5px;
-  border: none;
-  color: #1E1E1E;
-  cursor: pointer;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  width: 98%;
-  background: rgb(240, 240, 240);
-  border-style: none; 
-  border-color: Transparent; 
-  overflow: auto;   
-  resize: none;
-  border:0px;
-  outline:0px;
-}
- 
-
-
-
- 
-.timer_field input::-webkit-outer-spin-button,
-.timer_field input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-  
-}
- 
-.timer_field input[type="number"] {
-  -moz-appearance: textfield;
-  
-  /* Firefox */
-}
- 
-.upAndDown {
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0 10px;
-  margin: 0 5px;
-  border: none;
-  color: #444;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: all 100ms ease-in-out;
-}
- 
-.upAndDown:hover {
-  transform: scale(1.03);
-}
- 
-.timer_break_field {
-  position: relative;
-  width: 80%;
-  margin: 1.5rem;
-}
- 
-.timer_break_field label {
-  position: absolute;
-  top: -80%;
-  left: 5px;
-  color: #adadad;
-  font-size: 16px;
-  pointer-events: none;
-}
- 
-.timer_break_field input {
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin: 0 5px;
-  color: #444;
-  cursor: pointer;
-  width: 100%;
-  height: 20px;
-  border: none;
-  border-radius: 0.2rem;
-  box-shadow: inset -5px -5px 9px 
-  rgba(255,255,255,0.45), inset 5px 5px 9px 
-  rgba(94,104,121,0.3);
-  border-style: none; 
-  border-color: Transparent; 
-  overflow: auto;   
-  resize: none;
-  border:0px;
-  outline:0px;
-}
- 
-.timer_break_field input::-webkit-outer-spin-button,
-.timer_break_field input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
- 
-.timer_break_field input[type="number"] {
-  -moz-appearance: textfield;
-  /* Firefox */
-}
-
-
- .button_field_2 {
+.button_field_2 {
   position: absolute;
   padding-top: 15px;
   margin-right: 3rem;
@@ -1132,14 +909,7 @@ ol {
   margin-left: 8rem;
 }
  
- 
-#startingShortBreakValueInput,
-#startingLongBreakValueInput {
-  font-size: 24px;
-  width: 10%;
-  
-}
- 
+
 .card_timer_container {
   position: absolute;
   top: 55%;
@@ -1467,81 +1237,23 @@ ol {
     
     }
 }
-  @media (max-width: 780px) {
-    .taskWrapper {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-    }
-
-    .breaksDiv {
-      padding: 1rem;
-      height: 4rem;
-      width: 100%; 
-      display: flex;
-      flex-direction: column;
-      margin-top: -1.5rem;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid rgb(190, 190, 190)
-    }
-
-    
-
-    .timer_break_field {
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      width: fit-content;
-      padding: 0;
-      margin: 5px;
-    }
-
-    .timer_break_field label {
-      position: static !important;
-      margin-top: 2px;
-    }
-
-    #startingShortBreakValueInput, #startingLongBreakValueInput {
-      width: 10%;
-    }
-
-    .form {
-      margin-bottom: 30vh;
-      padding: 0;
-      width: 60%; 
-      height: 60%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #taskText {
-      display: none;
-      -webkit-box-shadow: 0px 0px 2px 2px #ccc;
-      box-shadow: 0px 0px 2px 2px #ccc;
-      border-radius: 0.5rem;
-      max-width: 30vh;
-      max-height: 5vh;
-      padding: 20px;
-      margin-bottom: 2vh;
-      border: none;
-      position: absolute;
-      top: 73%;
-      left: 50;
-    }
-}
-
-  @media (max-width: 428px) {
-    .form {
-      width: 100%;
+  @media (max-width: 725px) {
+   
+    summary {
+      font-size: 2.4vw;
     }
   }
+
+  @media (max-width: 590px) {
+    .qty-input .product-qty {
+      width: 10px ;
+    }
+
+    .timer_field h4, .timer_field_short h4, .timer_field_long h4 {
+      margin-left: -1.7rem;
+    }
+  }
+
 
   @media (max-width:650px) {
     
@@ -1699,6 +1411,8 @@ ol {
   }
 }
   
+
+
 
 
 

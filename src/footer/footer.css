@@ -108,8 +108,11 @@
       position: relative;
     }
   }
-  @media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
-  
+  @media (max-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .calendarPresentation {
+        display: none;
+    }
+
   }
   @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
   

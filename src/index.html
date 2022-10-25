@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="footer/footer.css" type="text/css" />
     <link rel="stylesheet" href="gooeyMenu/gooey.css" type="text/css"/>
     <link rel="shortcut icon" type="image/x-icon" href="media/page-ico/favicon.ico" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/themes/airbnb.css">
     <title>Productivity Web App</title>
 </head>
 
@@ -28,6 +28,7 @@
     <div class="canvas-container">
         <canvas id="gradient-canvas" class="canvas-hero" width="32" height="32"></canvas>
     </div>
+
     
     <!-- NAVIGATION -->
     
@@ -53,6 +54,8 @@
                 </div>
             </div>
         </section >
+
+
         <!-- HERO Top-->
         <section class="hero-section-top main-page">
             <div class="hero row hero_container">
@@ -266,7 +269,7 @@
                             <div class="hidden" id="longBreakDiv">00:00</div>
                             <div id="openSessionDiv"></div>
                             <div id="taskButtons">
-                                <a class="buttonTasks" id="addTaskBtn" role="button">
+                                <a class="buttonTasks scrollTo" id="addTaskBtn" role="button">
                                     <span>Add</span>
                                     <div class="icon">
                                         <i class="fa fa-remove">&#x2b;</i>
@@ -290,60 +293,81 @@
                                 <div class="taskFormDiv hidden">
                                     <h3>Add task</h3>
                                     <div class="taskWrapper">
-                                        <div class="form">
-                                            <div class="txt_field">
-                                                <input id="inputForTaskTitle" maxlength="20" type="text" required>
-                                                <span></span>
-                                                <label>Title</label>
-                                            </div>
-                                            <div class="timer_field">
-                                                <label>Task time duration:</label>
-                                                <input id="inputForTimeOfTask" type="number" min="0" step="1" value="1">
-                                                <button id="arrowUp" class="upAndDown">▲</button>
-                                                <button id="arrowDown" class="upAndDown">▼</button>
-                                                <label>Task time duration:</label>
-                                            </div>
-                                            <div class="selection_field">
-                                                <select id="priority" required class="select">
-                                                    <option value="">Select priority</option>
-                                                    <option value="High">High</option>
-                                                    <option value="Medium">Medium</option>
-                                                    <option value="Low">Low</option>
-                                                </select>
-                                                
-                                            </div>
-                                            <div class="selection_field">
-                                                <select id="pace" required class="select">
-                                                    <option value="">Select pace </option>
-                                                    <option value="High">High</option>
-                                                    <option value="Medium">Medium</option>
-                                                    <option value="Low">Low</option>
-                                                </select>
-                                                
-                                            </div>
-                                            <button id="noteForTaskBtn">+ Add note</button>
-                                            <textarea maxlength="300" name="Task description" class="reminderInput" id="taskText" cols="30"
-                                                rows="3" placeholder=""></textarea>
-                                        </div> <!-- div of class form -->
-                                        <div class="breaksDiv">
-                                            <div class="timer_break_field">
-                                                <input id="startingShortBreakValueInput" placeholder="00" type="number"
-                                                    min="1" max="120" step="1" value="0">
-                                                <button id="arrowUpShortBreak" class="upAndDown">▲</button>
-                                                <button id="arrowDownShortBreak" class="upAndDown">▼</button>
-                                                <label for="starting shortBreak">Short break duration :<label>
-                                            </div>
-                                            <div class="timer_break_field right">
-                                                <input id="startingLongBreakValueInput" placeholder="00" type="number"
-                                                    min="1" max="60" step="1" value="0">
-                                                <button id="arrowUpLongBreak" class="upAndDown">▲</button>
-                                                <button id="arrowDownLongBreak" class="upAndDown">▼</button>
-                                                <label for="starting longBreak">Long break duration :<label>
-                                            </div>
+                                        <div class="txt_field">
+                                            <input id="inputForTaskTitle" maxlength="20" type="text" placeholder="Title" required>
                                         </div>
+                                        <div class="form">
+                                            <div class="task-column">
+                                            <div class="timer_field">
+                                                <h4>Task time duration</h4>
+                                                <div class="qty-input">
+                                                    <button id="arrowDown" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                                    <input id="inputForTimeOfTask" class="product-qty" type="number" name="product-qty" min="0" max="120" value="1">
+                                                    <button id="arrowUp" class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="timer_field_short">
+                                                <h4>Short break duration</h4>
+                                                <div class="qty-input">
+                                                    <button id="arrowDownShortBreak" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                                    <input id="startingShortBreakValueInput" class="product-qty" type="number" name="product-qty" min="0" max="40" value="1">
+                                                    <button id="arrowUpShortBreak" class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                                </div>
+                                            </div>
+                                            <div class="timer_field_long">
+                                                <h4>Long break duration</h4>
+                                                <div class="qty-input">
+                                                    <button id="arrowDownLongBreak" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                                    <input id="startingLongBreakValueInput" class="product-qty" type="number" name="product-qty" min="0" max="40" value="1">
+                                                    <button id="arrowUpLongBreak" class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="task-column right-column">
+                                            <div class="selection-container priority">
+                                                <details> 
+                                                    <summary id="priorityClose">
+                                                        <div>Select priority</div><img src="https://cdn-icons-png.flaticon.com/512/271/271210.png" width="20"/>
+                                                    </summary>
+                                                    <ul>
+                                                        <li class="selected-priority" value="High"> <img src="media/high.png" alt="high"/>
+                                                          <p>High</p>
+                                                        </li>
+                                                        <li class="selected-priority" value="Medium"> <img src="media/medium.png" alt="medium"/>
+                                                          <p>Medium</p>
+                                                        </li>
+                                                        <li class="selected-priority" value="Low"> <img src="media/low.png" alt="low"/>
+                                                          <p>Low</p>
+                                                        </li>
+                                                    </ul>
+                                                </details>
+                                            </div>
+                                            <div class="selection-container pace">
+                                                <details> 
+                                                    <summary id="paceClose">
+                                                        <div>Select pace</div><img src="https://cdn-icons-png.flaticon.com/512/271/271210.png" width="20"/>
+                                                    </summary>
+                                                    <ul>
+                                                        <li class="selected-pace" value="High"> <img src="media/high.png" alt="high"/>
+                                                            <p>High</p>
+                                                        </li>
+                                                        <li class="selected-pace" value="Medium"> <img src="media/medium.png" alt="medium"/>
+                                                            <p>Medium</p>
+                                                        </li>
+                                                        <li class="selected-pace" value="Low"> <img src="media/low.png" alt="low"/>
+                                                            <p>Low</p>
+                                                        </li>
+                                                    </ul>
+                                                </details>
+                                            </div>
+                                            <div class="selection-container note-container">
+                                                <button id="noteForTaskBtn">+ Add note</button>
+                                                <textarea maxlength="300" name="Task description" class="reminderInput" id="taskText" cols="30" rows="3" placeholder=""></textarea>
+                                            </div>
+                                            </div>
+                                        </div> <!-- div of class form -->
                                     </div>
-                                    
-                                    <div class="button_field">
+                                    <div class=" button_field">
                                         <button id="cancelTaskButton">Cancel</button>
                                         <button class="values" id="saveTaskButton">Save</button>
                                     </div>
@@ -372,20 +396,33 @@
                                                 <textarea id="reminder-note" class="reminderInput" maxlength="300" name="Reminder note" cols="30" rows="3" placeholder="Notes"></textarea>
                                             </div>
                                             <div class="dateForReminder">
-                                                <label for="inputForSettingDateForTask">Enter date:</label>
-                                                <input class="reminderInput" id="inputForSettingDateForTask" type="date">
+                                                <div class="wrapper-datePicker"> 
+                                                    <input type="text" id="datepicker" autocomplete="off" placeholder="Pick a date">
+                                                </div>
                                             </div>
-                                                <div class="timeForReminder">
-                                                <label for="inputForTimeOfReminder">Set time:</label>
-                                                <input type="time" class="reminderInput" id="inputForTimeOfReminder" name="inputForTimeOfReminder" min="00:00" max="23:59" required>
+                                            <div class="timeForReminder">
+                                                <div class="wrapper-datePicker">
+                                                    <input type="text" id="timePicker" autocomplete="off" placeholder="Pick a time">
+                                                </div>
                                             </div>
-                                            <div class="priorityForReminder">
-                                                <label for="priorityRem">Choose priority:</label>
-                                                <select class="reminderInput" name="priorityRem" id="priorityRem">
-                                                    <option value="High">High</option>
-                                                    <option value="Medium">Medium</option>
-                                                    <option value="Low">Low</option>
-                                                </select>
+                                            <div class="priorityForReminder selection-container">
+
+                                                <details> 
+                                                    <summary class="priority-reminder" id="reminderClose">
+                                                        <div>Select priority</div><img src="https://cdn-icons-png.flaticon.com/512/271/271210.png" width="20"/>
+                                                    </summary>
+                                                    <ul class="ul-priority-reminder">
+                                                        <li class="selected-priority-reminder" value="High"> <img src="media/high.png" alt="high"/>
+                                                          <p>High</p>
+                                                        </li>
+                                                        <li class="selected-priority-reminder" value="Medium"> <img src="media/medium.png" alt="medium"/>
+                                                          <p>Medium</p>
+                                                        </li>
+                                                        <li class="selected-priority-reminder" value="Low"> <img src="media/low.png" alt="low"/>
+                                                          <p>Low</p>
+                                                        </li>
+                                                    </ul>
+                                                </details>
                                             </div>
                                         </div>
                                     </span>
@@ -446,16 +483,10 @@
                                 </a>
                             </div>
                             <div class="footer-menu">
-                                <h2 class="footer-menu-name"> Get Started</h2>
+                                <h2 class="footer-menu-name">Where to find us</h2>
                                     <ul id="menu-get-started" class="footer-menu-list">
                                         <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                                            <a href="#">Start</a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                                            <a href="#">Documentation</a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                                            <a href="#">Installation</a>
+                                            <img src="/media/location.gif">
                                         </li>
                                     </ul>
                             </div>
@@ -489,26 +520,26 @@
                         </div>
                         <div class="footer-content-column">
                             <div class="footer-menu">
-                                    <h2 class="footer-menu-name"> Quick Links</h2>
-                                    <ul id="menu-quick-links" class="footer-menu-list">
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
-                                            <a target="_blank" rel="noopener noreferrer" href="#">Support Center</a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
-                                            <a target="_blank" rel="noopener noreferrer" href="#">Service Status</a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                                            <a href="#">Security</a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                                            <a href="#">Blog</a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type_archive menu-item-object-customer">
-                                            <a href="#">Customers</a></li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                                            <a href="#">Reviews</a>
-                                        </li>
-                                    </ul>
+                                <h2 class="footer-menu-name"> Quick Links</h2>
+                                <ul id="menu-quick-links" class="footer-menu-list">
+                                    <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                        <a target="_blank" rel="noopener noreferrer" href="#">Support Center</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                                        <a target="_blank" rel="noopener noreferrer" href="#">Service Status</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="#">Security</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="#">Blog</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type_archive menu-item-object-customer">
+                                        <a href="#">Customers</a></li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="#">Reviews</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -545,9 +576,12 @@
     <!-- </div> -->
     
     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>

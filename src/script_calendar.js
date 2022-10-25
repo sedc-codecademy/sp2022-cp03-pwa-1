@@ -11,6 +11,7 @@ const calendarMonth1 = document.querySelector(".calendarMonth");
 const calendarOuterWrapper = document.querySelector("#calendarOuterWrapper");
 
 
+
 prevYearBtn.addEventListener('click', function () {
   year--;
   firstDay = new Date(year, month - 1, 1)
@@ -195,6 +196,7 @@ function renderCalendar(elem, daysInMonthCallback, dataArr) {
       && (parseInt(parsedData[1]) === parseInt(renderedMonth.innerText)) 
       && (parseInt(parsedData[0]) === parseInt(renderedYear.innerText)))) 
       {
+        
         elements[i].innerHTML += `
         <div class="hoverme">
           <div class="pop">
@@ -232,8 +234,8 @@ let reminderBtn = document.querySelector("#reminderBtn");
 let reminderWrapper = document.querySelector('#remindersWrapper');
 let remindersTable = document.querySelector(`#remindersTableId`);
 let reminderName = document.querySelector(`#inputForCreatingReminder`);
-let reminderDate = document.querySelector('#inputForSettingDateForTask');
-let reminderTime = document.querySelector('#inputForTimeOfReminder');
+let reminderDate = document.querySelector('#datepicker');
+let reminderTime = document.querySelector('#timePicker');
 let reminderPriority = document.querySelector('#priorityRem');
 const remindersForm = document.querySelector(".AddReminderPopUp");
 let notes = document.querySelector("#reminder-note");
@@ -245,8 +247,19 @@ let reminderId = 1;
 let inputReminderName = 0;
 let inputReminderDate = 0;
 let inputReminderTime = 0;
-let inputReminderPriority = 0;
+let inputReminderPriority;
 // let inputReminderNote = 0;
+
+let selectedPriorityReminderLi = "";
+let selectedPriorityReminder = document.querySelectorAll(".selected-priority-reminder");
+
+selectedPriorityReminder.forEach((selected) => {
+  selected.addEventListener("click", () => {
+    selectedPriorityReminderLi = selected.innerText;
+    console.log(selected.innerText);
+    $('#reminderClose').trigger("click")
+  })
+})
 
 
 
@@ -294,7 +307,7 @@ function gettingAllReminders() {
   inputReminderName = gettingReminderInput(reminderName);
   inputReminderDate = gettingReminderInput(reminderDate);
   inputReminderTime = gettingReminderInput(reminderTime);
-  inputReminderPriority = gettingReminderInput(reminderPriority);
+  inputReminderPriority = gettingReminderInput(selectedPriorityReminderLi);
   inputReminderNote = gettingReminderInput(notes);
 };
 
@@ -319,7 +332,7 @@ function createReminderObject() {
     reminderTitle: gettingReminderInput(reminderName),
     reminderDate: gettingReminderInput(reminderDate),
     reminderTime: gettingReminderInput(reminderTime),
-    priority: gettingReminderInput(reminderPriority),
+    priority: gettingReminderInput(selectedPriorityReminderLi),
     reminderNote: gettingReminderInput(notes)
   }
   reminderMockData.push(reminder);
@@ -342,7 +355,7 @@ async function reminderToDb(e) {
         ReminderNote: notes.value,
         ReminderDate: reminderDate.value,
         ReminderTime: reminderTime.value,
-        Priority: reminderPriority.selectedIndex,
+        Priority: selectedPriorityReminderLi,
       }),
     })
     const res = await response.json();
@@ -483,3 +496,26 @@ function deleteReminderById(reminderId) {
   reminderMockData = [...newData];
   renderTable(remindersTable);
 };
+
+// new datepicker 
+
+
+$( function() {
+  
+	$( "#datepicker" ).datepicker({
+		dateFormat: "yy-mm-dd",	
+    duration: "fast",
+    
+});
+
+  $("#timePicker").flatpickr({
+  enableTime: true,
+  noCalendar: true,
+  time_24hr: true,
+  dateFormat: "H:i",
+  });
+  
+} );
+
+
+
