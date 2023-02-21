@@ -3,3 +3,10 @@
 * [Requirements](docs/reqs.md)
 * [Tools](docs/tools.md)
 * Stuff
+
+* Technologies used:
+* HTML5
+* CSS
+* Javascript
+* Swiper.js
+* Chart.js
